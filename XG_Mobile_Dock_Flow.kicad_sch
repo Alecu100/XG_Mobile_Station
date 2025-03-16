@@ -30052,7 +30052,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e1fb5159-2fce-41e0-853e-150135900365")
 		(property "Reference" "J14"
