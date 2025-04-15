@@ -64751,7 +64751,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "PCIE 0-3"
+	(gr_text "PCIE 0-3 EQ0"
 		(at 188.12 56.7 90)
 		(layer "F.SilkS")
 		(uuid "106cb8ac-fc4e-49dd-984f-4d3c22c1dde0")
@@ -64847,8 +64847,8 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "PCIE 0-3"
-		(at 215.25 68.43 90)
+	(gr_text "PCIE 0-3 EQ1"
+		(at 215.3 69.4 90)
 		(layer "F.SilkS")
 		(uuid "29b1910f-4e98-4b6b-9146-080274eb4b35")
 		(effects
@@ -65027,7 +65027,7 @@
 			(justify right bottom)
 		)
 	)
-	(gr_text "PCIE 0-3"
+	(gr_text "PCIE 0-3 EQ1"
 		(at 188.09 68.01 90)
 		(layer "F.SilkS")
 		(uuid "633edbaf-225a-483f-bea8-4bd3883e64aa")
@@ -65207,8 +65207,8 @@
 			(justify right bottom)
 		)
 	)
-	(gr_text "PCIE 4-7"
-		(at 215.32 92.98 90)
+	(gr_text "PCIE 4-7 EQ1"
+		(at 215.3 94.5 90)
 		(layer "F.SilkS")
 		(uuid "a8fdbfe4-90dc-4d40-9e88-0c3a8f7125c1")
 		(effects
@@ -65304,7 +65304,7 @@
 			(justify right bottom)
 		)
 	)
-	(gr_text "PCIE 4-7"
+	(gr_text "PCIE 4-7 EQ0"
 		(at 189.03 81.75 90)
 		(layer "F.SilkS")
 		(uuid "b470dd1f-5a47-4e1d-b805-3a2761a35286")
@@ -65328,7 +65328,7 @@
 			(justify right bottom)
 		)
 	)
-	(gr_text "PCIE 4-7"
+	(gr_text "PCIE 4-7 EQ1"
 		(at 188.87 94.05 90)
 		(layer "F.SilkS")
 		(uuid "bb64405c-486f-4f30-8596-f43e4e812138")
@@ -65376,8 +65376,8 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "PCIE 4-7"
-		(at 215.19 80.45 90)
+	(gr_text "PCIE 4-7 EQ0"
+		(at 215.3 81.85 90)
 		(layer "F.SilkS")
 		(uuid "c9aa372f-e01c-4e22-9fbe-fee11e3b7354")
 		(effects
@@ -65424,8 +65424,8 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "PCIE 0-3"
-		(at 215.23 55.93 90)
+	(gr_text "PCIE 0-3 EQ0"
+		(at 215.23 57.35 90)
 		(layer "F.SilkS")
 		(uuid "d850e67a-7113-439d-bcb9-a6f513ac53a1")
 		(effects
