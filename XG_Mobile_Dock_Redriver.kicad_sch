@@ -25524,6 +25524,24 @@
 				(hide yes)
 			)
 		)
+		(property "Part_Number" "DS320PR810NJXR"
+			(at 104.14 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6539577"
+			(at 104.14 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "20"
 			(uuid "1ef78742-1ad8-4b33-abce-49188df776dd")
 		)
@@ -34949,6 +34967,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 284.48 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "DS320PR810NJXR"
+			(at 284.48 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6539577"
 			(at 284.48 160.02 0)
 			(effects
 				(font

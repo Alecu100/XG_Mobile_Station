@@ -8460,6 +8460,32 @@
 				)
 			)
 		)
+		(property "Part_Number" "DS320PR810NJXR"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ab241492-feb5-4526-9386-027bf5009616")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C6539577"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "649753b0-ed8f-48f4-aa78-d5b1ed12091b")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "WQFN-64-NJX_TEX WQFN-64-NJX_TEX-M WQFN-64-NJX_TEX-L")
 		(path "/40f601dc-d52a-4a5b-a2be-e372ec7025ae")
 		(sheetname "/")
@@ -56938,6 +56964,34 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Part_Number" "DS320PR810NJXR"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ccdc26d9-b337-446d-b28d-2c02c059539e")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "C6539577"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "3116f8c4-c0bf-4962-9af9-51f3c963cf99")
+			(effects
+				(font
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 				(justify mirror)
