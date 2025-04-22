@@ -66256,7 +66256,7 @@
 		(uuid "0aa7fe5b-7aa1-49c6-8792-412299fcf639")
 	)
 	(via
-		(at 131.22 86.26)
+		(at 131.54 86.59)
 		(size 0.3)
 		(drill 0.2)
 		(layers "F.Cu" "B.Cu")
@@ -71867,7 +71867,7 @@
 		(uuid "fcfabe8a-c1c0-4aa6-a15a-6e3e4a5145ee")
 	)
 	(via
-		(at 133.59 87.47)
+		(at 133.55 86.79)
 		(size 0.3)
 		(drill 0.2)
 		(layers "F.Cu" "B.Cu")
