@@ -69196,7 +69196,7 @@
 		(uuid "7ca4caf1-ddb3-4ea4-bf77-9920753dde79")
 	)
 	(via
-		(at 110.13 80.32)
+		(at 109.76 80.7)
 		(size 0.3)
 		(drill 0.2)
 		(layers "F.Cu" "B.Cu")
@@ -70445,6 +70445,15 @@
 		(free yes)
 		(net 1)
 		(uuid "b1dcf3f6-d766-426c-a8d2-69044160a6da")
+	)
+	(via
+		(at 111.01 79.54)
+		(size 0.3)
+		(drill 0.2)
+		(layers "F.Cu" "B.Cu")
+		(free yes)
+		(net 1)
+		(uuid "b2c3628a-0195-489c-9162-97c31e1320cf")
 	)
 	(via
 		(at 91.2 58.32)
