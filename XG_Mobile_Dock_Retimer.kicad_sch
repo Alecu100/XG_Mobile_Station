@@ -23580,7 +23580,7 @@
 		)
 		(uuid "1129c768-be65-4009-a33e-085c423ffb13")
 	)
-	(label "HSO6P"
+	(label "HSO6N"
 		(at 175.26 182.88 180)
 		(effects
 			(font
@@ -23610,7 +23610,7 @@
 		)
 		(uuid "1484e20c-9aeb-40e2-9541-6037498bd0de")
 	)
-	(label "HSO4P"
+	(label "HSO4N"
 		(at 175.26 193.04 180)
 		(effects
 			(font
@@ -23620,7 +23620,7 @@
 		)
 		(uuid "1514a699-e73d-4eec-9190-4d750c5e20a6")
 	)
-	(label "HSOT2N"
+	(label "HSOT2P"
 		(at 200.66 231.14 180)
 		(effects
 			(font
@@ -23820,7 +23820,7 @@
 		)
 		(uuid "2b1dbc90-bfda-4480-95d4-1013c415c85f")
 	)
-	(label "HSOT0N"
+	(label "HSOT0P"
 		(at 200.66 241.3 180)
 		(effects
 			(font
@@ -23850,7 +23850,7 @@
 		)
 		(uuid "2dc55baa-ba4b-4992-b0c8-003d94db2285")
 	)
-	(label "HSO5N"
+	(label "HSO5P"
 		(at 175.26 190.5 180)
 		(effects
 			(font
@@ -23870,7 +23870,7 @@
 		)
 		(uuid "2e21e707-6173-45c1-8719-73e1fd0cb844")
 	)
-	(label "HSOT4P"
+	(label "HSOT4N"
 		(at 200.66 193.04 180)
 		(effects
 			(font
@@ -24020,7 +24020,7 @@
 		)
 		(uuid "42d256d0-caf1-424d-97c7-f63a0bbcaba5")
 	)
-	(label "HSOT0P"
+	(label "HSOT0N"
 		(at 200.66 238.76 180)
 		(effects
 			(font
@@ -24050,7 +24050,7 @@
 		)
 		(uuid "469d8645-6d70-4bdb-86b4-e431465c6d81")
 	)
-	(label "HSO7N"
+	(label "HSO7P"
 		(at 175.26 180.34 180)
 		(effects
 			(font
@@ -24070,7 +24070,7 @@
 		)
 		(uuid "4962c37b-96b2-4839-b561-d43a1ce842eb")
 	)
-	(label "HSOT7P"
+	(label "HSOT7N"
 		(at 200.66 177.8 180)
 		(effects
 			(font
@@ -24080,7 +24080,7 @@
 		)
 		(uuid "499010c2-0f1e-4466-a145-ecfa196231ea")
 	)
-	(label "HSOT1N"
+	(label "HSOT1P"
 		(at 200.66 236.22 180)
 		(effects
 			(font
@@ -24090,7 +24090,7 @@
 		)
 		(uuid "4a7ccf8d-ef9f-4e9e-b74d-ccd61ee27502")
 	)
-	(label "HSO5P"
+	(label "HSO5N"
 		(at 175.26 187.96 180)
 		(effects
 			(font
@@ -24100,7 +24100,7 @@
 		)
 		(uuid "4b454071-e6f4-4c76-bf1d-ddb9a828aa62")
 	)
-	(label "HSO7P"
+	(label "HSO7N"
 		(at 175.26 177.8 180)
 		(effects
 			(font
@@ -24190,7 +24190,7 @@
 		)
 		(uuid "53df523e-3e5e-4031-9f6d-485114393c47")
 	)
-	(label "HSO1P"
+	(label "HSO1N"
 		(at 175.26 233.68 180)
 		(effects
 			(font
@@ -24210,7 +24210,7 @@
 		)
 		(uuid "555c4cf0-493d-49e1-9705-3195e3299e01")
 	)
-	(label "HSO1N"
+	(label "HSO1P"
 		(at 175.26 236.22 180)
 		(effects
 			(font
@@ -24300,7 +24300,7 @@
 		)
 		(uuid "5cdd3ea9-25c1-4852-9f2d-4c01450ce3e2")
 	)
-	(label "HSOT7N"
+	(label "HSOT7P"
 		(at 200.66 180.34 180)
 		(effects
 			(font
@@ -24350,7 +24350,7 @@
 		)
 		(uuid "603c9f1f-bbaa-4c17-a5fa-5ee7574900e3")
 	)
-	(label "HSOT2P"
+	(label "HSOT2N"
 		(at 200.66 228.6 180)
 		(effects
 			(font
@@ -24400,7 +24400,7 @@
 		)
 		(uuid "631689fc-30b6-4830-b755-718fbbb4e159")
 	)
-	(label "HSO2N"
+	(label "HSO2P"
 		(at 175.26 231.14 180)
 		(effects
 			(font
@@ -24610,7 +24610,7 @@
 		)
 		(uuid "7acf95d4-0d6a-4b58-9970-6dd919ff7ba8")
 	)
-	(label "HSOT5N"
+	(label "HSOT5P"
 		(at 200.66 190.5 180)
 		(effects
 			(font
@@ -24700,7 +24700,7 @@
 		)
 		(uuid "888d7823-7813-4703-ac91-dc142d517d37")
 	)
-	(label "HSOT3N"
+	(label "HSOT3P"
 		(at 200.66 226.06 180)
 		(effects
 			(font
@@ -24720,7 +24720,7 @@
 		)
 		(uuid "8cbb2465-dab4-49e4-ba64-cd268313b744")
 	)
-	(label "HSOT4N"
+	(label "HSOT4P"
 		(at 200.66 195.58 180)
 		(effects
 			(font
@@ -24930,7 +24930,7 @@
 		)
 		(uuid "9ffa3f90-6a2d-4148-991a-d6cc6d7e8f81")
 	)
-	(label "HSOT1P"
+	(label "HSOT1N"
 		(at 200.66 233.68 180)
 		(effects
 			(font
@@ -24960,7 +24960,7 @@
 		)
 		(uuid "a591cdf3-64d2-4e0e-ae5a-b2978db24505")
 	)
-	(label "HSOT5P"
+	(label "HSOT5N"
 		(at 200.66 187.96 180)
 		(effects
 			(font
@@ -25040,7 +25040,7 @@
 		)
 		(uuid "b17f42ff-4baf-45c1-a9a7-6afb0973320c")
 	)
-	(label "HSO0N"
+	(label "HSO0P"
 		(at 175.26 241.3 180)
 		(effects
 			(font
@@ -25100,7 +25100,7 @@
 		)
 		(uuid "bd163623-9af5-4750-a030-1090ec8ccd49")
 	)
-	(label "HSO2P"
+	(label "HSO2N"
 		(at 175.26 228.6 180)
 		(effects
 			(font
@@ -25160,7 +25160,7 @@
 		)
 		(uuid "c0264b6d-3259-4cff-b5f4-072a4d44d12e")
 	)
-	(label "HSOT6N"
+	(label "HSOT6P"
 		(at 200.66 185.42 180)
 		(effects
 			(font
@@ -25230,7 +25230,7 @@
 		)
 		(uuid "c6314fdc-ed91-49cb-be22-488393a0fa79")
 	)
-	(label "HSO0P"
+	(label "HSO0N"
 		(at 175.26 238.76 180)
 		(effects
 			(font
@@ -25270,7 +25270,7 @@
 		)
 		(uuid "cbeed707-c6ab-4615-8e36-4a8ef86ee21a")
 	)
-	(label "HSO3P"
+	(label "HSO3N"
 		(at 175.26 223.52 180)
 		(effects
 			(font
@@ -25490,7 +25490,7 @@
 		)
 		(uuid "e435e839-f124-424e-a25f-505d4c7d13ca")
 	)
-	(label "HSO4N"
+	(label "HSO4P"
 		(at 175.26 195.58 180)
 		(effects
 			(font
@@ -25520,7 +25520,7 @@
 		)
 		(uuid "e8a40be2-3a4d-446f-ada6-373f5fed4276")
 	)
-	(label "HSO6N"
+	(label "HSO6P"
 		(at 175.26 185.42 180)
 		(effects
 			(font
@@ -25570,7 +25570,7 @@
 		)
 		(uuid "ec1b8288-5a8d-4808-8d75-26bbe4e0aabc")
 	)
-	(label "HSOT3P"
+	(label "HSOT3N"
 		(at 200.66 223.52 180)
 		(effects
 			(font
@@ -25640,7 +25640,7 @@
 		)
 		(uuid "f2399b0c-0942-46fa-8b0a-023c6ec28835")
 	)
-	(label "HSO3N"
+	(label "HSO3P"
 		(at 175.26 226.06 180)
 		(effects
 			(font
@@ -25700,7 +25700,7 @@
 		)
 		(uuid "fcf10cbb-1d19-49c2-b1f4-5578331b4cc5")
 	)
-	(label "HSOT6P"
+	(label "HSOT6N"
 		(at 200.66 182.88 180)
 		(effects
 			(font
