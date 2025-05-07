@@ -32,4 +32,5 @@
   (lib (name "DS320PR810NJXR")(type "KiCad")(uri "${KIPRJMOD}/Footprints/DS320PR810NJXR.pretty")(options "")(descr ""))
   (lib (name "DS160PT801ACBR")(type "KiCad")(uri "${KIPRJMOD}/Footprints/DS160PT801ACBR.pretty")(options "")(descr ""))
   (lib (name "WSON-6_L2.0-W2.0-P0.65-BL-EP")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/WSON-6_L2.0-W2.0-P0.65-BL-EP/WSON-6_L2.0-W2.0-P0.65-BL-EP.elibz")(options "")(descr ""))
+  (lib (name "VQFN-20_L5.0-W5.0-P0.65-TL-EP")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/VQFN-20_L5.0-W5.0-P0.65-TL-EP/VQFN-20_L5.0-W5.0-P0.65-TL-EP.elibz")(options "")(descr ""))
 )
