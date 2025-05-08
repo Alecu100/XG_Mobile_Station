@@ -31087,7 +31087,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TPS74401RGWR:VQFN-20_L5.0-W5.0-P0.65-TL-EP"
+		(property "Footprint" "VQFN-20_L5.0-W5.0-P0.65-TL-EP:VQFN-20_L5.0-W5.0-P0.65-TL-EP"
 			(at 127 316.23 0)
 			(effects
 				(font
@@ -36415,7 +36415,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TPS74401RGWR:VQFN-20_L5.0-W5.0-P0.65-TL-EP"
+		(property "Footprint" "VQFN-20_L5.0-W5.0-P0.65-TL-EP:VQFN-20_L5.0-W5.0-P0.65-TL-EP"
 			(at 43.18 311.15 0)
 			(effects
 				(font
@@ -47550,7 +47550,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TPS74401RGWR:VQFN-20_L5.0-W5.0-P0.65-TL-EP"
+		(property "Footprint" "VQFN-20_L5.0-W5.0-P0.65-TL-EP:VQFN-20_L5.0-W5.0-P0.65-TL-EP"
 			(at 125.73 372.11 0)
 			(effects
 				(font
@@ -52372,7 +52372,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TPS74401RGWR:VQFN-20_L5.0-W5.0-P0.65-TL-EP"
+		(property "Footprint" "VQFN-20_L5.0-W5.0-P0.65-TL-EP:VQFN-20_L5.0-W5.0-P0.65-TL-EP"
 			(at 44.45 370.84 0)
 			(effects
 				(font
