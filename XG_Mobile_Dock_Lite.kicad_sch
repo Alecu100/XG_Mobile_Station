@@ -21115,9 +21115,9 @@
 		(at 24.13 176.53 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e1fb5159-2fce-41e0-853e-150135900365")
 		(property "Reference" "J14"

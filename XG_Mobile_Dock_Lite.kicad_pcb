@@ -1048,7 +1048,7 @@
 		(path "/e1fb5159-2fce-41e0-853e-150135900365")
 		(sheetname "/")
 		(sheetfile "XG_Mobile_Dock_Lite.kicad_sch")
-		(attr through_hole exclude_from_pos_files exclude_from_bom dnp)
+		(attr through_hole)
 		(fp_line
 			(start 4.877981 0.635)
 			(end 3.353981 0)
