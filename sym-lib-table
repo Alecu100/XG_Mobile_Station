@@ -24,4 +24,5 @@
   (lib (name "455860005")(type "KiCad")(uri "${KIPRJMOD}/Symbols/455860005.kicad_sym")(options "")(descr ""))
   (lib (name "DS320PR810NJXR")(type "KiCad")(uri "${KIPRJMOD}/Symbols/DS320PR810NJXR.kicad_sym")(options "")(descr ""))
   (lib (name "DSWB04LHGET")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/DSWB04LHGET.elibz")(options "")(descr ""))
+  (lib (name "T31000")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/T31000.elibz")(options "")(descr ""))
 )
