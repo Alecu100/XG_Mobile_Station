@@ -253,6 +253,10 @@
         {
           "diameter": 1.0,
           "drill": 0.5
+        },
+        {
+          "diameter": 1.0,
+          "drill": 0.7
         }
       ],
       "zones_allow_external_fillets": false
