@@ -29,4 +29,5 @@
   (lib (name "DS1009-08AT1NX-0A2")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/DS1009-08AT1NX-0A2.elibz")(options "")(descr ""))
   (lib (name "AT24C02D-PUM")(type "KiCad")(uri "${KIPRJMOD}/Symbols/AT24C02D-PUM.kicad_sym")(options "")(descr ""))
   (lib (name "DSWB03LHGET")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/DSWB03LHGET.elibz")(options "")(descr ""))
+  (lib (name "DSWB01LHGET")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/DSWB01LHGET.elibz")(options "")(descr ""))
 )

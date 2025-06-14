@@ -36,4 +36,5 @@
   (lib (name "DIP-8_L10.2-W10.2-P2.54-LS7.6-BL")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/DIP-8_L10.2-W10.2-P2.54-LS7.6-BL/DIP-8_L10.2-W10.2-P2.54-LS7.6-BL.elibz")(options "")(descr ""))
   (lib (name "AT24C02D-PUM")(type "KiCad")(uri "${KIPRJMOD}/Footprints/AT24C02D-PUM.pretty")(options "")(descr ""))
   (lib (name "DSWB03LHGET")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/DSWB03LHGET/DSWB03LHGET.elibz")(options "")(descr ""))
+  (lib (name "DSWB01LHGET")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Symbols/DSWB01LHGET.elibz")(options "")(descr ""))
 )
