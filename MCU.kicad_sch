@@ -5019,6 +5019,17 @@
 		)
 		(uuid "2a44e6cd-5e9f-4eab-9297-fc152b108eb9")
 	)
+	(hierarchical_label "PA7"
+		(shape bidirectional)
+		(at 71.12 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2acf1521-4cda-44a6-94a4-11364eeac9b8")
+	)
 	(hierarchical_label "PA5"
 		(shape bidirectional)
 		(at 71.12 53.34 0)
