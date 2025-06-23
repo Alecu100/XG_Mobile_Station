@@ -77732,6 +77732,30 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "ON"
+		(at 217.39 122.995 0)
+		(layer "F.SilkS")
+		(uuid "509ee794-0762-4cf6-a84f-85dd34be92a8")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "ON"
+		(at 201.86 123.19 0)
+		(layer "F.SilkS")
+		(uuid "5345f380-b272-4a94-ad88-fd1db96e6843")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "MCU"
 		(at 58.08 124.145 0)
 		(layer "F.SilkS")
@@ -77760,6 +77784,18 @@
 		(at 204.55 77.04 0)
 		(layer "F.SilkS")
 		(uuid "599c393f-81ad-4efe-9968-9ea46b069826")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "ON"
+		(at 201.975 128.065 0)
+		(layer "F.SilkS")
+		(uuid "5b7391cf-614b-4437-a57a-289ffa296d1e")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -78205,6 +78241,18 @@
 		(at 44.92 124.26 0)
 		(layer "F.SilkS")
 		(uuid "b6fdf66c-93fb-4730-b155-a6d26b077ccd")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "ON"
+		(at 217.37 128.045 0)
+		(layer "F.SilkS")
+		(uuid "b74b8ac5-4128-473d-a042-51b69478dae6")
 		(effects
 			(font
 				(size 0.8 0.8)
