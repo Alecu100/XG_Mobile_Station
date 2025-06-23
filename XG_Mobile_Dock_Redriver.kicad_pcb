@@ -15832,6 +15832,17 @@
 			(uuid "63a8e546-c947-418f-b5ef-a4b78cdfce46")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
@@ -34660,6 +34671,17 @@
 			(uuid "d9433439-4ed3-45e1-9c0e-84eeb263d303")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
@@ -40529,6 +40551,17 @@
 			(uuid "60166107-1a12-409b-a5f7-1b0e94fc5714")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
@@ -43492,6 +43525,17 @@
 			(uuid "6222734f-97a7-461f-a782-a9cf6ec7d289")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "F.Cu")
