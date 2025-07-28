@@ -533,6 +533,20 @@
         "wire_width": 6
       },
       {
+        "clearance": 0.2032,
+        "diff_pair_gap": 0.1524,
+        "diff_pair_width": 0.106934,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PCIE Clock",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.106934,
+        "via_diameter": 0.3,
+        "via_drill": 0.2
+      },
+      {
         "bus_width": 12,
         "clearance": 0.1016,
         "diff_pair_gap": 0.1016,
@@ -542,7 +556,7 @@
         "microvia_drill": 0.1,
         "name": "PCIe Signal",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.117856,
         "via_diameter": 0.3,
@@ -559,7 +573,7 @@
         "microvia_drill": 0.1,
         "name": "USB",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.11176,
         "via_diameter": 0.3,
@@ -586,11 +600,11 @@
         "pattern": "/PCIe Redriver/TX*"
       },
       {
-        "netclass": "PCIe Signal",
+        "netclass": "PCIE Clock",
         "pattern": "/CLKP"
       },
       {
-        "netclass": "PCIe Signal",
+        "netclass": "PCIE Clock",
         "pattern": "/CLKN"
       },
       {
