@@ -58,6 +58,7 @@ static state_t gState;
 
 extern void fans_start(void);
 extern void fans_stop(void);
+extern void initialize_redrivers(void);
 
 int __io_putchar(int ch) {
     if (ch == '\n') {
@@ -73,6 +74,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
         // passthrough directly to PERST#
         HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
+        HAL_GPIO_WritePin(GPU_CPU_PD_0_3_GPIO_Port, GPU_CPU_PD_0_3_Pin, reset);
+        HAL_GPIO_WritePin(GPU_CPU_PD_4_7_GPIO_Port, GPU_CPU_PD_4_7_Pin, reset);
+        HAL_GPIO_WritePin(CPU_GPU_PD_0_3_GPIO_Port, CPU_GPU_PD_0_3_Pin, reset);
+        HAL_GPIO_WritePin(CPU_GPU_PD_4_7_GPIO_Port, CPU_GPU_PD_4_7_Pin, reset);
         printf("Pin changed: RST = %d\n", reset == GPIO_PIN_RESET);
     } else if (GPIO_Pin == PWREN_Pin) {
         gState.power_enable = HAL_GPIO_ReadPin(PWREN_GPIO_Port, PWREN_Pin) == GPIO_PIN_RESET;
