@@ -50,17 +50,24 @@ extern I2C_HandleTypeDef hi2c2;
 #define BIAS_CURRENT_1 0x10
 #define BIAS_CURRENT_0 0x08
 
-static int initialize_redrivers() {
-    HAL_I2C_IsDeviceReady(&hi2c2, CPU_GPU_0_3_ADDR_I2C, 1024, 1);
-    HAL_I2C_IsDeviceReady(&hi2c2, CPU_GPU_4_7_ADDR_I2C, 1024, 1);
-    HAL_I2C_IsDeviceReady(&hi2c2, GPU_CPU_0_3_ADDR_I2C, 1024, 1);
-    HAL_I2C_IsDeviceReady(&hi2c2, GPU_CPU_0_3_ADDR_I2C, 1024, 1);
-
-    initialize_gpu_cpu_redriver();
-    initialize_cpu_gpu_redriver();
+static void initialize_channel_eq(uint16_t redriver_address, uint16_t channel_register_address, uint8_t eq_index) {
+    HAL_I2C_Mem_Write_IT(&hi2c2, redriver_address, channel_register_address + EQ_CONTROL_REGISTER_OFFSET, I2C_MEMADD_SIZE_8BIT, &eq_index, 1);
 }
 
-static int initialize_gpu_cpu_redriver()
+static void initialize_channel_rx_detect(uint16_t redriver_address, uint16_t channel_register_address, uint8_t rx_detect) {
+    HAL_I2C_Mem_Write_IT(&hi2c2, redriver_address, channel_register_address + RX_DETECT_CONTROL_REGISTER_OFFSET, I2C_MEMADD_SIZE_8BIT, &rx_detect, 1);
+}
+
+static void initialize_channel_bias(uint16_t redriver_address, uint16_t channel_register_address, uint8_t bias) {
+    HAL_I2C_Mem_Write_IT(&hi2c2, redriver_address, channel_register_address + BIAS_REGISTER_OFFSET, I2C_MEMADD_SIZE_8BIT, &bias, 1);
+}
+
+static void initialize_channel_eq_profile(uint16_t redriver_address, uint16_t channel_register_address, uint8_t eq_profile) {
+    HAL_I2C_Mem_Write_IT(&hi2c2, redriver_address, channel_register_address + EQ_GAIN_FLAT_GAIN_REGISTER_OFFSET, I2C_MEMADD_SIZE_8BIT, &eq_profile, 1);
+}
+
+
+static void initialize_gpu_cpu_redriver()
 {
     initialize_channel_eq(GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, EQ_CONTROL_EQ_STAGE2_2 | EQ_CONTROL_EQ_STAGE1_2);
     initialize_channel_eq(GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, EQ_CONTROL_EQ_STAGE2_2 | EQ_CONTROL_EQ_STAGE1_2);
@@ -99,7 +106,7 @@ static int initialize_gpu_cpu_redriver()
     initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_3 | FLAT_GAIN_0 | FLAT_GAIN_2);
 }
 
-static int initialize_cpu_gpu_redriver()
+static void initialize_cpu_gpu_redriver()
 {
     initialize_channel_eq(CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, EQ_CONTROL_EQ_STAGE2_0 | EQ_CONTROL_EQ_STAGE1_BYPASS);
     initialize_channel_eq(CPU_GPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, EQ_CONTROL_EQ_STAGE2_0 | EQ_CONTROL_EQ_STAGE1_BYPASS);
@@ -138,19 +145,13 @@ static int initialize_cpu_gpu_redriver()
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_0 | FLAT_GAIN_0 | FLAT_GAIN_1);
 }
 
-static int initialize_channel_eq(uint16_t redriver_address, uint16_t channel_register_address, uint8_t eq_index) {
-    HAL_I2C_Mem_Write_IT(&hi2c2, redriver_address, channel_register_address + EQ_CONTROL_REGISTER_OFFSET, I2C_MEMADD_SIZE_8BIT, &eq_index, 1);
-}
 
-static int initialize_channel_rx_detect(uint16_t redriver_address, uint16_t channel_register_address, uint8_t rx_detect) {
-    HAL_I2C_Mem_Write_IT(&hi2c2, redriver_address, channel_register_address + RX_DETECT_CONTROL_REGISTER_OFFSET, I2C_MEMADD_SIZE_8BIT, &rx_detect, 1);
-}
+void initialize_redrivers() {
+    HAL_I2C_IsDeviceReady(&hi2c2, CPU_GPU_0_3_ADDR_I2C, 1024, 1);
+    HAL_I2C_IsDeviceReady(&hi2c2, CPU_GPU_4_7_ADDR_I2C, 1024, 1);
+    HAL_I2C_IsDeviceReady(&hi2c2, GPU_CPU_0_3_ADDR_I2C, 1024, 1);
+    HAL_I2C_IsDeviceReady(&hi2c2, GPU_CPU_0_3_ADDR_I2C, 1024, 1);
 
-static int initialize_channel_bias(uint16_t redriver_address, uint16_t channel_register_address, uint8_t bias) {
-    HAL_I2C_Mem_Write_IT(&hi2c2, redriver_address, channel_register_address + BIAS_REGISTER_OFFSET, I2C_MEMADD_SIZE_8BIT, &bias, 1);
+    initialize_gpu_cpu_redriver();
+    initialize_cpu_gpu_redriver();
 }
-
-static int initialize_channel_eq_profile(uint16_t redriver_address, uint16_t channel_register_address, uint8_t eq_profile) {
-    HAL_I2C_Mem_Write_IT(&hi2c2, redriver_address, channel_register_address + EQ_GAIN_FLAT_GAIN_REGISTER_OFFSET, I2C_MEMADD_SIZE_8BIT, &eq_profile, 1);
-}
-

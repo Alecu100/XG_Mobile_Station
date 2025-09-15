@@ -150,27 +150,6 @@ void update_case_led(int on) {
     }
 }
 
-void toggle_external_board(int on) {
-    int tries = 5;
-
-    if (!gState.external_board_detected) {
-        return;
-    }
-    printf("Toggling external power switch.");
-    while (is_external_board_on() != on && tries-- > 0) {
-        printf(".");
-        HAL_Delay(1000);
-        HAL_GPIO_WritePin(PWR_SW_GPIO_Port, PWR_SW_Pin, GPIO_PIN_RESET);
-        HAL_Delay(1000);
-        HAL_GPIO_WritePin(PWR_SW_GPIO_Port, PWR_SW_Pin, GPIO_PIN_SET);
-    }
-    if (tries >= 0) {
-        printf("Done\n");
-    } else {
-        printf("Failed\n");
-    }
-}
-
 void turn_power_on() {
     printf("Turning on PCIe power\n");
     HAL_GPIO_WritePin(PCI_12V_EN_GPIO_Port, PCI_12V_EN_Pin, GPIO_PIN_SET);
@@ -227,12 +206,6 @@ void transition_state(state_t *state, fsm_state_t next) {
     } else if (next <= CABLE_LOCK && prev > next) {
         clear_lock_det();
     }
-    // external power
-    if (next == POWER_OFF && prev < next) {
-        toggle_external_board(1);
-    } else if (next <= CABLE_DETECT && prev > next) {
-        toggle_external_board(0);
-    }
     // power off/on
     if (prev > POWER_OFF && next <= POWER_OFF) {
         turn_power_off();
@@ -259,8 +232,8 @@ void main_fsm_iteration(void) {
     switch (prev) {
         case MCU_RESET: {
             init_gpio_state(&gState);
-            toggle_external_board(0);
             transition_state(&gState, DEVICE_IDLE);
+            initialize_redrivers();
             HAL_I2C_EnableListen_IT(&hi2c1);
             break;
         }
