@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "string.h": "c"
-    }
+        "string.h": "c",
+        "compare": "c"
+    },
+    "cortex-debug.gdbPath": "/usr/bin/gdb"
 }
