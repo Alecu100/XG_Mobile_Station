@@ -74,6 +74,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
         // passthrough directly to PERST#
         HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
+        printf("Enabling redrivers %d if 1, disabling if 0\n", reset == GPIO_PIN_SET);
         HAL_GPIO_WritePin(GPU_CPU_PD_0_3_GPIO_Port, GPU_CPU_PD_0_3_Pin, reset);
         HAL_GPIO_WritePin(GPU_CPU_PD_4_7_GPIO_Port, GPU_CPU_PD_4_7_Pin, reset);
         HAL_GPIO_WritePin(CPU_GPU_PD_0_3_GPIO_Port, CPU_GPU_PD_0_3_Pin, reset);
@@ -116,6 +117,11 @@ void init_gpio_state(state_t *state) {
     GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
     printf("RST = %d, ", reset == GPIO_PIN_RESET);
     HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
+    printf("Enabling redrivers %d if 1, disabling if 0\n", reset == GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPU_CPU_PD_0_3_GPIO_Port, GPU_CPU_PD_0_3_Pin, reset);
+    HAL_GPIO_WritePin(GPU_CPU_PD_4_7_GPIO_Port, GPU_CPU_PD_4_7_Pin, reset);
+    HAL_GPIO_WritePin(CPU_GPU_PD_0_3_GPIO_Port, CPU_GPU_PD_0_3_Pin, reset);
+    HAL_GPIO_WritePin(CPU_GPU_PD_4_7_GPIO_Port, CPU_GPU_PD_4_7_Pin, reset);
 }
 
 void update_cable_led(led_colour_t colour) {
