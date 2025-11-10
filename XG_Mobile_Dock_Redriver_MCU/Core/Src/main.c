@@ -637,10 +637,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(HP_SHDN_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : CPU_GPU_PD_0_3_Pin CPU_GPU_PD_4_7_Pin GPU_CPU_PD_0_3_Pin GPU_CPU_PD_4_7_Pin */
-  GPIO_InitStruct.Pin = CPU_GPU_PD_0_3_Pin|CPU_GPU_PD_4_7_Pin|GPU_CPU_PD_0_3_Pin|GPU_CPU_PD_4_7_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  /*Configure GPIO pins : CPU_GPU_PD_0_3_Pin CPU_GPU_PD_4_7_Pin GPU_CPU_PD_0_3_Pin GPU_CPU_PD_4_7_Pin
+                           WAKE_Pin PERST_Pin CLKREQ_Pin */
+  GPIO_InitStruct.Pin = CPU_GPU_PD_0_3_Pin|CPU_GPU_PD_4_7_Pin|GPU_CPU_PD_0_3_Pin|GPU_CPU_PD_4_7_Pin
+                          |WAKE_Pin|PERST_Pin|CLKREQ_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
@@ -664,13 +666,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(FAN_PWM_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : WAKE_Pin PERST_Pin CLKREQ_Pin */
-  GPIO_InitStruct.Pin = WAKE_Pin|PERST_Pin|CLKREQ_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);

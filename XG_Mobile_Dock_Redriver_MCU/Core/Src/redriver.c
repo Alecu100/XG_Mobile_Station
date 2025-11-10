@@ -20,6 +20,9 @@ extern I2C_HandleTypeDef hi2c2;
 #define CHANNEL_6_REGISTER 0x40
 #define CHANNEL_7_REGISTER 0x60
 
+#define RX_DET_COMP_P 0b10000000
+#define RX_DET_COMP_N 0b01000000
+
 #define EQ_CONTROL_REGISTER_OFFSET 0x01
 #define EQ_CONTROL_EQ_STAGE1_BYPASS 0b10000000
 #define EQ_CONTROL_EQ_STAGE1_3 0b01000000
@@ -54,6 +57,7 @@ extern I2C_HandleTypeDef hi2c2;
 #define BIAS_WRITE_MASK 0b11000111
 
 static uint8_t register_data;
+static uint32_t status_poll_ticks_delay = 0;
 
 static void initialize_channel_eq(uint16_t redriver_address, uint16_t channel_register_address, uint8_t eq_index) {
     register_data = eq_index;
@@ -167,6 +171,45 @@ static void initialize_cpu_gpu_redriver()
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, FLAT_GAIN_0 | FLAT_GAIN_2);
+}
+
+void power_up_down_redrivers(GPIO_PinState reset) {
+    printf("Enabling redrivers %d if 1, disabling if 0\n", reset == GPIO_PIN_SET);
+    reset = (reset == GPIO_PIN_SET) ? GPIO_PIN_RESET : GPIO_PIN_SET;
+    HAL_GPIO_WritePin(GPU_CPU_PD_0_3_GPIO_Port, GPU_CPU_PD_0_3_Pin, reset);
+    HAL_GPIO_WritePin(GPU_CPU_PD_4_7_GPIO_Port, GPU_CPU_PD_4_7_Pin, reset);
+    HAL_GPIO_WritePin(CPU_GPU_PD_0_3_GPIO_Port, CPU_GPU_PD_0_3_Pin, reset);
+    HAL_GPIO_WritePin(CPU_GPU_PD_4_7_GPIO_Port, CPU_GPU_PD_4_7_Pin, reset);
+}
+
+void print_redriver_channel_status(uint16_t redriver_address, uint16_t channel_register_address) {
+    uint8_t status;
+    HAL_I2C_Mem_Read(&hi2c2, (redriver_address << 1) | REGISTER_READ_MASK, channel_register_address, I2C_MEMADD_SIZE_8BIT, &status, 1, 500);
+    printf("Redriver 0x%02X channel 0x%02X status: 0x%02X\n", redriver_address, channel_register_address, status);
+}
+
+void print_redriver_status(uint16_t redriver_address) {
+    print_redriver_channel_status(redriver_address, CHANNEL_0_REGISTER);
+    print_redriver_channel_status(redriver_address, CHANNEL_1_REGISTER);
+    print_redriver_channel_status(redriver_address, CHANNEL_2_REGISTER);
+    print_redriver_channel_status(redriver_address, CHANNEL_3_REGISTER);
+    print_redriver_channel_status(redriver_address, CHANNEL_4_REGISTER);
+    print_redriver_channel_status(redriver_address, CHANNEL_5_REGISTER);
+    print_redriver_channel_status(redriver_address, CHANNEL_6_REGISTER);
+    print_redriver_channel_status(redriver_address, CHANNEL_7_REGISTER);
+}
+
+void print_redrivers_status() {
+    status_poll_ticks_delay++;
+    if (status_poll_ticks_delay < 10000) {
+        return;
+    }
+    status_poll_ticks_delay = 0;
+    printf("Redriver status:\n");
+    print_redriver_status(CPU_GPU_0_3_ADDR_I2C);
+    print_redriver_status(CPU_GPU_4_7_ADDR_I2C);
+    print_redriver_status(GPU_CPU_0_3_ADDR_I2C);
+    print_redriver_status(GPU_CPU_4_7_ADDR_I2C);
 }
 
 

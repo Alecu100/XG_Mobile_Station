@@ -59,6 +59,8 @@ static state_t gState;
 extern void fans_start(void);
 extern void fans_stop(void);
 extern void initialize_redrivers(void);
+extern void power_up_down_redrivers(GPIO_PinState reset);
+extern void print_redrivers_status();
 
 int __io_putchar(int ch) {
     if (ch == '\n') {
@@ -74,11 +76,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
         // passthrough directly to PERST#
         HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
-        printf("Enabling redrivers %d if 1, disabling if 0\n", reset == GPIO_PIN_SET);
-        HAL_GPIO_WritePin(GPU_CPU_PD_0_3_GPIO_Port, GPU_CPU_PD_0_3_Pin, reset);
-        HAL_GPIO_WritePin(GPU_CPU_PD_4_7_GPIO_Port, GPU_CPU_PD_4_7_Pin, reset);
-        HAL_GPIO_WritePin(CPU_GPU_PD_0_3_GPIO_Port, CPU_GPU_PD_0_3_Pin, reset);
-        HAL_GPIO_WritePin(CPU_GPU_PD_4_7_GPIO_Port, CPU_GPU_PD_4_7_Pin, reset);
+        power_up_down_redrivers(reset);
         printf("Pin changed: RST = %d\n", reset == GPIO_PIN_RESET);
     } else if (GPIO_Pin == PWREN_Pin) {
         gState.power_enable = HAL_GPIO_ReadPin(PWREN_GPIO_Port, PWREN_Pin) == GPIO_PIN_RESET;
@@ -117,11 +115,7 @@ void init_gpio_state(state_t *state) {
     GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
     printf("RST = %d, ", reset == GPIO_PIN_RESET);
     HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
-    printf("Enabling redrivers %d if 1, disabling if 0\n", reset == GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPU_CPU_PD_0_3_GPIO_Port, GPU_CPU_PD_0_3_Pin, reset);
-    HAL_GPIO_WritePin(GPU_CPU_PD_4_7_GPIO_Port, GPU_CPU_PD_4_7_Pin, reset);
-    HAL_GPIO_WritePin(CPU_GPU_PD_0_3_GPIO_Port, CPU_GPU_PD_0_3_Pin, reset);
-    HAL_GPIO_WritePin(CPU_GPU_PD_4_7_GPIO_Port, CPU_GPU_PD_4_7_Pin, reset);
+    power_up_down_redrivers(reset);
 }
 
 void update_cable_led(led_colour_t colour) {
@@ -233,6 +227,7 @@ void transition_state(state_t *state, fsm_state_t next) {
 
 void main_fsm_iteration(void) {
     fsm_state_t prev = gState.fsm;
+    print_redrivers_status();
 
     //printf("Enter main FSM with state = %s\n", gFSMStateStrings[gState.fsm]);
     switch (prev) {
