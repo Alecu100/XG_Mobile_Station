@@ -5206,6 +5206,17 @@
 		)
 		(uuid "bd43a81d-df86-46fd-9532-d50d826f723b")
 	)
+	(hierarchical_label "PB0"
+		(shape bidirectional)
+		(at 40.64 73.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c22cd28b-4f1c-4ae1-801c-cc993214d001")
+	)
 	(hierarchical_label "PF1"
 		(shape bidirectional)
 		(at 40.64 53.34 180)
@@ -6748,7 +6759,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "3f839504-b2bb-4752-b870-6c0b1b5b6579")
 		(property "Reference" "#PWR0124"
 			(at 55.88 35.56 0)
@@ -6759,12 +6769,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 55.88 26.67 0)
+		(property "Value" "+3V3MCU"
+			(at 58.42 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
