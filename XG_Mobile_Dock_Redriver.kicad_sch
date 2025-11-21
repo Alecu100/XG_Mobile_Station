@@ -10876,45 +10876,27 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Regulator_Linear:LD1086DT33TR"
+		(symbol "LD1086DT33TR:LD1086DT33TR"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at 0 10.16 0)
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "LD1086DT33TR"
-				(at 0 7.62 0)
+			(property "Value" ""
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "Package_TO_SOT_SMD:TO-252-2"
-				(at 0 12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.st.com/resource/en/datasheet/ld1086.pdf"
-				(at 0 12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Positive, 1.5A 30V, Linear Regulator, Fixed Output 3.3V, TO-252"
+			(property "Footprint" "LD1086DT33TR:TO-252-2_L6.5-W6.1-P4.58-LS10.0-TL"
 				(at 0 0 0)
 				(effects
 					(font
@@ -10923,7 +10905,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "Linear Regulator 1.5A Fixed Output"
+			(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20170919/C12051_1505787088456976738.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -10932,7 +10914,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "TO?252?2*"
+			(property "Description" "Output Type:Fixed Maximum Input Voltage:30V Output Voltage:3.3V Output Voltage:3.3V Output Current:1.5A Power Supply Rejection Ratio (PSRR):79dB@(120Hz) Dropout Voltage:1.5V@(1.5A) standby current:10mA Feature:Automotive Standard Certification；Thermal Pro"
 				(at 0 0 0)
 				(effects
 					(font
@@ -10941,21 +10923,75 @@
 					(hide yes)
 				)
 			)
-			(symbol "LD1086DT33TR_1_1"
+			(property "Manufacturer Part" "LD1086DT33TR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "ST(意法半导体)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier Part" "C12051"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier" "LCSC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part Name" "1.5 A可调与固定低压降正电压稳压器"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LD1086DT33TR_1_0"
 				(rectangle
-					(start -7.62 -5.08)
-					(end 7.62 5.08)
+					(start -7.62 -1.27)
+					(end 7.62 6.35)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
-						(type background)
+						(type none)
 					)
 				)
-				(pin power_in line
-					(at -10.16 0 0)
-					(length 2.54)
+				(text "GND"
+					(at -2.54 -1.2446 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+						(justify left bottom)
+					)
+				)
+				(pin unspecified line
+					(at -12.7 3.81 0)
+					(length 5.08)
 					(name "IN"
 						(effects
 							(font
@@ -10971,13 +11007,13 @@
 						)
 					)
 				)
-				(pin input line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "ADJ/GND"
+				(pin unspecified line
+					(at 0 -6.35 90)
+					(length 5.08)
+					(name "GND"
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 0.0254 0.0254)
 							)
 						)
 					)
@@ -10989,9 +11025,9 @@
 						)
 					)
 				)
-				(pin power_out line
-					(at 10.16 0 180)
-					(length 2.54)
+				(pin unspecified line
+					(at 12.7 3.81 180)
+					(length 5.08)
 					(name "OUT"
 						(effects
 							(font
@@ -10999,7 +11035,7 @@
 							)
 						)
 					)
-					(number "2"
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -11707,7 +11743,7 @@
 		(uuid "1409e376-b2f6-45a4-8e26-2ad5ca7a44c8")
 	)
 	(junction
-		(at 130.81 146.05)
+		(at 129.54 139.7)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "14659a06-7c02-4026-85ac-51b970764b22")
@@ -11855,6 +11891,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "49633803-322a-4104-80a4-6cf706027d94")
+	)
+	(junction
+		(at 161.29 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4acb8b04-b720-4603-867b-8d5d2a37586f")
 	)
 	(junction
 		(at 236.22 58.42)
@@ -12161,12 +12203,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a302e034-d3a1-4674-b562-85a95e0dbaee")
-	)
-	(junction
-		(at 157.48 146.05)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a5e1b6a3-c3fb-4a2d-b7ba-d1de04ebf257")
 	)
 	(junction
 		(at 236.22 116.84)
@@ -12551,6 +12587,10 @@
 		(uuid "8ee44261-3812-4405-a489-ad02f13937e2")
 	)
 	(no_connect
+		(at 59.69 163.83)
+		(uuid "947e584f-47d6-4d8a-8ef6-6c92e9941296")
+	)
+	(no_connect
 		(at 104.14 260.35)
 		(uuid "bc1c86de-fd6c-4e5f-abcb-9e7481f1a588")
 	)
@@ -12745,16 +12785,6 @@
 			(type default)
 		)
 		(uuid "0710039a-717d-451b-9151-37b670871696")
-	)
-	(wire
-		(pts
-			(xy 157.48 146.05) (xy 154.94 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "078f7d5e-96e5-4066-9b14-36870c2785bc")
 	)
 	(wire
 		(pts
@@ -14028,7 +14058,7 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 146.05) (xy 134.62 146.05)
+			(xy 129.54 139.7) (xy 133.35 139.7)
 		)
 		(stroke
 			(width 0)
@@ -15218,6 +15248,16 @@
 	)
 	(wire
 		(pts
+			(xy 158.75 139.7) (xy 161.29 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7db464b9-6497-4e7a-80b1-2d09cea1e7d1")
+	)
+	(wire
+		(pts
 			(xy 233.68 45.72) (xy 233.68 48.26)
 		)
 		(stroke
@@ -15295,16 +15335,6 @@
 			(type default)
 		)
 		(uuid "813d8504-9576-47e7-bd4c-96e37081fc50")
-	)
-	(wire
-		(pts
-			(xy 162.56 146.05) (xy 157.48 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "819c1aae-3e55-4332-bb5c-4e2895cf8f68")
 	)
 	(wire
 		(pts
@@ -16045,6 +16075,16 @@
 			(type default)
 		)
 		(uuid "a77b947e-172d-4a83-8dab-4dfab550f0eb")
+	)
+	(wire
+		(pts
+			(xy 161.29 139.7) (xy 165.1 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7bd2e41-cd4a-49f2-937e-7a2eedf714ff")
 	)
 	(wire
 		(pts
@@ -17168,16 +17208,6 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 163.83) (xy 59.69 163.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d7ef6de8-ce64-4b2a-a1e5-031ebc5b2fc6")
-	)
-	(wire
-		(pts
 			(xy 82.55 77.47) (xy 82.55 85.09)
 		)
 		(stroke
@@ -17638,7 +17668,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 146.05) (xy 130.81 146.05)
+			(xy 125.73 139.7) (xy 129.54 139.7)
 		)
 		(stroke
 			(width 0)
@@ -20638,7 +20668,7 @@
 	)
 	(global_label "+5VSB"
 		(shape output)
-		(at 127 146.05 180)
+		(at 125.73 139.7 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20648,7 +20678,7 @@
 		)
 		(uuid "084681f8-d811-47e7-9643-c3c857e6fad9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 117.6648 146.05 0)
+			(at 116.3948 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20847,28 +20877,6 @@
 		(uuid "422b421f-a9c4-4c03-8e1b-092eb9405b6c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 17.3348 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "+3V3"
-		(shape output)
-		(at 57.15 163.83 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "45e42bda-dcf8-4928-b5af-ba0bf154b979")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 49.0848 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21254,7 +21262,7 @@
 	)
 	(global_label "+3V3SB"
 		(shape output)
-		(at 162.56 146.05 0)
+		(at 165.1 139.7 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21264,7 +21272,7 @@
 		)
 		(uuid "f44c95ba-e560-4a36-b1d0-4a30ac3e59aa")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 173.1047 146.05 0)
+			(at 175.6447 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23304,7 +23312,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 130.81 149.86 0)
+		(at 129.54 143.51 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -23313,7 +23321,7 @@
 		(dnp no)
 		(uuid "269fb065-dafb-4e0d-b6bf-ee99e76c1459")
 		(property "Reference" "C49"
-			(at 129.54 153.67 90)
+			(at 128.27 147.32 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23321,7 +23329,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 129.54 158.75 90)
+			(at 128.27 152.4 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23329,7 +23337,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
-			(at 131.7752 146.05 0)
+			(at 130.5052 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23338,7 +23346,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 130.81 149.86 0)
+			(at 129.54 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23347,7 +23355,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 130.81 149.86 0)
+			(at 129.54 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23356,7 +23364,7 @@
 			)
 		)
 		(property "Part_Number" "CL10A106KP8NNNC"
-			(at 130.81 149.86 0)
+			(at 129.54 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23365,7 +23373,7 @@
 			)
 		)
 		(property "LCSC" "C19702"
-			(at 130.81 149.86 0)
+			(at 129.54 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24968,16 +24976,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 144.78 153.67 0)
+		(at 146.05 149.86 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "3de80ce3-6165-4dd5-817a-b3183ad48ce6")
 		(property "Reference" "#PWR013"
-			(at 144.78 160.02 0)
+			(at 146.05 156.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24986,7 +24993,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 144.78 158.75 0)
+			(at 146.05 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24994,7 +25001,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 144.78 153.67 0)
+			(at 146.05 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25003,7 +25010,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 144.78 153.67 0)
+			(at 146.05 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25012,7 +25019,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 144.78 153.67 0)
+			(at 146.05 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25950,7 +25957,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 130.81 153.67 0)
+		(at 129.54 147.32 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25959,7 +25966,7 @@
 		(fields_autoplaced yes)
 		(uuid "46507ad4-07d5-47eb-a690-c3c16d63eec6")
 		(property "Reference" "#PWR0130"
-			(at 130.81 160.02 0)
+			(at 129.54 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25968,7 +25975,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 130.81 158.75 0)
+			(at 129.54 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25976,7 +25983,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 130.81 153.67 0)
+			(at 129.54 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25985,7 +25992,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 130.81 153.67 0)
+			(at 129.54 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25994,7 +26001,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 130.81 153.67 0)
+			(at 129.54 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26904,7 +26911,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 157.48 149.86 0)
+		(at 161.29 143.51 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -26913,7 +26920,7 @@
 		(dnp no)
 		(uuid "4b9759eb-0ebf-4f2a-b769-3df0f0538fc3")
 		(property "Reference" "C54"
-			(at 156.21 153.67 90)
+			(at 160.02 147.32 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26921,7 +26928,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 156.21 158.75 90)
+			(at 160.02 152.4 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26929,7 +26936,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
-			(at 158.4452 146.05 0)
+			(at 162.2552 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26938,7 +26945,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 157.48 149.86 0)
+			(at 161.29 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26947,7 +26954,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 157.48 149.86 0)
+			(at 161.29 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26956,7 +26963,7 @@
 			)
 		)
 		(property "Part_Number" "CL10A106KP8NNNC"
-			(at 157.48 149.86 0)
+			(at 161.29 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26965,7 +26972,7 @@
 			)
 		)
 		(property "LCSC" "C19702"
-			(at 157.48 149.86 0)
+			(at 161.29 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30667,6 +30674,121 @@
 		)
 	)
 	(symbol
+		(lib_id "LD1086DT33TR:LD1086DT33TR")
+		(at 146.05 143.51 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7cfd5030-8f25-45a5-bbb6-0246f134a9db")
+		(property "Reference" "U5"
+			(at 146.05 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 146.05 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LD1086DT33TR:TO-252-2_L6.5-W6.1-P4.58-LS10.0-TL"
+			(at 146.05 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20170919/C12051_1505787088456976738.pdf"
+			(at 146.05 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Output Type:Fixed Maximum Input Voltage:30V Output Voltage:3.3V Output Voltage:3.3V Output Current:1.5A Power Supply Rejection Ratio (PSRR):79dB@(120Hz) Dropout Voltage:1.5V@(1.5A) standby current:10mA Feature:Automotive Standard Certification；Thermal Pro"
+			(at 146.05 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "LD1086DT33TR"
+			(at 146.05 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "ST(意法半导体)"
+			(at 146.05 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier Part" "C12051"
+			(at 146.05 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 146.05 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Name" "1.5 A可调与固定低压降正电压稳压器"
+			(at 146.05 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "08e83d89-153c-4693-ba7d-134d45324295")
+		)
+		(pin "1"
+			(uuid "cc525b45-b759-4ab0-b4fd-c207ad2e9069")
+		)
+		(pin "4"
+			(uuid "8b08aa0c-49b1-4186-b396-9a68ea08796d")
+		)
+		(instances
+			(project ""
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 201.93 196.85 270)
 		(unit 1)
@@ -33415,7 +33537,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 157.48 153.67 0)
+		(at 161.29 147.32 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -33424,7 +33546,7 @@
 		(fields_autoplaced yes)
 		(uuid "a878707e-eb86-423d-8bef-1f417d8a5ba5")
 		(property "Reference" "#PWR0135"
-			(at 157.48 160.02 0)
+			(at 161.29 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33433,7 +33555,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 157.48 158.75 0)
+			(at 161.29 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33441,7 +33563,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 157.48 153.67 0)
+			(at 161.29 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33450,7 +33572,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 157.48 153.67 0)
+			(at 161.29 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33459,7 +33581,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 157.48 153.67 0)
+			(at 161.29 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33732,7 +33854,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "ab2691a2-b956-444e-9cd2-792c41aed05d")
 		(property "Reference" "#PWR0118"
 			(at 46.99 21.59 0)
@@ -33743,12 +33864,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 46.99 12.7 0)
+		(property "Value" "+3V3MCU"
+			(at 46.99 13.462 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -39468,77 +39590,6 @@
 			(project "XG_Mobile_Dock_Lite"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "TP11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Regulator_Linear:LD1086DT33TR")
-		(at 144.78 146.05 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e57ce999-774c-45b9-a4e1-d753cd170e61")
-		(property "Reference" "U5"
-			(at 144.78 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LD1086DT33TR"
-			(at 144.78 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LD1086DT33TR:TO-252-2_L6.5-W6.1-P4.58-LS10.0-TL"
-			(at 144.78 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.st.com/resource/en/datasheet/ld1086.pdf"
-			(at 144.78 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Positive, 1.5A 30V, Linear Regulator, Fixed Output 3.3V, TO-252"
-			(at 144.78 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "53d0ae0b-8800-4924-8f40-f2ed349df338")
-		)
-		(pin "1"
-			(uuid "b64ef4bb-c567-43e8-9fbf-739aad1324c3")
-		)
-		(pin "2"
-			(uuid "6a6da36a-eaae-476a-9816-cf77ffa976af")
-		)
-		(instances
-			(project ""
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "U5")
 					(unit 1)
 				)
 			)
