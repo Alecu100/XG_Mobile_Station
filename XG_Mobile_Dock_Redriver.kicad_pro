@@ -550,7 +550,7 @@
         "bus_width": 12,
         "clearance": 0.1016,
         "diff_pair_gap": 0.1016,
-        "diff_pair_width": 0.117856,
+        "diff_pair_width": 0.13081,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
