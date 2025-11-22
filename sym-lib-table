@@ -32,4 +32,5 @@
   (lib (name "DSWB01LHGET")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/DSWB01LHGET.elibz")(options "")(descr ""))
   (lib (name "DSWB02LHGET")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/DSWB02LHGET.elibz")(options "")(descr ""))
   (lib (name "LD1086DT33TR")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/LD1086DT33TR.elibz")(options "")(descr ""))
+  (lib (name "21650-11013T")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/21650-11013T.elibz")(options "")(descr ""))
 )
