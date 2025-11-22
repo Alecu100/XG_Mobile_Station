@@ -34389,7 +34389,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "21650-11013T"
+		(property "Part_Number" "21650-11013T"
 			(at 381 134.62 0)
 			(effects
 				(font
@@ -34398,34 +34398,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UMaxconn(友贸)"
-			(at 381 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier Part" "C22464457"
-			(at 381 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 381 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "PCIE5.0 卡边缘连接器 PCI-E5.0 PCIE连接器 SMT 带ECB接地总线 立贴"
+		(property "LCSC" "C22464457"
 			(at 381 134.62 0)
 			(effects
 				(font
