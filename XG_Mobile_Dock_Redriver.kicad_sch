@@ -9929,6 +9929,282 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "DSWB01LHGET:DSWB01LHGET"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DSWB01LHGET:SW-TH_DSWB01LHGET"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20240423/2AB41BE17D24959C6789B2A71E54D492.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Type:平拨,凸起式 Circuit:SPST Number of Positions:1Bit Lead Pitch:- Operating Life:- Color:Red"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer Part" "DSWB01LHGET"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "YE"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier Part" "C126888"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier" "LCSC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part Name" "红色宽体1位顶拨插件"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "DSWB01LHGET_1_0"
+				(polyline
+					(pts
+						(xy -5.08 2.54) (xy -5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 2.54) (xy 5.08 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 -2.54) (xy 5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.302 0.508) (xy 3.302 0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.302 -0.508) (xy -3.302 0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0.508) (xy 0 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 1.524) (xy 3.81 1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 1.27) (xy 0.762 1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.508) (xy 3.302 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 -0.508) (xy -3.302 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 2.032) (xy 3.81 1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -2.54) (xy 5.08 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at -10.16 0 0)
+					(length 5.08)
+					(name "A1"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 0 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "DSWB02LHGET:DSWB02LHGET"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -11534,12 +11810,6 @@
 		(uuid "543ed084-32dd-45e4-b76a-28ed9922b8ea")
 	)
 	(junction
-		(at 345.44 138.43)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "58e0c8f1-aa5a-46fe-978c-ad347f9c0fee")
-	)
-	(junction
 		(at 25.4 177.8)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -11568,12 +11838,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5fc2bf39-b1bf-4301-8594-cb7094429840")
-	)
-	(junction
-		(at 345.44 148.59)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "62a9a97f-ce9c-4750-a3c1-62d0f5b73445")
 	)
 	(junction
 		(at 236.22 48.26)
@@ -11760,12 +12024,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9b1d36f5-d74f-49e1-96cf-a33cabd29c9d")
-	)
-	(junction
-		(at 172.72 172.72)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9c1aa098-f244-43df-96ef-82f19d07f5e2")
 	)
 	(junction
 		(at 212.09 222.25)
@@ -12096,12 +12354,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f233d8c6-0825-4aea-be99-7286009877c3")
-	)
-	(junction
-		(at 172.72 162.56)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f4845677-16cb-4ce4-8b66-544cf99081fd")
 	)
 	(junction
 		(at 270.51 172.72)
@@ -12441,16 +12693,6 @@
 	)
 	(wire
 		(pts
-			(xy 345.44 148.59) (xy 359.41 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0b9cf61b-3612-40b7-a100-fd2a1c4b3702")
-	)
-	(wire
-		(pts
 			(xy 232.41 15.24) (xy 232.41 19.05)
 		)
 		(stroke
@@ -12468,16 +12710,6 @@
 			(type default)
 		)
 		(uuid "0c0b8962-1589-434a-95ac-5a8bd2dbdb2c")
-	)
-	(wire
-		(pts
-			(xy 170.18 189.23) (xy 179.07 189.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0c388490-6810-4703-b2fb-2ee6f63b3a0d")
 	)
 	(wire
 		(pts
@@ -13201,16 +13433,6 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 172.72) (xy 172.72 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2bf464de-2301-4714-aa8b-ebb569286144")
-	)
-	(wire
-		(pts
 			(xy 74.93 64.77) (xy 69.85 64.77)
 		)
 		(stroke
@@ -13288,16 +13510,6 @@
 			(type default)
 		)
 		(uuid "2e807e0e-befe-40bf-94f9-c6c958e4cbd3")
-	)
-	(wire
-		(pts
-			(xy 172.72 162.56) (xy 172.72 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2ffeb03d-c9dd-4e89-8033-ec7d923bc389")
 	)
 	(wire
 		(pts
@@ -13421,6 +13633,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 162.56) (xy 152.4 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3626e4c7-09e8-4986-a21c-0677d1a30d7c")
+	)
+	(wire
+		(pts
 			(xy 40.64 69.85) (xy 35.56 69.85)
 		)
 		(stroke
@@ -13528,16 +13750,6 @@
 			(type default)
 		)
 		(uuid "3f51e7bc-1270-484e-abb4-e14ab6445de4")
-	)
-	(wire
-		(pts
-			(xy 350.52 165.1) (xy 359.41 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "403cf971-e970-4bed-8f7d-8072435c7cd5")
 	)
 	(wire
 		(pts
@@ -13658,16 +13870,6 @@
 			(type default)
 		)
 		(uuid "48149f93-2f8d-478a-99d7-30abedcdbd75")
-	)
-	(wire
-		(pts
-			(xy 170.18 191.77) (xy 181.61 191.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "497aacb3-3f1d-40d3-ab0f-1fda6f549936")
 	)
 	(wire
 		(pts
@@ -13978,16 +14180,6 @@
 			(type default)
 		)
 		(uuid "59910dd5-387a-440b-bf4f-f13ba30cc367")
-	)
-	(wire
-		(pts
-			(xy 323.85 151.13) (xy 330.2 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "59bbfffa-4609-4fe4-978a-91d7fbf6bb0d")
 	)
 	(wire
 		(pts
@@ -14521,16 +14713,6 @@
 	)
 	(wire
 		(pts
-			(xy 359.41 165.1) (xy 359.41 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a6da785-6aa2-485d-9fc9-27a09f32143b")
-	)
-	(wire
-		(pts
 			(xy 228.6 121.92) (xy 236.22 121.92)
 		)
 		(stroke
@@ -14751,16 +14933,6 @@
 	)
 	(wire
 		(pts
-			(xy 360.68 138.43) (xy 345.44 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "82f5e71f-c55d-40bd-9975-2776abd979d8")
-	)
-	(wire
-		(pts
 			(xy 370.84 187.96) (xy 379.73 187.96)
 		)
 		(stroke
@@ -14808,16 +14980,6 @@
 			(type default)
 		)
 		(uuid "85f144b0-7fdb-4a3d-bd06-bf91b5420f28")
-	)
-	(wire
-		(pts
-			(xy 345.44 138.43) (xy 345.44 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "864fba9d-ddc2-4b63-a957-bf3ab19671ff")
 	)
 	(wire
 		(pts
@@ -14888,16 +15050,6 @@
 			(type default)
 		)
 		(uuid "8a99643c-afb0-433b-b2b8-2fdc880e443a")
-	)
-	(wire
-		(pts
-			(xy 323.85 138.43) (xy 330.2 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8b45bc55-4e01-4963-9648-d21b7c4ac84c")
 	)
 	(wire
 		(pts
@@ -15231,16 +15383,6 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 148.59) (xy 330.2 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "99ac4e0c-522c-4447-9017-473339f48595")
-	)
-	(wire
-		(pts
 			(xy 370.84 195.58) (xy 379.73 195.58)
 		)
 		(stroke
@@ -15278,16 +15420,6 @@
 			(type default)
 		)
 		(uuid "9a81eed9-3994-464f-95bd-789db0b8be06")
-	)
-	(wire
-		(pts
-			(xy 151.13 172.72) (xy 157.48 172.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9b866442-a6b7-4bcc-89ec-c260b68278b4")
 	)
 	(wire
 		(pts
@@ -15531,16 +15663,6 @@
 	)
 	(wire
 		(pts
-			(xy 151.13 175.26) (xy 157.48 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aa68200b-8e14-44f4-a379-8867fe89e02e")
-	)
-	(wire
-		(pts
 			(xy 69.85 115.57) (xy 82.55 115.57)
 		)
 		(stroke
@@ -15751,16 +15873,6 @@
 	)
 	(wire
 		(pts
-			(xy 360.68 167.64) (xy 360.68 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2986830-ad27-444f-8d87-3f4ca7a97d3a")
-	)
-	(wire
-		(pts
 			(xy 275.59 38.1) (xy 283.21 38.1)
 		)
 		(stroke
@@ -15831,6 +15943,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 172.72) (xy 152.4 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8fbbaab-6d82-4230-99b9-81a635eade9d")
+	)
+	(wire
+		(pts
 			(xy 236.22 96.52) (xy 236.22 99.06)
 		)
 		(stroke
@@ -15898,16 +16020,6 @@
 			(type default)
 		)
 		(uuid "bb51e263-12d3-482d-9b73-fc8a765b8cb5")
-	)
-	(wire
-		(pts
-			(xy 151.13 162.56) (xy 157.48 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb545c3e-0466-4445-a3e8-273cb12a09e0")
 	)
 	(wire
 		(pts
@@ -16058,16 +16170,6 @@
 			(type default)
 		)
 		(uuid "c0807f57-05af-40eb-9044-54192a6ab57f")
-	)
-	(wire
-		(pts
-			(xy 181.61 191.77) (xy 181.61 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c0bbab0d-05bc-452b-ae68-f1255f027885")
 	)
 	(wire
 		(pts
@@ -16378,16 +16480,6 @@
 			(type default)
 		)
 		(uuid "cffc4b09-c5e7-445f-a29e-ce7400248f61")
-	)
-	(wire
-		(pts
-			(xy 179.07 189.23) (xy 179.07 172.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0153061-ccb7-451e-91e6-401bb2e4d54d")
 	)
 	(wire
 		(pts
@@ -16931,16 +17023,6 @@
 	)
 	(wire
 		(pts
-			(xy 345.44 148.59) (xy 345.44 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ed210451-db1f-4e58-851a-21c8b5f1d967")
-	)
-	(wire
-		(pts
 			(xy 55.88 175.26) (xy 53.34 175.26)
 		)
 		(stroke
@@ -17018,16 +17100,6 @@
 			(type default)
 		)
 		(uuid "f03027c7-63a1-4fb1-86fd-a5974819ace6")
-	)
-	(wire
-		(pts
-			(xy 151.13 165.1) (xy 157.48 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f15b3f41-6622-4d6c-b12d-7171b7bf3406")
 	)
 	(wire
 		(pts
@@ -17111,16 +17183,6 @@
 	)
 	(wire
 		(pts
-			(xy 350.52 167.64) (xy 360.68 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f4b27337-5d4e-468f-b3a2-7d4a62e49243")
-	)
-	(wire
-		(pts
 			(xy 40.64 72.39) (xy 35.56 72.39)
 		)
 		(stroke
@@ -17148,16 +17210,6 @@
 			(type default)
 		)
 		(uuid "f5d2b34c-aa88-4540-9f17-bcdfe4c4bb20")
-	)
-	(wire
-		(pts
-			(xy 323.85 140.97) (xy 330.2 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f6f95c29-7077-41be-8f98-381de0d77a1d")
 	)
 	(wire
 		(pts
@@ -17350,7 +17402,7 @@
 		(uuid "017d30bb-871f-49ad-9689-baba627456d7")
 	)
 	(label "SDA2"
-		(at 323.85 148.59 0)
+		(at 350.52 165.1 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17520,7 +17572,7 @@
 		(uuid "13cddb21-d10b-4160-841a-12a4b0a19e2e")
 	)
 	(label "SCL2"
-		(at 323.85 138.43 0)
+		(at 350.52 167.64 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17648,16 +17700,6 @@
 			(justify left bottom)
 		)
 		(uuid "1e580e88-c260-4817-aa26-02fa6b07241c")
-	)
-	(label "SDA4"
-		(at 323.85 151.13 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1e61a85c-ef89-4af6-8e72-56952e967280")
 	)
 	(label "LOCK_SW"
 		(at 40.64 29.21 0)
@@ -17990,7 +18032,7 @@
 		(uuid "354717e6-3662-4854-86fd-55168c67dc77")
 	)
 	(label "SDA4"
-		(at 151.13 175.26 0)
+		(at 147.32 172.72 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18400,7 +18442,7 @@
 		(uuid "615c2eeb-7055-496b-9575-27483ccebd51")
 	)
 	(label "SCL2"
-		(at 151.13 162.56 0)
+		(at 170.18 191.77 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18719,6 +18761,16 @@
 		)
 		(uuid "840e8d7f-77ad-450f-b9a6-fdfce4b70e30")
 	)
+	(label "SDA4"
+		(at 320.04 148.59 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "841f656d-8717-44c9-9364-c129e185c051")
+	)
 	(label "HSIT3P"
 		(at 356.87 208.28 0)
 		(effects
@@ -18858,6 +18910,16 @@
 			(justify left bottom)
 		)
 		(uuid "921c1832-19c8-4d1b-82c8-a09150914aeb")
+	)
+	(label "SCL2"
+		(at 172.72 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "92b3adf0-0c61-418f-9192-b9faefe42a97")
 	)
 	(label "HSOL3N"
 		(at 74.93 64.77 0)
@@ -19459,16 +19521,6 @@
 		)
 		(uuid "d544b95a-3805-4bdd-95fd-f82f8d7331e5")
 	)
-	(label "SCL4"
-		(at 323.85 140.97 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d6373574-cc56-49e0-bf40-d66d23121705")
-	)
 	(label "HSI1P"
 		(at 379.73 193.04 0)
 		(effects
@@ -19570,7 +19622,7 @@
 		(uuid "dce93ae4-7ad0-43bc-9062-3c52ddd0b69e")
 	)
 	(label "SCL4"
-		(at 151.13 165.1 0)
+		(at 147.32 162.56 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -19959,6 +20011,16 @@
 		)
 		(uuid "f5feddbf-c071-4d45-8035-6f6cfa0566df")
 	)
+	(label "SDA2"
+		(at 172.72 172.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fa04cd85-1c4c-4f2c-9e66-679deb1606c2")
+	)
 	(label "HSIL3N"
 		(at 228.6 104.14 0)
 		(effects
@@ -19970,7 +20032,7 @@
 		(uuid "fcf10cbb-1d19-49c2-b1f4-5578331b4cc5")
 	)
 	(label "SDA2"
-		(at 151.13 172.72 0)
+		(at 170.18 189.23 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -20967,106 +21029,6 @@
 		)
 	)
 	(symbol
-		(lib_id "DSWB02LHGET:DSWB02LHGET")
-		(at 337.82 139.7 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0941e2ef-d9c5-4541-bb98-2a121f471fab")
-		(property "Reference" "SW26"
-			(at 338.074 134.62 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 337.82 134.62 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "DSWB02LHGET:SW-TH_DSWB02LHGET"
-			(at 337.82 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20230906/EFD9230F686161BBBCD1B62855702D44.pdf"
-			(at 337.82 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Type:平拨,凸起式 Circuit:SPST Number of Positions:2Bit Lead Pitch:2.54mm Operating Life:- Color:Red"
-			(at 337.82 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part_Number" "DSWB02LHGET"
-			(at 337.82 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YE"
-			(at 337.82 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C99421"
-			(at 337.82 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "f4fc534c-c63f-4c6b-8cfb-4c4933929c0e")
-		)
-		(pin "3"
-			(uuid "7c4ec856-e4b0-4bb8-8962-85e9349b1eac")
-		)
-		(pin "1"
-			(uuid "23105ab8-a365-4e04-a4ff-c6d1ec0fe860")
-		)
-		(pin "2"
-			(uuid "5a200ac1-6649-43dd-a958-e8796274824d")
-		)
-		(instances
-			(project "XG_Mobile_Dock_Redriver"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "SW26")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
 		(at 392.43 88.9 0)
 		(unit 1)
@@ -21826,106 +21788,6 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C52")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "DSWB02LHGET:DSWB02LHGET")
-		(at 165.1 163.83 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "20017cb3-b025-49d6-b524-7b249194e9b0")
-		(property "Reference" "SW28"
-			(at 165.354 158.75 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 165.1 158.75 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "DSWB02LHGET:SW-TH_DSWB02LHGET"
-			(at 165.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20230906/EFD9230F686161BBBCD1B62855702D44.pdf"
-			(at 165.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Type:平拨,凸起式 Circuit:SPST Number of Positions:2Bit Lead Pitch:2.54mm Operating Life:- Color:Red"
-			(at 165.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part_Number" "DSWB02LHGET"
-			(at 165.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YE"
-			(at 165.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C99421"
-			(at 165.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "4f886b09-ecd1-49b8-bd6e-5498e574de21")
-		)
-		(pin "3"
-			(uuid "74eb06f7-7832-4715-a9ad-771536a82344")
-		)
-		(pin "1"
-			(uuid "d1516d6d-8fd2-4ac3-ae37-ec001d43b536")
-		)
-		(pin "2"
-			(uuid "f9318e4d-454a-4b78-b8dd-007b6d1510e2")
-		)
-		(instances
-			(project "XG_Mobile_Dock_Redriver"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "SW28")
 					(unit 1)
 				)
 			)
@@ -23077,106 +22939,6 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR0117")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "DSWB02LHGET:DSWB02LHGET")
-		(at 165.1 173.99 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "32ea2f8e-2043-4c72-bfd9-659980b29c3d")
-		(property "Reference" "SW29"
-			(at 165.354 168.91 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 165.1 168.91 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "DSWB02LHGET:SW-TH_DSWB02LHGET"
-			(at 165.1 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20230906/EFD9230F686161BBBCD1B62855702D44.pdf"
-			(at 165.1 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Type:平拨,凸起式 Circuit:SPST Number of Positions:2Bit Lead Pitch:2.54mm Operating Life:- Color:Red"
-			(at 165.1 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part_Number" "DSWB02LHGET"
-			(at 165.1 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YE"
-			(at 165.1 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C99421"
-			(at 165.1 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "ab99a4a9-a8ae-4a41-b603-f3f9e05012af")
-		)
-		(pin "3"
-			(uuid "263448a7-e650-496c-bc6f-acd24b71bc68")
-		)
-		(pin "1"
-			(uuid "f80ef2c6-1403-40bc-be91-7f38a06910b4")
-		)
-		(pin "2"
-			(uuid "9aa05ad5-7263-4982-a43d-f7263bd693de")
-		)
-		(instances
-			(project "XG_Mobile_Dock_Redriver"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "SW29")
 					(unit 1)
 				)
 			)
@@ -30615,6 +30377,119 @@
 		)
 	)
 	(symbol
+		(lib_id "DSWB01LHGET:DSWB01LHGET")
+		(at 162.56 172.72 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8fdb87f0-ac06-44ac-b29e-f17421b3ac4a")
+		(property "Reference" "SW3"
+			(at 162.56 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 162.56 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "DSWB01LHGET:SW-TH_DSWB01LHGET"
+			(at 162.56 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20240423/2AB41BE17D24959C6789B2A71E54D492.pdf"
+			(at 162.56 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Type:平拨,凸起式 Circuit:SPST Number of Positions:1Bit Lead Pitch:- Operating Life:- Color:Red"
+			(at 162.56 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "DSWB01LHGET"
+			(at 162.56 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YE"
+			(at 162.56 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier Part" "C126888"
+			(at 162.56 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 162.56 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Name" "红色宽体1位顶拨插件"
+			(at 162.56 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c2da10c6-a5bc-4d31-9c3c-1458a9b460c7")
+		)
+		(pin "2"
+			(uuid "0945c011-d542-4f2b-b284-6271184a2910")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Redriver"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "SW3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 177.8 43.18 270)
 		(unit 1)
@@ -35303,106 +35178,6 @@
 		)
 	)
 	(symbol
-		(lib_id "DSWB02LHGET:DSWB02LHGET")
-		(at 337.82 149.86 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c9f258a6-fc85-4fd2-a078-7cfc5f88c20e")
-		(property "Reference" "SW27"
-			(at 338.074 144.78 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 337.82 144.78 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "DSWB02LHGET:SW-TH_DSWB02LHGET"
-			(at 337.82 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20230906/EFD9230F686161BBBCD1B62855702D44.pdf"
-			(at 337.82 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Type:平拨,凸起式 Circuit:SPST Number of Positions:2Bit Lead Pitch:2.54mm Operating Life:- Color:Red"
-			(at 337.82 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part_Number" "DSWB02LHGET"
-			(at 337.82 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YE"
-			(at 337.82 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C99421"
-			(at 337.82 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "e9f0b96d-6121-4b5b-b216-bb5e6d6f331b")
-		)
-		(pin "3"
-			(uuid "8c8861c4-7275-41ae-b856-a164019268f5")
-		)
-		(pin "1"
-			(uuid "88fabff2-4292-4db9-820e-b3da6041556a")
-		)
-		(pin "2"
-			(uuid "1249f593-73cd-44e4-a4b6-539853da6f3b")
-		)
-		(instances
-			(project "XG_Mobile_Dock_Redriver"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "SW27")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 392.43 224.79 0)
 		(unit 1)
@@ -36287,6 +36062,119 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR073")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DSWB01LHGET:DSWB01LHGET")
+		(at 162.56 162.56 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d2609775-bd92-479b-ab77-1b88e3a9b120")
+		(property "Reference" "SW2"
+			(at 162.56 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 162.56 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "DSWB01LHGET:SW-TH_DSWB01LHGET"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20240423/2AB41BE17D24959C6789B2A71E54D492.pdf"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Type:平拨,凸起式 Circuit:SPST Number of Positions:1Bit Lead Pitch:- Operating Life:- Color:Red"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part" "DSWB01LHGET"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YE"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier Part" "C126888"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier" "LCSC"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part Name" "红色宽体1位顶拨插件"
+			(at 162.56 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cbb77d7d-e5a4-418c-8594-8349cb07190d")
+		)
+		(pin "2"
+			(uuid "4ad63783-3b28-4aed-ae46-934356b47891")
+		)
+		(instances
+			(project ""
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "SW2")
 					(unit 1)
 				)
 			)
