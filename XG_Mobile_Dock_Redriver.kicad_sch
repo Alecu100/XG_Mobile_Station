@@ -29746,7 +29746,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "LD1086DT33TR"
+		(property "Part_Number" "LD1086DT33TR"
 			(at 146.05 143.51 0)
 			(effects
 				(font
@@ -29764,25 +29764,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C12051"
-			(at 146.05 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 146.05 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "1.5 A可调与固定低压降正电压稳压器"
+		(property "LCSC" "C12051"
 			(at 146.05 143.51 0)
 			(effects
 				(font
@@ -30962,7 +30944,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "DSWB01LHGET"
+		(property "Part_Number" "DSWB01LHGET"
 			(at 162.56 172.72 0)
 			(effects
 				(font
@@ -36491,7 +36473,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "DSWB01LHGET"
+		(property "Part_Number" "DSWB01LHGET"
 			(at 162.56 162.56 0)
 			(effects
 				(font
