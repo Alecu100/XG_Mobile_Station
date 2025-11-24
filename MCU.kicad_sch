@@ -5096,6 +5096,17 @@
 		)
 		(uuid "5fccef8e-f44d-4ecb-adfb-2896bbad0600")
 	)
+	(hierarchical_label "PB7"
+		(shape bidirectional)
+		(at 40.64 91.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7d2b3803-d454-497f-bf2d-729d19e23963")
+	)
 	(hierarchical_label "PA15"
 		(shape bidirectional)
 		(at 71.12 78.74 0)
