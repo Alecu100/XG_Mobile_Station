@@ -15163,6 +15163,16 @@
 	)
 	(wire
 		(pts
+			(xy 52.07 153.67) (xy 59.69 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b446072-8094-4723-ab31-958c6886873c")
+	)
+	(wire
+		(pts
 			(xy 82.55 92.71) (xy 82.55 100.33)
 		)
 		(stroke
@@ -15640,16 +15650,6 @@
 			(type default)
 		)
 		(uuid "a1595952-58b0-43ad-b297-c77aedf8f007")
-	)
-	(wire
-		(pts
-			(xy 44.45 166.37) (xy 59.69 166.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a1cba7af-4f4b-4f6e-895b-c92613f0e55b")
 	)
 	(wire
 		(pts
@@ -16393,16 +16393,6 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 153.67) (xy 44.45 153.67)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c8260607-c571-4602-a7da-363be1a08a9a")
-	)
-	(wire
-		(pts
 			(xy 363.22 102.87) (xy 372.11 102.87)
 		)
 		(stroke
@@ -16723,16 +16713,6 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 153.67) (xy 44.45 166.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d668f741-5031-4afa-ac2c-1da4ca625b28")
-	)
-	(wire
-		(pts
 			(xy 369.57 54.61) (xy 372.11 54.61)
 		)
 		(stroke
@@ -16760,16 +16740,6 @@
 			(type default)
 		)
 		(uuid "d725885b-2927-460a-9164-00d3fd204e58")
-	)
-	(wire
-		(pts
-			(xy 59.69 166.37) (xy 59.69 172.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d73aca5c-bab2-438f-aa05-63e5d4c2add7")
 	)
 	(wire
 		(pts
@@ -18702,7 +18672,7 @@
 		(uuid "6fb5dc03-f9e6-43e8-a9a6-a883e8d5b5bb")
 	)
 	(label "PSPWROK"
-		(at 80.01 172.72 0)
+		(at 52.07 153.67 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25481,119 +25451,6 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "DSWB01LHGET:DSWB01LHGET")
-		(at 69.85 172.72 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4a1e13a4-e737-4624-995b-e880caf3ca57")
-		(property "Reference" "SW4"
-			(at 69.85 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 69.85 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "DSWB01LHGET:SW-TH_DSWB01LHGET"
-			(at 69.85 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20240423/2AB41BE17D24959C6789B2A71E54D492.pdf"
-			(at 69.85 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Type:平拨,凸起式 Circuit:SPST Number of Positions:1Bit Lead Pitch:- Operating Life:- Color:Red"
-			(at 69.85 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part_Number" "DSWB01LHGET"
-			(at 69.85 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "YE"
-			(at 69.85 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier Part" "C126888"
-			(at 69.85 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 69.85 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "红色宽体1位顶拨插件"
-			(at 69.85 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e8a9f9bb-27ff-43f1-94ad-2aee47c198a8")
-		)
-		(pin "2"
-			(uuid "8fdca7a0-dac1-45b0-9125-2408ceb741d0")
-		)
-		(instances
-			(project "XG_Mobile_Dock_Redriver"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "SW4")
 					(unit 1)
 				)
 			)
