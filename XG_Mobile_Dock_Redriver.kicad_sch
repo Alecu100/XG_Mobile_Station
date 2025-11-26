@@ -23776,7 +23776,7 @@
 		(dnp no)
 		(uuid "32a54d86-2e62-4163-9df9-89bb1809bd11")
 		(property "Reference" "R67"
-			(at 54.864 156.21 90)
+			(at 58.928 152.654 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -36222,10 +36222,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "c57e5aea-0c02-48aa-b99d-65e7b667f4cf")
 		(property "Reference" "D1"
-			(at 49.53 157.6069 90)
+			(at 46.482 163.322 90)
 			(effects
 				(font
 					(size 1.27 1.27)
