@@ -36084,25 +36084,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C545355"
-			(at 45.72 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 45.72 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "BZT52B3V3"
+		(property "LCSC" "C545355"
 			(at 45.72 158.75 0)
 			(effects
 				(font
