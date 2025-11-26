@@ -11887,7 +11887,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC \n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402\n2k 0603WAF2001T5E MfPart C22975 LCSC 0603\n10 0603WAF100JT5E MfPart C22859 LCSC 0603"
+	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC \n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402\n2k 0603WAF2001T5E MfPart C22975 LCSC 0603\n10 0603WAF100JT5E MfPart C22859 LCSC 0603\n4.02k 0603WAF4021T5E MfPar C23040 LCSC 0603"
 		(exclude_from_sim no)
 		(at 227.33 32.258 0)
 		(effects
@@ -23783,7 +23783,7 @@
 				)
 			)
 		)
-		(property "Value" "10"
+		(property "Value" "1k"
 			(at 54.61 150.876 90)
 			(effects
 				(font
@@ -23818,7 +23818,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C22859"
+		(property "LCSC" "C14676"
 			(at 54.61 153.67 0)
 			(effects
 				(font
@@ -23827,7 +23827,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "0603WAF100JT5E"
+		(property "Part_Number" "RC0603JR-071KL"
 			(at 54.61 153.67 0)
 			(effects
 				(font
@@ -26769,7 +26769,7 @@
 				)
 			)
 		)
-		(property "Value" "2k"
+		(property "Value" "4k"
 			(at 110.49 158.496 90)
 			(effects
 				(font
@@ -26804,7 +26804,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C22975"
+		(property "LCSC" "C23040"
 			(at 110.49 161.29 0)
 			(effects
 				(font
@@ -26813,7 +26813,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "0603WAF2001T5E"
+		(property "Part_Number" "0603WAF4021T5E"
 			(at 110.49 161.29 0)
 			(effects
 				(font
