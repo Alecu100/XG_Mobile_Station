@@ -5590,7 +5590,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "0ccbb5cf-9f9d-4e2e-8356-85990614d502")
 		(property "Reference" "#PWR0125"
 			(at 81.28 73.66 0)
@@ -5601,12 +5600,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 81.28 64.77 0)
+		(property "Value" "+3V3MCU"
+			(at 82.296 67.818 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -6615,7 +6615,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "34bd8790-b561-4c3f-b603-9b04194ac3cc")
 		(property "Reference" "#PWR0128"
 			(at 111.76 99.06 0)
@@ -6626,12 +6625,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 111.76 90.17 0)
+		(property "Value" "+3V3MCU"
+			(at 111.252 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -7125,7 +7125,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "4711b943-1597-4b9f-b11d-b3735af940ee")
 		(property "Reference" "#PWR067"
 			(at 91.44 99.06 0)
@@ -7136,12 +7135,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 91.44 90.17 0)
+		(property "Value" "+3V3MCU"
+			(at 90.678 91.186 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -8447,7 +8447,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "98be563d-a66d-4a64-b216-2d4847a44c00")
 		(property "Reference" "#PWR01"
 			(at 97.79 63.5 0)
@@ -8458,12 +8457,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 97.79 54.61 0)
+		(property "Value" "+3V3MCU"
+			(at 98.298 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -9218,7 +9218,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "b4dd42d1-7410-4686-a9a4-c889b3ad583a")
 		(property "Reference" "#PWR068"
 			(at 19.05 69.85 0)
@@ -9229,12 +9228,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 19.05 60.96 0)
+		(property "Value" "+3V3MCU"
+			(at 18.796 62.484 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
