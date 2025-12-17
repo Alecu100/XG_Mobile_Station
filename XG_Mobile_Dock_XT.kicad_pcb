@@ -66314,14 +66314,6 @@
 		(uuid "94ecaf94-0025-4bd6-b02c-9901eb482f1d")
 	)
 	(via
-		(at 127.925 110.025)
-		(size 0.4)
-		(drill 0.3)
-		(layers "F.Cu" "B.Cu")
-		(net 1)
-		(uuid "9509b2d0-9b17-408d-bb74-e4bb26e5a95c")
-	)
-	(via
 		(at 152.93 55.86)
 		(size 0.4)
 		(drill 0.3)
