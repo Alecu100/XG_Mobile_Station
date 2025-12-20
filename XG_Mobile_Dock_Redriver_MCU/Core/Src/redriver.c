@@ -271,14 +271,14 @@ static void initialize_cpu_gpu_redriver()
     initialize_channel_bias(CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, BIAS_CURRENT_0);
     initialize_channel_bias(CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, BIAS_CURRENT_0);
 
-    initialize_channel_eq_profile(CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(CPU_GPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(CPU_GPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(CPU_GPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1);
+    initialize_channel_eq_profile(CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(CPU_GPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(CPU_GPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(CPU_GPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_INDEX_13 | FLAT_GAIN_0 | FLAT_GAIN_1 | FLAT_GAIN_2);
 }
 
 void power_up_down_redrivers(GPIO_PinState reset) {
