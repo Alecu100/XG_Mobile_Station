@@ -97663,7 +97663,7 @@
 		(uuid "b990c1ff-5c89-45ac-bbcc-e2b0a34f0dbe")
 	)
 	(via
-		(at 127.406 110.724)
+		(at 127.356 110.734)
 		(size 0.3)
 		(drill 0.2)
 		(layers "F.Cu" "B.Cu")
