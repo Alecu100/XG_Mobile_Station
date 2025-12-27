@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.0
+          "min_clearance": 0.1
         }
       },
       "diff_pair_dimensions": [
@@ -509,7 +509,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "XG_Mobile_Dock_Redriver.kicad_pro",
+    "filename": "XG_Mobile_Dock_XT.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -976,6 +976,10 @@
     [
       "f97e6956-ab08-42cb-8fed-03fa58e87f0e",
       "Root"
+    ],
+    [
+      "978d0394-a930-4f9b-b9ac-528aaa30e545",
+      "Redriver"
     ],
     [
       "ee7d8714-c34c-4773-b74b-c8779559fec9",
