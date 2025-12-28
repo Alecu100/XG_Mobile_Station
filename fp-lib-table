@@ -38,4 +38,6 @@
   (lib (name "DSWB03LHGET")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/DSWB03LHGET/DSWB03LHGET.elibz")(options "")(descr ""))
   (lib (name "DSWB01LHGET")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Symbols/DSWB01LHGET.elibz")(options "")(descr ""))
   (lib (name "DSWB02LHGET")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Symbols/DSWB02LHGET.elibz")(options "")(descr ""))
+  (lib (name "LD1086DT33TR")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/LD1086DT33TR/LD1086DT33TR.elibz")(options "")(descr ""))
+  (lib (name "MMBT5551 RANGE 200-300")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/MMBT5551 RANGE 200-300/MMBT5551 RANGE 200-300.elibz")(options "")(descr ""))
 )

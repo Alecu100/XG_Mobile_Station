@@ -5590,7 +5590,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 81.28 64.77 0)
+			(at 77.216 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6549,7 +6549,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 30.226 33.274 0)
+			(at 25.654 33.528 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6615,7 +6615,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 111.76 89.916 0)
+			(at 107.442 90.424 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6770,7 +6770,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 55.88 27.686 0)
+			(at 51.054 27.686 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7125,7 +7125,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 91.186 89.916 0)
+			(at 86.868 90.678 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8014,7 +8014,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "86c3a1c2-806c-4623-97d1-63485cff61bf")
 		(property "Reference" "#PWR018"
 			(at 31.75 93.98 0)
@@ -8025,12 +8024,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 31.75 85.09 0)
+		(property "Value" "+3V3MCU"
+			(at 25.908 86.614 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -8447,7 +8447,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 97.79 54.356 0)
+			(at 93.218 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9218,7 +9218,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 19.05 60.96 0)
+			(at 14.986 61.722 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10032,7 +10032,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 101.6 24.13 0)
+			(at 96.774 24.384 0)
 			(effects
 				(font
 					(size 1.27 1.27)
