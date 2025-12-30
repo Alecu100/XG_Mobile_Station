@@ -10169,7 +10169,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC \n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402\n10 0603WAF100JT5E MfPart C22859 LCSC 0603\n4.02k 0603WAF4021T5E MfPart C23040 LCSC 0603\n100k 0603WAF1003T5E MfPart C25803 LCSC 0603\n470k 0603WAF4703T5E MfPart C23178 LCSC 0603\n10k 0603WAF1002T5E MfPart C25804 LCSC 0603\n100 0603WAF1000T5E MfPart C22775 LCSC 0603"
+	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC \n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402\n10 0603WAF100JT5E MfPart C22859 LCSC 0603\n4.02k 0603WAF4021T5E MfPart C23040 LCSC 0603\n100k 0603WAF1003T5E MfPart C25803 LCSC 0603\n470k 0603WAF4703T5E MfPart C23178 LCSC 0603\n10k 0603WAF1002T5E MfPart C25804 LCSC 0603\n100 0603WAF1000T5E MfPart C22775 LCSC 0603"
 		(exclude_from_sim no)
 		(at 376.936 32.004 0)
 		(effects
@@ -14792,7 +14792,7 @@
 		(uuid "06a97023-e57b-48f6-8d62-5242cc0562c0")
 	)
 	(label "HSI0N"
-		(at 313.69 147.32 180)
+		(at 207.01 177.8 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14822,7 +14822,7 @@
 		(uuid "09401c49-5965-48b8-8fc3-49ce76250a3a")
 	)
 	(label "HSIL6P"
-		(at 313.69 220.98 180)
+		(at 207.01 251.46 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14851,8 +14851,18 @@
 		)
 		(uuid "0bf6004b-fd09-4020-9fb6-da32e05f30b4")
 	)
+	(label "CON_RX1N"
+		(at 161.925 219.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0c5a6573-5223-4e7c-a307-0477e2859fa5")
+	)
 	(label "HSOL4P"
-		(at 369.57 209.55 0)
+		(at 262.89 240.03 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14862,7 +14872,7 @@
 		(uuid "0e7438b6-7d93-4207-9d6a-de150e529736")
 	)
 	(label "U1_PD1"
-		(at 313.69 231.14 180)
+		(at 207.01 261.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14872,7 +14882,7 @@
 		(uuid "0ec73f81-b397-4f34-b367-5d3e5fad262c")
 	)
 	(label "HSI7N"
-		(at 313.69 182.88 180)
+		(at 207.01 213.36 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14912,7 +14922,7 @@
 		(uuid "1484e20c-9aeb-40e2-9541-6037498bd0de")
 	)
 	(label "HSIL0N"
-		(at 313.69 187.96 180)
+		(at 207.01 218.44 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14922,7 +14932,7 @@
 		(uuid "17f8d02e-3b0a-4f2e-9aaf-55ef451f7e33")
 	)
 	(label "HSIL4P"
-		(at 313.69 210.82 180)
+		(at 207.01 241.3 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14972,7 +14982,7 @@
 		(uuid "1c9df63f-d408-441e-950f-60ff00735ea6")
 	)
 	(label "HSIL6N"
-		(at 313.69 218.44 180)
+		(at 207.01 248.92 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14982,7 +14992,7 @@
 		(uuid "1ce5dcd9-f7f5-4982-815a-58421be75d53")
 	)
 	(label "HSIL1N"
-		(at 313.69 193.04 180)
+		(at 207.01 223.52 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14992,7 +15002,7 @@
 		(uuid "1d3eeed5-b037-419d-88a7-0cac5faf0417")
 	)
 	(label "HSI5N"
-		(at 313.69 172.72 180)
+		(at 207.01 203.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15002,7 +15012,7 @@
 		(uuid "1d481166-bc3e-494b-9aee-3f0a24914de6")
 	)
 	(label "HSI2P"
-		(at 313.69 160.02 180)
+		(at 207.01 190.5 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15022,7 +15032,7 @@
 		(uuid "1ec8b090-5b17-47b0-b925-d7fdba63e80b")
 	)
 	(label "HSIL5P"
-		(at 313.69 215.9 180)
+		(at 207.01 246.38 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15042,7 +15052,7 @@
 		(uuid "1f4ef763-cf01-4b34-aa17-cccbf4fc8b52")
 	)
 	(label "SCL2"
-		(at 336.55 233.045 270)
+		(at 229.87 263.525 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15072,7 +15082,7 @@
 		(uuid "1f8142ee-ea0b-4dcc-89ba-08a663d81d2b")
 	)
 	(label "HSI7P"
-		(at 313.69 185.42 180)
+		(at 207.01 215.9 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15082,7 +15092,7 @@
 		(uuid "1fe373b9-7835-46f3-9126-443ac8a21c34")
 	)
 	(label "HSO6P"
-		(at 369.57 179.07 0)
+		(at 262.89 209.55 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15131,6 +15141,16 @@
 		)
 		(uuid "24b2682e-8696-41c3-b5ee-3a1243aa64f3")
 	)
+	(label "CON_RX1P"
+		(at 161.925 222.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "24d99cbf-6a8d-435d-bb61-d42beb0060ab")
+	)
 	(label "HSI0N"
 		(at 74.93 102.87 0)
 		(effects
@@ -15151,6 +15171,16 @@
 		)
 		(uuid "29c6a37c-cad4-446e-b7b9-07eb27ea033b")
 	)
+	(label "CON_TX1N"
+		(at 161.925 224.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2a11fc8a-3f86-41e5-9760-77ccd095432f")
+	)
 	(label "HSO2P"
 		(at 198.12 86.36 180)
 		(effects
@@ -15162,7 +15192,7 @@
 		(uuid "2aa31e57-fc92-4136-888b-9d1bb35a0ebf")
 	)
 	(label "HSOL7N"
-		(at 369.57 222.25 0)
+		(at 262.89 252.73 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15182,7 +15212,7 @@
 		(uuid "2c31dd14-ace3-4af2-969d-a9f55efeb8f2")
 	)
 	(label "HSOL6P"
-		(at 369.57 219.71 0)
+		(at 262.89 250.19 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15212,7 +15242,7 @@
 		(uuid "2e21e707-6173-45c1-8719-73e1fd0cb844")
 	)
 	(label "HSI4P"
-		(at 313.69 170.18 180)
+		(at 207.01 200.66 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15242,7 +15272,7 @@
 		(uuid "3506bb0c-6ae9-4d53-bb53-389120495ae4")
 	)
 	(label "HSOL3N"
-		(at 369.57 201.93 0)
+		(at 262.89 232.41 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15250,6 +15280,16 @@
 			(justify left bottom)
 		)
 		(uuid "35421da0-85d9-4581-a6bc-121d7b10f922")
+	)
+	(label "AP_TX1P"
+		(at 135.255 227.33 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "35c1836d-c736-4eb7-978a-ca2d70563d53")
 	)
 	(label "C_DP"
 		(at 40.64 72.39 0)
@@ -15282,7 +15322,7 @@
 		(uuid "37df1eb4-74b0-4768-8c19-f31c91204492")
 	)
 	(label "SDA4"
-		(at 344.17 233.045 270)
+		(at 237.49 263.525 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15302,7 +15342,7 @@
 		(uuid "3a0b5933-7b58-4f71-b905-41e90e69f1a5")
 	)
 	(label "HSO3P"
-		(at 369.57 163.83 0)
+		(at 262.89 194.31 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15342,7 +15382,7 @@
 		(uuid "3c40d764-ccfb-42d9-bbbf-479f95bbb5d4")
 	)
 	(label "HSO7P"
-		(at 369.57 184.15 0)
+		(at 262.89 214.63 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15352,7 +15392,7 @@
 		(uuid "3df13258-2710-4e16-b547-50dc166fc314")
 	)
 	(label "HSOL4N"
-		(at 369.57 207.01 0)
+		(at 262.89 237.49 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15392,7 +15432,7 @@
 		(uuid "44a4385b-9a87-48b1-a069-bb82f0483cb3")
 	)
 	(label "HSIL1P"
-		(at 313.69 195.58 180)
+		(at 207.01 226.06 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15402,7 +15442,7 @@
 		(uuid "4874e81c-d1b4-4bac-9eb9-1c273b7cd3c1")
 	)
 	(label "HSOL5N"
-		(at 369.57 212.09 0)
+		(at 262.89 242.57 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15412,7 +15452,7 @@
 		(uuid "4c7a2cbe-0f5a-43af-b0c4-8e59f8c9077a")
 	)
 	(label "HSI2N"
-		(at 313.69 157.48 180)
+		(at 207.01 187.96 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15442,7 +15482,7 @@
 		(uuid "502ec474-dcc3-42f2-8091-ccfc639a5901")
 	)
 	(label "HSO2N"
-		(at 369.57 156.21 0)
+		(at 262.89 186.69 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15472,7 +15512,7 @@
 		(uuid "53df523e-3e5e-4031-9f6d-485114393c47")
 	)
 	(label "HSOL1P"
-		(at 369.57 194.31 0)
+		(at 262.89 224.79 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15492,7 +15532,7 @@
 		(uuid "555c4cf0-493d-49e1-9705-3195e3299e01")
 	)
 	(label "HSO6N"
-		(at 369.57 176.53 0)
+		(at 262.89 207.01 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15502,7 +15542,7 @@
 		(uuid "57fcab8c-337d-4894-8d5d-60c05e6e499d")
 	)
 	(label "HSIL5N"
-		(at 313.69 213.36 180)
+		(at 207.01 243.84 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15530,6 +15570,16 @@
 			(justify left bottom)
 		)
 		(uuid "588b19c3-dd64-40dd-badb-78f17869786b")
+	)
+	(label "AP_RX1P"
+		(at 135.255 222.25 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "58961c33-2dad-4df4-aa0a-e93d7754b371")
 	)
 	(label "HSOL5P"
 		(at 74.93 36.83 0)
@@ -15612,7 +15662,7 @@
 		(uuid "615c2eeb-7055-496b-9575-27483ccebd51")
 	)
 	(label "HSO0P"
-		(at 369.57 148.59 0)
+		(at 262.89 179.07 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15632,7 +15682,7 @@
 		(uuid "631689fc-30b6-4830-b755-718fbbb4e159")
 	)
 	(label "HSO1N"
-		(at 369.57 151.13 0)
+		(at 262.89 181.61 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15642,7 +15692,7 @@
 		(uuid "6431b953-d5d1-4c2f-9748-6c0ddf68b187")
 	)
 	(label "HSOL2N"
-		(at 369.57 196.85 0)
+		(at 262.89 227.33 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15682,7 +15732,7 @@
 		(uuid "6860176a-8364-4ebf-937c-cf6ad3320904")
 	)
 	(label "HSO4N"
-		(at 369.57 166.37 0)
+		(at 262.89 196.85 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15692,7 +15742,7 @@
 		(uuid "691d5f46-8a05-4d7f-911e-3b7d049d7f2e")
 	)
 	(label "SDA2"
-		(at 341.63 233.045 270)
+		(at 234.95 263.525 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15702,7 +15752,7 @@
 		(uuid "698621f3-6352-44bd-8d67-735e02a71bea")
 	)
 	(label "HSO5P"
-		(at 369.57 173.99 0)
+		(at 262.89 204.47 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15732,7 +15782,7 @@
 		(uuid "71ea0324-a4ab-43ef-9fa1-c6f9a56ba9b5")
 	)
 	(label "U1_PD0"
-		(at 313.69 228.6 180)
+		(at 207.01 259.08 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15752,7 +15802,7 @@
 		(uuid "74123288-5bb6-4504-89ad-4a2743075507")
 	)
 	(label "HSOL0N"
-		(at 369.57 186.69 0)
+		(at 262.89 217.17 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15772,7 +15822,7 @@
 		(uuid "7540b3f6-2965-4edd-bb0d-d59b464d8abe")
 	)
 	(label "HSOL5P"
-		(at 369.57 214.63 0)
+		(at 262.89 245.11 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15782,7 +15832,7 @@
 		(uuid "76dd136b-d98d-412f-9509-7a37ee67ca8f")
 	)
 	(label "HSI3P"
-		(at 313.69 165.1 180)
+		(at 207.01 195.58 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15822,7 +15872,7 @@
 		(uuid "7acf95d4-0d6a-4b58-9970-6dd919ff7ba8")
 	)
 	(label "HSI1P"
-		(at 313.69 154.94 180)
+		(at 207.01 185.42 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15832,7 +15882,7 @@
 		(uuid "7ad713ba-9ec9-4667-8469-23e8ce0d14eb")
 	)
 	(label "HSIL7P"
-		(at 313.69 226.06 180)
+		(at 207.01 256.54 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15852,7 +15902,7 @@
 		(uuid "7ff4c09b-69a9-4972-8988-1b27a04eace5")
 	)
 	(label "SCL4"
-		(at 339.09 233.045 270)
+		(at 232.41 263.525 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15882,7 +15932,7 @@
 		(uuid "83282564-4f3a-499a-9db2-b675d9763f0e")
 	)
 	(label "HSO7N"
-		(at 369.57 181.61 0)
+		(at 262.89 212.09 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15890,6 +15940,16 @@
 			(justify left bottom)
 		)
 		(uuid "8336e0a8-d6e8-45ea-893f-b8a1fec7ac35")
+	)
+	(label "CON_TX1P"
+		(at 161.925 227.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "836a450d-ccf5-4331-87dd-45786708c75d")
 	)
 	(label "HSIL7P"
 		(at 275.59 43.18 0)
@@ -15932,7 +15992,7 @@
 		(uuid "888d7823-7813-4703-ac91-dc142d517d37")
 	)
 	(label "HSOL6N"
-		(at 369.57 217.17 0)
+		(at 262.89 247.65 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15942,7 +16002,7 @@
 		(uuid "889f130a-2e31-4dd0-a53a-2c3ae42b6632")
 	)
 	(label "HSIL7N"
-		(at 313.69 223.52 180)
+		(at 207.01 254 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15951,8 +16011,18 @@
 		)
 		(uuid "8a4f1e1e-0cd4-4f1f-bdf3-30ed8f17f6e9")
 	)
+	(label "AP_TX1N"
+		(at 135.255 224.79 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8b2f60f5-5891-48df-815b-3a7767b6fd58")
+	)
 	(label "HSIL0P"
-		(at 313.69 190.5 180)
+		(at 207.01 220.98 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15962,7 +16032,7 @@
 		(uuid "8b4fb056-89b4-4c22-aa6b-0a08c91f7aee")
 	)
 	(label "HSO4P"
-		(at 369.57 168.91 0)
+		(at 262.89 199.39 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15972,7 +16042,7 @@
 		(uuid "8bbaf487-9f87-49c6-8a78-8ed8c25e2f33")
 	)
 	(label "HSOL3P"
-		(at 369.57 204.47 0)
+		(at 262.89 234.95 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16012,7 +16082,7 @@
 		(uuid "8dc6c3c4-95ca-4cd5-8bba-6746ec1a7d97")
 	)
 	(label "HSO3N"
-		(at 369.57 161.29 0)
+		(at 262.89 191.77 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16062,7 +16132,7 @@
 		(uuid "930e42f2-fb0b-442d-b9b4-c98629f717e0")
 	)
 	(label "HSI1N"
-		(at 313.69 152.4 180)
+		(at 207.01 182.88 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16142,7 +16212,7 @@
 		(uuid "9a2a9e6c-bba1-4817-95c4-55a8f9f60530")
 	)
 	(label "HSI3N"
-		(at 313.69 162.56 180)
+		(at 207.01 193.04 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16191,6 +16261,16 @@
 		)
 		(uuid "9e02e681-aceb-4b9b-8299-01db416ca539")
 	)
+	(label "SDA_3P3"
+		(at 147.955 240.03 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9f9a767a-9389-4725-a52d-f207c0e52873")
+	)
 	(label "C_DN"
 		(at 40.64 69.85 0)
 		(effects
@@ -16202,7 +16282,7 @@
 		(uuid "a7edf83a-c7a8-4be5-9105-309d42eeebcb")
 	)
 	(label "HSOL2P"
-		(at 369.57 199.39 0)
+		(at 262.89 229.87 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16242,7 +16322,7 @@
 		(uuid "a99983ee-5503-41d5-b1e4-02a23b4793f3")
 	)
 	(label "HSOL7P"
-		(at 369.57 224.79 0)
+		(at 262.89 255.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16252,7 +16332,7 @@
 		(uuid "aab80145-fe90-4bdf-a9b6-d277a0038dce")
 	)
 	(label "HSO5N"
-		(at 369.57 171.45 0)
+		(at 262.89 201.93 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16272,7 +16352,7 @@
 		(uuid "ab9c57e9-8f01-4be4-bf79-98a0fab7bce6")
 	)
 	(label "HSIL2N"
-		(at 313.69 198.12 180)
+		(at 207.01 228.6 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16312,7 +16392,7 @@
 		(uuid "b72e01d7-0f14-43e8-8e2c-066960007bae")
 	)
 	(label "HSOL1N"
-		(at 369.57 191.77 0)
+		(at 262.89 222.25 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16322,7 +16402,7 @@
 		(uuid "bbcd4079-cdd1-4c8a-9f68-5e2d784e5c49")
 	)
 	(label "HSI0P"
-		(at 313.69 149.86 180)
+		(at 207.01 180.34 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16342,7 +16422,7 @@
 		(uuid "bd2763df-c476-4968-b607-c3bdcf7f6420")
 	)
 	(label "HSO2P"
-		(at 369.57 158.75 0)
+		(at 262.89 189.23 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16382,7 +16462,7 @@
 		(uuid "c1e5b534-5fb7-40bb-8e49-b69eba9572f1")
 	)
 	(label "HSIL2P"
-		(at 313.69 200.66 180)
+		(at 207.01 231.14 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16392,7 +16472,7 @@
 		(uuid "c2f80719-8925-4567-9ba2-28866522c7a1")
 	)
 	(label "HSI5P"
-		(at 313.69 175.26 180)
+		(at 207.01 205.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16412,7 +16492,7 @@
 		(uuid "c37f944e-26e7-44f2-a226-ca9aabc0698e")
 	)
 	(label "HSOL0P"
-		(at 369.57 189.23 0)
+		(at 262.89 219.71 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16432,7 +16512,7 @@
 		(uuid "c5894fe1-0fe5-4851-b744-cdc05eddeeb9")
 	)
 	(label "U2_PD0"
-		(at 369.57 227.33 0)
+		(at 262.89 257.81 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16472,7 +16552,7 @@
 		(uuid "cbeed707-c6ab-4615-8e36-4a8ef86ee21a")
 	)
 	(label "HSI4N"
-		(at 313.69 167.64 180)
+		(at 207.01 198.12 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16502,7 +16582,7 @@
 		(uuid "d16ffe82-43c8-4070-b0ba-fbeb6f9d6018")
 	)
 	(label "HSO1P"
-		(at 369.57 153.67 0)
+		(at 262.89 184.15 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16552,7 +16632,7 @@
 		(uuid "d43d0b71-c7fe-48d5-af85-c92c795f8f18")
 	)
 	(label "HSIL4N"
-		(at 313.69 208.28 180)
+		(at 207.01 238.76 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16560,6 +16640,16 @@
 			(justify right bottom)
 		)
 		(uuid "d72868eb-b35e-4122-be32-2879e9f08f2c")
+	)
+	(label "AP_RX1N"
+		(at 135.255 219.71 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d88d6fef-f2b6-422c-9fd6-2adcf2352b6b")
 	)
 	(label "C_TXP"
 		(at 40.64 85.09 0)
@@ -16631,6 +16721,16 @@
 		)
 		(uuid "ddc695f8-7d40-4bac-9c7c-90827411c8e7")
 	)
+	(label "SCL_3P3"
+		(at 145.415 240.03 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "df709b50-a9cb-4ef9-9701-9c3ff83c473b")
+	)
 	(label "HSO5N"
 		(at 198.12 124.46 180)
 		(effects
@@ -16692,7 +16792,7 @@
 		(uuid "e435e839-f124-424e-a25f-505d4c7d13ca")
 	)
 	(label "HSIL3P"
-		(at 313.69 205.74 180)
+		(at 207.01 236.22 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16702,7 +16802,7 @@
 		(uuid "e4f2d5b0-cc81-423e-87fc-f2cd0ec54904")
 	)
 	(label "HSO0N"
-		(at 369.57 146.05 0)
+		(at 262.89 176.53 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16742,7 +16842,7 @@
 		(uuid "e8a40be2-3a4d-446f-ada6-373f5fed4276")
 	)
 	(label "HSIL3N"
-		(at 313.69 203.2 180)
+		(at 207.01 233.68 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16762,7 +16862,7 @@
 		(uuid "e92ad7b2-616c-4970-b27e-e81fe674adb0")
 	)
 	(label "HSI6N"
-		(at 313.69 177.8 180)
+		(at 207.01 208.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16872,7 +16972,7 @@
 		(uuid "f56b8c74-8d51-4949-8225-3ba0629df82a")
 	)
 	(label "U2_PD1"
-		(at 369.57 229.87 0)
+		(at 262.89 260.35 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16902,7 +17002,7 @@
 		(uuid "fd2eafc2-6deb-43b3-887b-f400be3df949")
 	)
 	(label "HSI6P"
-		(at 313.69 180.34 180)
+		(at 207.01 210.82 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -28595,7 +28695,7 @@
 		)
 	)
 	(sheet
-		(at 313.69 144.78)
+		(at 207.01 175.26)
 		(size 55.88 88.265)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -28611,7 +28711,7 @@
 		)
 		(uuid "978d0394-a930-4f9b-b9ac-528aaa30e545")
 		(property "Sheetname" "Redriver"
-			(at 313.69 144.0684 0)
+			(at 207.01 174.5484 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28620,7 +28720,7 @@
 			)
 		)
 		(property "Sheetfile" "Redriver.kicad_sch"
-			(at 313.69 233.6296 0)
+			(at 207.01 264.1096 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28629,7 +28729,7 @@
 			)
 		)
 		(pin "HSI0N" bidirectional
-			(at 313.69 147.32 180)
+			(at 207.01 177.8 180)
 			(uuid "80288e5a-8f41-4eb8-bfb1-5b481e4a2ff7")
 			(effects
 				(font
@@ -28639,7 +28739,7 @@
 			)
 		)
 		(pin "HSI0P" bidirectional
-			(at 313.69 149.86 180)
+			(at 207.01 180.34 180)
 			(uuid "4b8f4fa0-5b14-4695-92c7-aaf63f5f9ff6")
 			(effects
 				(font
@@ -28649,7 +28749,7 @@
 			)
 		)
 		(pin "HSI1N" bidirectional
-			(at 313.69 152.4 180)
+			(at 207.01 182.88 180)
 			(uuid "19684aa8-fae4-4103-9159-bf77f893bf40")
 			(effects
 				(font
@@ -28659,7 +28759,7 @@
 			)
 		)
 		(pin "HSI1P" bidirectional
-			(at 313.69 154.94 180)
+			(at 207.01 185.42 180)
 			(uuid "e9c3e630-dd4e-4664-84c5-3dd083a80715")
 			(effects
 				(font
@@ -28669,7 +28769,7 @@
 			)
 		)
 		(pin "HSI2N" bidirectional
-			(at 313.69 157.48 180)
+			(at 207.01 187.96 180)
 			(uuid "6ffda60b-ac17-4c4e-bf52-800a02ed604c")
 			(effects
 				(font
@@ -28679,7 +28779,7 @@
 			)
 		)
 		(pin "HSI2P" bidirectional
-			(at 313.69 160.02 180)
+			(at 207.01 190.5 180)
 			(uuid "84d1bf0f-48e7-46bc-b05b-d60c5b8c1c7c")
 			(effects
 				(font
@@ -28689,7 +28789,7 @@
 			)
 		)
 		(pin "HSI3N" bidirectional
-			(at 313.69 162.56 180)
+			(at 207.01 193.04 180)
 			(uuid "e5de3660-fac7-45e8-8138-cb3e9e4f0ca3")
 			(effects
 				(font
@@ -28699,7 +28799,7 @@
 			)
 		)
 		(pin "HSI3P" bidirectional
-			(at 313.69 165.1 180)
+			(at 207.01 195.58 180)
 			(uuid "af7445cf-57c6-4daf-afac-824f29408a1e")
 			(effects
 				(font
@@ -28709,7 +28809,7 @@
 			)
 		)
 		(pin "HSI4N" bidirectional
-			(at 313.69 167.64 180)
+			(at 207.01 198.12 180)
 			(uuid "825be8c8-0d5e-485c-ae36-ad4e7b54daf9")
 			(effects
 				(font
@@ -28719,7 +28819,7 @@
 			)
 		)
 		(pin "HSI4P" bidirectional
-			(at 313.69 170.18 180)
+			(at 207.01 200.66 180)
 			(uuid "706fe95e-cfa7-4ec9-b28b-04bca89ad086")
 			(effects
 				(font
@@ -28729,7 +28829,7 @@
 			)
 		)
 		(pin "HSI5N" bidirectional
-			(at 313.69 172.72 180)
+			(at 207.01 203.2 180)
 			(uuid "ee472b40-7f41-4776-886e-e17cc95c0dac")
 			(effects
 				(font
@@ -28739,7 +28839,7 @@
 			)
 		)
 		(pin "HSI5P" bidirectional
-			(at 313.69 175.26 180)
+			(at 207.01 205.74 180)
 			(uuid "346e4e85-723b-48fd-91de-f5000e16a9ea")
 			(effects
 				(font
@@ -28749,7 +28849,7 @@
 			)
 		)
 		(pin "HSI6N" bidirectional
-			(at 313.69 177.8 180)
+			(at 207.01 208.28 180)
 			(uuid "51c50184-da44-4cde-b658-c9455d6762f6")
 			(effects
 				(font
@@ -28759,7 +28859,7 @@
 			)
 		)
 		(pin "HSI6P" bidirectional
-			(at 313.69 180.34 180)
+			(at 207.01 210.82 180)
 			(uuid "90ba8e33-c3d0-4482-8419-3c6276e18c27")
 			(effects
 				(font
@@ -28769,7 +28869,7 @@
 			)
 		)
 		(pin "HSI7N" bidirectional
-			(at 313.69 182.88 180)
+			(at 207.01 213.36 180)
 			(uuid "7f8a8e30-a83b-44ab-9143-a7848e96661d")
 			(effects
 				(font
@@ -28779,7 +28879,7 @@
 			)
 		)
 		(pin "HSI7P" bidirectional
-			(at 313.69 185.42 180)
+			(at 207.01 215.9 180)
 			(uuid "bd2211b6-e35c-4a8e-b547-6d6f9a6228d1")
 			(effects
 				(font
@@ -28789,7 +28889,7 @@
 			)
 		)
 		(pin "HSIL0N" bidirectional
-			(at 313.69 187.96 180)
+			(at 207.01 218.44 180)
 			(uuid "8b6405b3-fc95-4d61-b583-bfaf38c07da6")
 			(effects
 				(font
@@ -28799,7 +28899,7 @@
 			)
 		)
 		(pin "HSIL0P" bidirectional
-			(at 313.69 190.5 180)
+			(at 207.01 220.98 180)
 			(uuid "4ab7dcac-218f-4e30-967d-3108746df2c5")
 			(effects
 				(font
@@ -28809,7 +28909,7 @@
 			)
 		)
 		(pin "HSIL1N" bidirectional
-			(at 313.69 193.04 180)
+			(at 207.01 223.52 180)
 			(uuid "d885e9e2-3d9a-4235-968c-506026ed9a36")
 			(effects
 				(font
@@ -28819,7 +28919,7 @@
 			)
 		)
 		(pin "HSIL1P" bidirectional
-			(at 313.69 195.58 180)
+			(at 207.01 226.06 180)
 			(uuid "7dc085b2-1415-4707-a5dd-d697b8c067d0")
 			(effects
 				(font
@@ -28829,7 +28929,7 @@
 			)
 		)
 		(pin "HSIL2N" bidirectional
-			(at 313.69 198.12 180)
+			(at 207.01 228.6 180)
 			(uuid "1fef58da-2d54-45bb-b5e5-7bdd6a8e8fc0")
 			(effects
 				(font
@@ -28839,7 +28939,7 @@
 			)
 		)
 		(pin "HSIL2P" bidirectional
-			(at 313.69 200.66 180)
+			(at 207.01 231.14 180)
 			(uuid "b172bfb2-d4a8-482d-8864-dd2578dfaa50")
 			(effects
 				(font
@@ -28849,7 +28949,7 @@
 			)
 		)
 		(pin "HSIL3N" bidirectional
-			(at 313.69 203.2 180)
+			(at 207.01 233.68 180)
 			(uuid "c6610f69-05ce-4b5e-b6b4-49f790bf98af")
 			(effects
 				(font
@@ -28859,7 +28959,7 @@
 			)
 		)
 		(pin "HSIL3P" bidirectional
-			(at 313.69 205.74 180)
+			(at 207.01 236.22 180)
 			(uuid "939a3903-c013-4163-aac8-704f39909d3d")
 			(effects
 				(font
@@ -28869,7 +28969,7 @@
 			)
 		)
 		(pin "HSIL4N" bidirectional
-			(at 313.69 208.28 180)
+			(at 207.01 238.76 180)
 			(uuid "38879748-457f-43b9-a354-f5ae976f6003")
 			(effects
 				(font
@@ -28879,7 +28979,7 @@
 			)
 		)
 		(pin "HSIL4P" bidirectional
-			(at 313.69 210.82 180)
+			(at 207.01 241.3 180)
 			(uuid "c6bf223d-684f-46ac-a468-ac18525a8bf0")
 			(effects
 				(font
@@ -28889,7 +28989,7 @@
 			)
 		)
 		(pin "HSIL5N" bidirectional
-			(at 313.69 213.36 180)
+			(at 207.01 243.84 180)
 			(uuid "02437413-1b1b-43b6-b00c-502bdb2de7d0")
 			(effects
 				(font
@@ -28899,7 +28999,7 @@
 			)
 		)
 		(pin "HSIL5P" bidirectional
-			(at 313.69 215.9 180)
+			(at 207.01 246.38 180)
 			(uuid "c40797a2-77eb-4c70-97fc-a062089dda8a")
 			(effects
 				(font
@@ -28909,7 +29009,7 @@
 			)
 		)
 		(pin "HSIL6N" bidirectional
-			(at 313.69 218.44 180)
+			(at 207.01 248.92 180)
 			(uuid "8251471e-8027-44bf-ac43-2f06b8cc946f")
 			(effects
 				(font
@@ -28919,7 +29019,7 @@
 			)
 		)
 		(pin "HSIL6P" bidirectional
-			(at 313.69 220.98 180)
+			(at 207.01 251.46 180)
 			(uuid "64ae582b-1852-4ee6-afb7-606f5140553f")
 			(effects
 				(font
@@ -28929,7 +29029,7 @@
 			)
 		)
 		(pin "HSIL7N" bidirectional
-			(at 313.69 223.52 180)
+			(at 207.01 254 180)
 			(uuid "30c6aed6-a175-47cc-b627-3a8de8942234")
 			(effects
 				(font
@@ -28939,7 +29039,7 @@
 			)
 		)
 		(pin "HSIL7P" bidirectional
-			(at 313.69 226.06 180)
+			(at 207.01 256.54 180)
 			(uuid "fe6b9b29-5b58-428a-973f-69ca249ba359")
 			(effects
 				(font
@@ -28949,7 +29049,7 @@
 			)
 		)
 		(pin "HSO0N" bidirectional
-			(at 369.57 146.05 0)
+			(at 262.89 176.53 0)
 			(uuid "5fca9a24-1b0f-4d87-bdb5-31da5c40ccb0")
 			(effects
 				(font
@@ -28959,7 +29059,7 @@
 			)
 		)
 		(pin "HSO0P" bidirectional
-			(at 369.57 148.59 0)
+			(at 262.89 179.07 0)
 			(uuid "d312541f-6db1-41b2-af06-c67053221d0e")
 			(effects
 				(font
@@ -28969,7 +29069,7 @@
 			)
 		)
 		(pin "HSO1N" bidirectional
-			(at 369.57 151.13 0)
+			(at 262.89 181.61 0)
 			(uuid "305817e5-9355-400d-9f0b-952949efa64e")
 			(effects
 				(font
@@ -28979,7 +29079,7 @@
 			)
 		)
 		(pin "HSO1P" bidirectional
-			(at 369.57 153.67 0)
+			(at 262.89 184.15 0)
 			(uuid "2eae039d-2022-4b90-ba72-592c73b81803")
 			(effects
 				(font
@@ -28989,7 +29089,7 @@
 			)
 		)
 		(pin "HSO2N" bidirectional
-			(at 369.57 156.21 0)
+			(at 262.89 186.69 0)
 			(uuid "25f89aac-e3a9-4c36-9af4-68872b4e59f3")
 			(effects
 				(font
@@ -28999,7 +29099,7 @@
 			)
 		)
 		(pin "HSO2P" bidirectional
-			(at 369.57 158.75 0)
+			(at 262.89 189.23 0)
 			(uuid "bd6c7064-8696-4773-9a02-d0f3f8c57c75")
 			(effects
 				(font
@@ -29009,7 +29109,7 @@
 			)
 		)
 		(pin "HSO3N" bidirectional
-			(at 369.57 161.29 0)
+			(at 262.89 191.77 0)
 			(uuid "7516cdab-859b-45b3-aba5-268e6172fed2")
 			(effects
 				(font
@@ -29019,7 +29119,7 @@
 			)
 		)
 		(pin "HSO3P" bidirectional
-			(at 369.57 163.83 0)
+			(at 262.89 194.31 0)
 			(uuid "d92ebef5-673e-4a7a-879d-56a682849f5f")
 			(effects
 				(font
@@ -29029,7 +29129,7 @@
 			)
 		)
 		(pin "HSO4N" bidirectional
-			(at 369.57 166.37 0)
+			(at 262.89 196.85 0)
 			(uuid "e0839675-5812-4481-a543-0ff61fdb9bb2")
 			(effects
 				(font
@@ -29039,7 +29139,7 @@
 			)
 		)
 		(pin "HSO4P" bidirectional
-			(at 369.57 168.91 0)
+			(at 262.89 199.39 0)
 			(uuid "76de10ca-7599-41d3-928d-e4003386eba9")
 			(effects
 				(font
@@ -29049,7 +29149,7 @@
 			)
 		)
 		(pin "HSO5N" bidirectional
-			(at 369.57 171.45 0)
+			(at 262.89 201.93 0)
 			(uuid "b694aa41-7cb4-4d5a-8cc6-8914ce252ca2")
 			(effects
 				(font
@@ -29059,7 +29159,7 @@
 			)
 		)
 		(pin "HSO5P" bidirectional
-			(at 369.57 173.99 0)
+			(at 262.89 204.47 0)
 			(uuid "fe0ff313-e86d-4942-853e-c39854732652")
 			(effects
 				(font
@@ -29069,7 +29169,7 @@
 			)
 		)
 		(pin "HSO6N" bidirectional
-			(at 369.57 176.53 0)
+			(at 262.89 207.01 0)
 			(uuid "a175e9ef-4d39-4685-9d9f-481e73b35397")
 			(effects
 				(font
@@ -29079,7 +29179,7 @@
 			)
 		)
 		(pin "HSO6P" bidirectional
-			(at 369.57 179.07 0)
+			(at 262.89 209.55 0)
 			(uuid "7d61cf09-f1c6-48bc-b3c0-70daf90ddd29")
 			(effects
 				(font
@@ -29089,7 +29189,7 @@
 			)
 		)
 		(pin "HSO7N" bidirectional
-			(at 369.57 181.61 0)
+			(at 262.89 212.09 0)
 			(uuid "9542ee67-02cf-4274-a91d-95bd65224c48")
 			(effects
 				(font
@@ -29099,7 +29199,7 @@
 			)
 		)
 		(pin "HSO7P" bidirectional
-			(at 369.57 184.15 0)
+			(at 262.89 214.63 0)
 			(uuid "2d2e7741-17fe-4dbb-a39a-406eb17ec25e")
 			(effects
 				(font
@@ -29109,7 +29209,7 @@
 			)
 		)
 		(pin "HSOL0N" bidirectional
-			(at 369.57 186.69 0)
+			(at 262.89 217.17 0)
 			(uuid "8c16631f-c15c-426b-a6bc-8e0178a195dd")
 			(effects
 				(font
@@ -29119,7 +29219,7 @@
 			)
 		)
 		(pin "HSOL0P" bidirectional
-			(at 369.57 189.23 0)
+			(at 262.89 219.71 0)
 			(uuid "90cf18d6-1d0e-4b3d-af9c-e461d934c108")
 			(effects
 				(font
@@ -29129,7 +29229,7 @@
 			)
 		)
 		(pin "HSOL1N" bidirectional
-			(at 369.57 191.77 0)
+			(at 262.89 222.25 0)
 			(uuid "6ceb69b4-1d70-4699-96cf-9df0cb9a34ce")
 			(effects
 				(font
@@ -29139,7 +29239,7 @@
 			)
 		)
 		(pin "HSOL1P" bidirectional
-			(at 369.57 194.31 0)
+			(at 262.89 224.79 0)
 			(uuid "d347c6f4-bdbb-4b28-82a4-4301293d5fdf")
 			(effects
 				(font
@@ -29149,7 +29249,7 @@
 			)
 		)
 		(pin "HSOL2N" bidirectional
-			(at 369.57 196.85 0)
+			(at 262.89 227.33 0)
 			(uuid "33d77876-533a-4e2a-a82e-42c81eb686e8")
 			(effects
 				(font
@@ -29159,7 +29259,7 @@
 			)
 		)
 		(pin "HSOL2P" bidirectional
-			(at 369.57 199.39 0)
+			(at 262.89 229.87 0)
 			(uuid "f440e033-eee0-49c2-817f-0350e461db5b")
 			(effects
 				(font
@@ -29169,7 +29269,7 @@
 			)
 		)
 		(pin "HSOL3N" bidirectional
-			(at 369.57 201.93 0)
+			(at 262.89 232.41 0)
 			(uuid "1e5d0fb3-a933-4545-bbe8-437244e6ffdc")
 			(effects
 				(font
@@ -29179,7 +29279,7 @@
 			)
 		)
 		(pin "HSOL3P" bidirectional
-			(at 369.57 204.47 0)
+			(at 262.89 234.95 0)
 			(uuid "2c7844a7-c3c8-4c4e-8a25-31bdf2fb3685")
 			(effects
 				(font
@@ -29189,7 +29289,7 @@
 			)
 		)
 		(pin "HSOL4N" bidirectional
-			(at 369.57 207.01 0)
+			(at 262.89 237.49 0)
 			(uuid "611c2beb-0964-40f3-9aa4-61cfc32f4524")
 			(effects
 				(font
@@ -29199,7 +29299,7 @@
 			)
 		)
 		(pin "HSOL4P" bidirectional
-			(at 369.57 209.55 0)
+			(at 262.89 240.03 0)
 			(uuid "b994c64e-4f22-4141-a2de-03fa102d56d9")
 			(effects
 				(font
@@ -29209,7 +29309,7 @@
 			)
 		)
 		(pin "HSOL5N" bidirectional
-			(at 369.57 212.09 0)
+			(at 262.89 242.57 0)
 			(uuid "b19347eb-4091-435e-ab57-c1d32f5119e5")
 			(effects
 				(font
@@ -29219,7 +29319,7 @@
 			)
 		)
 		(pin "HSOL5P" bidirectional
-			(at 369.57 214.63 0)
+			(at 262.89 245.11 0)
 			(uuid "057da1ed-ea9e-44bc-93dc-d7e328032ccb")
 			(effects
 				(font
@@ -29229,7 +29329,7 @@
 			)
 		)
 		(pin "HSOL6N" bidirectional
-			(at 369.57 217.17 0)
+			(at 262.89 247.65 0)
 			(uuid "9f7a2b99-6d64-4da7-84a8-a464f68ea323")
 			(effects
 				(font
@@ -29239,7 +29339,7 @@
 			)
 		)
 		(pin "HSOL6P" bidirectional
-			(at 369.57 219.71 0)
+			(at 262.89 250.19 0)
 			(uuid "6b98bc74-bd23-4a6f-a5bd-655d6b435752")
 			(effects
 				(font
@@ -29249,7 +29349,7 @@
 			)
 		)
 		(pin "HSOL7N" bidirectional
-			(at 369.57 222.25 0)
+			(at 262.89 252.73 0)
 			(uuid "a405e934-4c8b-49ad-b49d-54ab82405cf3")
 			(effects
 				(font
@@ -29259,7 +29359,7 @@
 			)
 		)
 		(pin "HSOL7P" bidirectional
-			(at 369.57 224.79 0)
+			(at 262.89 255.27 0)
 			(uuid "06237bd1-0de9-432f-ac89-2a6db7549d4a")
 			(effects
 				(font
@@ -29269,7 +29369,7 @@
 			)
 		)
 		(pin "U1_PD0" bidirectional
-			(at 313.69 228.6 180)
+			(at 207.01 259.08 180)
 			(uuid "a56428d6-023d-4f15-ba2e-bf7a9a227254")
 			(effects
 				(font
@@ -29279,7 +29379,7 @@
 			)
 		)
 		(pin "U1_PD1" bidirectional
-			(at 313.69 231.14 180)
+			(at 207.01 261.62 180)
 			(uuid "45935d16-e222-481e-b6a5-1c4fc9013d50")
 			(effects
 				(font
@@ -29289,7 +29389,7 @@
 			)
 		)
 		(pin "U2_PD0" bidirectional
-			(at 369.57 227.33 0)
+			(at 262.89 257.81 0)
 			(uuid "8d0644b3-6da4-44f9-9321-c24ad6063c40")
 			(effects
 				(font
@@ -29299,7 +29399,7 @@
 			)
 		)
 		(pin "U2_PD1" bidirectional
-			(at 369.57 229.87 0)
+			(at 262.89 260.35 0)
 			(uuid "6cafa5b0-e190-44ca-bff7-0a8a8a15c093")
 			(effects
 				(font
@@ -29309,7 +29409,7 @@
 			)
 		)
 		(pin "SCL2" bidirectional
-			(at 336.55 233.045 270)
+			(at 229.87 263.525 270)
 			(uuid "f8fad141-1dce-4ef1-9954-d8717d7ac0c0")
 			(effects
 				(font
@@ -29319,7 +29419,7 @@
 			)
 		)
 		(pin "SCL4" bidirectional
-			(at 339.09 233.045 270)
+			(at 232.41 263.525 270)
 			(uuid "258f7ff0-b4f5-4da9-b00d-d5d7e3abc427")
 			(effects
 				(font
@@ -29329,7 +29429,7 @@
 			)
 		)
 		(pin "SDA2" bidirectional
-			(at 341.63 233.045 270)
+			(at 234.95 263.525 270)
 			(uuid "6767215d-828c-422e-8d25-b8e2e2b070e5")
 			(effects
 				(font
@@ -29339,7 +29439,7 @@
 			)
 		)
 		(pin "SDA4" bidirectional
-			(at 344.17 233.045 270)
+			(at 237.49 263.525 270)
 			(uuid "a24364d5-14b2-4038-ba45-2e664aa308db")
 			(effects
 				(font
@@ -29352,6 +29452,158 @@
 			(project "XG_Mobile_Dock_XT"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 135.255 215.265)
+		(size 26.67 24.765)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "a254375d-80c0-4b18-9fd6-3cbd6a868414")
+		(property "Sheetname" "Retimer_USB"
+			(at 135.255 214.5534 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Retimer_USB.kicad_sch"
+			(at 135.255 240.6146 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "AP_RX1N" bidirectional
+			(at 135.255 219.71 180)
+			(uuid "0d54fc67-c6fb-44a9-ae9b-ac2f920a4afe")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "AP_RX1P" bidirectional
+			(at 135.255 222.25 180)
+			(uuid "8f4ba1fd-7648-469e-87a7-5c931267096e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "AP_TX1N" bidirectional
+			(at 135.255 224.79 180)
+			(uuid "5459e11e-143a-4c56-b1c1-692ec55a2e6d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "AP_TX1P" bidirectional
+			(at 135.255 227.33 180)
+			(uuid "15ef37ea-3418-4a90-abf0-15ad68b53a33")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CON_RX1N" bidirectional
+			(at 161.925 219.71 0)
+			(uuid "cb4e5ace-0f19-4f42-9c3b-80932d53ab51")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CON_RX1P" bidirectional
+			(at 161.925 222.25 0)
+			(uuid "2b07e830-4ec5-4507-9d8d-ef13c0f85721")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CON_TX1N" bidirectional
+			(at 161.925 224.79 0)
+			(uuid "8fcde3c9-248f-4d8f-90f6-bd315f081623")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CON_TX1P" bidirectional
+			(at 161.925 227.33 0)
+			(uuid "22c05c33-689f-43b8-9e0b-3b6fe3f0e7d3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "EN" bidirectional
+			(at 142.875 240.03 270)
+			(uuid "c3246680-34ca-4890-9632-9dfd6dbc4aa5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SCL_3P3" bidirectional
+			(at 145.415 240.03 270)
+			(uuid "14e64131-17f7-4003-a9e5-80f6adf19e54")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SDA_3P3" bidirectional
+			(at 147.955 240.03 270)
+			(uuid "b48cfd27-f155-4db8-8f24-540a61d9a05f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "XG_Mobile_Dock_XT"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(page "4")
 				)
 			)
 		)

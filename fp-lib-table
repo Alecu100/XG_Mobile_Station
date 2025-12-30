@@ -42,4 +42,5 @@
   (lib (name "MMBT5551 RANGE 200-300")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/MMBT5551 RANGE 200-300/MMBT5551 RANGE 200-300.elibz")(options "")(descr ""))
   (lib (name "TUSB1002ARGER")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/TUSB1002ARGER/TUSB1002ARGER.elibz")(options "")(descr ""))
   (lib (name "PI2EQX22024")(type "KiCad")(uri "${KIPRJMOD}/Footprints/PI2EQX22024")(options "")(descr ""))
+  (lib (name "LD1117S18CTR")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Symbols/LD1117S18CTR.elibz")(options "")(descr ""))
 )
