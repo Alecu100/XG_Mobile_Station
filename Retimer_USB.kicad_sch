@@ -1290,7 +1290,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "15nF FN03B153K6R3PLG MfPart C565507 LCSC\n100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n330nF GRM033R61E334KE15D MfPart C723889 LCSC 0201\n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n7.5 NQ01WMJ075JTEE MfPArt C965302 LCSC 0201\n220k 0603WAF2203T5E MfPart C22961 LCSC 0603"
+	(text "15nF FN03B153K6R3PLG MfPart C565507 LCSC\n100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n330nF GRM033R61E334KE15D MfPart C723889 LCSC 0201\n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n7.5 NQ01WMJ075JTEE MfPArt C965302 LCSC 0201\n220k 0201WMF2203TEE MfPart C473458 LCSC 0201"
 		(exclude_from_sim no)
 		(at 264.16 94.234 0)
 		(effects
@@ -3977,7 +3977,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 209.042 63.5 90)
 			(effects
 				(font
@@ -4004,7 +4004,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C22961"
+		(property "LCSC" "C473458"
 			(at 210.82 63.5 0)
 			(effects
 				(font
@@ -4013,7 +4013,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "0603WAF2203T5E"
+		(property "Part_Number" "0201WMF2203TEE"
 			(at 210.82 63.5 0)
 			(effects
 				(font
@@ -4237,7 +4237,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
 			(at 103.378 116.84 90)
 			(effects
 				(font
@@ -4264,7 +4264,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C22961"
+		(property "LCSC" "C473458"
 			(at 101.6 116.84 0)
 			(effects
 				(font
@@ -4273,7 +4273,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "0603WAF2203T5E"
+		(property "Part_Number" "0201WMF2203TEE"
 			(at 101.6 116.84 0)
 			(effects
 				(font
