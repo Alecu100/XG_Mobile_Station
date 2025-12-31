@@ -14781,6 +14781,16 @@
 		)
 		(uuid "03ea04f9-5aa9-4c5b-80c0-0b74a3847030")
 	)
+	(label "USB_RETIMER_EN"
+		(at 142.875 240.03 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "04133ea5-73a7-483a-826a-3b6df8e3b82b")
+	)
 	(label "HSIL5P"
 		(at 228.6 127 0)
 		(effects
@@ -15302,7 +15312,7 @@
 		(uuid "35ef12cf-2070-4594-911a-6fc665ef5431")
 	)
 	(label "AP_RX1P"
-		(at 40.64 87.63 0)
+		(at 40.64 85.09 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16521,6 +16531,16 @@
 		)
 		(uuid "c64d0f8f-cd40-4423-93d7-1b2585cf16ca")
 	)
+	(label "USB_RETIMER_EN"
+		(at 151.13 46.99 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c6e492fd-0ad2-4386-84f9-3e61de3b1c89")
+	)
 	(label "HSI6P"
 		(at 40.64 118.11 0)
 		(effects
@@ -16652,7 +16672,7 @@
 		(uuid "d88d6fef-f2b6-422c-9fd6-2adcf2352b6b")
 	)
 	(label "AP_RX1N"
-		(at 40.64 85.09 0)
+		(at 40.64 87.63 0)
 		(effects
 			(font
 				(size 1.27 1.27)
