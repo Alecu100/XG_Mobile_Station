@@ -2727,7 +2727,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PI2EQX22024"
+		(property "Footprint" "PI2EQX22024:PI2EQX22024"
 			(at 88.9 131.75 0)
 			(effects
 				(font
