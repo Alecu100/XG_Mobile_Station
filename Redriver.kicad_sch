@@ -2837,7 +2837,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC 0201\n1uF CL05A105KA5NQNC MfPart C52923 LCSC 0402\n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402\n10 0603WAF100JT5E MfPart C22859 LCSC 0603\n4.02k 0603WAF4021T5E MfPart C23040 LCSC 0603\n100k 0603WAF1003T5E MfPart C25803 LCSC 0603\n470k 0603WAF4703T5E MfPart C23178 LCSC 0603\n10k 0603WAF1002T5E MfPart C25804 LCSC 0603\n100 0603WAF1000T5E MfPart C22775 LCSC 0603"
+	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC 0201\n1uF CL05A105KA5NQNC MfPart C52923 LCSC 0402\n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n10uF CL31B106KAHNNNE MfPart C14860 LCSC 1206\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402\n10 0603WAF100JT5E MfPart C22859 LCSC 0603\n4.02k 0603WAF4021T5E MfPart C23040 LCSC 0603\n100k 0603WAF1003T5E MfPart C25803 LCSC 0603\n470k 0603WAF4703T5E MfPart C23178 LCSC 0603\n10k 0603WAF1002T5E MfPart C25804 LCSC 0603\n100 0603WAF1000T5E MfPart C22775 LCSC 0603"
 		(exclude_from_sim no)
 		(at 250.444 24.892 0)
 		(effects
@@ -2870,6 +2870,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0c085e75-c1e6-42a1-8942-eda14a6a4c5d")
+	)
+	(junction
+		(at 336.55 147.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0cde0bbb-2871-48e2-b3e9-e6f5f5426128")
 	)
 	(junction
 		(at 300.99 93.98)
@@ -3130,6 +3136,12 @@
 		(uuid "9c8fb5b2-125f-40c5-8371-d7406adbc1c2")
 	)
 	(junction
+		(at 181.61 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9cb91f0e-b1a8-4984-8c43-0bb96bbbd1da")
+	)
+	(junction
 		(at 331.47 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3334,6 +3346,16 @@
 			(type default)
 		)
 		(uuid "07ae52b9-0164-46fe-87d3-178bb110e83c")
+	)
+	(wire
+		(pts
+			(xy 336.55 147.32) (xy 342.9 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0836f78a-b682-4337-8871-fb0e3bb4b788")
 	)
 	(wire
 		(pts
@@ -4347,7 +4369,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 53.34) (xy 185.42 53.34)
+			(xy 177.8 53.34) (xy 181.61 53.34)
 		)
 		(stroke
 			(width 0)
@@ -4757,7 +4779,7 @@
 	)
 	(wire
 		(pts
-			(xy 330.2 147.32) (xy 342.9 147.32)
+			(xy 330.2 147.32) (xy 336.55 147.32)
 		)
 		(stroke
 			(width 0)
@@ -5974,6 +5996,16 @@
 			(type default)
 		)
 		(uuid "fd2ac63f-636b-4c08-a037-e6c1a7792aa8")
+	)
+	(wire
+		(pts
+			(xy 181.61 53.34) (xy 185.42 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fddf68b3-0773-4459-a73c-e2d9daff00f4")
 	)
 	(wire
 		(pts
@@ -10354,6 +10386,92 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 181.61 57.15 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1dd2f4df-e026-4869-8ec9-7b6d3adc572d")
+		(property "Reference" "C89"
+			(at 178.816 65.278 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 179.832 60.706 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 182.5752 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 181.61 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 181.61 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL31B106KAHNNNE"
+			(at 181.61 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C14860"
+			(at 181.61 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "df676396-55ed-46aa-b749-7dbffde1cdd8")
+		)
+		(pin "2"
+			(uuid "766c2f3c-e893-48db-91ef-6840371e6f65")
+		)
+		(instances
+			(project "XG_Mobile_Dock_XT"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/978d0394-a930-4f9b-b9ac-528aaa30e545"
+					(reference "C89")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 180.34 -12.7 90)
 		(unit 1)
@@ -11564,6 +11682,72 @@
 			(project "XG_Mobile_Dock_XT"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/978d0394-a930-4f9b-b9ac-528aaa30e545"
 					(reference "R87")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 181.61 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2c05b0f6-aabc-49c0-9a56-ee465d462e1a")
+		(property "Reference" "#PWR0186"
+			(at 181.61 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 181.61 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b4c1d3c3-3ab5-4c87-abe1-c292ee6a2fdd")
+		)
+		(instances
+			(project "XG_Mobile_Dock_XT"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/978d0394-a930-4f9b-b9ac-528aaa30e545"
+					(reference "#PWR0186")
 					(unit 1)
 				)
 			)
@@ -19506,6 +19690,72 @@
 			(project "XG_Mobile_Dock_XT"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/978d0394-a930-4f9b-b9ac-528aaa30e545"
 					(reference "#PWR035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 336.55 154.94 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "79afb19d-f73f-41d4-9908-0d206fbc1839")
+		(property "Reference" "#PWR0187"
+			(at 336.55 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 336.55 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 336.55 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 336.55 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 336.55 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9ba74d36-7faa-40c1-a467-82363ade62e4")
+		)
+		(instances
+			(project "XG_Mobile_Dock_XT"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/978d0394-a930-4f9b-b9ac-528aaa30e545"
+					(reference "#PWR0187")
 					(unit 1)
 				)
 			)
@@ -29781,6 +30031,92 @@
 			(project "XG_Mobile_Dock_XT"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/978d0394-a930-4f9b-b9ac-528aaa30e545"
 					(reference "SW26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 336.55 151.13 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fbd280a1-ea5e-48bd-abf5-c537d927c888")
+		(property "Reference" "C90"
+			(at 333.756 159.258 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 334.772 154.686 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 337.5152 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 336.55 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 336.55 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL31B106KAHNNNE"
+			(at 336.55 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C14860"
+			(at 336.55 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "928bf8f3-2452-4933-9fc5-df191bd4deff")
+		)
+		(pin "2"
+			(uuid "4bdcce76-0375-4edb-a803-970367042d12")
+		)
+		(instances
+			(project "XG_Mobile_Dock_XT"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/978d0394-a930-4f9b-b9ac-528aaa30e545"
+					(reference "C90")
 					(unit 1)
 				)
 			)
