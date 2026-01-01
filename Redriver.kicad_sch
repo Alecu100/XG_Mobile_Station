@@ -6465,7 +6465,7 @@
 		)
 		(uuid "fec7c222-5e75-4ccc-b677-e8bc0ff1d7d2")
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at 123.19 104.14 180)
 		(fields_autoplaced yes)
@@ -6477,7 +6477,7 @@
 		)
 		(uuid "2f75b763-7549-425c-903d-84f983e41993")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 115.1248 104.14 0)
+			(at 107.3838 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6509,7 +6509,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at -10.16 31.75 180)
 		(fields_autoplaced yes)
@@ -6521,7 +6521,7 @@
 		)
 		(uuid "64828be5-1fad-4bcc-bbbf-67a20a8d57af")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -18.2252 31.75 0)
+			(at -25.9662 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6575,7 +6575,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at 123.19 119.38 180)
 		(fields_autoplaced yes)
@@ -6587,7 +6587,7 @@
 		)
 		(uuid "ab2d4eb1-aa2d-45a3-8c46-e694a6856a7c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 115.1248 119.38 0)
+			(at 107.3838 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6597,7 +6597,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at -10.16 17.78 180)
 		(fields_autoplaced yes)
@@ -6609,7 +6609,7 @@
 		)
 		(uuid "b785ada1-6c3a-4ae6-bde2-aaf82f621c34")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at -18.2252 17.78 0)
+			(at -25.9662 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
