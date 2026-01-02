@@ -36,4 +36,5 @@
   (lib (name "TUSB1002ARGER")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/TUSB1002ARGER.elibz")(options "")(descr ""))
   (lib (name "PI2EQX22024")(type "KiCad")(uri "${KIPRJMOD}/Symbols/PI2EQX22024XEAEX.kicad_sym")(options "")(descr ""))
   (lib (name "LD1117S18CTR")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/LD1117S18CTR.elibz")(options "")(descr ""))
+  (lib (name "LD1085D2T33R")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/LD1085D2T33R.elibz")(options "")(descr ""))
 )

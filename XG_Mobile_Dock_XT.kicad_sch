@@ -9187,7 +9187,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "LD1086DT33TR:LD1086DT33TR"
+		(symbol "LD1085D2T33R:LD1085D2T33R"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -9207,7 +9207,7 @@
 					)
 				)
 			)
-			(property "Footprint" "LD1086DT33TR:TO-252-2_L6.5-W6.1-P4.58-LS10.0-TL"
+			(property "Footprint" "LD1085D2T33R:TO-263-2_L10.0-W9.1-P5.08-LS15.2-TL"
 				(at 0 0 0)
 				(effects
 					(font
@@ -9216,7 +9216,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20170919/C12051_1505787088456976738.pdf"
+			(property "Datasheet" "https://item.szlcsc.com/datasheet/LD1085D2T33R/8390.html"
 				(at 0 0 0)
 				(effects
 					(font
@@ -9225,7 +9225,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Output Type:Fixed Maximum Input Voltage:30V Output Voltage:3.3V Output Voltage:3.3V Output Current:1.5A Power Supply Rejection Ratio (PSRR):79dB@(120Hz) Dropout Voltage:1.5V@(1.5A) standby current:10mA Feature:Automotive Standard Certification；Thermal Pro"
+			(property "Description" "Output Type:Fixed Voltage - Supply:30V Output Voltage:3.3V Output Voltage:3.3V Output Current:3A Power Supply Rejection Ratio (PSRR):72dB@(120Hz) Voltage Dropout:1.3V@(3A) standby current:5mA Noise:0.003%Vout Features:Over Temperature Protection Operating"
 				(at 0 0 0)
 				(effects
 					(font
@@ -9234,7 +9234,7 @@
 					(hide yes)
 				)
 			)
-			(property "Manufacturer Part" "LD1086DT33TR"
+			(property "Manufacturer Part" "LD1085D2T33R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -9252,7 +9252,7 @@
 					(hide yes)
 				)
 			)
-			(property "Supplier Part" "C12051"
+			(property "Supplier Part" "C7913"
 				(at 0 0 0)
 				(effects
 					(font
@@ -9270,7 +9270,7 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC Part Name" "1.5 A可调与固定低压降正电压稳压器"
+			(property "LCSC Part Name" "3 A低压降可调和固定正电压稳压器"
 				(at 0 0 0)
 				(effects
 					(font
@@ -9279,10 +9279,10 @@
 					(hide yes)
 				)
 			)
-			(symbol "LD1086DT33TR_1_0"
+			(symbol "LD1085D2T33R_1_0"
 				(rectangle
-					(start -7.62 -1.27)
-					(end 7.62 6.35)
+					(start -7.62 -2.54)
+					(end 7.62 7.62)
 					(stroke
 						(width 0)
 						(type default)
@@ -9291,17 +9291,8 @@
 						(type none)
 					)
 				)
-				(text "GND"
-					(at -2.54 -1.2446 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-						(justify left bottom)
-					)
-				)
 				(pin unspecified line
-					(at -12.7 3.81 0)
+					(at -12.7 2.54 0)
 					(length 5.08)
 					(name "IN"
 						(effects
@@ -9319,12 +9310,12 @@
 					)
 				)
 				(pin unspecified line
-					(at 0 -6.35 90)
+					(at 0 -7.62 90)
 					(length 5.08)
-					(name "GND"
+					(name "ADJ/GND"
 						(effects
 							(font
-								(size 0.0254 0.0254)
+								(size 1.27 1.27)
 							)
 						)
 					)
@@ -9337,7 +9328,7 @@
 					)
 				)
 				(pin unspecified line
-					(at 12.7 3.81 180)
+					(at 12.7 2.54 180)
 					(length 5.08)
 					(name "OUT"
 						(effects
@@ -18515,122 +18506,6 @@
 		)
 	)
 	(symbol
-		(lib_id "LD1086DT33TR:LD1086DT33TR")
-		(at 166.37 152.4 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "20c9995e-e691-44bf-8e3a-725311925c16")
-		(property "Reference" "U5"
-			(at 166.37 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 166.37 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LD1086DT33TR:TO-252-2_L6.5-W6.1-P4.58-LS10.0-TL"
-			(at 166.37 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20170919/C12051_1505787088456976738.pdf"
-			(at 166.37 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Output Type:Fixed Maximum Input Voltage:30V Output Voltage:3.3V Output Voltage:3.3V Output Current:1.5A Power Supply Rejection Ratio (PSRR):79dB@(120Hz) Dropout Voltage:1.5V@(1.5A) standby current:10mA Feature:Automotive Standard Certification；Thermal Pro"
-			(at 166.37 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part" "LD1086DT33TR"
-			(at 166.37 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "ST(意法半导体)"
-			(at 166.37 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier Part" "C12051"
-			(at 166.37 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 166.37 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "1.5 A可调与固定低压降正电压稳压器"
-			(at 166.37 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "0e3a65bc-c295-4fbc-900f-9384b5877767")
-		)
-		(pin "3"
-			(uuid "70a45823-ecb1-4606-a986-6c6380044358")
-		)
-		(pin "1"
-			(uuid "7d641c45-43c8-4ebc-a8af-9bc67c57b933")
-		)
-		(instances
-			(project ""
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "U5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 99.06 203.2 0)
 		(unit 1)
@@ -20760,6 +20635,95 @@
 			(project "XG_Mobile_Dock_XT"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "R113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "LD1085D2T33R:LD1085D2T33R")
+		(at 166.37 151.13 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "52f8b8ff-d072-4fcb-aec8-a9dd5e797c1f")
+		(property "Reference" "U5"
+			(at 166.37 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 166.37 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LD1085D2T33R:TO-263-2_L10.0-W9.1-P5.08-LS15.2-TL"
+			(at 166.37 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/datasheet/LD1085D2T33R/8390.html"
+			(at 166.37 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Output Type:Fixed Voltage - Supply:30V Output Voltage:3.3V Output Voltage:3.3V Output Current:3A Power Supply Rejection Ratio (PSRR):72dB@(120Hz) Voltage Dropout:1.3V@(3A) standby current:5mA Noise:0.003%Vout Features:Over Temperature Protection Operating"
+			(at 166.37 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "LD1085D2T33R"
+			(at 166.37 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C7913"
+			(at 166.37 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "9c09550e-224f-4ebe-9bfb-d3eac27e2b53")
+		)
+		(pin "3"
+			(uuid "b3e1f00e-8b67-49d4-82ec-94b96bea44b6")
+		)
+		(pin "1"
+			(uuid "1d84c506-3846-4fab-8940-ae99a6ca07c9")
+		)
+		(instances
+			(project ""
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "U5")
 					(unit 1)
 				)
 			)
