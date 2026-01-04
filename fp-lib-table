@@ -44,4 +44,5 @@
   (lib (name "PI2EQX22024")(type "KiCad")(uri "${KIPRJMOD}/Footprints/PI2EQX22024")(options "")(descr ""))
   (lib (name "LD1117S18CTR")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Symbols/LD1117S18CTR.elibz")(options "")(descr ""))
   (lib (name "LD1085D2T33R")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/LD1085D2T33R/LD1085D2T33R.elibz")(options "")(descr ""))
+  (lib (name "SS-12D10L5")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/SS-12D10L5/SS-12D10L5.elibz")(options "")(descr ""))
 )
