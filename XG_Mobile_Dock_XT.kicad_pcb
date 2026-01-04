@@ -90513,7 +90513,7 @@
 		)
 	)
 	(gr_text "DEDICATED"
-		(at 203.4 129.1 0)
+		(at 216.2 129.1 0)
 		(layer "F.SilkS")
 		(uuid "509ee794-0762-4cf6-a84f-85dd34be92a8")
 		(effects
@@ -90572,7 +90572,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "MCU\nCONTROLLED"
+	(gr_text "MCU\nCONTROL"
 		(at 201.2 126.57 0)
 		(layer "F.SilkS")
 		(uuid "5b7391cf-614b-4437-a57a-289ffa296d1e")
@@ -91030,7 +91030,7 @@
 		)
 	)
 	(gr_text "SHARED"
-		(at 217 129 0)
+		(at 203.9 129.2 0)
 		(layer "F.SilkS")
 		(uuid "b74b8ac5-4128-473d-a042-51b69478dae6")
 		(effects
