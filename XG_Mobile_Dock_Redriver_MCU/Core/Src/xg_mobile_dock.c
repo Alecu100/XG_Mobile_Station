@@ -52,13 +52,15 @@ typedef struct {
     int i2cReg;
     int i2cSize;
     unsigned char i2cRegData1;
+    int redriver_boot_delay;
 } state_t;
 
 static state_t gState;
 
 extern void fans_start(void);
 extern void fans_stop(void);
-extern void initialize_redrivers(void);
+extern void initialize_redrivers_boot(void);
+extern void initialize_redrivers_running(void);
 extern void power_up_down_redrivers(GPIO_PinState reset);
 extern void print_redrivers_status();
 
@@ -77,6 +79,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         // passthrough directly to PERST#
         HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
         power_up_down_redrivers(reset);
+        initialize_redrivers_boot();
+        gState.redriver_boot_delay = HAL_GetTick();
         printf("Pin changed: RST = %d\n", reset == GPIO_PIN_RESET);
     } else if (GPIO_Pin == PWREN_Pin) {
         gState.power_enable = HAL_GPIO_ReadPin(PWREN_GPIO_Port, PWREN_Pin) == GPIO_PIN_RESET;
@@ -228,13 +232,19 @@ void transition_state(state_t *state, fsm_state_t next) {
 void main_fsm_iteration(void) {
     fsm_state_t prev = gState.fsm;
     print_redrivers_status();
+    if (gState.redriver_boot_delay != 0) {
+        if (HAL_GetTick() - gState.redriver_boot_delay >= 5000) {
+            initialize_redrivers_running();
+            gState.redriver_boot_delay = 0;
+        }
+    }
 
     //printf("Enter main FSM with state = %s\n", gFSMStateStrings[gState.fsm]);
     switch (prev) {
         case MCU_RESET: {
             init_gpio_state(&gState);
             transition_state(&gState, DEVICE_IDLE);
-            initialize_redrivers();
+            initialize_redrivers_boot();
             HAL_I2C_EnableListen_IT(&hi2c1);
             break;
         }
