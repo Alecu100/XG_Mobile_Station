@@ -25,19 +25,23 @@ The dock was designed from the beginning to be assembled at JLCPCB because of th
     | Outer Copper Weight        | 1 oz                        | 1 oz                |                                                                 |
     | Inner Copper Weight        | 0.5 oz                      | 0.5 oz              |                                                                 |
     | Specify Layer Sequence     | No                          | No                  |                                                                 |
-    | Impedance Control          | **Yes**                     | **Yes**             |                                                                 |
+    | Specify Stackup            | **Yes**                     | **Yes**             |                                                                 |
     | Layer Stackup              | **JLC06161H-3313**          | **JLC04161H-7628**  |                                                                 |
+    | Impedance Control          | No                          | No                  |                                                                 |
     | Via Covering               | Epoxy Filled & Capped       | Plugged             |                                                                 |
+    | Via Plating Method         | Not Specified               | Not Specified       |                                                                 |
     | Min via hole size/diameter | 0.3mm/(0.4/0.45mm)          | 0.3mm/(0.4/0.45mm)  |                                                                 |
     | Board Outline Tolerance    | ±0.2mm(Regular)             | ±0.2mm(Regular)     |                                                                 |
     | Confirm Production file    | No                          | No                  |                                                                 |
-    | Remove Order Number        | No                          | No                  |                                                                 |
-    | Flying Probe Test          | Fully Test                  | Fully Test          |                                                                 |
+    | Mark on PCB                | Remove Mark                 | Remove Mark         |                                                                 |
+    | Electrical Test            | Fully Test                  | Fully Test          |                                                                 |
     | Gold Fingers               | No                          | No                  |                                                                 |
-    | 30° finger chamfered       | No                          | No                  |                                                                 |
     | Castellated Holes          | No                          | No                  |                                                                 |
     | Press-Fit Hole             | No                          | No                  |                                                                 |
     | Edge Plating               | No                          | No                  |                                                                 |
+    | Blind Slots                | No                          | No                  |                                                                 |
+    | UL Marking                 | No                          | No                  |                                                                 |
+    | Backdrill                  | No                          | No                  |                                                                 |
 
 4. Check PCB Assembly and fill the following options
 
@@ -46,8 +50,12 @@ The dock was designed from the beginning to be assembled at JLCPCB because of th
     | PCBA Type               | Economic        | **Standard**    | Economic saves on per-component cost   |
     | Assembly Side           | Both Sides      | Both Sides      | Lite only needs top side               |
     | PCBA Qty                | >= 2            | >= 100          |                                        |
-    | Edge Rails/Fiducials    | Added by JLCPCB | Added by JLCPCB |                                        |
+    | Tooling holes           | Added by JLCPCB | Added by JLCPCB |                                        |
     | Confirm Parts Placement | No              | No              |                                        |
+    | Stencil Storage         | No              | No              |                                        |
+    | Fixture Storage         | No              | No              |                                        |
+    | Parts Selection         | By Customer     | By Customer     |                                        |
+    | Advanced Options        | Do not change   | Do not change   |                                        |
 
 5. Press Continue or Next
 6. Accept the board preview and press Next
@@ -130,3 +138,5 @@ The standard build is designed to fit inside the XG Station Pro enclosure and re
 [![After installation with cable](images/rev_6_installed_cable.jpg)](images/rev_6_installed_cable.jpg)
 
 Important Note: The DC-DC power supply is capable of supplying 180W to each PCIe 8-pin connector, 65W to the USB-C port, and 72W to the PCIe slot + the PWM fans. However, the AC-DC power supply input is rated for a maximum of 330W. This means that if you max out every possible power source, you may cause the system to shut down or in an unlikely worst case scenario start a fire. On our device, we found that the power supply is capable of 360W (measured from the wall) for long durations without overheating however this may vary with each unit. It is recommended that you limit the GPU power consumption to a maximum of 285W or lower (undervolting it if needed) to be absolutely safe.
+
+[Check out the power guide for custom power supply replacements.](Power.md)
