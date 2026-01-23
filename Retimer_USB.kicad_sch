@@ -268,7 +268,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "LD1117S18CTR:LD1117S18CTR"
+		(symbol "LD1117S18TR:LD1117S18TR"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -288,7 +288,7 @@
 					)
 				)
 			)
-			(property "Footprint" "LD1117S18CTR:SOT-223-3_L6.5-W3.4-P2.30-LS7.0-BR"
+			(property "Footprint" "LD1117S18TR:SOT-223_L6.5-W3.5-P2.30-LS7.0-BR"
 				(at 0 0 0)
 				(effects
 					(font
@@ -297,7 +297,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://item.szlcsc.com/datasheet/LD1117S18CTR/703436.html"
+			(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20181022/C283467_00098992BB1D287195B66486CE33A2DD.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -306,7 +306,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Output Type:Fixed Voltage - Supply:15V Output Voltage:1.8V Output Voltage:1.8V Output Current:800mA Power Supply Rejection Ratio (PSRR):75dB@(120Hz) Voltage Dropout:1.3V@(800mA) standby current:10mA Noise:100uV Features:Over Current Protection Operating T"
+			(property "Description" "Output Type:Fixed Maximum Input Voltage:15V Output Voltage:1.8V Output Voltage:1.8V Output Current:800mA Power Supply Rejection Ratio (PSRR):75dB@(120Hz) Dropout Voltage:1.2V@(800mA) standby current:10mA Feature:Thermal Protection(TSD)；Overcurrent Protect"
 				(at 0 0 0)
 				(effects
 					(font
@@ -315,7 +315,7 @@
 					(hide yes)
 				)
 			)
-			(property "Manufacturer Part" "LD1117S18CTR"
+			(property "Manufacturer Part" "LD1117S18TR"
 				(at 0 0 0)
 				(effects
 					(font
@@ -333,7 +333,7 @@
 					(hide yes)
 				)
 			)
-			(property "Supplier Part" "C672391"
+			(property "Supplier Part" "C80598"
 				(at 0 0 0)
 				(effects
 					(font
@@ -360,9 +360,9 @@
 					(hide yes)
 				)
 			)
-			(symbol "LD1117S18CTR_1_0"
+			(symbol "LD1117S18TR_1_0"
 				(rectangle
-					(start -8.89 -5.08)
+					(start -7.62 -5.08)
 					(end 7.62 5.08)
 					(stroke
 						(width 0)
@@ -372,20 +372,9 @@
 						(type none)
 					)
 				)
-				(circle
-					(center -7.62 3.81)
-					(radius 0.381)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
 				(pin unspecified line
-					(at -11.43 2.54 0)
-					(length 2.54)
+					(at -12.7 2.54 0)
+					(length 5.08)
 					(name "GND"
 						(effects
 							(font
@@ -402,26 +391,8 @@
 					)
 				)
 				(pin unspecified line
-					(at -11.43 0 0)
-					(length 2.54)
-					(name "VOUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -11.43 -2.54 0)
-					(length 2.54)
+					(at -12.7 -2.54 0)
+					(length 5.08)
 					(name "VIN"
 						(effects
 							(font
@@ -438,8 +409,26 @@
 					)
 				)
 				(pin unspecified line
-					(at 10.16 0 180)
-					(length 2.54)
+					(at 12.7 2.54 180)
+					(length 5.08)
+					(name "VOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 12.7 -2.54 180)
+					(length 5.08)
 					(name "VOUT"
 						(effects
 							(font
@@ -1313,7 +1302,7 @@
 		(uuid "36fa057b-0867-4d77-802e-e3db3700365b")
 	)
 	(junction
-		(at 201.93 127)
+		(at 198.12 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "549a4e94-abb5-41a9-89dd-c4bdbf246163")
@@ -1362,16 +1351,6 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 124.46) (xy 203.2 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "035ae19b-cac9-4338-acd6-1149312bd363")
-	)
-	(wire
-		(pts
 			(xy 97.79 92.71) (xy 142.24 92.71)
 		)
 		(stroke
@@ -1402,7 +1381,7 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 127) (xy 201.93 132.08)
+			(xy 198.12 124.46) (xy 198.12 129.54)
 		)
 		(stroke
 			(width 0)
@@ -1442,7 +1421,7 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 127) (xy 201.93 127)
+			(xy 193.04 124.46) (xy 198.12 124.46)
 		)
 		(stroke
 			(width 0)
@@ -1492,13 +1471,23 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 127) (xy 203.2 127)
+			(xy 198.12 124.46) (xy 199.39 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "6bed3775-96f2-4c43-a94e-ba8013f89699")
+	)
+	(wire
+		(pts
+			(xy 224.79 119.38) (xy 226.06 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c0ccd5c-a185-484a-bfc3-b60c4f3ef28d")
 	)
 	(wire
 		(pts
@@ -1539,6 +1528,16 @@
 			(type default)
 		)
 		(uuid "8b11d103-c1ca-46bc-b808-12e1f87fea94")
+	)
+	(wire
+		(pts
+			(xy 226.06 119.38) (xy 226.06 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d9746cd-619a-4b8c-a04f-97b9e3a1940c")
 	)
 	(wire
 		(pts
@@ -1732,7 +1731,7 @@
 	)
 	(global_label "+3V3MCU"
 		(shape output)
-		(at 196.85 127 180)
+		(at 193.04 124.46 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1742,7 +1741,7 @@
 		)
 		(uuid "0bb6e0a3-c3c3-4a7d-970f-61ab60367fb7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 184.7329 127 0)
+			(at 180.9229 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1770,28 +1769,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "+1V8"
-		(shape output)
-		(at 196.85 124.46 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "18b36a89-80f8-4fdf-99bc-9388d7e0fe07")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 188.7848 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -2338,7 +2315,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 203.2 121.92 270)
+		(at 199.39 119.38 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2347,7 +2324,7 @@
 		(dnp no)
 		(uuid "22eaa8b3-df66-407e-a2ea-bff3be1323d7")
 		(property "Reference" "#PWR0157"
-			(at 196.85 121.92 0)
+			(at 193.04 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2356,7 +2333,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 199.39 121.9201 90)
+			(at 195.58 119.3801 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2365,7 +2342,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 203.2 121.92 0)
+			(at 199.39 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2374,7 +2351,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 203.2 121.92 0)
+			(at 199.39 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2383,7 +2360,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 203.2 121.92 0)
+			(at 199.39 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3868,6 +3845,98 @@
 		)
 	)
 	(symbol
+		(lib_id "LD1117S18TR:LD1117S18TR")
+		(at 212.09 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "933d57a6-e971-49ac-a509-c012ea61a812")
+		(property "Reference" "U7"
+			(at 212.09 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 212.09 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LD1117S18TR:SOT-223_L6.5-W3.5-P2.30-LS7.0-BR"
+			(at 212.09 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20181022/C283467_00098992BB1D287195B66486CE33A2DD.pdf"
+			(at 212.09 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Output Type:Fixed Maximum Input Voltage:15V Output Voltage:1.8V Output Voltage:1.8V Output Current:800mA Power Supply Rejection Ratio (PSRR):75dB@(120Hz) Dropout Voltage:1.2V@(800mA) standby current:10mA Feature:Thermal Protection(TSD)；Overcurrent Protect"
+			(at 212.09 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "LD1117S18TR"
+			(at 212.09 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C80598"
+			(at 212.09 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "a7be0881-e950-4e62-870d-bb186b22e5b8")
+		)
+		(pin "4"
+			(uuid "8bf8fcb7-1ca9-494d-bb59-9e15e3e77e1a")
+		)
+		(pin "1"
+			(uuid "0ccf51ac-e06b-4e74-a3d0-4112a4465ebf")
+		)
+		(pin "2"
+			(uuid "489184c0-2e41-4092-874f-fcf744023b52")
+		)
+		(instances
+			(project ""
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/a254375d-80c0-4b18-9fd6-3cbd6a868414"
+					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 199.39 69.85 270)
 		(unit 1)
@@ -4407,7 +4476,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 201.93 135.89 0)
+		(at 198.12 133.35 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4415,7 +4484,7 @@
 		(dnp no)
 		(uuid "bcd300cf-6b46-4eca-9e2b-edbe01e39036")
 		(property "Reference" "C63"
-			(at 200.66 138.684 90)
+			(at 196.85 136.144 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4423,7 +4492,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 200.66 131.572 90)
+			(at 196.85 129.032 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4431,7 +4500,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
-			(at 202.8952 139.7 0)
+			(at 199.0852 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4440,7 +4509,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 201.93 135.89 0)
+			(at 198.12 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4449,7 +4518,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 201.93 135.89 0)
+			(at 198.12 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4458,7 +4527,7 @@
 			)
 		)
 		(property "Part_Number" "GRM033R61C104KE84D"
-			(at 201.93 135.89 0)
+			(at 198.12 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4467,7 +4536,7 @@
 			)
 		)
 		(property "LCSC" "C76937"
-			(at 201.93 135.89 0)
+			(at 198.12 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4643,98 +4712,6 @@
 		)
 	)
 	(symbol
-		(lib_id "LD1117S18CTR:LD1117S18CTR")
-		(at 214.63 124.46 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ceac374e-7af2-4dec-871f-b1402d97d9ad")
-		(property "Reference" "U6"
-			(at 213.995 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 213.995 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LD1117S18CTR:SOT-223-3_L6.5-W3.4-P2.30-LS7.0-BR"
-			(at 214.63 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://item.szlcsc.com/datasheet/LD1117S18CTR/703436.html"
-			(at 214.63 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Output Type:Fixed Voltage - Supply:15V Output Voltage:1.8V Output Voltage:1.8V Output Current:800mA Power Supply Rejection Ratio (PSRR):75dB@(120Hz) Voltage Dropout:1.3V@(800mA) standby current:10mA Noise:100uV Features:Over Current Protection Operating T"
-			(at 214.63 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part_Number" "LD1117S18CTR"
-			(at 214.63 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C672391"
-			(at 214.63 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "a7da969d-b255-4488-9139-a39051bb6c29")
-		)
-		(pin "2"
-			(uuid "472bd755-8819-45a0-ab77-723858a2e2e6")
-		)
-		(pin "3"
-			(uuid "0889d63a-8509-4d25-a399-524f4323d172")
-		)
-		(pin "1"
-			(uuid "6774eebd-d85e-44f6-9fbc-ba63b0003fc3")
-		)
-		(instances
-			(project ""
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/a254375d-80c0-4b18-9fd6-3cbd6a868414"
-					(reference "U6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 142.24 100.33 270)
 		(unit 1)
@@ -4803,7 +4780,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 201.93 139.7 0)
+		(at 198.12 137.16 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4812,7 +4789,7 @@
 		(dnp no)
 		(uuid "e94206c4-df95-496b-bf59-17dbeb29a3b0")
 		(property "Reference" "#PWR0160"
-			(at 201.93 146.05 0)
+			(at 198.12 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4821,7 +4798,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 201.9301 143.51 90)
+			(at 198.1201 140.97 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4830,7 +4807,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 201.93 139.7 0)
+			(at 198.12 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4839,7 +4816,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 201.93 139.7 0)
+			(at 198.12 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4848,7 +4825,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 201.93 139.7 0)
+			(at 198.12 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
