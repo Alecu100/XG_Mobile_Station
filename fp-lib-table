@@ -46,4 +46,6 @@
   (lib (name "LD1085D2T33R")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/LD1085D2T33R/LD1085D2T33R.elibz")(options "")(descr ""))
   (lib (name "SS-12D10L5")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/SS-12D10L5/SS-12D10L5.elibz")(options "")(descr ""))
   (lib (name "LD1117S18TR")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/LD1117S18TR/LD1117S18TR.elibz")(options "")(descr ""))
+  (lib (name "TAJA106K016RNJ")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/TAJA106K016RNJ/TAJA106K016RNJ.elibz")(options "")(descr ""))
+  (lib (name "TAJA104K035RNJ")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/TAJA104K035RNJ/TAJA104K035RNJ.elibz")(options "")(descr ""))
 )

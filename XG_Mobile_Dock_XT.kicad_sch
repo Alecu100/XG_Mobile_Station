@@ -10219,6 +10219,211 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "TAJA106K016RNJ:TAJA106K016RNJ"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10uF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Footprint" "TAJA106K016RNJ:CAP-SMD_L3.2-W1.6-RD-C7171"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Capacitance:10uF Tolerance:±10% Tolerance:±10% Voltage Rating:16V Equivalent Series Resistance(ESR):3Ω@100kHz Operating Temperature:-55°C~+125°C Operating Temperature:-55°C~+125°C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer Part" "TAJA106K016RNJ"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "Kyocera AVX"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier Part" "C7171"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier" "LCSC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part Name" "10uF ±10% 16V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TAJA106K016RNJ_1_0"
+				(polyline
+					(pts
+						(xy -0.508 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 -2.032) (xy -0.508 2.032)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 -2.032) (xy 0.508 2.032)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 0.508 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.524 1.27) (xy 2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.032 1.778) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:+3V3"
 			(power)
 			(pin_numbers
@@ -10744,6 +10949,12 @@
 		(uuid "49633803-322a-4104-80a4-6cf706027d94")
 	)
 	(junction
+		(at 149.86 148.59)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4abc6bc2-135c-4f85-8c15-676c55713c18")
+	)
+	(junction
 		(at 236.22 58.42)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10846,12 +11057,6 @@
 		(uuid "6d8367b4-d88d-4287-81d6-41648ebcc7ee")
 	)
 	(junction
-		(at 149.86 148.59)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6db51338-fad3-4167-861e-f850cc362b60")
-	)
-	(junction
 		(at 236.22 99.06)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -10922,12 +11127,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "82983670-4c31-4985-a21d-fdd6f0f994e9")
-	)
-	(junction
-		(at 181.61 148.59)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "85c6c131-bc57-461b-8883-0ddbb9bde15d")
 	)
 	(junction
 		(at 82.55 115.57)
@@ -11150,6 +11349,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c51ac684-8f40-4896-9943-5545d9cb47e6")
+	)
+	(junction
+		(at 181.61 148.59)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c5bda6ff-4ab2-48b8-93bb-767e24e65609")
 	)
 	(junction
 		(at 46.99 19.05)
@@ -12675,16 +12880,6 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 148.59) (xy 185.42 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5452262b-a3f3-4cf6-a871-5b236d9030ed")
-	)
-	(wire
-		(pts
 			(xy 236.22 109.22) (xy 236.22 114.3)
 		)
 		(stroke
@@ -12822,6 +13017,16 @@
 			(type default)
 		)
 		(uuid "5f351e2c-9b63-4d07-978c-f733682d2534")
+	)
+	(wire
+		(pts
+			(xy 181.61 148.59) (xy 185.42 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60de2506-49ca-43f2-822b-0065e4b65690")
 	)
 	(wire
 		(pts
@@ -13275,7 +13480,7 @@
 	)
 	(wire
 		(pts
-			(xy 149.86 148.59) (xy 153.67 148.59)
+			(xy 146.05 148.59) (xy 149.86 148.59)
 		)
 		(stroke
 			(width 0)
@@ -14355,16 +14560,6 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 148.59) (xy 149.86 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c952d01b-7d71-4bb3-aa08-8d63de996131")
-	)
-	(wire
-		(pts
 			(xy 123.19 22.86) (xy 129.54 22.86)
 		)
 		(stroke
@@ -14472,6 +14667,16 @@
 			(type default)
 		)
 		(uuid "d087fb01-5673-4247-a351-bac3f2fd11ec")
+	)
+	(wire
+		(pts
+			(xy 149.86 148.59) (xy 153.67 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d16bdb5b-a5ef-4986-8b39-9405e0bbfcab")
 	)
 	(wire
 		(pts
@@ -19107,92 +19312,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 149.86 152.4 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "269fb065-dafb-4e0d-b6bf-ee99e76c1459")
-		(property "Reference" "C49"
-			(at 148.59 156.21 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10uF"
-			(at 148.59 161.29 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 150.8252 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 149.86 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 149.86 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part_Number" "CL10A106KP8NNNC"
-			(at 149.86 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C19702"
-			(at 149.86 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "42a3def7-671c-40f1-9b5f-9c6496fb92d5")
-		)
-		(pin "2"
-			(uuid "31ab5ace-aad0-4980-8ac2-74f5f7e79835")
-		)
-		(instances
-			(project "XG_Mobile_Dock_XT"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "C49")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 189.23 24.13 0)
 		(unit 1)
@@ -20817,92 +20936,6 @@
 			(project "XG_Mobile_Dock_Lite"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 181.61 152.4 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4b9759eb-0ebf-4f2a-b769-3df0f0538fc3")
-		(property "Reference" "C54"
-			(at 180.34 156.21 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10uF"
-			(at 180.34 161.29 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 182.5752 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 181.61 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 181.61 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part_Number" "CL10A106KP8NNNC"
-			(at 181.61 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C19702"
-			(at 181.61 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8ecbb362-92c2-41a6-a7d3-681489d52db7")
-		)
-		(pin "2"
-			(uuid "85885985-032d-4d02-87d6-469b6412d34f")
-		)
-		(instances
-			(project "XG_Mobile_Dock_XT"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "C54")
 					(unit 1)
 				)
 			)
@@ -23100,6 +23133,103 @@
 		)
 	)
 	(symbol
+		(lib_id "TAJA106K016RNJ:TAJA106K016RNJ")
+		(at 181.61 152.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "80857d35-154d-4016-900c-64871aa94986")
+		(property "Reference" "C91"
+			(at 185.42 151.7649 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10uF"
+			(at 181.61 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TAJA106K016RNJ:CAP-SMD_L3.2-W1.6-RD-C7171"
+			(at 181.61 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 181.61 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitance:10uF Tolerance:±10% Tolerance:±10% Voltage Rating:16V Equivalent Series Resistance(ESR):3Ω@100kHz Operating Temperature:-55°C~+125°C Operating Temperature:-55°C~+125°C"
+			(at 181.61 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "TAJA106K016RNJ"
+			(at 181.61 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kyocera AVX"
+			(at 181.61 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C7171"
+			(at 181.61 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5111916d-8134-42ad-93a3-08cb3875c068")
+		)
+		(pin "2"
+			(uuid "4739523a-2f6c-4470-9b75-13805c56a9bb")
+		)
+		(instances
+			(project ""
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C91")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3V3")
 		(at 387.35 86.36 0)
 		(unit 1)
@@ -24572,6 +24702,103 @@
 			(project "XG_Mobile_Dock_Lite"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TAJA106K016RNJ:TAJA106K016RNJ")
+		(at 149.86 152.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b1642754-23cd-4ca8-bed7-258aede5f0e6")
+		(property "Reference" "C49"
+			(at 153.67 151.7649 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10uF"
+			(at 149.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TAJA106K016RNJ:CAP-SMD_L3.2-W1.6-RD-C7171"
+			(at 149.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitance:10uF Tolerance:±10% Tolerance:±10% Voltage Rating:16V Equivalent Series Resistance(ESR):3Ω@100kHz Operating Temperature:-55°C~+125°C Operating Temperature:-55°C~+125°C"
+			(at 149.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "TAJA106K016RNJ"
+			(at 149.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kyocera AVX"
+			(at 149.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C7171"
+			(at 149.86 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cc689ec5-697e-419d-918a-a70f84836127")
+		)
+		(pin "2"
+			(uuid "e0dabf2d-c769-44f2-ab4c-97e2e33d5e97")
+		)
+		(instances
+			(project "XG_Mobile_Dock_XT"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C49")
 					(unit 1)
 				)
 			)
