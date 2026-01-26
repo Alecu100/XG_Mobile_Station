@@ -2837,7 +2837,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC 0201\n1uF CL05A105KA5NQNC MfPart C52923 LCSC 0402\n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n10uF CL31B106KAHNNNE MfPart C14860 LCSC 1206\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402\n10 0603WAF100JT5E MfPart C22859 LCSC 0603\n4.02k 0603WAF4021T5E MfPart C23040 LCSC 0603\n100k 0603WAF1003T5E MfPart C25803 LCSC 0603\n470k 0603WAF4703T5E MfPart C23178 LCSC 0603\n10k 0603WAF1002T5E MfPart C25804 LCSC 0603\n100 0603WAF1000T5E MfPart C22775 LCSC 0603"
+	(text "100nF GRM033Z71A104KE14D MfPart C161494 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC 0201\n1uF CL05A105KA5NQNC MfPart C52923 LCSC 0402\n10uF CL10A106KP8NNNC MfPart C19702 LCSC 0603\n10uF CL31B106KAHNNNE MfPart C14860 LCSC 1206\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402\n10 0603WAF100JT5E MfPart C22859 LCSC 0603\n4.02k 0603WAF4021T5E MfPart C23040 LCSC 0603\n100k 0603WAF1003T5E MfPart C25803 LCSC 0603\n470k 0603WAF4703T5E MfPart C23178 LCSC 0603\n10k 0603WAF1002T5E MfPart C25804 LCSC 0603\n100 0603WAF1000T5E MfPart C22775 LCSC 0603"
 		(exclude_from_sim no)
 		(at 250.444 24.892 0)
 		(effects
@@ -9148,7 +9148,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 170.18 118.11 0)
 			(effects
 				(font
@@ -9157,7 +9157,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 170.18 118.11 0)
 			(effects
 				(font
@@ -9336,7 +9336,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 330.2 143.51 0)
 			(effects
 				(font
@@ -9345,7 +9345,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 330.2 143.51 0)
 			(effects
 				(font
@@ -12013,7 +12013,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 167.64 49.53 0)
 			(effects
 				(font
@@ -12022,7 +12022,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 167.64 49.53 0)
 			(effects
 				(font
@@ -12165,7 +12165,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 320.04 143.51 0)
 			(effects
 				(font
@@ -12174,7 +12174,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 320.04 143.51 0)
 			(effects
 				(font
@@ -12335,7 +12335,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 167.64 19.05 0)
 			(effects
 				(font
@@ -12344,7 +12344,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 167.64 19.05 0)
 			(effects
 				(font
@@ -12893,7 +12893,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 26.67 -6.35 0)
 			(effects
 				(font
@@ -12902,7 +12902,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 26.67 -6.35 0)
 			(effects
 				(font
@@ -13171,7 +13171,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 179.07 19.05 0)
 			(effects
 				(font
@@ -13180,7 +13180,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 179.07 19.05 0)
 			(effects
 				(font
@@ -13559,7 +13559,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 185.42 118.11 0)
 			(effects
 				(font
@@ -13568,7 +13568,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 185.42 118.11 0)
 			(effects
 				(font
@@ -14627,7 +14627,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 38.1 24.13 0)
 			(effects
 				(font
@@ -14636,7 +14636,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 38.1 24.13 0)
 			(effects
 				(font
@@ -15039,7 +15039,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 177.8 49.53 0)
 			(effects
 				(font
@@ -15048,7 +15048,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 177.8 49.53 0)
 			(effects
 				(font
@@ -16062,7 +16062,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 172.72 49.53 0)
 			(effects
 				(font
@@ -16071,7 +16071,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 172.72 49.53 0)
 			(effects
 				(font
@@ -16341,7 +16341,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 39.37 -6.35 0)
 			(effects
 				(font
@@ -16350,7 +16350,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 39.37 -6.35 0)
 			(effects
 				(font
@@ -17848,7 +17848,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 172.72 19.05 0)
 			(effects
 				(font
@@ -17857,7 +17857,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 172.72 19.05 0)
 			(effects
 				(font
@@ -20194,7 +20194,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 184.15 87.63 0)
 			(effects
 				(font
@@ -20203,7 +20203,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 184.15 87.63 0)
 			(effects
 				(font
@@ -20559,7 +20559,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 34.29 -6.35 0)
 			(effects
 				(font
@@ -20568,7 +20568,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 34.29 -6.35 0)
 			(effects
 				(font
@@ -21159,7 +21159,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 170.18 87.63 0)
 			(effects
 				(font
@@ -21168,7 +21168,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 170.18 87.63 0)
 			(effects
 				(font
@@ -23338,7 +23338,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 325.12 143.51 0)
 			(effects
 				(font
@@ -23347,7 +23347,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 325.12 143.51 0)
 			(effects
 				(font
@@ -23578,7 +23578,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 26.67 24.13 0)
 			(effects
 				(font
@@ -23587,7 +23587,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 26.67 24.13 0)
 			(effects
 				(font
@@ -23663,7 +23663,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 331.47 113.03 0)
 			(effects
 				(font
@@ -23672,7 +23672,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 331.47 113.03 0)
 			(effects
 				(font
@@ -24144,7 +24144,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 177.8 118.11 0)
 			(effects
 				(font
@@ -24153,7 +24153,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 177.8 118.11 0)
 			(effects
 				(font
@@ -24229,7 +24229,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 320.04 113.03 0)
 			(effects
 				(font
@@ -24238,7 +24238,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 320.04 113.03 0)
 			(effects
 				(font
@@ -25087,7 +25087,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 325.12 113.03 0)
 			(effects
 				(font
@@ -25096,7 +25096,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 325.12 113.03 0)
 			(effects
 				(font
@@ -25280,7 +25280,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 177.8 87.63 0)
 			(effects
 				(font
@@ -25289,7 +25289,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 177.8 87.63 0)
 			(effects
 				(font
@@ -29081,7 +29081,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "GRM033R61C104KE84D"
+		(property "Part_Number" "GRM033Z71A104KE14D"
 			(at 33.02 24.13 0)
 			(effects
 				(font
@@ -29090,7 +29090,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76937"
+		(property "LCSC" "C161494"
 			(at 33.02 24.13 0)
 			(effects
 				(font
