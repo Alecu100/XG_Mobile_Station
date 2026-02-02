@@ -1989,6 +1989,16 @@
 	)
 	(wire
 		(pts
+			(xy 97.79 85.09) (xy 142.24 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62ec8dfb-b07c-4204-a706-9023dba6dc8b")
+	)
+	(wire
+		(pts
 			(xy 180.34 69.85) (xy 195.58 69.85)
 		)
 		(stroke
@@ -2086,6 +2096,16 @@
 			(type default)
 		)
 		(uuid "9967ce3c-10c2-4964-b1fe-79196b6c6017")
+	)
+	(wire
+		(pts
+			(xy 97.79 87.63) (xy 142.24 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9abe56ad-77fb-4e4f-b32e-701c946e3f0b")
 	)
 	(wire
 		(pts
@@ -2197,6 +2217,16 @@
 		)
 		(uuid "f29f8b6b-62c9-4efe-b856-761071299fb2")
 	)
+	(label "AP_T_RX1N"
+		(at 125.73 85.09 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0299cbd9-2e34-4ebe-a3ab-9bbdaa216ee8")
+	)
 	(label "CON_T_RX1P"
 		(at 130.81 110.49 180)
 		(effects
@@ -2246,6 +2276,16 @@
 			(justify right bottom)
 		)
 		(uuid "7d1dad98-0bbe-4714-b4fb-8499f8d05b9c")
+	)
+	(label "AP_T_RX1P"
+		(at 125.73 87.63 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b2d99fec-a2c3-48d1-b5ac-1b89a49ff7f2")
 	)
 	(label "CON_T_RX1N"
 		(at 191.77 69.85 180)
@@ -2411,7 +2451,7 @@
 	)
 	(hierarchical_label "AP_RX1P"
 		(shape bidirectional)
-		(at 142.24 87.63 180)
+		(at 90.17 87.63 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2466,7 +2506,7 @@
 	)
 	(hierarchical_label "AP_RX1N"
 		(shape bidirectional)
-		(at 142.24 85.09 180)
+		(at 90.17 85.09 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3517,6 +3557,91 @@
 			(project "XG_Mobile_Dock_XT"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/a254375d-80c0-4b18-9fd6-3cbd6a868414"
 					(reference "#PWR0148")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 93.98 85.09 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "316c90fd-2c91-4cc4-808d-c06416f80144")
+		(property "Reference" "C99"
+			(at 91.186 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 98.298 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+			(at 90.17 86.0552 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 93.98 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "GRM033R61C104KE84D"
+			(at 93.98 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C76937"
+			(at 93.98 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4be1eda5-34b7-40fd-bbbf-567a7da1183d")
+		)
+		(pin "2"
+			(uuid "0a1688ca-cbb5-4dda-b19b-c9888b915fd1")
+		)
+		(instances
+			(project "XG_Mobile_Dock_XT"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/a254375d-80c0-4b18-9fd6-3cbd6a868414"
+					(reference "C99")
 					(unit 1)
 				)
 			)
@@ -6246,6 +6371,91 @@
 			(project "XG_Mobile_Dock_XT"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/a254375d-80c0-4b18-9fd6-3cbd6a868414"
 					(reference "#PWR048")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 93.98 87.63 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e172f645-a8cc-4a56-b0d7-5089a469ad30")
+		(property "Reference" "C100"
+			(at 91.186 86.614 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 98.298 86.36 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+			(at 90.17 88.5952 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 93.98 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "GRM033R61C104KE84D"
+			(at 93.98 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C76937"
+			(at 93.98 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b45216cb-20f1-4102-a829-f874c42796b8")
+		)
+		(pin "2"
+			(uuid "a2c66251-51c0-4f76-a2ee-779058ed72f6")
+		)
+		(instances
+			(project "XG_Mobile_Dock_XT"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/a254375d-80c0-4b18-9fd6-3cbd6a868414"
+					(reference "C100")
 					(unit 1)
 				)
 			)
