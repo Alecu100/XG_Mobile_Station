@@ -18413,7 +18413,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "MMBT5551(RANGE:200-300)"
+		(property "Part_Number" "MMBT5551(RANGE:200-300)"
 			(at 119.38 161.29 0)
 			(effects
 				(font
@@ -18422,34 +18422,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "CJ(江苏长电/长晶)"
-			(at 119.38 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier Part" "C2145"
-			(at 119.38 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 119.38 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "hfe=200~300"
+		(property "LCSC" "C2145"
 			(at 119.38 161.29 0)
 			(effects
 				(font
@@ -20465,7 +20438,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "MMBT5551(RANGE:200-300)"
+		(property "Part_Number" "MMBT5551(RANGE:200-300)"
 			(at 107.95 191.77 0)
 			(effects
 				(font
@@ -20474,34 +20447,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "CJ(江苏长电/长晶)"
-			(at 107.95 191.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier Part" "C2145"
-			(at 107.95 191.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 107.95 191.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "hfe=200~300"
+		(property "LCSC" "C2145"
 			(at 107.95 191.77 0)
 			(effects
 				(font
