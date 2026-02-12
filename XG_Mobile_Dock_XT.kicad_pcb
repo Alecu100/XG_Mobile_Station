@@ -22462,7 +22462,7 @@
 			(pinfunction "PCIE_RXN5")
 			(pintype "passive")
 			(solder_mask_margin 0.102)
-			(uuid "ccc4555c-b000-4c38-9764-f9b9bbb532e0")
+			(uuid "22d7533e-d0f9-41f0-8cb2-fd45b8e8158a")
 		)
 		(pad "5" smd rect
 			(at -7.75 -1.92 180)
@@ -22495,7 +22495,7 @@
 					(fill yes)
 				)
 			)
-			(uuid "fd7af828-8783-4ea7-b223-4c0bfdad39e8")
+			(uuid "491b559d-d46b-43fd-bdf8-2fec15811eb5")
 		)
 		(pad "6" smd custom
 			(at -7.25 -1.92 180)
@@ -22616,7 +22616,7 @@
 			(pinfunction "PCIE_RXN4")
 			(pintype "passive")
 			(solder_mask_margin 0.102)
-			(uuid "133333b4-4bfd-44a0-a924-fbf50d5636e4")
+			(uuid "a870411b-b6d3-4606-96e1-c0e19dd985d0")
 		)
 		(pad "11" smd rect
 			(at -4.75 -1.92 180)
@@ -22649,7 +22649,7 @@
 					(fill yes)
 				)
 			)
-			(uuid "27fa0a1b-40d4-4ec1-8a07-76459e7f300e")
+			(uuid "1cb2f38f-5260-4b45-8490-cac8d2c4ae81")
 		)
 		(pad "12" smd custom
 			(at -4.25 -1.92 180)
@@ -22770,7 +22770,7 @@
 			(pinfunction "PCIE_RXN3")
 			(pintype "passive")
 			(solder_mask_margin 0.102)
-			(uuid "3a94bfbe-8a63-42b4-aec3-580fe5571317")
+			(uuid "fccd3fa2-03c0-41de-8c19-b94b4f1512c2")
 		)
 		(pad "17" smd rect
 			(at -1.75 -1.92 180)
@@ -22803,7 +22803,7 @@
 					(fill yes)
 				)
 			)
-			(uuid "18821ec5-3a2b-4111-b6b7-6f57695f118e")
+			(uuid "d4e58c2d-9949-48ce-ab5f-aebb02615eca")
 		)
 		(pad "18" smd custom
 			(at -1.25 -1.92 180)
@@ -22924,7 +22924,7 @@
 			(pinfunction "PCIE_RXN2")
 			(pintype "passive")
 			(solder_mask_margin 0.102)
-			(uuid "aa9b4187-321c-463a-82ac-ad5ee00ba173")
+			(uuid "de85ce5d-2edc-4b2a-816c-28f49ff6088c")
 		)
 		(pad "23" smd rect
 			(at 1.25 -1.92 180)
@@ -22957,7 +22957,7 @@
 					(fill yes)
 				)
 			)
-			(uuid "7aef944c-2003-4a13-843a-74447de6792e")
+			(uuid "376f081c-543e-4bb3-af6d-9bb0dfde3afc")
 		)
 		(pad "24" smd custom
 			(at 1.75 -1.92 180)
@@ -23078,7 +23078,7 @@
 			(pinfunction "PCIE_RXN1")
 			(pintype "passive")
 			(solder_mask_margin 0.102)
-			(uuid "53de20cc-bca6-4ea4-beb0-47ef7c1a46d5")
+			(uuid "df34f6fb-0404-4690-91e9-b5e87f1dc8ec")
 		)
 		(pad "29" smd rect
 			(at 4.25 -1.92 180)
@@ -23111,7 +23111,7 @@
 					(fill yes)
 				)
 			)
-			(uuid "300e1ef1-5b51-47a8-b220-70b1d53c3ddd")
+			(uuid "655221ec-1bb0-4b94-945a-2f46f6f7b635")
 		)
 		(pad "30" smd custom
 			(at 4.75 -1.92 180)
@@ -23232,7 +23232,7 @@
 			(pinfunction "PCIE_RXN0")
 			(pintype "passive")
 			(solder_mask_margin 0.102)
-			(uuid "935d8cc7-8572-4d69-91ec-2414dfc1597c")
+			(uuid "969cf960-239c-4955-b48a-53be4f0bc985")
 		)
 		(pad "35" smd rect
 			(at 7.25 -1.92 180)
@@ -23265,7 +23265,7 @@
 					(fill yes)
 				)
 			)
-			(uuid "71a7e236-b184-4ca9-8de7-0a38c5e1f64a")
+			(uuid "2ddc3101-97c3-4055-8c7f-54d2dfd96017")
 		)
 		(pad "36" smd custom
 			(at 7.75 -1.92 180)
@@ -46753,7 +46753,7 @@
 			(pinfunction "PCIE_RXN7")
 			(pintype "passive")
 			(solder_mask_margin 0.102)
-			(uuid "c64dfd47-3fc4-4af2-936b-25f06eb89c7c")
+			(uuid "33668d02-fc47-45bc-a1c9-e0461439d6b2")
 		)
 		(pad "34" smd rect
 			(at 6.75 -1.92 180)
@@ -46786,7 +46786,7 @@
 					(fill yes)
 				)
 			)
-			(uuid "a8159e16-0702-4988-917b-d0a0fcb88759")
+			(uuid "2458d7eb-fbf2-4aff-a99e-de45f1e11ce2")
 		)
 		(pad "35" smd custom
 			(at 7.25 -1.92 180)
@@ -46907,7 +46907,7 @@
 			(pinfunction "PCIE_RXN6")
 			(pintype "passive")
 			(solder_mask_margin 0.102)
-			(uuid "28a78634-16f4-4b49-9d03-e29b9ec0fa2f")
+			(uuid "ceb23b3c-3d62-42ad-9d0a-f1fe63d7cc59")
 		)
 		(pad "40" smd rect
 			(at 9.75 -1.92 180)
@@ -46940,7 +46940,7 @@
 					(fill yes)
 				)
 			)
-			(uuid "7b6d2955-c554-4400-aa03-9565b4982521")
+			(uuid "b79bfd2c-6b84-420e-b20a-9ece98f8eb90")
 		)
 		(pad "S1" smd rect
 			(at -10.65 -1.92 180)
@@ -93512,15 +93512,6 @@
 		(uuid "1ab70b3a-813a-4905-9706-a8f8a29dc269")
 	)
 	(via
-		(at 129.34 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "1abc77cb-ee48-4c9a-99bd-3f3ca13f9891")
-	)
-	(via
 		(at 102.54 108.38)
 		(size 0.3)
 		(drill 0.2)
@@ -95323,15 +95314,6 @@
 		(uuid "2cfca8f7-bb73-4c73-92dd-6e25aef8e1f2")
 	)
 	(via
-		(at 104.31 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "2d1be3ca-14bc-4f1b-878b-d7f0af4bb367")
-	)
-	(via
 		(at 115.885 69.378)
 		(size 0.3)
 		(drill 0.2)
@@ -95375,15 +95357,6 @@
 		(free yes)
 		(net 1)
 		(uuid "2d997744-4f61-4e93-a664-d509193819e9")
-	)
-	(via
-		(at 113.31 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "2d9a859b-1eb1-4893-96b6-eb1cbca96a03")
 	)
 	(via
 		(at 102.865 100.29)
@@ -95447,15 +95420,6 @@
 		(free yes)
 		(net 1)
 		(uuid "2e4db1a9-bc45-4298-a803-3a9209d60a15")
-	)
-	(via
-		(at 132.34 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "2e591e98-c077-40bb-b6b0-1f977ec8f3fd")
 	)
 	(via
 		(at 105.905 66.18)
@@ -96147,15 +96111,6 @@
 		(free yes)
 		(net 1)
 		(uuid "34f8cab2-b91f-43cc-93bd-ad14123a1244")
-	)
-	(via
-		(at 110.31 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "34f9d248-7d88-45b7-9a16-0ab2730b2737")
 	)
 	(via
 		(at 129.956 74.632)
@@ -101375,15 +101330,6 @@
 		(uuid "6a344d9c-4d63-45db-bfe2-b836d2025025")
 	)
 	(via
-		(at 101.31 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "6a3647ba-af01-4433-bb06-c8c54883fced")
-	)
-	(via
 		(at 96.985 74.314)
 		(size 0.3)
 		(drill 0.2)
@@ -102307,15 +102253,6 @@
 		(free yes)
 		(net 1)
 		(uuid "73416eed-902a-435f-afc3-3b6db36479fc")
-	)
-	(via
-		(at 104.84 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "735078d5-a80d-4661-be1c-37555df6a68f")
 	)
 	(via
 		(at 98.185 93.874)
@@ -104660,15 +104597,6 @@
 		(uuid "89f60fe7-2c48-4aef-afb9-48416333ae60")
 	)
 	(via
-		(at 107.84 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "89ff0d81-7f26-4e92-911e-2d35ac53ab21")
-	)
-	(via
 		(at 116.971 69.37)
 		(size 0.3)
 		(drill 0.2)
@@ -104676,15 +104604,6 @@
 		(free yes)
 		(net 1)
 		(uuid "8a3650b8-b82e-4bf7-99b7-3dd8ad642a39")
-	)
-	(via
-		(at 107.31 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "8a368fe9-b02f-489a-b32f-efca34328390")
 	)
 	(via
 		(at 127.49 75.535)
@@ -105848,15 +105767,6 @@
 		(free yes)
 		(net 1)
 		(uuid "96250bac-27b9-4a5e-9183-06b37d6ad60e")
-	)
-	(via
-		(at 110.84 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "963ed2f8-2890-4b0b-a7f3-c9a900695813")
 	)
 	(via
 		(at 95.664 65.062)
@@ -110390,15 +110300,6 @@
 		(uuid "c67289bf-ffd1-4c42-a40f-74c7c3cf4cc3")
 	)
 	(via
-		(at 113.84 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "c6c1c8ab-89ac-44b2-a298-634a70619d96")
-	)
-	(via
 		(at 133.94 123.945)
 		(size 0.4)
 		(drill 0.3)
@@ -111213,15 +111114,6 @@
 		(free yes)
 		(net 1)
 		(uuid "cf4f8d59-ae7b-4372-9164-2344bfecdb12")
-	)
-	(via
-		(at 131.81 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "cf5a7368-5cc5-4815-842d-ed21f19b7f48")
 	)
 	(via
 		(at 95.415 94.13)
@@ -113330,15 +113222,6 @@
 		(uuid "e357731c-c989-48d8-9ab3-a924b61b0bf5")
 	)
 	(via
-		(at 116.84 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "e37092a1-1ba4-4ccc-a227-b8ca86c5ed72")
-	)
-	(via
 		(at 90.7 103.2)
 		(size 0.4)
 		(drill 0.3)
@@ -113765,15 +113648,6 @@
 		(layers "F.Cu" "B.Cu")
 		(net 1)
 		(uuid "e71de997-93c0-42cb-8c33-333b20b99b4e")
-	)
-	(via
-		(at 128.81 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "e71fb1b5-312b-42ba-8c2a-0a0889188b4f")
 	)
 	(via
 		(at 112.905 97.34)
@@ -114852,15 +114726,6 @@
 		(uuid "f203466b-4630-47bb-b0bb-49e9444176e1")
 	)
 	(via
-		(at 116.31 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "f20a301e-6fe7-4ea2-ba97-94b28a0aa662")
-	)
-	(via
 		(at 109.6 105.61)
 		(size 0.3)
 		(drill 0.2)
@@ -115554,15 +115419,6 @@
 		(free yes)
 		(net 1)
 		(uuid "f8cd59de-d5cd-4113-affe-c92d982d8af8")
-	)
-	(via
-		(at 101.84 110.892)
-		(size 0.3)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 1)
-		(uuid "f8eecc1a-5c32-4e15-8e90-7ff379a2f116")
 	)
 	(via
 		(at 113.733 96.573)
