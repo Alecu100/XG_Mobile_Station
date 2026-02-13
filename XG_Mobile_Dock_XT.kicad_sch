@@ -15869,7 +15869,7 @@
 		(uuid "35ef12cf-2070-4594-911a-6fc665ef5431")
 	)
 	(label "AP_RX1P"
-		(at 40.64 85.09 0)
+		(at 40.64 87.63 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16669,7 +16669,7 @@
 		(uuid "8fa620b3-97f2-453f-9927-b04131dfd412")
 	)
 	(label "AP_TX1P"
-		(at 40.64 77.47 0)
+		(at 40.64 80.01 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16739,7 +16739,7 @@
 		(uuid "9828b410-c41b-4978-8d45-54e634c7376c")
 	)
 	(label "AP_TX1N"
-		(at 40.64 80.01 0)
+		(at 40.64 77.47 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17229,7 +17229,7 @@
 		(uuid "d88d6fef-f2b6-422c-9fd6-2adcf2352b6b")
 	)
 	(label "AP_RX1N"
-		(at 40.64 87.63 0)
+		(at 40.64 85.09 0)
 		(effects
 			(font
 				(size 1.27 1.27)
