@@ -20969,7 +20969,7 @@
 		(uuid "2dc55baa-ba4b-4992-b0c8-003d94db2285")
 	)
 	(label "C_RXN"
-		(at 123.19 91.44 0)
+		(at 123.19 93.98 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21579,7 +21579,7 @@
 		(uuid "66c889cf-509e-4162-b19e-ccd6d41a84ec")
 	)
 	(label "C_TXP"
-		(at 175.26 66.04 0)
+		(at 175.26 71.12 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22249,7 +22249,7 @@
 		(uuid "b567ed7a-8d7e-4f49-86da-2b2a2c765e6f")
 	)
 	(label "C_TXP"
-		(at 123.19 101.6 0)
+		(at 123.19 99.06 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22279,7 +22279,7 @@
 		(uuid "b709037b-a1cd-4999-baec-e81054af1306")
 	)
 	(label "C_TXN"
-		(at 123.19 99.06 0)
+		(at 123.19 101.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22469,7 +22469,7 @@
 		(uuid "ceada617-6d90-48cf-be34-226bd0c6cdcc")
 	)
 	(label "C_TXN"
-		(at 175.26 71.12 0)
+		(at 175.26 66.04 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22669,7 +22669,7 @@
 		(uuid "dd0df8e2-9491-4b0a-8867-89e106c48ee4")
 	)
 	(label "C_RXP"
-		(at 123.19 93.98 0)
+		(at 123.19 91.44 0)
 		(effects
 			(font
 				(size 1.27 1.27)
