@@ -11973,7 +11973,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC \n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402"
+	(text "100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC \n10uF CL10A106KP8NNNC MfPart C19702 LCSC\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402"
 		(exclude_from_sim no)
 		(at 377.952 23.368 0)
 		(effects
@@ -12162,6 +12162,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "228dc161-308b-42e4-bd5c-d3d021c79d50")
+	)
+	(junction
+		(at 82.55 196.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "22f5fb07-6d5b-4977-b7ff-355cf50cf731")
 	)
 	(junction
 		(at 82.55 77.47)
@@ -15295,6 +15301,16 @@
 	)
 	(wire
 		(pts
+			(xy 82.55 196.85) (xy 90.17 196.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57e5cddb-bcef-443c-9d54-1cf32a6a9c0d")
+	)
+	(wire
+		(pts
 			(xy 260.35 232.41) (xy 256.54 232.41)
 		)
 		(stroke
@@ -17995,7 +18011,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 196.85) (xy 90.17 196.85)
+			(xy 77.47 196.85) (xy 82.55 196.85)
 		)
 		(stroke
 			(width 0)
@@ -21919,7 +21935,7 @@
 	)
 	(global_label "+3V3"
 		(shape output)
-		(at 83.82 196.85 270)
+		(at 77.47 196.85 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21929,7 +21945,7 @@
 		)
 		(uuid "16000842-fe46-4e6b-bd6a-5fd001d705fa")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 83.82 204.9152 90)
+			(at 77.47 204.9152 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26658,6 +26674,72 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "SW13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 82.55 189.23 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2731c807-86bc-4d0a-be9b-30ddb9c561b8")
+		(property "Reference" "#PWR0136"
+			(at 82.55 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 82.55 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 82.55 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 82.55 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "91936b12-4bcd-4599-a95a-c3d2a7fa55fe")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Redriver"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "#PWR0136")
 					(unit 1)
 				)
 			)
@@ -37971,6 +38053,92 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 82.55 193.04 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8def29b4-fd6c-4abc-a3d4-0d47e2746814")
+		(property "Reference" "C59"
+			(at 83.82 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 83.82 184.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 81.5848 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 82.55 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 82.55 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL10A106KP8NNNC"
+			(at 82.55 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C19702"
+			(at 82.55 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b20a5ba2-3b17-4674-8886-0ca25b102eda")
+		)
+		(pin "2"
+			(uuid "1875b4ce-9cf6-497e-b598-3bcb5a39cc19")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Redriver"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C59")
 					(unit 1)
 				)
 			)
