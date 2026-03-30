@@ -60,7 +60,35 @@
       ],
       "drc_exclusions": [
         [
-          "zones_intersect|105288552|46894018|df19ba13-5334-4977-b3fc-f55760dbc28b|f026a401-2e7a-4a62-8d28-aa62322e4aa5",
+          "clearance|133445333|110780000|50ab9188-df5f-4951-aacf-7e160f690bf8|a58bec60-6efe-450c-b6fd-5704b554b3bc",
+          ""
+        ],
+        [
+          "clearance|133704667|110770000|211f6d76-a488-490c-8f44-3313dd1b5a38|69cc88eb-63cc-44b5-b2a0-fa7f40c5ac41",
+          ""
+        ],
+        [
+          "copper_edge_clearance|24313474|124429000|efcd13fd-30b8-4e8e-ba02-a915ab0ef9f0|728c5af1-e22a-4d8a-8ab8-26eab67bb079",
+          ""
+        ],
+        [
+          "copper_edge_clearance|24352566|124593111|efcd13fd-30b8-4e8e-ba02-a915ab0ef9f0|94c08b28-7b9e-4de1-b7bb-6335f6a1210b",
+          ""
+        ],
+        [
+          "copper_edge_clearance|24428570|125392070|efcd13fd-30b8-4e8e-ba02-a915ab0ef9f0|5921adb3-716d-4468-9fee-8a6a5db16173",
+          ""
+        ],
+        [
+          "copper_edge_clearance|24437231|117420930|7836a1fa-266b-4710-a659-528a65a98656|3b4d81bf-9ca9-42f1-b82e-86bcb33bab89",
+          ""
+        ],
+        [
+          "diff_pair_gap_out_of_range|107816630|71827455|b18d1f91-256d-40e0-b4fa-9985624409db|247342b1-8471-475a-8b2e-7b8205f5dbf9",
+          ""
+        ],
+        [
+          "zones_intersect|100300000|42550000|1ba62f57-d36d-4c8c-b694-b885ca2fb037|f026a401-2e7a-4a62-8d28-aa62322e4aa5",
           ""
         ],
         [
@@ -80,11 +108,15 @@
           ""
         ],
         [
-          "zones_intersect|127086660|42600000|441b890e-76e4-4df1-b3f4-6eadcd7e5829|c9577040-ca1c-4b62-9749-cbc0e8226756",
+          "zones_intersect|127769978|39380036|6965ebf6-0676-4e0c-8ad0-b1d6f4f987dc|eed4669f-3d31-4b26-8c32-bea6e9759d5d",
           ""
         ],
         [
           "zones_intersect|165983727|87345000|58f4a9f1-b3af-4490-b66e-38cbd2727888|d383847e-c78c-47fd-8960-25cf08c36baf",
+          ""
+        ],
+        [
+          "zones_intersect|189550000|39500000|3f218574-61eb-4631-a3fe-08613410015d|eed4669f-3d31-4b26-8c32-bea6e9759d5d",
           ""
         ],
         [
@@ -96,7 +128,7 @@
           ""
         ],
         [
-          "zones_intersect|62991660|39415000|c1545244-7e50-4e59-9d21-f4df512d42ec|c9577040-ca1c-4b62-9749-cbc0e8226756",
+          "zones_intersect|73011496|42544018|9c8608c4-5a08-4b2f-af90-bf78c30d5b84|f026a401-2e7a-4a62-8d28-aa62322e4aa5",
           ""
         ],
         [
@@ -124,15 +156,11 @@
           ""
         ],
         [
-          "zones_intersect|95800000|51630000|70d03b64-a335-4867-a153-041dc08cdc8c|f026a401-2e7a-4a62-8d28-aa62322e4aa5",
+          "zones_intersect|99034994|51630000|70d03b64-a335-4867-a153-041dc08cdc8c|f026a401-2e7a-4a62-8d28-aa62322e4aa5",
           ""
         ],
         [
-          "zones_intersect|96166660|46894018|9c8608c4-5a08-4b2f-af90-bf78c30d5b84|f026a401-2e7a-4a62-8d28-aa62322e4aa5",
-          ""
-        ],
-        [
-          "zones_intersect|96170000|39750000|29b374fa-f64d-44dd-a8fe-ec22e1a8a133|d102c3d1-f004-4b62-ac31-bd2f494f9362",
+          "zones_intersect|99745000|43185000|df19ba13-5334-4977-b3fc-f55760dbc28b|f026a401-2e7a-4a62-8d28-aa62322e4aa5",
           ""
         ]
       ],
@@ -579,6 +607,7 @@
       "single_global_label": "ignore",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
