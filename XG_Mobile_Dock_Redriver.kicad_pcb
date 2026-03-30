@@ -33849,6 +33849,17 @@
 			(uuid "f9febd39-c989-47b3-aa51-9da4b0ba3614")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/SS-12D10L5.step"
+			(offset
+				(xyz -6.5 8.5 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "LD1085D2T33R:TO-263-2_L10.0-W9.1-P5.08-LS15.2-TL"
 		(layer "F.Cu")
@@ -34207,7 +34218,7 @@
 			(uuid "18d0684c-f2f9-466a-8389-9bc5929dacc2")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/TO-263-2_L10.2-W8.7-H4.5_LS15.2-P2.54.step"
+		(model "${KIPRJMOD}/Models/LD1085D2T33R.step"
 			(offset
 				(xyz 1.2 0 0)
 			)
@@ -34215,7 +34226,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -270)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
