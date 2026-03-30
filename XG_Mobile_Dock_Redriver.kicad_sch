@@ -11211,6 +11211,393 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "SS-12D10L5:SS-12D10L5"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "SS-12D10L5:SW-TH_SS-12D10L5"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://item.szlcsc.com/datasheet/SS-12D10L5/300104.html"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Circuit:SPDT Actuator Style:Rectangular Columnar Termination Style:PC Pin Length:13mm Width:6.8mm Switch Height:6.4mm Mounting Type:Through Hole Actuator Color:Black Current Rating:3A Voltage Rating:125V Life:10,000 Cycles Operating Temperature:-40°C~+85°C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer Part" "SS-12D10L5"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "XKB Connection(中国星坤)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier Part" "C319012"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier" "LCSC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part Name" "柄长5mm 直插双档 滑动开关"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SS-12D10L5_1_0"
+				(rectangle
+					(start -6.604 -3.048)
+					(end -3.556 -4.064)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 -3.048) (xy -5.334 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 -3.048) (xy -4.826 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 -3.048) (xy -5.08 0) (xy -5.08 0) (xy -2.54 0) (xy -2.54 0) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.524 -3.048)
+					(end 1.524 -4.064)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -0.508) (xy 0 -0.508) (xy 0.254 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -3.048) (xy -0.254 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -3.048) (xy 0.254 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -0.508) (xy 1.016 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.524 -0.508) (xy 1.778 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 -0.508) (xy 2.54 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.048 -0.508) (xy 3.302 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.556 -3.048)
+					(end 6.604 -4.064)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -0.508) (xy 4.064 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.572 -0.508) (xy 4.826 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.826 -0.508) (xy 5.08 -0.508) (xy 5.08 -0.508) (xy 5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0.635) (xy 5.08 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -3.048) (xy 4.826 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -3.048) (xy 5.334 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 2.54 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 0 2.54 270)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 2.54 270)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Switch:SW_Push"
 			(pin_numbers
 				(hide yes)
@@ -22402,6 +22789,28 @@
 	)
 	(global_label "+3V3"
 		(shape output)
+		(at 154.94 151.13 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2dda39d1-8c76-415e-b9de-0d155752510c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 163.0052 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3V3"
+		(shape output)
 		(at 82.55 135.89 0)
 		(fields_autoplaced yes)
 		(effects
@@ -22479,6 +22888,28 @@
 		(uuid "5d73b8c3-e58b-450e-80c5-a815f02ce8f6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 243.0152 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3V3MCU"
+		(shape output)
+		(at 154.94 146.05 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5f0ca287-6df8-4953-83ec-0dc017f4caa3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 167.0571 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22664,7 +23095,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3MCU"
 		(shape output)
 		(at 383.54 100.33 270)
 		(fields_autoplaced yes)
@@ -22676,7 +23107,7 @@
 		)
 		(uuid "b1f3369b-3624-4c7a-9460-dbfea9c84f3c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 383.54 108.3952 90)
+			(at 383.54 112.4471 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22708,7 +23139,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3MCU"
 		(shape output)
 		(at 383.54 78.74 90)
 		(fields_autoplaced yes)
@@ -22720,7 +23151,7 @@
 		)
 		(uuid "d73de9c5-8ee5-4615-a1f5-d2441c51df5b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 383.54 70.6748 90)
+			(at 383.54 66.6229 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22792,6 +23223,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3V3SB"
+		(shape output)
+		(at 154.94 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "efed93e5-f419-493c-8c87-0f426b28383c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.4847 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -28155,6 +28608,106 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR0117")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SS-12D10L5:SS-12D10L5")
+		(at 152.4 146.05 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "317bdde5-8307-4882-82cb-f7b32b37c3d2")
+		(property "Reference" "SW4"
+			(at 151.3206 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 149.4155 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "SS-12D10L5:SW-TH_SS-12D10L5"
+			(at 152.4 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/datasheet/SS-12D10L5/300104.html"
+			(at 152.4 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Circuit:SPDT Actuator Style:Rectangular Columnar Termination Style:PC Pin Length:13mm Width:6.8mm Switch Height:6.4mm Mounting Type:Through Hole Actuator Color:Black Current Rating:3A Voltage Rating:125V Life:10,000 Cycles Operating Temperature:-40°C~+85°C"
+			(at 152.4 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "SS-12D10L5"
+			(at 152.4 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "XKB Connection(中国星坤)"
+			(at 152.4 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C319012"
+			(at 152.4 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "18b41283-7d0c-4587-8417-332ba6806edf")
+		)
+		(pin "1"
+			(uuid "8f674256-7a17-449d-bce6-eaf293324a41")
+		)
+		(pin "2"
+			(uuid "b78d97a5-3fcd-44eb-9805-7a2d14954cae")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Redriver"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "SW4")
 					(unit 1)
 				)
 			)
@@ -38068,7 +38621,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
+		(property "Value" "+3V3MCU"
 			(at 387.35 81.28 0)
 			(effects
 				(font
@@ -41887,7 +42440,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "ab2691a2-b956-444e-9cd2-792c41aed05d")
 		(property "Reference" "#PWR0118"
 			(at 46.99 21.59 0)
@@ -41898,12 +42450,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 46.99 12.7 0)
+		(property "Value" "+3V3MCU"
+			(at 46.99 13.208 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""

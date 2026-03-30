@@ -5568,7 +5568,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "0ccbb5cf-9f9d-4e2e-8356-85990614d502")
 		(property "Reference" "#PWR0125"
 			(at 81.28 73.66 0)
@@ -5579,12 +5578,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 81.28 64.77 0)
+		(property "Value" "+3V3MCU"
+			(at 83.058 67.564 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -6527,7 +6527,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "2e077bd0-8123-4b75-aadc-a4c86cc84fc8")
 		(property "Reference" "#PWR0119"
 			(at 30.48 41.91 0)
@@ -6538,12 +6537,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 30.48 33.02 0)
+		(property "Value" "+3V3MCU"
+			(at 30.48 32.258 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -6593,7 +6593,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "34bd8790-b561-4c3f-b603-9b04194ac3cc")
 		(property "Reference" "#PWR0128"
 			(at 111.76 99.06 0)
@@ -6604,12 +6603,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 111.76 90.17 0)
+		(property "Value" "+3V3MCU"
+			(at 111.76 89.154 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -6748,7 +6748,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "3f839504-b2bb-4752-b870-6c0b1b5b6579")
 		(property "Reference" "#PWR0124"
 			(at 55.88 35.56 0)
@@ -6759,12 +6758,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 55.88 26.67 0)
+		(property "Value" "+3V3MCU"
+			(at 55.88 26.162 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -7103,7 +7103,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "4711b943-1597-4b9f-b11d-b3735af940ee")
 		(property "Reference" "#PWR067"
 			(at 91.44 99.06 0)
@@ -7114,12 +7113,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
+		(property "Value" "+3V3MCU"
 			(at 91.44 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -8003,7 +8003,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "86c3a1c2-806c-4623-97d1-63485cff61bf")
 		(property "Reference" "#PWR018"
 			(at 31.75 93.98 0)
@@ -8014,12 +8013,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 31.75 85.09 0)
+		(property "Value" "+3V3MCU"
+			(at 25.4 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -8425,7 +8425,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "98be563d-a66d-4a64-b216-2d4847a44c00")
 		(property "Reference" "#PWR01"
 			(at 97.79 63.5 0)
@@ -8436,12 +8435,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 97.79 54.61 0)
+		(property "Value" "+3V3MCU"
+			(at 97.79 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -9196,7 +9196,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "b4dd42d1-7410-4686-a9a4-c889b3ad583a")
 		(property "Reference" "#PWR068"
 			(at 19.05 69.85 0)
@@ -9207,12 +9206,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
+		(property "Value" "+3V3MCU"
 			(at 19.05 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -10010,7 +10010,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "e4fa2cf0-b7c7-49ae-8a0a-716ed41cebc0")
 		(property "Reference" "#PWR0123"
 			(at 101.6 33.02 0)
@@ -10021,12 +10020,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 101.6 24.13 0)
+		(property "Value" "+3V3MCU"
+			(at 101.6 24.638 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
