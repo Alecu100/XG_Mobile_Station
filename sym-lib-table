@@ -32,4 +32,5 @@
   (lib (name "DSWB01LHGET")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/DSWB01LHGET.elibz")(options "")(descr ""))
   (lib (name "DSWB02LHGET")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/DSWB02LHGET.elibz")(options "")(descr ""))
   (lib (name "GT-USB-7091A")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/GT-USB-7091A.elibz")(options "")(descr ""))
+  (lib (name "LD1085D2T33R")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/LD1085D2T33R.elibz")(options "")(descr ""))
 )
