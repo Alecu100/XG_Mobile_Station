@@ -10304,6 +10304,155 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:FerriteBead"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FB"
+				(at -3.81 0.635 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "FerriteBead"
+				(at 3.81 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Ferrite bead"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "L ferrite bead inductor filter"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Inductor_* L_* *Ferrite*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "FerriteBead_0_1"
+				(polyline
+					(pts
+						(xy -2.7686 0.4064) (xy -1.7018 2.2606) (xy 2.7686 -0.3048) (xy 1.6764 -2.159) (xy -2.7686 0.4064)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27) (xy 0 1.2954)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -1.2192)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "FerriteBead_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -16011,6 +16160,16 @@
 	)
 	(wire
 		(pts
+			(xy 86.36 227.33) (xy 90.17 227.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "502b3e00-eb71-4b70-9473-af6732ff7282")
+	)
+	(wire
+		(pts
 			(xy 189.23 81.28) (xy 198.12 81.28)
 		)
 		(stroke
@@ -16111,7 +16270,7 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 222.25) (xy 218.44 222.25)
+			(xy 215.9 227.33) (xy 217.17 227.33)
 		)
 		(stroke
 			(width 0)
@@ -16458,6 +16617,16 @@
 			(type default)
 		)
 		(uuid "6a633306-4853-4380-98df-1c6e82e221fa")
+	)
+	(wire
+		(pts
+			(xy 215.9 227.33) (xy 215.9 222.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6aa146eb-c531-4066-96e3-5f5a4262ad6a")
 	)
 	(wire
 		(pts
@@ -17661,7 +17830,7 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 227.33) (xy 90.17 227.33)
+			(xy 82.55 205.74) (xy 86.36 205.74)
 		)
 		(stroke
 			(width 0)
@@ -18921,6 +19090,16 @@
 	)
 	(wire
 		(pts
+			(xy 86.36 205.74) (xy 86.36 227.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c6200e01-e598-4e51-9d9e-516eac0106e5")
+	)
+	(wire
+		(pts
 			(xy 267.97 223.52) (xy 267.97 210.82)
 		)
 		(stroke
@@ -19218,6 +19397,16 @@
 			(type default)
 		)
 		(uuid "d087fb01-5673-4247-a351-bac3f2fd11ec")
+	)
+	(wire
+		(pts
+			(xy 241.3 208.28) (xy 241.3 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d12d88b8-e7ee-4eca-9efd-111b2f8982b3")
 	)
 	(wire
 		(pts
@@ -19698,6 +19887,16 @@
 			(type default)
 		)
 		(uuid "e3dc0636-0fe7-48cb-81d7-fe33a9d2d53f")
+	)
+	(wire
+		(pts
+			(xy 215.9 222.25) (xy 212.09 222.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e42376b0-c4de-44cd-99b8-e2166204fcaf")
 	)
 	(wire
 		(pts
@@ -20298,6 +20497,16 @@
 			(type default)
 		)
 		(uuid "fd917f16-b458-4107-aaf9-0de2c4db1c82")
+	)
+	(wire
+		(pts
+			(xy 241.3 190.5) (xy 241.3 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fdbd504d-b797-4fab-8bcc-074894dd98d1")
 	)
 	(wire
 		(pts
@@ -23071,7 +23280,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at 398.78 198.12 0)
 		(fields_autoplaced yes)
@@ -23083,7 +23292,7 @@
 		)
 		(uuid "12cf9ec2-235d-4404-8ed6-92c4c73aacee")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 406.8452 198.12 0)
+			(at 414.5862 198.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23093,9 +23302,9 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
-		(at 77.47 196.85 270)
+		(at 77.47 196.85 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23105,7 +23314,7 @@
 		)
 		(uuid "16000842-fe46-4e6b-bd6a-5fd001d705fa")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 77.47 204.9152 90)
+			(at 61.6638 196.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23137,9 +23346,9 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
-		(at 241.3 185.42 180)
+		(at 241.3 190.5 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23149,12 +23358,34 @@
 		)
 		(uuid "1e66ae39-48c4-4116-925e-7d2189859d65")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 233.2348 185.42 0)
+			(at 225.4938 190.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3V3Redriver"
+		(shape output)
+		(at 306.07 125.73 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "20020cda-7ebf-4c28-bdb6-2807385b7f94")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 321.8762 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -23181,7 +23412,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at 398.78 228.6 0)
 		(fields_autoplaced yes)
@@ -23193,7 +23424,7 @@
 		)
 		(uuid "2b063d5c-2deb-4101-9d2a-f54de810d382")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 406.8452 228.6 0)
+			(at 414.5862 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23313,6 +23544,28 @@
 			)
 		)
 	)
+	(global_label "+3V3Redriver"
+		(shape output)
+		(at 347.98 119.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5414a3b9-266d-4151-b830-3edb8c7d5bae")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 363.7862 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "+12V"
 		(shape input)
 		(at 234.95 24.13 0)
@@ -23379,7 +23632,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at 57.15 217.17 180)
 		(fields_autoplaced yes)
@@ -23391,7 +23644,7 @@
 		)
 		(uuid "6d02f7d7-b655-42d0-8cda-0c93da944a4f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 49.0848 217.17 0)
+			(at 41.3438 217.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23403,6 +23656,28 @@
 	)
 	(global_label "+3V3"
 		(shape output)
+		(at 355.6 114.3 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "71a12207-1b81-4e69-ab41-4456d528183a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 363.6652 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3V3Redriver"
+		(shape output)
 		(at 269.24 203.2 180)
 		(fields_autoplaced yes)
 		(effects
@@ -23413,7 +23688,7 @@
 		)
 		(uuid "789cfcc3-922b-49fe-afb7-e36fb46abfb3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 261.1748 203.2 0)
+			(at 253.4338 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23445,7 +23720,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at 264.16 172.72 180)
 		(fields_autoplaced yes)
@@ -23457,7 +23732,7 @@
 		)
 		(uuid "944de3b8-b52b-4609-9aa5-0b17f1b21b26")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 256.0948 172.72 0)
+			(at 248.3538 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23467,9 +23742,9 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
-		(at 218.44 222.25 0)
+		(at 217.17 227.33 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23479,7 +23754,7 @@
 		)
 		(uuid "96da284b-990d-43ca-992e-7698d5c99656")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 226.5052 222.25 0)
+			(at 232.9762 227.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23489,9 +23764,9 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
-		(at 87.63 227.33 180)
+		(at 82.55 205.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23501,7 +23776,7 @@
 		)
 		(uuid "af3ae7a1-dd6a-462c-b7aa-f04b4201be88")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 79.5648 227.33 0)
+			(at 66.7438 205.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23621,9 +23896,9 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
-		(at 241.3 200.66 180)
+		(at 241.3 208.28 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23633,7 +23908,7 @@
 		)
 		(uuid "db23f1a8-aa73-418f-bedf-7e2b1f619538")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 233.2348 200.66 0)
+			(at 225.4938 208.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23643,7 +23918,29 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3SB"
+		(shape output)
+		(at 313.69 120.65 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dd7482d2-e8d8-45ac-a72e-e243eb41450e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 324.2347 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at 57.15 231.14 180)
 		(fields_autoplaced yes)
@@ -23655,7 +23952,7 @@
 		)
 		(uuid "df382499-35d4-446f-acc9-8d06b91b1e58")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 49.0848 231.14 0)
+			(at 41.3438 231.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23687,7 +23984,7 @@
 			)
 		)
 	)
-	(global_label "+3V3"
+	(global_label "+3V3Redriver"
 		(shape output)
 		(at 218.44 252.73 0)
 		(fields_autoplaced yes)
@@ -23699,7 +23996,7 @@
 		)
 		(uuid "f2c8cda2-679b-4f2b-adb4-e93bb8d58f21")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 226.5052 252.73 0)
+			(at 234.2462 252.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24535,6 +24832,106 @@
 			(project "XG_Mobile_Dock_Lite"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR082")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SS-12D10L5:SS-12D10L5")
+		(at 303.53 125.73 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "08749b67-3940-4e4d-8b09-86f1d8a860bc")
+		(property "Reference" "SW5"
+			(at 302.4506 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 300.5455 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "SS-12D10L5:SW-TH_SS-12D10L5"
+			(at 303.53 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/datasheet/SS-12D10L5/300104.html"
+			(at 303.53 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Circuit:SPDT Actuator Style:Rectangular Columnar Termination Style:PC Pin Length:13mm Width:6.8mm Switch Height:6.4mm Mounting Type:Through Hole Actuator Color:Black Current Rating:3A Voltage Rating:125V Life:10,000 Cycles Operating Temperature:-40°C~+85°C"
+			(at 303.53 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "SS-12D10L5"
+			(at 303.53 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "XKB Connection(中国星坤)"
+			(at 303.53 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C319012"
+			(at 303.53 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "074e768d-8206-4bfd-8546-f13e5c48f053")
+		)
+		(pin "1"
+			(uuid "b9f2206f-b0cf-4177-b67b-347979cf8c1a")
+		)
+		(pin "2"
+			(uuid "35fed2f1-7f71-47b1-85c5-9089ee34f973")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Redriver"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "SW5")
 					(unit 1)
 				)
 			)
@@ -36441,6 +36838,106 @@
 		)
 	)
 	(symbol
+		(lib_id "SS-12D10L5:SS-12D10L5")
+		(at 345.44 119.38 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "68c7f656-a128-4cec-8a6b-6398f96c45d9")
+		(property "Reference" "SW8"
+			(at 344.3606 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 342.4555 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "SS-12D10L5:SW-TH_SS-12D10L5"
+			(at 345.44 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/datasheet/SS-12D10L5/300104.html"
+			(at 345.44 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Circuit:SPDT Actuator Style:Rectangular Columnar Termination Style:PC Pin Length:13mm Width:6.8mm Switch Height:6.4mm Mounting Type:Through Hole Actuator Color:Black Current Rating:3A Voltage Rating:125V Life:10,000 Cycles Operating Temperature:-40°C~+85°C"
+			(at 345.44 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "SS-12D10L5"
+			(at 345.44 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "XKB Connection(中国星坤)"
+			(at 345.44 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C319012"
+			(at 345.44 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "0366ca77-6efa-4000-989c-8ba59155cea2")
+		)
+		(pin "1"
+			(uuid "ebb4aae2-6940-4cda-867f-fdd00543ddac")
+		)
+		(pin "2"
+			(uuid "30dbb045-2432-42eb-aa5e-ecff9b81d9f0")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Redriver"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "SW8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 121.92 166.37 0)
 		(unit 1)
@@ -39791,6 +40288,92 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C55")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:FerriteBead")
+		(at 309.88 120.65 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "861de841-3a9a-4718-ab74-fa1aaa9c70f1")
+		(property "Reference" "FB2"
+			(at 309.8292 113.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FerriteBead"
+			(at 309.8292 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 309.88 122.428 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 309.88 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Ferrite bead"
+			(at 309.88 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2661525"
+			(at 309.88 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "FBMJ3216HS800-TV "
+			(at 309.88 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8bfe900f-4ffa-43ab-85af-370322774df9")
+		)
+		(pin "1"
+			(uuid "f467eb99-b79b-4359-a3be-b540606224a3")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Redriver"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "FB2")
 					(unit 1)
 				)
 			)
@@ -46600,6 +47183,92 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR0102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:FerriteBead")
+		(at 351.79 114.3 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c541b62f-f38b-47cc-8945-ba3efaef886d")
+		(property "Reference" "FB1"
+			(at 351.7392 106.68 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FerriteBead"
+			(at 351.7392 109.22 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 351.79 116.078 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 351.79 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Ferrite bead"
+			(at 351.79 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2661525"
+			(at 351.79 114.3 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "FBMJ3216HS800-TV "
+			(at 351.79 114.3 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b6e992a2-372b-4a57-9a45-a2cac45fea27")
+		)
+		(pin "1"
+			(uuid "ae3da3c5-2f23-4e0b-a1e1-bf430cae7933")
+		)
+		(instances
+			(project ""
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "FB1")
 					(unit 1)
 				)
 			)
