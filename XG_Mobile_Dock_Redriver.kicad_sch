@@ -51935,7 +51935,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "LD1085D2T33R"
+		(property "Part_Number" "LD1085D2T33R"
 			(at 330.2 55.88 0)
 			(effects
 				(font
@@ -51953,25 +51953,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C7913"
-			(at 330.2 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 330.2 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "3 A低压降可调和固定正电压稳压器"
+		(property "LCSC" "C7913"
 			(at 330.2 55.88 0)
 			(effects
 				(font
