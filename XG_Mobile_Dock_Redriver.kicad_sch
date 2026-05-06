@@ -13051,6 +13051,12 @@
 		(uuid "394f5a81-362f-449a-b50c-7eee85283a8f")
 	)
 	(junction
+		(at 347.98 124.46)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "39c0065a-7646-475f-a13d-8ac4fac31904")
+	)
+	(junction
 		(at 93.98 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -13471,6 +13477,12 @@
 		(uuid "a0f02c3e-9546-4aed-a104-265d432a7b5a")
 	)
 	(junction
+		(at 347.98 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a1b7ef21-3ea4-4b49-94ee-8c97eb554c9e")
+	)
+	(junction
 		(at 189.23 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -13481,6 +13493,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a302e034-d3a1-4674-b562-85a95e0dbaee")
+	)
+	(junction
+		(at 347.98 114.3)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a5f71084-cce2-47f4-bda3-d39651ab829d")
 	)
 	(junction
 		(at 381 50.8)
@@ -14051,6 +14069,16 @@
 			(type default)
 		)
 		(uuid "0316a6b2-638a-46a8-a373-03b0aabfedba")
+	)
+	(wire
+		(pts
+			(xy 347.98 116.84) (xy 347.98 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "031996b6-e26d-4788-aeec-ada89a9aa05d")
 	)
 	(wire
 		(pts
@@ -15304,6 +15332,16 @@
 	)
 	(wire
 		(pts
+			(xy 336.55 114.3) (xy 336.55 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a55859c-4ea8-4b0a-be0e-a0fa53a0bada")
+	)
+	(wire
+		(pts
 			(xy 236.22 43.18) (xy 245.11 43.18)
 		)
 		(stroke
@@ -15401,6 +15439,16 @@
 			(type default)
 		)
 		(uuid "2cf6ae7a-08e3-4a6c-98aa-a5337ec7b651")
+	)
+	(wire
+		(pts
+			(xy 336.55 119.38) (xy 336.55 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d44c2bc-599b-4100-92a5-9d7e0a017f3a")
 	)
 	(wire
 		(pts
@@ -15511,6 +15559,16 @@
 			(type default)
 		)
 		(uuid "33a4370a-cef9-4a35-a147-3168bdf8c416")
+	)
+	(wire
+		(pts
+			(xy 336.55 124.46) (xy 336.55 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33acff2a-653c-465a-9671-e7a50cc75aa3")
 	)
 	(wire
 		(pts
@@ -16181,6 +16239,16 @@
 			(type default)
 		)
 		(uuid "4e522abc-2b46-4b1f-8d6a-08cb819558f7")
+	)
+	(wire
+		(pts
+			(xy 351.79 119.38) (xy 347.98 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e7645b1-c2cc-4c70-b75e-77fec5abf5af")
 	)
 	(wire
 		(pts
@@ -18514,6 +18582,16 @@
 	)
 	(wire
 		(pts
+			(xy 347.98 121.92) (xy 347.98 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad55c9e5-ca3d-4665-9905-f17eb24aee04")
+	)
+	(wire
+		(pts
 			(xy 170.18 262.89) (xy 182.88 262.89)
 		)
 		(stroke
@@ -19194,6 +19272,16 @@
 	)
 	(wire
 		(pts
+			(xy 336.55 111.76) (xy 347.98 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c6d23122-219d-4ae2-9577-de8ff828fc4e")
+	)
+	(wire
+		(pts
 			(xy 267.97 223.52) (xy 267.97 210.82)
 		)
 		(stroke
@@ -19221,6 +19309,16 @@
 			(type default)
 		)
 		(uuid "c889dd24-ce71-4981-bfef-607cd225f8e9")
+	)
+	(wire
+		(pts
+			(xy 336.55 121.92) (xy 347.98 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8c0b13c-eda9-4b27-bae6-f79898fe3c3f")
 	)
 	(wire
 		(pts
@@ -19594,6 +19692,16 @@
 	)
 	(wire
 		(pts
+			(xy 347.98 111.76) (xy 347.98 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3d5f3ba-5ed0-4333-b945-eb9994fe3549")
+	)
+	(wire
+		(pts
 			(xy 46.99 105.41) (xy 46.99 113.03)
 		)
 		(stroke
@@ -19901,6 +20009,16 @@
 			(type default)
 		)
 		(uuid "df60a93b-e6c0-4d48-a622-e00a8d08f5c2")
+	)
+	(wire
+		(pts
+			(xy 351.79 124.46) (xy 347.98 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df7a678e-7862-4a6b-aa07-e7f2f5a05f1e")
 	)
 	(wire
 		(pts
@@ -20241,6 +20359,16 @@
 			(type default)
 		)
 		(uuid "ee136d56-cdef-46d4-a2aa-7c46a8b37669")
+	)
+	(wire
+		(pts
+			(xy 336.55 116.84) (xy 347.98 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee244ae7-19b5-4b3d-99cb-d099cb5028de")
 	)
 	(wire
 		(pts
@@ -23682,7 +23810,7 @@
 	)
 	(global_label "+3V3Redriver"
 		(shape output)
-		(at 347.98 119.38 0)
+		(at 351.79 119.38 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23692,7 +23820,7 @@
 		)
 		(uuid "5414a3b9-266d-4151-b830-3edb8c7d5bae")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 363.7862 119.38 0)
+			(at 367.5962 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24232,7 +24360,7 @@
 	)
 	(global_label "+3V3LDO"
 		(shape output)
-		(at 347.98 124.46 0)
+		(at 351.79 124.46 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -24242,7 +24370,7 @@
 		)
 		(uuid "f0d4b364-835e-4cba-b832-42b8505f080e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 359.6738 124.46 0)
+			(at 363.4838 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40990,6 +41118,106 @@
 			(project "XG_Mobile_Dock_Redriver"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C55")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SS-12D10L5:SS-12D10L5")
+		(at 334.01 119.38 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "862481a5-c473-49e9-9919-2b57cd0679ef")
+		(property "Reference" "SW5"
+			(at 332.9306 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 331.0255 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "SS-12D10L5:SW-TH_SS-12D10L5"
+			(at 334.01 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/datasheet/SS-12D10L5/300104.html"
+			(at 334.01 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Circuit:SPDT Actuator Style:Rectangular Columnar Termination Style:PC Pin Length:13mm Width:6.8mm Switch Height:6.4mm Mounting Type:Through Hole Actuator Color:Black Current Rating:3A Voltage Rating:125V Life:10,000 Cycles Operating Temperature:-40°C~+85°C"
+			(at 334.01 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "SS-12D10L5"
+			(at 334.01 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "XKB Connection(中国星坤)"
+			(at 334.01 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C319012"
+			(at 334.01 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "7060e8b2-8ae2-4395-9f60-9ea6e63eef86")
+		)
+		(pin "1"
+			(uuid "94d2d2ec-7a92-4ad2-8dd5-d9110fbafa90")
+		)
+		(pin "2"
+			(uuid "400ccbe4-1511-421f-8098-27498cf6d9de")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Redriver"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "SW5")
 					(unit 1)
 				)
 			)
