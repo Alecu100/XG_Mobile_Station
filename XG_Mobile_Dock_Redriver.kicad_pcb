@@ -39324,7 +39324,7 @@
 			(uuid "02ddc3b4-19fd-476c-8420-06292678c7f2")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/TO-263-2_L10.2-W8.7-H4.5_LS15.2-P2.54.step"
+		(model "${KIPRJMOD}/Models/LD1085D2T33R.step"
 			(offset
 				(xyz 1.2 0 0)
 			)
@@ -39332,7 +39332,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -270)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -81790,7 +81790,7 @@
 		)
 	)
 	(gr_text "Redriver Power\nShared"
-		(at 61.07 79.98 0)
+		(at 77.2 84.15 0)
 		(layer "F.SilkS")
 		(uuid "0a32567b-b684-4150-ac38-e69b7d3c93cd")
 		(effects
@@ -81849,7 +81849,7 @@
 		)
 	)
 	(gr_text "Redriver Power\nDedicated"
-		(at 164.67 71.35 0)
+		(at 61.325 84.15 0)
 		(layer "F.SilkS")
 		(uuid "1885230c-725f-45c8-baec-6c27bd88901e")
 		(effects
