@@ -39807,6 +39807,24 @@
 				(hide yes)
 			)
 		)
+		(property "Part_Number" "TPS7A8400ARGRR"
+			(at 477.52 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C524802"
+			(at 477.52 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "17"
 			(uuid "c4e39c5d-116e-4689-9727-64a8962a7cd5")
 		)
@@ -42329,6 +42347,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 483.87 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "TPS7A8400ARGRR"
+			(at 483.87 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C524802"
 			(at 483.87 22.86 0)
 			(effects
 				(font
