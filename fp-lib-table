@@ -44,4 +44,5 @@
   (lib (name "SS-12D10L5")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/SS-12D10L5/SS-12D10L5.elibz")(options "")(descr ""))
   (lib (name "MMBT5551 RANGE 200-300")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/MMBT5551 RANGE 200-300/MMBT5551 RANGE 200-300.elibz")(options "")(descr ""))
   (lib (name "KT-0603R")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/KT-0603R/KT-0603R.elibz")(options "")(descr ""))
+  (lib (name "TPS7A8400A")(type "KiCad")(uri "${KIPRJMOD}/Footprints/TPS7A8400ARGRR.pretty")(options "")(descr ""))
 )
