@@ -12918,7 +12918,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "10nf CL05B103KB5NNNC Mfpart C15195 LCSC 0402\n100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC \n10uF CL10A106KP8NNNC MfPart C19702 LCSC\n47uF CL31A476MPHNNNE MfPart C96123 LCSC 1206\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402"
+	(text "10nf CL05B103KB5NNNC Mfpart C15195 LCSC 0402\n100nF GRM033R61C104KE84D MfPart C76937 LCSC\n220nF GRM033R61C224KE14D MfPart C161474 LCSC\n1uf CL03A105MO3NRNH MfPart C307385 LCSC \n10uF CL10A106KP8NNNC MfPart C19702 LCSC\n10uF CL21A106KAYNNNE MfPart C15850 LCSC 0805\n47uF CL31A476MPHNNNE MfPart C96123 LCSC 1206\n47uF CL21A476MQYNNNE MfPart C16780 LCSC 0805\n1k RC0603JR-071KL MfPart C14676 LCSC L0\n8.25k 0603WAF8251T5E MfPart C23113 LCSC L1\n24.9k RC0603FR-0724K9L MfPart C137761 LCSC L2\n75k 0603WAF7502T5E MfPart C23242 LCSC L3\n4.7k 0402WGF4701TCE MfPart C25900 LCSC 0402"
 		(exclude_from_sim no)
 		(at 377.952 23.368 0)
 		(effects
@@ -33392,7 +33392,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 458.7748 2.54 0)
 			(effects
 				(font
@@ -33419,7 +33419,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL31A476MPHNNNE"
+		(property "Part_Number" "CL21A476MQYNNNE"
 			(at 459.74 -1.27 0)
 			(effects
 				(font
@@ -33428,7 +33428,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C96123"
+		(property "LCSC" "C16780"
 			(at 459.74 -1.27 0)
 			(effects
 				(font
@@ -35455,7 +35455,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 452.4248 73.66 0)
 			(effects
 				(font
@@ -35482,7 +35482,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL31A476MPHNNNE"
+		(property "Part_Number" "CL21A476MQYNNNE"
 			(at 453.39 69.85 0)
 			(effects
 				(font
@@ -35491,7 +35491,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C96123"
+		(property "LCSC" "C16780"
 			(at 453.39 69.85 0)
 			(effects
 				(font
@@ -36090,7 +36090,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 513.3848 83.82 0)
 			(effects
 				(font
@@ -36117,7 +36117,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL10A106KP8NNNC"
+		(property "Part_Number" "CL21A106KAYNNNE"
 			(at 514.35 80.01 0)
 			(effects
 				(font
@@ -36126,7 +36126,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C19702"
+		(property "LCSC" "C15850"
 			(at 514.35 80.01 0)
 			(effects
 				(font
@@ -41337,7 +41337,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 514.6548 12.7 0)
 			(effects
 				(font
@@ -41364,7 +41364,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL10A106KP8NNNC"
+		(property "Part_Number" "CL21A106KAYNNNE"
 			(at 515.62 8.89 0)
 			(effects
 				(font
@@ -41373,7 +41373,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C19702"
+		(property "LCSC" "C15850"
 			(at 515.62 8.89 0)
 			(effects
 				(font
@@ -41751,7 +41751,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 508.3048 83.82 0)
 			(effects
 				(font
@@ -41778,7 +41778,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL10A106KP8NNNC"
+		(property "Part_Number" "CL21A106KAYNNNE"
 			(at 509.27 80.01 0)
 			(effects
 				(font
@@ -41787,7 +41787,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C19702"
+		(property "LCSC" "C15850"
 			(at 509.27 80.01 0)
 			(effects
 				(font
@@ -42786,7 +42786,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 503.2248 83.82 0)
 			(effects
 				(font
@@ -42813,7 +42813,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL31A476MPHNNNE"
+		(property "Part_Number" "CL21A476MQYNNNE"
 			(at 504.19 80.01 0)
 			(effects
 				(font
@@ -42822,7 +42822,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C96123"
+		(property "LCSC" "C16780"
 			(at 504.19 80.01 0)
 			(effects
 				(font
@@ -45001,7 +45001,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 509.5748 12.7 0)
 			(effects
 				(font
@@ -45028,7 +45028,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL31A476MPHNNNE"
+		(property "Part_Number" "CL21A476MQYNNNE"
 			(at 510.54 8.89 0)
 			(effects
 				(font
@@ -45037,7 +45037,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C96123"
+		(property "LCSC" "C16780"
 			(at 510.54 8.89 0)
 			(effects
 				(font
@@ -53163,7 +53163,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 519.7348 12.7 0)
 			(effects
 				(font
@@ -53190,7 +53190,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL10A106KP8NNNC"
+		(property "Part_Number" "CL21A106KAYNNNE"
 			(at 520.7 8.89 0)
 			(effects
 				(font
@@ -53199,7 +53199,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C19702"
+		(property "LCSC" "C15850"
 			(at 520.7 8.89 0)
 			(effects
 				(font
