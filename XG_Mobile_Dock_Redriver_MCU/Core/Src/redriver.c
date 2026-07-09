@@ -281,6 +281,8 @@ static void initialize_cpu_gpu_redriver_boot()
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_PROFILE_INDEX_6 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_PROFILE_INDEX_6 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_INDEX_6 | FLAT_GAIN_0 | FLAT_GAIN_2);
+}
+
 static void initialize_gpu_cpu_redriver_running()
 {
     printf("Initializing gpu to cpu redriver to running state\n");
