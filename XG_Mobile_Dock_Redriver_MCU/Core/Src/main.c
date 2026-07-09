@@ -116,7 +116,11 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-
+  /* Enable the USART1 interrupt for the non-blocking ring-buffer logger (see
+   * uart_tx_* in xg_mobile_dock.c). Lowest priority (3) so UART TX servicing
+   * never delays the I2C/EXTI/TIM handlers, which all run at priority 0. */
+  HAL_NVIC_SetPriority(USART1_IRQn, 3, 0);
+  HAL_NVIC_EnableIRQ(USART1_IRQn);
   /* USER CODE END 2 */
 
   /* Infinite loop */

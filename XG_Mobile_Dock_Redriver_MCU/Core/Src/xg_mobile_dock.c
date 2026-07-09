@@ -43,16 +43,17 @@ static const char * const gFSMStateStrings[] = {
 typedef struct {
     fsm_state_t fsm;
     int debounce_pins;
-    int lock_switch;
-    int connector_detect;
-    int power_enable;
+    volatile int lock_switch;
+    volatile int connector_detect;
+    volatile int power_enable;
     i2c_state_t i2c;
     unsigned char i2cBuffer[256];
     int i2cCmd;
     int i2cReg;
     int i2cSize;
-    unsigned char i2cRegData1;
-    int redriver_boot_delay;
+    volatile unsigned char i2cRegData1;
+    volatile int redriver_boot_delay;
+    volatile int redriver_boot_pending;
 } state_t;
 
 static state_t gState;
@@ -64,23 +65,129 @@ extern void initialize_redrivers_running(void);
 extern void power_up_down_redrivers(GPIO_PinState reset);
 extern void print_redrivers_status();
 
+/* --- Non-blocking UART logging ---------------------------------------------
+ * printf() is called from ISR context (the EXTI callback and every I2C slave
+ * callback). The old __io_putchar() used HAL_UART_Transmit() with a blocking
+ * 0xFFFF timeout, which parks the calling ISR for ~87 us per byte at 115200
+ * baud (milliseconds per log line). That stall is what makes the MCU miss
+ * I2C/EXTI events. Instead we push bytes into a ring buffer and drain it with
+ * interrupt-driven UART TX, so logging never busy-waits on the UART hardware.
+ *
+ * Behaviour when the buffer is full:
+ *   - ISR context   : drop the byte, never block an interrupt handler.
+ *   - thread context: wait for the TX ISR to free a slot. Blocking the main
+ *                     loop is acceptable and keeps main-context logs lossless,
+ *                     matching the previous behaviour.
+ */
+#define UART_TX_BUF_SIZE 1024u /* must stay a power of two */
+static volatile uint8_t  uart_tx_buf[UART_TX_BUF_SIZE];
+static volatile uint16_t uart_tx_head;        /* producer index */
+static volatile uint16_t uart_tx_tail;        /* consumer index */
+static volatile uint16_t uart_tx_sending_len; /* bytes handed to HAL this transfer */
+static volatile uint8_t  uart_tx_busy;        /* a HAL_UART_Transmit_IT is in flight */
+
+/* Start the next contiguous chunk if the UART is idle. Must run with interrupts
+ * disabled, or from the USART1 ISR where the busy flag serialises starts. */
+static void uart_tx_start_locked(void) {
+    if (uart_tx_busy) {
+        return;
+    }
+    if (uart_tx_head == uart_tx_tail) {
+        return; /* nothing queued */
+    }
+    uint16_t len;
+    if (uart_tx_head > uart_tx_tail) {
+        len = uart_tx_head - uart_tx_tail;
+    } else {
+        len = UART_TX_BUF_SIZE - uart_tx_tail; /* only up to the buffer wrap */
+    }
+    uart_tx_sending_len = len;
+    uart_tx_busy = 1;
+    if (HAL_UART_Transmit_IT(&huart1, (uint8_t *)&uart_tx_buf[uart_tx_tail], len) != HAL_OK) {
+        uart_tx_busy = 0; /* could not start now; retry on the next kick */
+    }
+}
+
+static void uart_tx_kick(void) {
+    uint32_t primask = __get_PRIMASK();
+    __disable_irq();
+    uart_tx_start_locked();
+    __set_PRIMASK(primask);
+}
+
+/* USART1 TX-complete: advance past the chunk we just sent and start the next.
+ * Runs in the USART1 ISR. sending_len/tail are stable here because uart_tx_busy
+ * stays 1 until we clear it, which blocks any competing start. */
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
+    if (huart != &huart1) {
+        return;
+    }
+    uart_tx_tail = (uint16_t)((uart_tx_tail + uart_tx_sending_len) & (UART_TX_BUF_SIZE - 1u));
+    uart_tx_busy = 0;
+    uart_tx_start_locked();
+}
+
+/* USART1 global interrupt. CubeMX did not generate this handler (the UART global
+ * interrupt is not enabled in the .ioc), so define it here to override the weak
+ * Default_Handler from the startup file. The NVIC line is enabled in main()
+ * (USER CODE BEGIN 2). */
+void USART1_IRQHandler(void) {
+    HAL_UART_IRQHandler(&huart1);
+}
+
+/* Enqueue one byte for transmission. Returns 0 on success, -1 if dropped. */
+static int uart_tx_putc(uint8_t c) {
+    for (;;) {
+        uint32_t primask = __get_PRIMASK();
+        __disable_irq();
+        uint16_t next = (uint16_t)((uart_tx_head + 1u) & (UART_TX_BUF_SIZE - 1u));
+        if (next != uart_tx_tail) {
+            uart_tx_buf[uart_tx_head] = c;
+            uart_tx_head = next;
+            uart_tx_start_locked();
+            __set_PRIMASK(primask);
+            return 0;
+        }
+        __set_PRIMASK(primask);
+        /* Buffer full. */
+        if (__get_IPSR() != 0U) {
+            return -1; /* in an ISR: drop, never block */
+        }
+        /* Thread context: keep the UART draining and spin until a slot frees.
+         * Interrupts are enabled here so the USART1 TX ISR can run. */
+        uart_tx_kick();
+    }
+}
+
 int __io_putchar(int ch) {
     if (ch == '\n') {
-        uint8_t r = '\r';
-        HAL_UART_Transmit(&huart1, &r, 1, 0xFFFF);
+        uart_tx_putc((uint8_t)'\r');
     }
-    HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+    uart_tx_putc((uint8_t)ch);
     return ch;
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
     if (GPIO_Pin == RST_Pin) {
         GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
-        // passthrough directly to PERST#
+        // passthrough directly to PERST# (fast, timing-critical path)
         HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
         power_up_down_redrivers(reset);
-        initialize_redrivers_boot();
-        gState.redriver_boot_delay = HAL_GetTick();
+        // Do NOT run the redriver (re)init here. It performs long, blocking I2C
+        // (HAL_I2C_IsDeviceReady with 1024 trials plus dozens of Mem_Write/Read, each
+        // with 500 ms timeouts). Running that inside this EXTI ISR stalls the CPU for
+        // hundreds of ms to seconds, during which further RST/PWREN/CON_DET/LOCK_SW
+        // edges and host I2C requests are missed, and the PERST# passthrough for the
+        // next edge is delayed -> the GPU/host tears down the PCIe link. Defer the
+        // heavy init to the main loop (thread context) instead.
+        if (reset == GPIO_PIN_SET) {
+            // coming out of reset: redrivers are powered up, request a boot re-init
+            gState.redriver_boot_pending = 1;
+        } else {
+            // going into reset: redrivers are powered down, cancel any pending init
+            gState.redriver_boot_pending = 0;
+            gState.redriver_boot_delay = 0;
+        }
         printf("Pin changed: RST = %d\n", reset == GPIO_PIN_RESET);
     } else if (GPIO_Pin == PWREN_Pin) {
         gState.power_enable = HAL_GPIO_ReadPin(PWREN_GPIO_Port, PWREN_Pin) == GPIO_PIN_RESET;
@@ -232,10 +339,23 @@ void transition_state(state_t *state, fsm_state_t next) {
 void main_fsm_iteration(void) {
     fsm_state_t prev = gState.fsm;
     print_redrivers_status();
+    // Deferred redriver boot (re)init requested from the RST EXTI ISR. Runs here in
+    // thread context so the long, blocking I2C sequence never stalls interrupt handling.
+    if (gState.redriver_boot_pending) {
+        gState.redriver_boot_pending = 0;
+        initialize_redrivers_boot();
+        gState.redriver_boot_delay = HAL_GetTick();
+    }
     if (gState.redriver_boot_delay != 0) {
         if (HAL_GetTick() - gState.redriver_boot_delay >= 5000) {
-            initialize_redrivers_running();
             gState.redriver_boot_delay = 0;
+            // Only push the running-state config if we are still out of reset. A reset
+            // asserted during the boot window (e.g. an unplug that raced with the boot
+            // init above) powers the redrivers down; talking I2C to them here would fail
+            // on every transfer (each with a 500 ms timeout) and stall the main loop.
+            if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
+                initialize_redrivers_running();
+            }
         }
     }
 
@@ -244,7 +364,14 @@ void main_fsm_iteration(void) {
         case MCU_RESET: {
             init_gpio_state(&gState);
             transition_state(&gState, DEVICE_IDLE);
-            initialize_redrivers_boot();
+            // Only boot the redrivers if PCIe is out of reset. If RST is asserted the
+            // redrivers are powered down (init_gpio_state -> power_up_down_redrivers) and
+            // initialize_redrivers_boot() would block for a very long time in
+            // HAL_I2C_IsDeviceReady (1024 trials) against dead devices. When RST later
+            // deasserts, the EXTI ISR sets redriver_boot_pending and the boot runs then.
+            if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
+                initialize_redrivers_boot();
+            }
             HAL_I2C_EnableListen_IT(&hi2c1);
             break;
         }

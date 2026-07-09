@@ -281,10 +281,6 @@ static void initialize_cpu_gpu_redriver_boot()
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_PROFILE_INDEX_6 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_PROFILE_INDEX_6 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_INDEX_6 | FLAT_GAIN_0 | FLAT_GAIN_2);
-}
-
-
-
 static void initialize_gpu_cpu_redriver_running()
 {
     printf("Initializing gpu to cpu redriver to running state\n");
@@ -307,14 +303,17 @@ static void initialize_gpu_cpu_redriver_running()
     initialize_channel_rx_detect(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EN_RX_DET_COUNT | SEL_RX_DET_COUNT);
     initialize_channel_rx_detect(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EN_RX_DET_COUNT | SEL_RX_DET_COUNT);
 
-    initialize_channel_bias(GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, BIAS_CURRENT_0);
-    initialize_channel_bias(GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, BIAS_CURRENT_0);
-    initialize_channel_bias(GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, BIAS_CURRENT_0);
-    initialize_channel_bias(GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, BIAS_CURRENT_0);
-    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, BIAS_CURRENT_0);
-    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, BIAS_CURRENT_0);
-    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, BIAS_CURRENT_0);
-    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, BIAS_CURRENT_0);
+    // Bias 111 (max) is used here, not the datasheet-recommended 001. Empirically it
+    // gives the most stable GPU->CPU link over the XG Mobile cable (high post-channel
+    // loss + 2x redriver cascade). Do not "correct" this back to 001.
+    initialize_channel_bias(GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, BIAS_CURRENT_0 | BIAS_CURRENT_1 | BIAS_CURRENT_2);
+    initialize_channel_bias(GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, BIAS_CURRENT_0 | BIAS_CURRENT_1 | BIAS_CURRENT_2);
+    initialize_channel_bias(GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, BIAS_CURRENT_0 | BIAS_CURRENT_1 | BIAS_CURRENT_2);
+    initialize_channel_bias(GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, BIAS_CURRENT_0 | BIAS_CURRENT_1 | BIAS_CURRENT_2);
+    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, BIAS_CURRENT_0 | BIAS_CURRENT_1 | BIAS_CURRENT_2);
+    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, BIAS_CURRENT_0 | BIAS_CURRENT_1 | BIAS_CURRENT_2);
+    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, BIAS_CURRENT_0 | BIAS_CURRENT_1 | BIAS_CURRENT_2);
+    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, BIAS_CURRENT_0 | BIAS_CURRENT_1 | BIAS_CURRENT_2);
 
     initialize_channel_eq_profile(GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, EQ_PROFILE_INDEX_0); // EQ profile index 0, flat gain 000 = -6 dB
     initialize_channel_eq_profile(GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, EQ_PROFILE_INDEX_0);
