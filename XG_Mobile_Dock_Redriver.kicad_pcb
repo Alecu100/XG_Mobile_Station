@@ -140,7 +140,7 @@
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions yes)
-			(usegerberattributes no)
+			(usegerberattributes yes)
 			(usegerberadvancedattributes no)
 			(creategerberjobfile no)
 			(dashed_line_dash_ratio 12.000000)
@@ -83647,7 +83647,7 @@
 		)
 	)
 	(gr_text "ON"
-		(at 37.42 115.83 0)
+		(at 37.2 103.493 0)
 		(layer "F.SilkS")
 		(uuid "15059fb2-b04c-4e08-8f6f-a9b70e09d345")
 		(effects
@@ -83670,7 +83670,7 @@
 		)
 	)
 	(gr_text "PCIE 0-3"
-		(at 64.26 115.38 90)
+		(at 64.04 103.043 90)
 		(layer "F.SilkS")
 		(uuid "19ec822f-5dee-49ce-a9e0-d2e6498a6ef6")
 		(effects
@@ -83682,7 +83682,7 @@
 		)
 	)
 	(gr_text "CPU->GPU"
-		(at 40.93 107.17 0)
+		(at 41.193 94.961 0)
 		(layer "F.SilkS")
 		(uuid "1c0d9ce8-7ed2-4ca3-9032-9ba390b1f9dc")
 		(effects
@@ -83694,7 +83694,7 @@
 		)
 	)
 	(gr_text "OFF"
-		(at 50.451 110.728 0)
+		(at 50.231 98.391 0)
 		(layer "F.SilkS")
 		(uuid "1e4d5b67-4bdb-4e39-9051-48a4b1f42d92")
 		(effects
@@ -83814,7 +83814,7 @@
 		)
 	)
 	(gr_text "OFF"
-		(at 37.046 110.77 0)
+		(at 36.826 98.433 0)
 		(layer "F.SilkS")
 		(uuid "345800a8-ca30-4f2b-8445-56ddb5329990")
 		(effects
@@ -83958,7 +83958,7 @@
 		)
 	)
 	(gr_text "ON"
-		(at 50.85 125.19 0)
+		(at 50.63 112.853 0)
 		(layer "F.SilkS")
 		(uuid "41b8395f-71fc-4b44-a41e-17fbb15ea138")
 		(effects
@@ -83970,7 +83970,7 @@
 		)
 	)
 	(gr_text "GPU->CPU"
-		(at 54.2 107.07 0)
+		(at 54.463 94.861 0)
 		(layer "F.SilkS")
 		(uuid "44649018-8e7b-4c57-8f7e-75ad351796ef")
 		(effects
@@ -84018,7 +84018,7 @@
 		)
 	)
 	(gr_text "MCU"
-		(at 50.017 122.765 0)
+		(at 49.797 110.428 0)
 		(layer "F.SilkS")
 		(uuid "563feb03-5fb1-4866-a651-3d75b73aba17")
 		(effects
@@ -84138,7 +84138,7 @@
 		)
 	)
 	(gr_text "OFF"
-		(at 50.378 120.19 0)
+		(at 50.158 107.853 0)
 		(layer "F.SilkS")
 		(uuid "6cc40662-5f8b-4230-9f37-10c7ae449433")
 		(effects
@@ -84270,7 +84270,7 @@
 		)
 	)
 	(gr_text "ON"
-		(at 37.3 125.49 0)
+		(at 37.08 113.153 0)
 		(layer "F.SilkS")
 		(uuid "93983d28-9db6-436c-afb6-221dd60527b5")
 		(effects
@@ -84366,7 +84366,7 @@
 		)
 	)
 	(gr_text "CPU->GPU"
-		(at 41.12 128.82 0)
+		(at 41.524 116.466 0)
 		(layer "F.SilkS")
 		(uuid "abf8bef6-5481-4253-bb6b-ecb3a340b6d2")
 		(effects
@@ -84475,7 +84475,7 @@
 		)
 	)
 	(gr_text "MCU"
-		(at 36.718 122.97 0)
+		(at 36.498 110.633 0)
 		(layer "F.SilkS")
 		(uuid "b6fdf66c-93fb-4730-b155-a6d26b077ccd")
 		(effects
@@ -84523,7 +84523,7 @@
 		)
 	)
 	(gr_text "ON"
-		(at 50.785 115.866 0)
+		(at 50.565 103.529 0)
 		(layer "F.SilkS")
 		(uuid "bab164f3-4e02-4c9f-b53c-84ef6857490b")
 		(effects
@@ -84547,7 +84547,7 @@
 		)
 	)
 	(gr_text "OFF"
-		(at 36.788 120.41 0)
+		(at 36.568 108.073 0)
 		(layer "F.SilkS")
 		(uuid "bc393ed3-591a-4fe8-9f6b-6bb27bd66fdb")
 		(effects
@@ -84631,7 +84631,7 @@
 		)
 	)
 	(gr_text "GPU->CPU"
-		(at 53.94 128.92 0)
+		(at 54.344 116.566 0)
 		(layer "F.SilkS")
 		(uuid "d3b3ce18-b474-40c1-998f-df278af7a89e")
 		(effects
@@ -84727,7 +84727,7 @@
 		)
 	)
 	(gr_text "MCU"
-		(at 50.13 113.42 0)
+		(at 49.91 101.083 0)
 		(layer "F.SilkS")
 		(uuid "e36feb08-3d0f-4359-ac8c-e88f3edf2713")
 		(effects
@@ -84751,7 +84751,7 @@
 		)
 	)
 	(gr_text "PCIE 4-7"
-		(at 64.3 125.39 90)
+		(at 64.08 113.053 90)
 		(layer "F.SilkS")
 		(uuid "f02eecaf-2eca-4e49-8963-c097ff47e1a7")
 		(effects
@@ -84763,7 +84763,7 @@
 		)
 	)
 	(gr_text "MCU"
-		(at 36.843 113.269 0)
+		(at 36.623 100.932 0)
 		(layer "F.SilkS")
 		(uuid "f044c21c-00a3-4254-ac0b-8260511b4b9d")
 		(effects
