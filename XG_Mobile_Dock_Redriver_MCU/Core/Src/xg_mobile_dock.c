@@ -259,7 +259,7 @@ void update_cable_led(led_colour_t colour) {
             printf("Turn on red LED\n");
             HAL_GPIO_WritePin(LED_WHITE_GPIO_Port, LED_WHITE_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-            set_psu(1); // powered on -> keep PSU on
+            // PSU already on from the preceding WHITE state (RED always follows WHITE)
             break;
         }
         case NONE:
