@@ -572,7 +572,10 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(MCU_IRQ_GPIO_Port, MCU_IRQ_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, HP_SHDN_Pin|WAKE_Pin|PERST_Pin|CLKREQ_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, WAKE_Pin|PERST_Pin|CLKREQ_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level : PSON low = PSU off at boot */
+  HAL_GPIO_WritePin(PSON_GPIO_Port, PSON_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, CPU_GPU_PD_0_3_Pin|CPU_GPU_PD_4_7_Pin|GPU_CPU_PD_0_3_Pin|GPU_CPU_PD_4_7_Pin
@@ -634,21 +637,28 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(MCU_IRQ_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : HP_SHDN_Pin */
-  GPIO_InitStruct.Pin = HP_SHDN_Pin;
+  /*Configure GPIO pin : PSON_Pin (drives PS_ON transistor) */
+  GPIO_InitStruct.Pin = PSON_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(HP_SHDN_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(PSON_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : CPU_GPU_PD_0_3_Pin CPU_GPU_PD_4_7_Pin GPU_CPU_PD_0_3_Pin GPU_CPU_PD_4_7_Pin
-                           WAKE_Pin PERST_Pin CLKREQ_Pin */
+                           WAKE_Pin CLKREQ_Pin */
   GPIO_InitStruct.Pin = CPU_GPU_PD_0_3_Pin|CPU_GPU_PD_4_7_Pin|GPU_CPU_PD_0_3_Pin|GPU_CPU_PD_4_7_Pin
-                          |WAKE_Pin|PERST_Pin|CLKREQ_Pin;
+                          |WAKE_Pin|CLKREQ_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PERST_Pin (push-pull, drives inverting PERST# transistor) */
+  GPIO_InitStruct.Pin = PERST_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(PERST_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : CASE_LED_Pin */
   GPIO_InitStruct.Pin = CASE_LED_Pin;

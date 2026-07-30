@@ -167,11 +167,28 @@ int __io_putchar(int ch) {
     return ch;
 }
 
+// PS_ON is driven through a transistor that pulls PS_ON# low when the MCU pin is high:
+//   MCU HIGH -> transistor ON  -> PS_ON# LOW  -> PSU ON
+//   MCU LOW  -> transistor OFF -> PS_ON# HIGH -> PSU OFF
+void set_psu(int on) {
+    HAL_GPIO_WritePin(PSON_GPIO_Port, PSON_Pin, on ? GPIO_PIN_SET : GPIO_PIN_RESET);
+}
+
+// Downstream PERST# is driven through an inverting transistor (PERST_MCU# -> Q -> PERST#):
+//   MCU HIGH -> transistor ON  -> PERST# LOW  (reset asserted)
+//   MCU LOW  -> transistor OFF -> PERST# HIGH (reset deasserted)
+// host_reset is the active-low RST read from the host (GPIO_PIN_RESET = host asserting reset).
+void set_perst(GPIO_PinState host_reset) {
+    HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin,
+                      host_reset == GPIO_PIN_RESET ? GPIO_PIN_SET : GPIO_PIN_RESET);
+}
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
     if (GPIO_Pin == RST_Pin) {
         GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
-        // passthrough directly to PERST# (fast, timing-critical path)
-        HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
+        // mirror host reset onto downstream PERST# through the inverting transistor
+        // (fast, timing-critical path)
+        set_perst(reset);
         power_up_down_redrivers(reset);
         // Do NOT run the redriver (re)init here. It performs long, blocking I2C
         // (HAL_I2C_IsDeviceReady with 1024 trials plus dozens of Mem_Write/Read, each
@@ -225,7 +242,7 @@ void init_gpio_state(state_t *state) {
     printf("PWREN = %d, ", state->power_enable);
     GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
     printf("RST = %d, ", reset == GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(PERST_GPIO_Port, PERST_Pin, reset);
+    set_perst(reset);
     power_up_down_redrivers(reset);
 }
 
@@ -235,12 +252,14 @@ void update_cable_led(led_colour_t colour) {
             printf("Turn on white LED\n");
             HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(LED_WHITE_GPIO_Port, LED_WHITE_Pin, GPIO_PIN_RESET);
+            set_psu(1); // cable locked -> spin up PSU
             break;
         }
         case RED: {
             printf("Turn on red LED\n");
             HAL_GPIO_WritePin(LED_WHITE_GPIO_Port, LED_WHITE_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
+            set_psu(1); // powered on -> keep PSU on
             break;
         }
         case NONE:
@@ -248,6 +267,7 @@ void update_cable_led(led_colour_t colour) {
             printf("Turn off cable LED\n");
             HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(LED_WHITE_GPIO_Port, LED_WHITE_Pin, GPIO_PIN_SET);
+            set_psu(0); // idle -> PSU off
             break;
         }
     }
@@ -264,7 +284,6 @@ void update_case_led(int on) {
 void turn_power_on() {
     printf("Turning on PCIe power\n");
     HAL_GPIO_WritePin(PCI_12V_EN_GPIO_Port, PCI_12V_EN_Pin, GPIO_PIN_SET);
-    HAL_GPIO_WritePin(HP_SHDN_GPIO_Port, HP_SHDN_Pin, GPIO_PIN_RESET);
     HAL_Delay(1000);
     HAL_GPIO_WritePin(PWROK_GPIO_Port, PWROK_Pin, GPIO_PIN_SET);
 }
@@ -273,7 +292,6 @@ void turn_power_off() {
     printf("Turning off PCIe power\n");
     HAL_GPIO_WritePin(PWROK_GPIO_Port, PWROK_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(PCI_12V_EN_GPIO_Port, PCI_12V_EN_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(HP_SHDN_GPIO_Port, HP_SHDN_Pin, GPIO_PIN_SET);
 }
 
 void assert_ec_irq() {

@@ -83,8 +83,8 @@ void Error_Handler(void);
 #define AC_LOSS_GPIO_Port GPIOA
 #define MCU_IRQ_Pin GPIO_PIN_5
 #define MCU_IRQ_GPIO_Port GPIOA
-#define HP_SHDN_Pin GPIO_PIN_2
-#define HP_SHDN_GPIO_Port GPIOB
+#define PSON_Pin GPIO_PIN_2
+#define PSON_GPIO_Port GPIOB
 #define CPU_GPU_PD_0_3_Pin GPIO_PIN_12
 #define CPU_GPU_PD_0_3_GPIO_Port GPIOB
 #define CPU_GPU_PD_4_7_Pin GPIO_PIN_13
