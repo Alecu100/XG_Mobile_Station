@@ -84389,7 +84389,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "XG Mobile Dock XT v0.8"
+	(gr_text "XG Mobile Dock Dual Redriver v0.8"
 		(at 75.621496 55.121496 0)
 		(layer "F.SilkS")
 		(uuid "ae51a234-dc01-4609-871b-8aaa0035de15")
