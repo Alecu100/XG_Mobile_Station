@@ -36,4 +36,5 @@
   (lib (name "SS-12D10L5")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/SS-12D10L5.elibz")(options "")(descr ""))
   (lib (name "KT-0603R")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/KT-0603R.elibz")(options "")(descr ""))
   (lib (name "TPS7A8400ARGRR")(type "KiCad")(uri "${KIPRJMOD}/Symbols/TPS7A8400ARGRR.kicad_sym")(options "")(descr ""))
+  (lib (name "CEE016400140111")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/CEE016400140111.elibz")(options "")(descr ""))
 )
