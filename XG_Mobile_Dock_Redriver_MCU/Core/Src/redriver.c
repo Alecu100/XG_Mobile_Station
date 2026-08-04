@@ -228,11 +228,11 @@ static void initialize_gpu_cpu_redriver_boot()
     initialize_channel_eq_profile(GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
-    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_PROFILE_INDEX_15 | FLAT_GAIN_0);
-    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_PROFILE_INDEX_8 | FLAT_GAIN_0);
+    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_PROFILE_INDEX_15 | FLAT_GAIN_0 | FLAT_GAIN_1);
+    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_PROFILE_INDEX_8 | FLAT_GAIN_0 | FLAT_GAIN_1);
     initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
 }
-
+    
 static void initialize_cpu_gpu_redriver_boot()
 {
     printf("Initializing cpu to gpu redriver to boot state\n");
