@@ -200,10 +200,10 @@ static void initialize_gpu_cpu_redriver_boot()
     initialize_channel_eq(GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_19 | EQ_CONTROL_EQ_STAGE2_INDEX_19);
     initialize_channel_eq(GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_19 | EQ_CONTROL_EQ_STAGE2_INDEX_19);
     initialize_channel_eq(GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_19 | EQ_CONTROL_EQ_STAGE2_INDEX_19);
-    initialize_channel_eq(GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_19 | EQ_CONTROL_EQ_STAGE2_INDEX_19);
-    initialize_channel_eq(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_15 | EQ_CONTROL_EQ_STAGE2_INDEX_15);
-    initialize_channel_eq(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_8 | EQ_CONTROL_EQ_STAGE2_INDEX_8);
-    initialize_channel_eq(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_19 | EQ_CONTROL_EQ_STAGE2_INDEX_19);
+    initialize_channel_eq(GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_0 | EQ_CONTROL_EQ_STAGE2_INDEX_0 | EQ_STAGE_1_BYPASS_INDEX_2);
+    initialize_channel_eq(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_0 | EQ_CONTROL_EQ_STAGE2_INDEX_0 | EQ_STAGE_1_BYPASS_INDEX_2);
+    initialize_channel_eq(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_0 | EQ_CONTROL_EQ_STAGE2_INDEX_0 | EQ_STAGE_1_BYPASS_INDEX_2);
+    initialize_channel_eq(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_CONTROL_EQ_STAGE1_INDEX_0 | EQ_CONTROL_EQ_STAGE2_INDEX_0 | EQ_STAGE_1_BYPASS_INDEX_2);
 
     initialize_channel_rx_detect(GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, EN_RX_DET_COUNT);
     initialize_channel_rx_detect(GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, EN_RX_DET_COUNT);
@@ -221,16 +221,16 @@ static void initialize_gpu_cpu_redriver_boot()
     initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, BIAS_CURRENT_0);
     initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, BIAS_CURRENT_0);
     initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, BIAS_CURRENT_0);
-    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, BIAS_CURRENT_0);
+    initialize_channel_bias(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, BIAS_CURRENT_0); // Bias 111 (max) is used here, not the datasheet-recommended 001. Empirically it gives the most stable GPU->CPU link over the XG Mobile cable (high post-channel loss + 2x redriver cascade). Do not "correct" this back to 001.
 
     initialize_channel_eq_profile(GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
     initialize_channel_eq_profile(GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
-    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
-    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_PROFILE_INDEX_15 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_PROFILE_INDEX_8 | FLAT_GAIN_0 | FLAT_GAIN_1);
-    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_INDEX_19 | FLAT_GAIN_0 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, EQ_PROFILE_INDEX_0 | FLAT_GAIN_0 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, EQ_PROFILE_INDEX_0 | FLAT_GAIN_0 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, EQ_PROFILE_INDEX_0 | FLAT_GAIN_0 | FLAT_GAIN_2);
+    initialize_channel_eq_profile(GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, EQ_PROFILE_INDEX_0 | FLAT_GAIN_0 | FLAT_GAIN_2);
 }
     
 static void initialize_cpu_gpu_redriver_boot()
