@@ -62,9 +62,6 @@ extern void fans_start(void);
 extern void fans_stop(void);
 extern void initialize_redrivers_boot(void);
 extern void initialize_redrivers_running(void);
-extern void redriver_ramp_start(void);
-extern void redriver_ramp_pump(void);
-extern void redriver_ramp_cancel(void);
 extern void power_up_down_redrivers(GPIO_PinState reset);
 extern void print_redrivers_status();
 
@@ -364,28 +361,20 @@ void main_fsm_iteration(void) {
     // thread context so the long, blocking I2C sequence never stalls interrupt handling.
     if (gState.redriver_boot_pending) {
         gState.redriver_boot_pending = 0;
-        redriver_ramp_cancel();          // abort any ramp still in flight from a prior cycle
         initialize_redrivers_boot();
         gState.redriver_boot_delay = HAL_GetTick();
     }
     if (gState.redriver_boot_delay != 0) {
         if (HAL_GetTick() - gState.redriver_boot_delay >= 5000) {
             gState.redriver_boot_delay = 0;
-            // Only start the boot->running ramp if we are still out of reset. A reset
+            // Only push the running-state config if we are still out of reset. A reset
             // asserted during the boot window (e.g. an unplug that raced with the boot
             // init above) powers the redrivers down; talking I2C to them here would fail
             // on every transfer (each with a 500 ms timeout) and stall the main loop.
             if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
-                redriver_ramp_start();
+                initialize_redrivers_running();
             }
         }
-    }
-    // Drive the boot->running EQ/flat-gain ramp (no-op when idle). Only while out
-    // of reset, so we never push I2C at powered-down redrivers; a reset cancels it.
-    if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
-        redriver_ramp_pump();
-    } else {
-        redriver_ramp_cancel();
     }
 
     //printf("Enter main FSM with state = %s\n", gFSMStateStrings[gState.fsm]);
