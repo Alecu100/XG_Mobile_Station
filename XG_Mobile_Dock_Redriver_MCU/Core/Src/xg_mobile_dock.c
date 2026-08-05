@@ -52,7 +52,6 @@ typedef struct {
     int i2cReg;
     int i2cSize;
     volatile unsigned char i2cRegData1;
-    volatile int redriver_boot_delay;
     volatile int redriver_boot_pending;
 } state_t;
 
@@ -60,11 +59,10 @@ static state_t gState;
 
 extern void fans_start(void);
 extern void fans_stop(void);
-extern void initialize_redrivers_boot(void);
-extern void initialize_redrivers_running(void);
 extern void redriver_ramp_start(void);
-extern void redriver_ramp_pump(void);
+extern int  redriver_ramp_pump(void);
 extern void redriver_ramp_cancel(void);
+extern int  redriver_ramp_is_active(void);
 extern void power_up_down_redrivers(GPIO_PinState reset);
 extern void print_redrivers_status();
 
@@ -206,7 +204,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
         } else {
             // going into reset: redrivers are powered down, cancel any pending init
             gState.redriver_boot_pending = 0;
-            gState.redriver_boot_delay = 0;
         }
         printf("Pin changed: RST = %d\n", reset == GPIO_PIN_RESET);
     } else if (GPIO_Pin == PWREN_Pin) {
@@ -365,25 +362,18 @@ void main_fsm_iteration(void) {
     if (gState.redriver_boot_pending) {
         gState.redriver_boot_pending = 0;
         redriver_ramp_cancel();          // abort any ramp still in flight from a prior cycle
-        initialize_redrivers_boot();
-        gState.redriver_boot_delay = HAL_GetTick();
+        // redriver_ramp_start() applies each channel's boot config, then holds it for
+        // REDRIVER_BOOT_HOLD_MS (the training window) before walking to running.
+        redriver_ramp_start();
     }
-    if (gState.redriver_boot_delay != 0) {
-        if (HAL_GetTick() - gState.redriver_boot_delay >= 5000) {
-            gState.redriver_boot_delay = 0;
-            // Only start the boot->running ramp if we are still out of reset. A reset
-            // asserted during the boot window (e.g. an unplug that raced with the boot
-            // init above) powers the redrivers down; talking I2C to them here would fail
-            // on every transfer (each with a 500 ms timeout) and stall the main loop.
-            if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
-                redriver_ramp_start();
-            }
-        }
-    }
-    // Drive the boot->running EQ/flat-gain ramp (no-op when idle). Only while out
-    // of reset, so we never push I2C at powered-down redrivers; a reset cancels it.
+    // Drive the boot->running EQ/flat-gain ramp. Pump only while a ramp is in
+    // progress; redriver_ramp_pump() returns 1 on the step that finishes (snapping
+    // the exact running config). Only while out of reset, so we never push I2C at
+    // powered-down redrivers; a reset cancels any ramp in flight.
     if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
-        redriver_ramp_pump();
+        if (redriver_ramp_is_active()) {
+            redriver_ramp_pump();
+        }
     } else {
         redriver_ramp_cancel();
     }
@@ -393,13 +383,13 @@ void main_fsm_iteration(void) {
         case MCU_RESET: {
             init_gpio_state(&gState);
             transition_state(&gState, DEVICE_IDLE);
-            // Only boot the redrivers if PCIe is out of reset. If RST is asserted the
+            // Only set the redrivers up if PCIe is out of reset. If RST is asserted the
             // redrivers are powered down (init_gpio_state -> power_up_down_redrivers) and
-            // initialize_redrivers_boot() would block for a very long time in
+            // redriver_ramp_start() would block for a very long time in
             // HAL_I2C_IsDeviceReady (1024 trials) against dead devices. When RST later
-            // deasserts, the EXTI ISR sets redriver_boot_pending and the boot runs then.
+            // deasserts, the EXTI ISR sets redriver_boot_pending and setup runs then.
             if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
-                initialize_redrivers_boot();
+                redriver_ramp_start();
             }
             HAL_I2C_EnableListen_IT(&hi2c1);
             break;
