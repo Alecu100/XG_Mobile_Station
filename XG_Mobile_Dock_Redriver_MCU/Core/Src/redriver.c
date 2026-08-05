@@ -406,3 +406,166 @@ void initialize_redrivers_running() {
     initialize_gpu_cpu_redriver_running();
     initialize_cpu_gpu_redriver_running();
 }
+
+// ============================================================================
+// Boot -> running EQ / flat-gain RAMP
+//
+// Rather than snapping straight from the boot config to the running config,
+// step both the EQ index and the flat gain from their boot values toward their
+// running values over REDRIVER_RAMP_STEPS increments, spread across
+// REDRIVER_RAMP_DURATION_MS. This lets the downstream RX CTLE/AGC track the
+// change smoothly instead of taking a sudden EQ / 6 dB swing shock at the flip.
+//
+//   REDRIVER_RAMP_STEPS       - number of steps taken toward the running value.
+//   REDRIVER_RAMP_DURATION_MS - total ramp time (step interval = DURATION/STEPS).
+//
+// If a channel's boot->running range is smaller than the step count the integer
+// interpolation simply repeats a value on some steps (a "too small" step just
+// holds the previous value). The final step applies the exact running config via
+// initialize_redrivers_running(), so the end state always matches it exactly.
+// ============================================================================
+#define REDRIVER_RAMP_STEPS        8
+#define REDRIVER_RAMP_DURATION_MS  400
+
+// EQ index (0..19) -> register fields, from Table 7-1. Built from the INDEX_x
+// macros so it stays in sync with the boot/running configs above. Indices 3 and
+// 4 are not real DS320PR810 settings; they are filled with their neighbours
+// (2 and 5) so a ramp can pass through them without a gap.
+static const uint8_t eq_lut_stage1[20] = {
+    EQ_CONTROL_EQ_STAGE1_INDEX_0,  EQ_CONTROL_EQ_STAGE1_INDEX_1,  EQ_CONTROL_EQ_STAGE1_INDEX_2,
+    EQ_CONTROL_EQ_STAGE1_INDEX_2,  EQ_CONTROL_EQ_STAGE1_INDEX_5,  EQ_CONTROL_EQ_STAGE1_INDEX_5,
+    EQ_CONTROL_EQ_STAGE1_INDEX_6,  EQ_CONTROL_EQ_STAGE1_INDEX_7,  EQ_CONTROL_EQ_STAGE1_INDEX_8,
+    EQ_CONTROL_EQ_STAGE1_INDEX_9,  EQ_CONTROL_EQ_STAGE1_INDEX_10, EQ_CONTROL_EQ_STAGE1_INDEX_11,
+    EQ_CONTROL_EQ_STAGE1_INDEX_12, EQ_CONTROL_EQ_STAGE1_INDEX_13, EQ_CONTROL_EQ_STAGE1_INDEX_14,
+    EQ_CONTROL_EQ_STAGE1_INDEX_15, EQ_CONTROL_EQ_STAGE1_INDEX_16, EQ_CONTROL_EQ_STAGE1_INDEX_17,
+    EQ_CONTROL_EQ_STAGE1_INDEX_18, EQ_CONTROL_EQ_STAGE1_INDEX_19,
+};
+static const uint8_t eq_lut_stage2[20] = {
+    EQ_CONTROL_EQ_STAGE2_INDEX_0,  EQ_CONTROL_EQ_STAGE2_INDEX_1,  EQ_CONTROL_EQ_STAGE2_INDEX_2,
+    EQ_CONTROL_EQ_STAGE2_INDEX_2,  EQ_CONTROL_EQ_STAGE2_INDEX_5,  EQ_CONTROL_EQ_STAGE2_INDEX_5,
+    EQ_CONTROL_EQ_STAGE2_INDEX_6,  EQ_CONTROL_EQ_STAGE2_INDEX_7,  EQ_CONTROL_EQ_STAGE2_INDEX_8,
+    EQ_CONTROL_EQ_STAGE2_INDEX_9,  EQ_CONTROL_EQ_STAGE2_INDEX_10, EQ_CONTROL_EQ_STAGE2_INDEX_11,
+    EQ_CONTROL_EQ_STAGE2_INDEX_12, EQ_CONTROL_EQ_STAGE2_INDEX_13, EQ_CONTROL_EQ_STAGE2_INDEX_14,
+    EQ_CONTROL_EQ_STAGE2_INDEX_15, EQ_CONTROL_EQ_STAGE2_INDEX_16, EQ_CONTROL_EQ_STAGE2_INDEX_17,
+    EQ_CONTROL_EQ_STAGE2_INDEX_18, EQ_CONTROL_EQ_STAGE2_INDEX_19,
+};
+static const uint8_t eq_lut_profile[20] = {
+    EQ_PROFILE_INDEX_0,  EQ_PROFILE_INDEX_1,  EQ_PROFILE_INDEX_2,
+    EQ_PROFILE_INDEX_2,  EQ_PROFILE_INDEX_5,  EQ_PROFILE_INDEX_5,
+    EQ_PROFILE_INDEX_6,  EQ_PROFILE_INDEX_7,  EQ_PROFILE_INDEX_8,
+    EQ_PROFILE_INDEX_9,  EQ_PROFILE_INDEX_10, EQ_PROFILE_INDEX_11,
+    EQ_PROFILE_INDEX_12, EQ_PROFILE_INDEX_13, EQ_PROFILE_INDEX_14,
+    EQ_PROFILE_INDEX_15, EQ_PROFILE_INDEX_16, EQ_PROFILE_INDEX_17,
+    EQ_PROFILE_INDEX_18, EQ_PROFILE_INDEX_19,
+};
+static const uint8_t eq_lut_bypass[20] = {
+    EQ_STAGE_1_BYPASS_INDEX_0,  EQ_STAGE_1_BYPASS_INDEX_1,  EQ_STAGE_1_BYPASS_INDEX_2,
+    EQ_STAGE_1_BYPASS_INDEX_2,  EQ_STAGE_1_BYPASS_INDEX_5,  EQ_STAGE_1_BYPASS_INDEX_5,
+    EQ_STAGE_1_BYPASS_INDEX_6,  EQ_STAGE_1_BYPASS_INDEX_7,  EQ_STAGE_1_BYPASS_INDEX_8,
+    EQ_STAGE_1_BYPASS_INDEX_9,  EQ_STAGE_1_BYPASS_INDEX_10, EQ_STAGE_1_BYPASS_INDEX_11,
+    EQ_STAGE_1_BYPASS_INDEX_12, EQ_STAGE_1_BYPASS_INDEX_13, EQ_STAGE_1_BYPASS_INDEX_14,
+    EQ_STAGE_1_BYPASS_INDEX_15, EQ_STAGE_1_BYPASS_INDEX_16, EQ_STAGE_1_BYPASS_INDEX_17,
+    EQ_STAGE_1_BYPASS_INDEX_18, EQ_STAGE_1_BYPASS_INDEX_19,
+};
+
+// Flat-gain field values (reg 0x03[2:0]): 0b101 = 0 dB, 0b000 = -6 dB.
+#define FLAT_GAIN_FIELD_0DB   (FLAT_GAIN_0 | FLAT_GAIN_2)   /* 5 */
+#define FLAT_GAIN_FIELD_M6DB  0
+
+// Per-channel ramp endpoints. eq = EQ index (0..19); fg = flat-gain field
+// (0..5); bias = bias-current field (0..7) treated as a plain binary number
+// (001b = 1 .. 111b = 7). These MUST mirror the boot/running init functions above:
+//   GPU_CPU 0-3: boot EQ19 / 0 dB / bias 001 -> run EQ0 (bypass) / -6 dB / bias 111
+//   GPU_CPU 4-7: boot EQ0 (bypass) / 0 dB / bias 001 -> run EQ0 (bypass) / -6 dB / bias 111
+//   CPU_GPU 0-7: boot EQ6 / 0 dB / bias 001 -> run EQ6 / 0 dB / bias 001  (no-op here)
+typedef struct {
+    uint16_t addr;
+    uint16_t chan;
+    uint8_t  boot_eq;
+    uint8_t  boot_fg;
+    uint8_t  boot_bias;   // 3-bit bias field value (0..7); 001b = 1 .. 111b = 7
+    uint8_t  run_eq;
+    uint8_t  run_fg;
+    uint8_t  run_bias;
+} ramp_channel_t;
+
+static const ramp_channel_t ramp_channels[] = {
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, 19, FLAT_GAIN_FIELD_0DB, 1, 0, FLAT_GAIN_FIELD_M6DB, 7 },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, 19, FLAT_GAIN_FIELD_0DB, 1, 0, FLAT_GAIN_FIELD_M6DB, 7 },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, 19, FLAT_GAIN_FIELD_0DB, 1, 0, FLAT_GAIN_FIELD_M6DB, 7 },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, 19, FLAT_GAIN_FIELD_0DB, 1, 0, FLAT_GAIN_FIELD_M6DB, 7 },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER,  0, FLAT_GAIN_FIELD_0DB, 1, 0, FLAT_GAIN_FIELD_M6DB, 7 },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER,  0, FLAT_GAIN_FIELD_0DB, 1, 0, FLAT_GAIN_FIELD_M6DB, 7 },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER,  0, FLAT_GAIN_FIELD_0DB, 1, 0, FLAT_GAIN_FIELD_M6DB, 7 },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER,  0, FLAT_GAIN_FIELD_0DB, 1, 0, FLAT_GAIN_FIELD_M6DB, 7 },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER,  6, FLAT_GAIN_FIELD_0DB, 1, 6, FLAT_GAIN_FIELD_0DB, 1 },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER,  6, FLAT_GAIN_FIELD_0DB, 1, 6, FLAT_GAIN_FIELD_0DB, 1 },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER,  6, FLAT_GAIN_FIELD_0DB, 1, 6, FLAT_GAIN_FIELD_0DB, 1 },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER,  6, FLAT_GAIN_FIELD_0DB, 1, 6, FLAT_GAIN_FIELD_0DB, 1 },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER,  6, FLAT_GAIN_FIELD_0DB, 1, 6, FLAT_GAIN_FIELD_0DB, 1 },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER,  6, FLAT_GAIN_FIELD_0DB, 1, 6, FLAT_GAIN_FIELD_0DB, 1 },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER,  6, FLAT_GAIN_FIELD_0DB, 1, 6, FLAT_GAIN_FIELD_0DB, 1 },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER,  6, FLAT_GAIN_FIELD_0DB, 1, 6, FLAT_GAIN_FIELD_0DB, 1 },
+};
+#define NUM_RAMP_CHANNELS (sizeof(ramp_channels) / sizeof(ramp_channels[0]))
+
+// -1 = idle; 1..REDRIVER_RAMP_STEPS = in progress. Step REDRIVER_RAMP_STEPS
+// applies the exact running config. Only touched from the main-loop thread.
+static volatile int redriver_ramp_step = -1;
+static uint32_t redriver_ramp_next_tick = 0;
+
+// Integer interpolation from a to b at step s of n. s<=0 -> a, s>=n -> b.
+// Truncating division keeps it monotonic and naturally repeats values when the
+// a..b range is smaller than the step count.
+static uint8_t redriver_ramp_lerp(uint8_t a, uint8_t b, int s, int n) {
+    if (s <= 0) return a;
+    if (s >= n) return b;
+    return (uint8_t)((int)a + ((int)b - (int)a) * s / n);
+}
+
+void redriver_ramp_start(void) {
+    printf("Redriver boot->running ramp start (%d steps / %d ms)\n",
+           REDRIVER_RAMP_STEPS, REDRIVER_RAMP_DURATION_MS);
+    redriver_ramp_step = 1;
+    redriver_ramp_next_tick = HAL_GetTick();
+}
+
+void redriver_ramp_cancel(void) {
+    redriver_ramp_step = -1;
+}
+
+void redriver_ramp_pump(void) {
+    if (redriver_ramp_step < 0) {
+        return;
+    }
+    if ((int32_t)(HAL_GetTick() - redriver_ramp_next_tick) < 0) {
+        return;   // not time for the next step yet
+    }
+
+    if (redriver_ramp_step >= REDRIVER_RAMP_STEPS) {
+        // Final step: snap to the exact running config (EQ + bias + flat gain).
+        initialize_redrivers_running();
+        redriver_ramp_step = -1;
+        printf("Redriver ramp complete\n");
+        return;
+    }
+
+    int s = redriver_ramp_step;
+    for (unsigned int i = 0; i < NUM_RAMP_CHANNELS; i++) {
+        const ramp_channel_t *c = &ramp_channels[i];
+        uint8_t eq   = redriver_ramp_lerp(c->boot_eq,   c->run_eq,   s, REDRIVER_RAMP_STEPS);
+        uint8_t fg   = redriver_ramp_lerp(c->boot_fg,   c->run_fg,   s, REDRIVER_RAMP_STEPS);
+        uint8_t bias = redriver_ramp_lerp(c->boot_bias, c->run_bias, s, REDRIVER_RAMP_STEPS);
+        if (eq > 19)  eq = 19;    // clamp (defensive)
+        if (fg > 5)   fg = 5;
+        if (bias > 7) bias = 7;
+        initialize_channel_eq(c->addr, c->chan,
+            eq_lut_stage1[eq] | eq_lut_stage2[eq] | eq_lut_bypass[eq]);
+        initialize_channel_eq_profile(c->addr, c->chan, eq_lut_profile[eq] | fg);
+        // bias field lives in bits 5:3 -> shift the 0..7 value into place.
+        initialize_channel_bias(c->addr, c->chan, (uint8_t)(bias << 3));
+    }
+
+    redriver_ramp_step++;
+    redriver_ramp_next_tick += (REDRIVER_RAMP_DURATION_MS / REDRIVER_RAMP_STEPS);
+}
