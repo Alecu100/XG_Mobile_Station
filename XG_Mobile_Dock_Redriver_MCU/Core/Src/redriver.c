@@ -39,6 +39,15 @@ extern I2C_HandleTypeDef hi2c2;
 #define BIAS_CURRENT_1 0b00010000
 #define BIAS_CURRENT_0 0b00001000
 #define BIAS_WRITE_MASK 0b11000111
+// Bias-current field value for reg 0x06[5:3] (the ramp shifts it << 3). 1 = 001b
+// (datasheet "best performance") .. 7 = 111b (max drive).
+#define BIAS_LEVEL_1 1
+#define BIAS_LEVEL_2 2
+#define BIAS_LEVEL_3 3
+#define BIAS_LEVEL_4 4
+#define BIAS_LEVEL_5 5
+#define BIAS_LEVEL_6 6
+#define BIAS_LEVEL_7 7
 
 
 #define POWER_DOWN_REGISTER_OFFSET 0x05
@@ -97,6 +106,28 @@ extern I2C_HandleTypeDef hi2c2;
 #define EQ_PROFILE_18  (15 << 3)
 #define EQ_PROFILE_19  (15 << 3)
 
+// Logical EQ level = Table 7-1 index used by the ramp_channels table + eq_rampup_sequence
+// (distinct from the composed EQ_CTRL_n / EQ_PROFILE_n register values above). Levels 3 & 4
+// do not exist.
+#define EQ_LEVEL_0   0
+#define EQ_LEVEL_1   1
+#define EQ_LEVEL_2   2
+#define EQ_LEVEL_5   5
+#define EQ_LEVEL_6   6
+#define EQ_LEVEL_7   7
+#define EQ_LEVEL_8   8
+#define EQ_LEVEL_9   9
+#define EQ_LEVEL_10  10
+#define EQ_LEVEL_11  11
+#define EQ_LEVEL_12  12
+#define EQ_LEVEL_13  13
+#define EQ_LEVEL_14  14
+#define EQ_LEVEL_15  15
+#define EQ_LEVEL_16  16
+#define EQ_LEVEL_17  17
+#define EQ_LEVEL_18  18
+#define EQ_LEVEL_19  19
+
 // EQ rampup progression: levels ordered LOWEST boost -> HIGHEST. The ramp walks this
 // list one entry at a time between a channel's boot and running levels. Each entry
 // holds the composed registers for that level (the same values the init uses).
@@ -127,6 +158,66 @@ static const eq_step_t eq_rampup_sequence[] = {
     { 19, EQ_CTRL_19, EQ_PROFILE_19 },
 };
 #define NUM_EQ_STEPS (sizeof(eq_rampup_sequence) / sizeof(eq_rampup_sequence[0]))
+
+// ---- Per-channel ramp configuration (data). The ramp engine that consumes this
+// ---- table (state, helpers, redriver_ramp_start / _pump) lives further down. ----
+typedef struct {
+    uint16_t addr;
+    uint16_t chan;
+    uint8_t  enabled;          // 1 = power this channel up + configure + ramp it; 0 = power it down
+    uint8_t  boot_eq_level;    // EQ level (Table 7-1 index) held at boot (training)
+    uint8_t  run_eq_level;     // EQ level at the running state
+    uint8_t  boot_flat_gain;   // 0x03[2:0]  (5 = 0 dB, 0 = -6 dB)
+    uint8_t  run_flat_gain;
+    uint8_t  boot_bias;        // 0x06[5:3]  (001b..111b)
+    uint8_t  run_bias;
+    uint16_t rampup_step_ms;   // ms between steps (one sequence entry / value per step)
+    uint16_t rampup_delay_ms;  // extra per-lane hold before ramping (on top of the boot hold; stagger lanes)
+} ramp_channel_t;
+
+// Every channel holds its boot (training) config this long before the ramp to the
+// running state begins. This is the PCIe link-training window.
+#define REDRIVER_BOOT_HOLD_MS 5000
+
+// Per-lane ramp stagger: channels begin their boot->running ramp one after another
+// (not all at once) after the boot hold. Start order is 0,1,2,3,4,5,7,6 - channel 6
+// goes LAST - set by each row's delay = rank * RAMP_STAGGER_MS in the table below.
+#define RAMP_STAGGER_MS 500
+
+// ms per ramp step (one sequence entry / one field value applied per tick).
+#define RAMP_STEP_MS 25
+
+// ramp_channels[].enabled values.
+#define CHANNEL_ENABLED  1
+#define CHANNEL_DISABLED 0
+
+// Per-channel setup + ramp endpoints (the single source of truth for redriver config).
+// enabled = CHANNEL_ENABLED powers the channel up + configures + ramps it; CHANNEL_DISABLED
+// powers it down. boot/run EQ are EQ_LEVEL_* (Table 7-1 levels walked through eq_rampup_sequence);
+// boot/run flat gain are FLAT_GAIN_LEVEL_* (reg 0x03[2:0]); boot/run bias are BIAS_LEVEL_*
+// (reg 0x06[5:3], 1 = 001b .. 7 = 111b). step = RAMP_STEP_MS per walked value; delay = per-lane
+// stagger on top of REDRIVER_BOOT_HOLD_MS (rank * RAMP_STAGGER_MS): start order 0,1,2,3,4,5,7,6
+// so channel 6 ramps LAST.
+// Fields: addr, chan, enabled, boot_eq, run_eq, boot_flat_gain, run_flat_gain, boot_bias, run_bias, step, delay
+static ramp_channel_t ramp_channels[] = {
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_19, EQ_LEVEL_0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_1, BIAS_LEVEL_7, RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_19, EQ_LEVEL_0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_1, BIAS_LEVEL_7, RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_19, EQ_LEVEL_0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_1, BIAS_LEVEL_7, RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_19, EQ_LEVEL_0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_1, BIAS_LEVEL_7, RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_0,  EQ_LEVEL_0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_1, BIAS_LEVEL_7, RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_0,  EQ_LEVEL_0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_1, BIAS_LEVEL_7, RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_0,  EQ_LEVEL_0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_1, BIAS_LEVEL_7, RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_0,  EQ_LEVEL_0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_1, BIAS_LEVEL_7, RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_6,  EQ_LEVEL_6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_6,  EQ_LEVEL_6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_6,  EQ_LEVEL_6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_6,  EQ_LEVEL_6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_6,  EQ_LEVEL_6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_6,  EQ_LEVEL_6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_6,  EQ_LEVEL_6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_6,  EQ_LEVEL_6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
+};
+#define NUM_RAMP_CHANNELS (sizeof(ramp_channels) / sizeof(ramp_channels[0]))
 
 static uint8_t register_data;
 static uint32_t status_poll_ticks_delay = 0;
@@ -221,7 +312,7 @@ void print_redrivers_status() {
 // Boot -> running RAMP  (per-channel, sequence-walked)
 //
 // The EQ progression is a STATIC ORDERED SEQUENCE of levels (eq_rampup_sequence,
-// below), lowest boost -> highest. Each channel names a boot EQ level and a
+// above), lowest boost -> highest. Each channel names a boot EQ level and a
 // running EQ level; the ramp finds both in the sequence and walks it one entry at
 // a time between them, applying every level along the way. Flat gain (0x03[2:0])
 // and bias (0x06[5:3]) walk their own 0..7 ranges the same way, one value/step.
@@ -229,55 +320,6 @@ void print_redrivers_status() {
 // the channel is done once all three have arrived, then redriver_apply_running()
 // is re-asserted so the end state matches exactly.
 // ============================================================================
-typedef struct {
-    uint16_t addr;
-    uint16_t chan;
-    uint8_t  enabled;          // 1 = power this channel up + configure + ramp it; 0 = power it down
-    uint8_t  boot_eq_level;    // EQ level (Table 7-1 index) held at boot (training)
-    uint8_t  run_eq_level;     // EQ level at the running state
-    uint8_t  boot_flat_gain;   // 0x03[2:0]  (5 = 0 dB, 0 = -6 dB)
-    uint8_t  run_flat_gain;
-    uint8_t  boot_bias;        // 0x06[5:3]  (001b..111b)
-    uint8_t  run_bias;
-    uint16_t rampup_step_ms;   // ms between steps (one sequence entry / value per step)
-    uint16_t rampup_delay_ms;  // extra per-lane hold before ramping (on top of the boot hold; stagger lanes)
-} ramp_channel_t;
-
-// Every channel holds its boot (training) config this long before the ramp to the
-// running state begins. This is the PCIe link-training window.
-#define REDRIVER_BOOT_HOLD_MS 5000
-
-// Per-lane ramp stagger: channels begin their boot->running ramp one after another
-// (not all at once) after the boot hold. Start order is 0,1,2,3,4,5,7,6 - channel 6
-// goes LAST - set by each row's delay = rank * RAMP_STAGGER_MS in the table below.
-#define RAMP_STAGGER_MS 500
-
-// Per-channel setup + ramp endpoints (the single source of truth for redriver config).
-// en = 1 enables the channel (power up + configure + ramp); 0 powers it down. EQ is a
-// level walked through eq_rampup_sequence; flat gain + bias are single fields walked
-// over 0..7 (bias 1 = 001b .. 7 = 111b). step_ms = ms per walked value; delay = per-lane
-// stagger on top of REDRIVER_BOOT_HOLD_MS (rank * RAMP_STAGGER_MS): start order is
-// 0,1,2,3,4,5,7,6 so channel 6 ramps LAST.
-//   addr, chan,   en  boot_eq run_eq  boot_fg            run_fg             boot_bias run_bias  step_ms delay
-static ramp_channel_t ramp_channels[] = {
-    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, 1, 19, 0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, 1, 7,   25, 0 * RAMP_STAGGER_MS },
-    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, 1, 19, 0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, 1, 7,   25, 1 * RAMP_STAGGER_MS },
-    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, 1, 19, 0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, 1, 7,   25, 2 * RAMP_STAGGER_MS },
-    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, 1, 19, 0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, 1, 7,   25, 3 * RAMP_STAGGER_MS },
-    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, 1,  0, 0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, 1, 7,   25, 4 * RAMP_STAGGER_MS },
-    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, 1,  0, 0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, 1, 7,   25, 5 * RAMP_STAGGER_MS },
-    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, 1,  0, 0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, 1, 7,   25, 7 * RAMP_STAGGER_MS },
-    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, 1,  0, 0, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_0, 1, 7,   25, 6 * RAMP_STAGGER_MS },
-    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, 1,  6, 6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, 1, 1,   25, 0 * RAMP_STAGGER_MS },
-    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, 1,  6, 6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, 1, 1,   25, 1 * RAMP_STAGGER_MS },
-    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, 1,  6, 6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, 1, 1,   25, 2 * RAMP_STAGGER_MS },
-    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, 1,  6, 6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, 1, 1,   25, 3 * RAMP_STAGGER_MS },
-    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, 1,  6, 6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, 1, 1,   25, 4 * RAMP_STAGGER_MS },
-    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, 1,  6, 6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, 1, 1,   25, 5 * RAMP_STAGGER_MS },
-    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, 1,  6, 6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, 1, 1,   25, 7 * RAMP_STAGGER_MS },
-    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, 1,  6, 6, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, 1, 1,   25, 6 * RAMP_STAGGER_MS },
-};
-#define NUM_RAMP_CHANNELS (sizeof(ramp_channels) / sizeof(ramp_channels[0]))
 
 // Per-channel ramp progress. step[i]: -1 = idle/done; 1.. = active (number of
 // steps taken; a channel finishes when every property has reached its running
