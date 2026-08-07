@@ -371,7 +371,11 @@ static void redriver_apply_boot(void) {
             continue;
         }
         const eq_step_t *e = &eq_rampup_sequence[eq_level_index(c->boot_eq_level)];
-        initialize_channel_rx_detect(c->addr, c->chan, EN_RX_DET_COUNT);
+        // mr_rx_det_man overrides the RX-detect state machine to "always valid RX
+        // termination detected" so the redriver keeps driving even if the far-end
+        // detect is marginal over the cable (a link-drop suspect). en_rx_det_count is
+        // moot once overridden but left set so clearing mr_rx_det_man restores polling.
+        initialize_channel_rx_detect(c->addr, c->chan, MR_RX_DET_MAN | EN_RX_DET_COUNT);
         initialize_channel_eq(c->addr, c->chan, e->eq_ctrl);
         initialize_channel_eq_profile(c->addr, c->chan, (uint8_t)(e->eq_profile | c->boot_flat_gain));
         initialize_channel_bias(c->addr, c->chan, (uint8_t)(c->boot_bias << 3));
