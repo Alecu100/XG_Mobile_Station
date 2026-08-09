@@ -108,6 +108,7 @@
         "solder_mask_bridge": "ignore",
         "starved_thermal": "ignore",
         "text_height": "warning",
+        "text_on_edge_cuts": "error",
         "text_thickness": "warning",
         "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
@@ -492,6 +493,7 @@
       "single_global_label": "ignore",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
@@ -527,9 +529,9 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.1,
+        "clearance": 0.1016,
         "diff_pair_gap": 0.1016,
-        "diff_pair_width": 0.205486,
+        "diff_pair_width": 0.1135,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
@@ -537,7 +539,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.205486,
+        "track_width": 0.1135,
         "via_diameter": 0.4,
         "via_drill": 0.3,
         "wire_width": 6
