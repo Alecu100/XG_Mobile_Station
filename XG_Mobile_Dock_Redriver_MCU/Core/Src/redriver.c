@@ -65,117 +65,105 @@ extern I2C_HandleTypeDef hi2c2;
 #define FLAT_GAIN_LEVEL_6  6
 #define FLAT_GAIN_LEVEL_7  7
 
-// reg 0x01 bit 7 = stage-1 bypass (0b10000000); set only on the lowest EQ levels 0/1/2.
-#define EQ_STAGE1_BYPASS (1 << 7)
 
-// Per-EQ-level register values (Table 7-1). One pair per level (levels 3 & 4 don't exist):
-//   EQ_CTRL_n    = reg 0x01 = (stage1 << 3) | stage2, plus EQ_STAGE1_BYPASS on levels 0/1/2
-//   EQ_PROFILE_n = reg 0x03[6:3] = (profile << 3)   (flat gain is OR'd in at write time)
-#define EQ_CTRL_0     ((0  << 3) | 0 | EQ_STAGE1_BYPASS)
-#define EQ_CTRL_1     ((1  << 3) | 0 | EQ_STAGE1_BYPASS)
-#define EQ_CTRL_2     ((3  << 3) | 0 | EQ_STAGE1_BYPASS)
-#define EQ_CTRL_5     ((0  << 3) | 0)
-#define EQ_CTRL_6     ((1  << 3) | 0)
-#define EQ_CTRL_7     ((2  << 3) | 0)
-#define EQ_CTRL_8     ((3  << 3) | 0)
-#define EQ_CTRL_9     ((4  << 3) | 0)
-#define EQ_CTRL_10    ((5  << 3) | 1)
-#define EQ_CTRL_11    ((6  << 3) | 1)
-#define EQ_CTRL_12    ((8  << 3) | 1)
-#define EQ_CTRL_13    ((10 << 3) | 1)
-#define EQ_CTRL_14    ((10 << 3) | 2)
-#define EQ_CTRL_15    ((11 << 3) | 3)
-#define EQ_CTRL_16    ((12 << 3) | 4)
-#define EQ_CTRL_17    ((13 << 3) | 5)
-#define EQ_CTRL_18    ((14 << 3) | 6)
-#define EQ_CTRL_19    ((15 << 3) | 7)
+// reg 0x01 stage-1 bypass, bit [7]. Use as the stage-1 "off" value on its own, or OR it onto a
+// stage-1 boost value. The ramp masks this bit separately from the boost field [6:3].
+#define EQ_STAGE1_BYPASS  (1 << 7)
 
-#define EQ_PROFILE_0   (0  << 3)
-#define EQ_PROFILE_1   (0  << 3)
-#define EQ_PROFILE_2   (0  << 3)
-#define EQ_PROFILE_5   (1  << 3)
-#define EQ_PROFILE_6   (1  << 3)
-#define EQ_PROFILE_7   (1  << 3)
-#define EQ_PROFILE_8   (3  << 3)
-#define EQ_PROFILE_9   (3  << 3)
-#define EQ_PROFILE_10  (7  << 3)
-#define EQ_PROFILE_11  (7  << 3)
-#define EQ_PROFILE_12  (7  << 3)
-#define EQ_PROFILE_13  (7  << 3)
-#define EQ_PROFILE_14  (15 << 3)
-#define EQ_PROFILE_15  (15 << 3)
-#define EQ_PROFILE_16  (15 << 3)
-#define EQ_PROFILE_17  (15 << 3)
-#define EQ_PROFILE_18  (15 << 3)
-#define EQ_PROFILE_19  (15 << 3)
+// EQ levels (DS320PR810 Table 7-1). One EQ<n> per level; levels 3 & 4 do not exist. Each level
+// defines a stage-1 (0x01[6:3]), stage-2 (0x01[2:0]) and profile (0x03[6:3]) value, grouped by
+// field below. Values are pre-positioned so they OR into the register byte; levels 0/1/2 include
+// the stage-1 bypass bit. Pick a level per channel, e.g. .eq_stage1 = EQ7_STAGE1, .eq_stage2 =
+// EQ7_STAGE2, .eq_profile = EQ7_PROFILE.
 
-// Logical EQ level = Table 7-1 index used by the ramp_channels table + eq_rampup_sequence
-// (distinct from the composed EQ_CTRL_n / EQ_PROFILE_n register values above). Levels 3 & 4
-// do not exist.
-#define EQ_LEVEL_0   0
-#define EQ_LEVEL_1   1
-#define EQ_LEVEL_2   2
-#define EQ_LEVEL_5   5
-#define EQ_LEVEL_6   6
-#define EQ_LEVEL_7   7
-#define EQ_LEVEL_8   8
-#define EQ_LEVEL_9   9
-#define EQ_LEVEL_10  10
-#define EQ_LEVEL_11  11
-#define EQ_LEVEL_12  12
-#define EQ_LEVEL_13  13
-#define EQ_LEVEL_14  14
-#define EQ_LEVEL_15  15
-#define EQ_LEVEL_16  16
-#define EQ_LEVEL_17  17
-#define EQ_LEVEL_18  18
-#define EQ_LEVEL_19  19
+// Stage-1 boost, reg 0x01[6:3] (levels 0/1/2 add EQ_STAGE1_BYPASS).
+#define EQ0_STAGE1   ((0  << 3) | EQ_STAGE1_BYPASS)
+#define EQ1_STAGE1   ((1  << 3) | EQ_STAGE1_BYPASS)
+#define EQ2_STAGE1   ((3  << 3) | EQ_STAGE1_BYPASS)
+#define EQ5_STAGE1   (0  << 3)
+#define EQ6_STAGE1   (1  << 3)
+#define EQ7_STAGE1   (2  << 3)
+#define EQ8_STAGE1   (3  << 3)
+#define EQ9_STAGE1   (4  << 3)
+#define EQ10_STAGE1  (5  << 3)
+#define EQ11_STAGE1  (6  << 3)
+#define EQ12_STAGE1  (8  << 3)
+#define EQ13_STAGE1  (10 << 3)
+#define EQ14_STAGE1  (10 << 3)
+#define EQ15_STAGE1  (11 << 3)
+#define EQ16_STAGE1  (12 << 3)
+#define EQ17_STAGE1  (13 << 3)
+#define EQ18_STAGE1  (14 << 3)
+#define EQ19_STAGE1  (15 << 3)
 
-// EQ rampup progression: levels ordered LOWEST boost -> HIGHEST. The ramp walks this
-// list one entry at a time between a channel's boot and running levels. Each entry
-// holds the composed registers for that level (the same values the init uses).
+// Stage-2 boost, reg 0x01[2:0].
+#define EQ0_STAGE2   0
+#define EQ1_STAGE2   0
+#define EQ2_STAGE2   0
+#define EQ5_STAGE2   0
+#define EQ6_STAGE2   0
+#define EQ7_STAGE2   0
+#define EQ8_STAGE2   0
+#define EQ9_STAGE2   0
+#define EQ10_STAGE2  1
+#define EQ11_STAGE2  1
+#define EQ12_STAGE2  1
+#define EQ13_STAGE2  1
+#define EQ14_STAGE2  2
+#define EQ15_STAGE2  3
+#define EQ16_STAGE2  4
+#define EQ17_STAGE2  5
+#define EQ18_STAGE2  6
+#define EQ19_STAGE2  7
+
+// EQ profile, reg 0x03[6:3].
+#define EQ0_PROFILE   (0  << 3)
+#define EQ1_PROFILE   (0  << 3)
+#define EQ2_PROFILE   (0  << 3)
+#define EQ5_PROFILE   (1  << 3)
+#define EQ6_PROFILE   (1  << 3)
+#define EQ7_PROFILE   (1  << 3)
+#define EQ8_PROFILE   (3  << 3)
+#define EQ9_PROFILE   (3  << 3)
+#define EQ10_PROFILE  (7  << 3)
+#define EQ11_PROFILE  (7  << 3)
+#define EQ12_PROFILE  (7  << 3)
+#define EQ13_PROFILE  (7  << 3)
+#define EQ14_PROFILE  (15 << 3)
+#define EQ15_PROFILE  (15 << 3)
+#define EQ16_PROFILE  (15 << 3)
+#define EQ17_PROFILE  (15 << 3)
+#define EQ18_PROFILE  (15 << 3)
+#define EQ19_PROFILE  (15 << 3)
+
+// Logical 0..15 magnitude of a value positioned in reg bits [6:3] (eq_stage1 / eq_profile);
+// used by the ramp to walk the field. Ignores the stage-1 bypass bit [7].
+#define EQ_MAG_6_3(x)  (((x) >> 3) & 0x0F)
+
+
+// One redriver operating point: the per-channel register fields as pre-positioned byte
+// values (each constant occupies only its own register bits, so the fields OR together).
+// The ramp walks each field's magnitude independently from the boot set to the run set;
+// the stage-1 bypass bit (EQ_STAGE1_BYPASS, bit [7] of eq_stage1) is discrete - held at
+// boot during the ramp, snapped to run at the end.
 typedef struct {
-    uint8_t level;       // Table 7-1 index (identifies boot/running in the sequence)
-    uint8_t eq_ctrl;     // reg 0x01
-    uint8_t eq_profile;  // reg 0x03[6:3] profile (flat gain OR'd in at write time)
-} eq_step_t;
-
-static const eq_step_t eq_rampup_sequence[] = {
-    {  0, EQ_CTRL_0,  EQ_PROFILE_0  },
-    {  1, EQ_CTRL_1,  EQ_PROFILE_1  },
-    {  2, EQ_CTRL_2,  EQ_PROFILE_2  },
-    {  5, EQ_CTRL_5,  EQ_PROFILE_5  },
-    {  6, EQ_CTRL_6,  EQ_PROFILE_6  },
-    {  7, EQ_CTRL_7,  EQ_PROFILE_7  },
-    {  8, EQ_CTRL_8,  EQ_PROFILE_8  },
-    {  9, EQ_CTRL_9,  EQ_PROFILE_9  },
-    { 10, EQ_CTRL_10, EQ_PROFILE_10 },
-    { 11, EQ_CTRL_11, EQ_PROFILE_11 },
-    { 12, EQ_CTRL_12, EQ_PROFILE_12 },
-    { 13, EQ_CTRL_13, EQ_PROFILE_13 },
-    { 14, EQ_CTRL_14, EQ_PROFILE_14 },
-    { 15, EQ_CTRL_15, EQ_PROFILE_15 },
-    { 16, EQ_CTRL_16, EQ_PROFILE_16 },
-    { 17, EQ_CTRL_17, EQ_PROFILE_17 },
-    { 18, EQ_CTRL_18, EQ_PROFILE_18 },
-    { 19, EQ_CTRL_19, EQ_PROFILE_19 },
-};
-#define NUM_EQ_STEPS (sizeof(eq_rampup_sequence) / sizeof(eq_rampup_sequence[0]))
+    uint8_t eq_stage1;   // 0x01[6:3] EQ<n>_STAGE1 (bit 7 = EQ_STAGE1_BYPASS)
+    uint8_t eq_stage2;   // 0x01[2:0] EQ<n>_STAGE2
+    uint8_t eq_profile;  // 0x03[6:3] EQ<n>_PROFILE
+    uint8_t flat_gain;   // 0x03[2:0] FLAT_GAIN_LEVEL_* (5 = 0 dB, 0 = -6 dB)
+    uint8_t bias;        // 0x06[5:3] BIAS_LEVEL_* (1..7, written << 3)
+} redriver_setting_t;
 
 // ---- Per-channel ramp configuration (data). The ramp engine that consumes this
 // ---- table (state, helpers, redriver_ramp_start / _pump) lives further down. ----
 typedef struct {
     uint16_t addr;
     uint16_t chan;
-    uint8_t  enabled;          // 1 = power this channel up + configure + ramp it; 0 = power it down
-    uint8_t  boot_eq_level;    // EQ level (Table 7-1 index) held at boot (training)
-    uint8_t  run_eq_level;     // EQ level at the running state
-    uint8_t  boot_flat_gain;   // 0x03[2:0]  (5 = 0 dB, 0 = -6 dB)
-    uint8_t  run_flat_gain;
-    uint8_t  boot_bias;        // 0x06[5:3]  (001b..111b)
-    uint8_t  run_bias;
-    uint16_t rampup_step_ms;   // ms between steps (one sequence entry / value per step)
-    uint16_t rampup_delay_ms;  // extra per-lane hold before ramping (on top of the boot hold; stagger lanes)
+    uint8_t  enabled;          // CHANNEL_ENABLED / CHANNEL_DISABLED
+    redriver_setting_t boot;   // held through the training window (ramp start point)
+    redriver_setting_t run;    // ramped to, field by field, after the boot hold
+    uint16_t rampup_step_ms;   // ms between steps (one field value per step)
+    uint16_t rampup_delay_ms;  // extra per-lane hold before ramping (stagger lanes)
 } ramp_channel_t;
 
 // Every channel holds its boot (training) config this long before the ramp to the
@@ -195,30 +183,75 @@ typedef struct {
 #define CHANNEL_DISABLED 0
 
 // Per-channel setup + ramp endpoints (the single source of truth for redriver config).
-// enabled = CHANNEL_ENABLED powers the channel up + configures + ramps it; CHANNEL_DISABLED
-// powers it down. boot/run EQ are EQ_LEVEL_* (Table 7-1 levels walked through eq_rampup_sequence);
-// boot/run flat gain are FLAT_GAIN_LEVEL_* (reg 0x03[2:0]); boot/run bias are BIAS_LEVEL_*
-// (reg 0x06[5:3], 1 = 001b .. 7 = 111b). step = RAMP_STEP_MS per walked value; delay = per-lane
-// stagger on top of REDRIVER_BOOT_HOLD_MS (rank * RAMP_STAGGER_MS): start order 0,1,2,3,4,5,7,6
-// so channel 6 ramps LAST.
-// Fields: addr, chan, enabled, boot_eq, run_eq, boot_flat_gain, run_flat_gain, boot_bias, run_bias, step, delay
+// Each channel = a boot set + a run set of redriver_setting_t fields; the ramp walks
+// every field independently boot -> run. enabled = CHANNEL_ENABLED / CHANNEL_DISABLED.
+// step = RAMP_STEP_MS per walked value; delay = per-lane stagger on top of REDRIVER_BOOT_HOLD_MS
+// (rank * RAMP_STAGGER_MS): start order 0,1,2,3,4,5,7,6 so channel 6 ramps LAST.
 static ramp_channel_t ramp_channels[] = {
-    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_19, EQ_LEVEL_0, FLAT_GAIN_LEVEL_0, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_7, BIAS_LEVEL_7, RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
-    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_19, EQ_LEVEL_0, FLAT_GAIN_LEVEL_0, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_7, BIAS_LEVEL_7, RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
-    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_19, EQ_LEVEL_0, FLAT_GAIN_LEVEL_0, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_7, BIAS_LEVEL_7, RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
-    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_19, EQ_LEVEL_0, FLAT_GAIN_LEVEL_0, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_7, BIAS_LEVEL_7, RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
-    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, CHANNEL_DISABLED, EQ_LEVEL_19,  EQ_LEVEL_0, FLAT_GAIN_LEVEL_0, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_7, BIAS_LEVEL_7, RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
-    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, CHANNEL_DISABLED, EQ_LEVEL_19,  EQ_LEVEL_0, FLAT_GAIN_LEVEL_0, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_7, BIAS_LEVEL_7, RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
-    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, CHANNEL_DISABLED, EQ_LEVEL_0,  EQ_LEVEL_0, FLAT_GAIN_LEVEL_0, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_6, BIAS_LEVEL_6, RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
-    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, CHANNEL_DISABLED, EQ_LEVEL_19,  EQ_LEVEL_0, FLAT_GAIN_LEVEL_0, FLAT_GAIN_LEVEL_0, BIAS_LEVEL_7, BIAS_LEVEL_7, RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
-    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_7, EQ_LEVEL_7, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
-    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_7, EQ_LEVEL_7, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
-    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_7, EQ_LEVEL_7, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
-    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, CHANNEL_ENABLED, EQ_LEVEL_7, EQ_LEVEL_7, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
-    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, CHANNEL_DISABLED, EQ_LEVEL_7, EQ_LEVEL_7, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
-    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, CHANNEL_DISABLED, EQ_LEVEL_7, EQ_LEVEL_7, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
-    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, CHANNEL_DISABLED, EQ_LEVEL_7, EQ_LEVEL_7, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
-    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, CHANNEL_DISABLED, EQ_LEVEL_7, EQ_LEVEL_7, FLAT_GAIN_LEVEL_5, FLAT_GAIN_LEVEL_5, BIAS_LEVEL_1, BIAS_LEVEL_1, RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, CHANNEL_ENABLED,
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ0_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, CHANNEL_ENABLED,
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ0_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, CHANNEL_ENABLED,
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ0_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
+    { GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, CHANNEL_ENABLED,
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ0_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, CHANNEL_DISABLED,
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ0_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, CHANNEL_DISABLED,
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ0_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, CHANNEL_DISABLED,
+      { .eq_stage1 = EQ0_STAGE1, .eq_stage2 = EQ0_STAGE2, .eq_profile = EQ0_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_6 },
+      { .eq_stage1 = EQ0_STAGE1, .eq_stage2 = EQ0_STAGE2, .eq_profile = EQ0_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_6 },
+      RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
+    { GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, CHANNEL_DISABLED,
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ0_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, CHANNEL_ENABLED,
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, CHANNEL_ENABLED,
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, CHANNEL_ENABLED,
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
+    { CPU_GPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, CHANNEL_ENABLED,
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, CHANNEL_DISABLED,
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, CHANNEL_DISABLED,
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, CHANNEL_DISABLED,
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
+    { CPU_GPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, CHANNEL_DISABLED,
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
 };
 #define NUM_RAMP_CHANNELS (sizeof(ramp_channels) / sizeof(ramp_channels[0]))
 
@@ -312,16 +345,15 @@ void print_redrivers_status() {
 
 
 // ============================================================================
-// Boot -> running RAMP  (per-channel, sequence-walked)
+// Boot -> running RAMP  (per-channel, per-field)
 //
-// The EQ progression is a STATIC ORDERED SEQUENCE of levels (eq_rampup_sequence,
-// above), lowest boost -> highest. Each channel names a boot EQ level and a
-// running EQ level; the ramp finds both in the sequence and walks it one entry at
-// a time between them, applying every level along the way. Flat gain (0x03[2:0])
-// and bias (0x06[5:3]) walk their own 0..7 ranges the same way, one value/step.
-// Each property advances one step per tick until it reaches its running value;
-// the channel is done once all three have arrived, then redriver_apply_running()
-// is re-asserted so the end state matches exactly.
+// Each channel has a boot operating point and a run operating point (redriver_
+// setting_t). Every walked field - eq_stage1 / eq_stage2 (reg 0x01), eq_profile
+// (0x03[6:3]), flat gain (0x03[2:0]) and bias (0x06[5:3]) - moves independently,
+// one value per tick, from its boot value toward its run value. The stage-1 bypass
+// bit (eq_stage1[7]) is discrete: held at boot during the ramp, then set to run by
+// the final snap. A channel is done once its furthest-apart field has arrived; then
+// redriver_apply_running() re-asserts the exact run point so it matches exactly.
 // ============================================================================
 
 // Per-channel ramp progress. step[i]: -1 = idle/done; 1.. = active (number of
@@ -330,16 +362,6 @@ void print_redrivers_status() {
 static int      redriver_ramp_step[NUM_RAMP_CHANNELS];
 static uint32_t redriver_ramp_next[NUM_RAMP_CHANNELS];
 static int      redriver_ramp_active = 0;
-
-// Index of an EQ level within the rampup sequence (falls back to 0 if not found).
-static int eq_level_index(uint8_t level) {
-    for (unsigned int i = 0; i < NUM_EQ_STEPS; i++) {
-        if (eq_rampup_sequence[i].level == level) {
-            return (int)i;
-        }
-    }
-    return 0;
-}
 
 // Move from 'from' toward 'to' by 'step' units, clamped so it never overshoots.
 static int redriver_ramp_walk(int from, int to, int step) {
@@ -357,8 +379,28 @@ static int redriver_ramp_dist(int a, int b) {
     return (d < 0) ? -d : d;
 }
 
+// Compose and write one operating point to a channel: 0x01 = eq_stage1 (incl bypass) |
+// eq_stage2, 0x03 = eq_profile | flat_gain, 0x06[5:3] = bias. Fields are pre-positioned so
+// only the required bits of each register are set.
+static void redriver_write_setting(uint16_t addr, uint16_t chan, const redriver_setting_t *s) {
+    initialize_channel_eq(addr, chan, (uint8_t)(s->eq_stage1 | s->eq_stage2));
+    initialize_channel_eq_profile(addr, chan, (uint8_t)(s->eq_profile | s->flat_gain));
+    initialize_channel_bias(addr, chan, (uint8_t)(s->bias << 3));
+}
+
+// Largest per-field distance between two operating points = number of ramp steps.
+// The stage-1 bypass bit is excluded (discrete: held at boot, snapped to run at the end).
+static int redriver_setting_dist(const redriver_setting_t *a, const redriver_setting_t *b) {
+    int d = redriver_ramp_dist(EQ_MAG_6_3(a->eq_stage1), EQ_MAG_6_3(b->eq_stage1));
+    int e = redriver_ramp_dist(a->eq_stage2, b->eq_stage2);                       if (e > d) d = e;
+    e = redriver_ramp_dist(EQ_MAG_6_3(a->eq_profile), EQ_MAG_6_3(b->eq_profile)); if (e > d) d = e;
+    e = redriver_ramp_dist(a->flat_gain, b->flat_gain);                           if (e > d) d = e;
+    e = redriver_ramp_dist(a->bias,      b->bias);                                if (e > d) d = e;
+    return d;
+}
+
 // Power every channel up or down per its .enabled flag, then load each enabled
-// channel's BOOT (training) registers: RX detect + boot EQ / flat gain / bias.
+// channel's BOOT (training) registers: RX detect + the boot operating point.
 // This is the starting point the ramp walks from (ramp step 0).
 static void redriver_apply_boot(void) {
     for (unsigned int i = 0; i < NUM_RAMP_CHANNELS; i++) {
@@ -370,29 +412,21 @@ static void redriver_apply_boot(void) {
         if (!c->enabled) {
             continue;
         }
-        const eq_step_t *e = &eq_rampup_sequence[eq_level_index(c->boot_eq_level)];
-        // mr_rx_det_man overrides the RX-detect state machine to "always valid RX
-        // termination detected" so the redriver keeps driving even if the far-end
-        // detect is marginal over the cable (a link-drop suspect). en_rx_det_count is
-        // moot once overridden but left set so clearing mr_rx_det_man restores polling.
+        // mr_rx_det_man forces "RX termination always detected" so the redriver keeps
+        // driving even if the far-end detect is marginal; en_rx_det_count left set too.
         initialize_channel_rx_detect(c->addr, c->chan, MR_RX_DET_MAN | EN_RX_DET_COUNT);
-        initialize_channel_eq(c->addr, c->chan, e->eq_ctrl);
-        initialize_channel_eq_profile(c->addr, c->chan, (uint8_t)(e->eq_profile | c->boot_flat_gain));
-        initialize_channel_bias(c->addr, c->chan, (uint8_t)(c->boot_bias << 3));
+        redriver_write_setting(c->addr, c->chan, &c->boot);
     }
 }
 
-// Re-assert every enabled channel's exact RUNNING registers (the ramp endpoint).
+// Re-assert every enabled channel's exact RUNNING operating point (the ramp endpoint).
 static void redriver_apply_running(void) {
     for (unsigned int i = 0; i < NUM_RAMP_CHANNELS; i++) {
         ramp_channel_t *c = &ramp_channels[i];
         if (!c->enabled) {
             continue;
         }
-        const eq_step_t *e = &eq_rampup_sequence[eq_level_index(c->run_eq_level)];
-        initialize_channel_eq(c->addr, c->chan, e->eq_ctrl);
-        initialize_channel_eq_profile(c->addr, c->chan, (uint8_t)(e->eq_profile | c->run_flat_gain));
-        initialize_channel_bias(c->addr, c->chan, (uint8_t)(c->run_bias << 3));
+        redriver_write_setting(c->addr, c->chan, &c->run);
     }
 }
 
@@ -457,26 +491,21 @@ int redriver_ramp_pump(void) {
         }
 
         ramp_channel_t *c = &ramp_channels[i];
-        int boot_idx = eq_level_index(c->boot_eq_level);
-        int run_idx  = eq_level_index(c->run_eq_level);
+        const redriver_setting_t *b = &c->boot, *r = &c->run;
 
-        // Steps until every property has reached its running value.
-        int max_dist = redriver_ramp_dist(run_idx, boot_idx);
-        int fg_dist  = redriver_ramp_dist((int)c->run_flat_gain, (int)c->boot_flat_gain);
-        int bs_dist  = redriver_ramp_dist((int)c->run_bias,      (int)c->boot_bias);
-        if (fg_dist > max_dist) max_dist = fg_dist;
-        if (bs_dist > max_dist) max_dist = bs_dist;
-
-        // Where each property sits after 'step' steps toward its running value.
-        int cur_idx  = redriver_ramp_walk(boot_idx, run_idx, step);
-        uint8_t fg   = (uint8_t)redriver_ramp_walk((int)c->boot_flat_gain, (int)c->run_flat_gain, step);
-        uint8_t bias = (uint8_t)redriver_ramp_walk((int)c->boot_bias,      (int)c->run_bias,      step);
-        const eq_step_t *e = &eq_rampup_sequence[cur_idx];
-
-        // 0x01 = eq_ctrl (bypass|stage1|stage2); 0x03 = profile | flat gain; 0x06[5:3] = bias.
-        initialize_channel_eq(c->addr, c->chan, e->eq_ctrl);
-        initialize_channel_eq_profile(c->addr, c->chan, (uint8_t)(e->eq_profile | fg));
-        initialize_channel_bias(c->addr, c->chan, (uint8_t)(bias << 3));
+        // Each field's magnitude walks boot -> run independently; the channel is done once
+        // the furthest-apart field has arrived. The stage-1 bypass bit is held at boot (the
+        // final snap applies the run bypass).
+        int max_dist = redriver_setting_dist(b, r);
+        redriver_setting_t cur = {
+            .eq_stage1  = (uint8_t)((redriver_ramp_walk(EQ_MAG_6_3(b->eq_stage1), EQ_MAG_6_3(r->eq_stage1), step) << 3)
+                                    | (b->eq_stage1 & EQ_STAGE1_BYPASS)),
+            .eq_stage2  = (uint8_t)redriver_ramp_walk(b->eq_stage2, r->eq_stage2, step),
+            .eq_profile = (uint8_t)(redriver_ramp_walk(EQ_MAG_6_3(b->eq_profile), EQ_MAG_6_3(r->eq_profile), step) << 3),
+            .flat_gain  = (uint8_t)redriver_ramp_walk(b->flat_gain, r->flat_gain, step),
+            .bias       = (uint8_t)redriver_ramp_walk(b->bias, r->bias, step),
+        };
+        redriver_write_setting(c->addr, c->chan, &cur);
 
         if (step >= max_dist) {
             redriver_ramp_step[i] = -1;     // every property has reached running
