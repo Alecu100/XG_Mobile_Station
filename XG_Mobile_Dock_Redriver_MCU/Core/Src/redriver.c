@@ -144,8 +144,8 @@ extern I2C_HandleTypeDef hi2c2;
 // One redriver operating point: the per-channel register fields as pre-positioned byte
 // values (each constant occupies only its own register bits, so the fields OR together).
 // The ramp walks each field's magnitude independently from the boot set to the run set;
-// the stage-1 bypass bit (EQ_STAGE1_BYPASS, bit [7] of eq_stage1) is discrete - held at
-// boot during the ramp, snapped to run at the end.
+// the stage-1 bypass bit (EQ_STAGE1_BYPASS, bit [7] of eq_stage1) is discrete - disabled
+// while ramping (unless both endpoints bypass), snapped to the run value at the end.
 typedef struct {
     uint8_t eq_stage1;   // 0x01[6:3] EQ<n>_STAGE1 (bit 7 = EQ_STAGE1_BYPASS)
     uint8_t eq_stage2;   // 0x01[2:0] EQ<n>_STAGE2
@@ -351,8 +351,9 @@ void print_redrivers_status() {
 // setting_t). Every walked field - eq_stage1 / eq_stage2 (reg 0x01), eq_profile
 // (0x03[6:3]), flat gain (0x03[2:0]) and bias (0x06[5:3]) - moves independently,
 // one value per tick, from its boot value toward its run value. The stage-1 bypass
-// bit (eq_stage1[7]) is discrete: held at boot during the ramp, then set to run by
-// the final snap. A channel is done once its furthest-apart field has arrived; then
+// bit (eq_stage1[7]) is discrete: disabled while ramping (unless both endpoints
+// bypass), then set to the run value by the final snap. A channel is done once its
+// furthest-apart field has arrived; then
 // redriver_apply_running() re-asserts the exact run point so it matches exactly.
 // ============================================================================
 
@@ -389,7 +390,7 @@ static void redriver_write_setting(uint16_t addr, uint16_t chan, const redriver_
 }
 
 // Largest per-field distance between two operating points = number of ramp steps.
-// The stage-1 bypass bit is excluded (discrete: held at boot, snapped to run at the end).
+// The stage-1 bypass bit is excluded (discrete: handled separately, not walked).
 static int redriver_setting_dist(const redriver_setting_t *a, const redriver_setting_t *b) {
     int d = redriver_ramp_dist(EQ_MAG_6_3(a->eq_stage1), EQ_MAG_6_3(b->eq_stage1));
     int e = redriver_ramp_dist(a->eq_stage2, b->eq_stage2);                       if (e > d) d = e;
@@ -494,12 +495,13 @@ int redriver_ramp_pump(void) {
         const redriver_setting_t *b = &c->boot, *r = &c->run;
 
         // Each field's magnitude walks boot -> run independently; the channel is done once
-        // the furthest-apart field has arrived. The stage-1 bypass bit is held at boot (the
-        // final snap applies the run bypass).
+        // the furthest-apart field has arrived. Stage-1 bypass is disabled while ramping unless
+        // BOTH endpoints are bypassed (so an up-ramp from a bypassed level actually boosts); the
+        // final snap applies the exact run bypass.
         int max_dist = redriver_setting_dist(b, r);
         redriver_setting_t cur = {
             .eq_stage1  = (uint8_t)((redriver_ramp_walk(EQ_MAG_6_3(b->eq_stage1), EQ_MAG_6_3(r->eq_stage1), step) << 3)
-                                    | (b->eq_stage1 & EQ_STAGE1_BYPASS)),
+                                    | (b->eq_stage1 & r->eq_stage1 & EQ_STAGE1_BYPASS)),
             .eq_stage2  = (uint8_t)redriver_ramp_walk(b->eq_stage2, r->eq_stage2, step),
             .eq_profile = (uint8_t)(redriver_ramp_walk(EQ_MAG_6_3(b->eq_profile), EQ_MAG_6_3(r->eq_profile), step) << 3),
             .flat_gain  = (uint8_t)redriver_ramp_walk(b->flat_gain, r->flat_gain, step),
