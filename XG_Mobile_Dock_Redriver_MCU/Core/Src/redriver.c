@@ -213,7 +213,7 @@ static ramp_channel_t ramp_channels[] = {
       { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ10_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ0_STAGE1, .eq_stage2 = EQ0_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       { .eq_stage1 = EQ0_STAGE1, .eq_stage2 = EQ0_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, CHANNEL_ENABLED,
