@@ -614,16 +614,6 @@
         "track_width": 0.15,
         "via_diameter": 0.3,
         "via_drill": 0.2
-      },
-      {
-        "clearance": 0.6,
-        "name": "I2C",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 4,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.15,
-        "via_diameter": 0.3,
-        "via_drill": 0.2
       }
     ],
     "meta": {
@@ -685,11 +675,11 @@
         "pattern": "+3V3"
       },
       {
-        "netclass": "I2C",
+        "netclass": "RedriverCtrl",
         "pattern": "Net-*SCL)"
       },
       {
-        "netclass": "I2C",
+        "netclass": "RedriverCtrl",
         "pattern": "Net-*SDA)"
       },
       {
