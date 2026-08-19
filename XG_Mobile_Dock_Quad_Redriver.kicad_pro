@@ -604,6 +604,26 @@
         "via_diameter": 0.3,
         "via_drill": 0.2,
         "wire_width": 6
+      },
+      {
+        "clearance": 0.1,
+        "name": "RedriverCtrl",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 3,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.15,
+        "via_diameter": 0.3,
+        "via_drill": 0.2
+      },
+      {
+        "clearance": 0.6,
+        "name": "I2C",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 4,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.15,
+        "via_diameter": 0.3,
+        "via_drill": 0.2
       }
     ],
     "meta": {
@@ -663,6 +683,26 @@
       {
         "netclass": "Default",
         "pattern": "+3V3"
+      },
+      {
+        "netclass": "I2C",
+        "pattern": "Net-*SCL)"
+      },
+      {
+        "netclass": "I2C",
+        "pattern": "Net-*SDA)"
+      },
+      {
+        "netclass": "RedriverCtrl",
+        "pattern": "Net-*EN_SMB)"
+      },
+      {
+        "netclass": "RedriverCtrl",
+        "pattern": "Net-*_ADDR*)"
+      },
+      {
+        "netclass": "RedriverCtrl",
+        "pattern": "Net-*PWDN*)"
       }
     ]
   },
