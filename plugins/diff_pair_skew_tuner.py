@@ -44,8 +44,8 @@ CLEAR       = 0.1016          # min bump edge -> other-net copper edge
 VIA_CLEAR   = 0.21            # min bump edge -> any via copper edge
 PAD_CLEAR   = 0.50            # min bump edge -> non-own-net pad edge (esp. U1 pads)
 BUMP_GAP    = 0.30            # min clearance to a different net's meander excursion
-THICKEN_FACTOR = 1.8          # max meander width = THICKEN_FACTOR x the diff-pair trace width (relative)
-THICKEN_STEPS  = 4            # number of discrete width steps from the trace width up to the max
+THICKEN_FACTOR = 1.5          # max meander width = THICKEN_FACTOR x the diff-pair trace width (relative)
+THICKEN_STEPS  = 4            # sub-segments used to taper each 45deg slope (higher = smoother gradient)
 H_MAX       = 0.30            # max bump height (outboard excursion)
 H_TARGET    = 0.22            # preferred (small) trapezoid height for distribution
 W_TOP       = 0.22            # trapezoid flat-top length
@@ -286,38 +286,33 @@ def choose_outboard(seg, paired_path):
     return -1 if ((pm[0] - M[0]) * nx + (pm[1] - M[1]) * ny) > 0 else +1
 
 # ----------------------------------------------------------------------------- trapezoid + placement
-def _wlevels(w0):
+def _gwidth(o, w0, h):
+    # Gradual taper: width ramps LINEARLY with the outboard fraction o/h, from w0 (at the pair) to
+    # THICKEN_FACTOR*w0 (at the flat top). 2*o+w0 is a clearance guard that keeps the inboard edge
+    # off the pair near the base; it no longer forces an abrupt jump to max width.
     wmax = THICKEN_FACTOR * w0
-    return [w0 + i * (wmax - w0) / THICKEN_STEPS for i in range(THICKEN_STEPS + 1)]
-
-def _gwidth(o, w0, levels):
-    # width allowed at outboard offset o: keeps the inboard edge >= CLEAR from a parallel pair,
-    # and never exceeds THICKEN_FACTOR x the trace width (relative to the pair's trace size)
-    cap = min(THICKEN_FACTOR * w0, 2.0 * o + w0)
-    w = w0
-    for lv in levels:
-        if lv <= cap + 1e-9:
-            w = lv
-    return w
+    frac = 0.0 if h <= 1e-9 else max(0.0, min(1.0, o / h))
+    ramp = w0 + (wmax - w0) * frac
+    return max(w0, min(ramp, 2.0 * o + w0, wmax))
 
 def build_bumps(A, B, w0, side, N, h, s0):
     ux = B[0] - A[0]; uy = B[1] - A[1]; L = math.hypot(ux, uy); ux, uy = ux / L, uy / L
     nx, ny = -uy * side, ux * side
     def P(t, o=0.0):
         return (A[0] + ux * t + nx * o, A[1] + uy * t + ny * o)
-    edges = []; levels = _wlevels(w0); steps = max(1, THICKEN_STEPS)
+    edges = []; steps = max(1, THICKEN_STEPS)
     pitch = (2 * h + W_TOP) + GAP_BUMPS
     edges.append((A, P(s0), w0, "base"))
     for k in range(N):
         s = s0 + k * pitch
         for j in range(steps):                       # up-slope: thickens moving AWAY from the pair
             o1, o2 = h * j / steps, h * (j + 1) / steps
-            edges.append((P(s + o1, o1), P(s + o2, o2), _gwidth(o1, w0, levels), "exc"))
-        edges.append((P(s + h, h), P(s + h + W_TOP, h), _gwidth(h, w0, levels), "exc"))   # flat top
+            edges.append((P(s + o1, o1), P(s + o2, o2), _gwidth(o1, w0, h), "exc"))
+        edges.append((P(s + h, h), P(s + h + W_TOP, h), _gwidth(h, w0, h), "exc"))   # flat top
         base = s + h + W_TOP
         for j in range(steps):                       # down-slope: thins back toward the pair
             o1, o2 = h * (steps - j) / steps, h * (steps - j - 1) / steps
-            edges.append((P(base + (h - o1), o1), P(base + (h - o2), o2), _gwidth(o2, w0, levels), "exc"))
+            edges.append((P(base + (h - o1), o1), P(base + (h - o2), o2), _gwidth(o2, w0, h), "exc"))
         if k < N - 1:
             edges.append((P(s + 2 * h + W_TOP), P(s0 + (k + 1) * pitch), w0, "base"))
     edges.append((P(s0 + (N - 1) * pitch + 2 * h + W_TOP), B, w0, "base"))
