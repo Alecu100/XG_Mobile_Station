@@ -658,15 +658,17 @@ def run_selection(data, oracle, sel):
         if skew < SKEW_FLOOR:
             print("  %-10s skew %.0fum below floor, skip" % (base, skew * 1000))
             continue
-        host_segs = by_net.get(short, [])
-        if not host_segs:
-            print("  %-10s you selected the LONGER net; select the shorter net %s instead" % (nm.split("/")[-1], base))
-            continue
         skip = {net, partner}
         other = partner if short == net else net       # the non-meandered (longer) net of the pair
         paired_path = order_path(data, other)
-        els = [dict(kind="seg", a=s["a"], b=s["b"], w=s["w"], layer=s["layer"], ref=s) for s in host_segs]
-        runs = [r for r in build_runs(data, order_chain(els)) if run_len(r) >= W_TOP + 2 * MARGIN]
+        host_segs = by_net.get(short, [])
+        if host_segs:                                  # place meanders on the selected shorter-net segments
+            host_path = order_chain([dict(kind="seg", a=s["a"], b=s["b"], w=s["w"],
+                                          layer=s["layer"], ref=s) for s in host_segs])
+        else:                                          # only the longer net was selected -> tune the whole shorter net
+            print("  %-10s selected the longer net; tuning the shorter net %s over its full length" % (nm.split("/")[-1], base))
+            host_path = order_path(data, short)
+        runs = [r for r in build_runs(data, host_path) if run_len(r) >= W_TOP + 2 * MARGIN]
         thick = skew >= THICKEN_MIN_SKEW
         placements, added = distribute_selection(oracle, runs, paired_path, skip, skew, short, thick)
         if thick:
