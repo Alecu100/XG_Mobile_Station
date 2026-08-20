@@ -40,13 +40,15 @@ CLEAR       = 0.1016          # min bump edge -> other-net copper edge
 VIA_CLEAR   = 0.21            # min bump edge -> any via copper edge
 PAD_CLEAR   = 0.50            # min bump edge -> non-own-net pad edge (esp. U1 pads)
 BUMP_GAP    = 0.30            # min clearance to a different net's meander excursion
-THICKEN     = 0.13            # widened width on the meander flat tops (base trace stays its width)
+THICKEN_MAX   = 0.20          # max meander width (outboard/top); tapers to the trace width at the pair
+THICKEN_STEPS = 4             # number of discrete width steps from the base width up to THICKEN_MAX
 H_MAX       = 0.30            # max bump height (outboard excursion)
 H_TARGET    = 0.22            # preferred (small) trapezoid height for distribution
 W_TOP       = 0.22            # trapezoid flat-top length
 GAP_BUMPS   = 0.30            # min gap between consecutive bumps on the same trace
 MARGIN      = 0.25            # min distance from a bump to a trace corner (host run end)
 SKEW_FLOOR  = 0.020           # skip pairs whose |skew| is below this (fab tolerance)
+CLR_MARGIN  = 0.010           # extra breathing room beyond the hard clearances (DRC safety)
 EPS         = 1e-6
 STEP        = 0.04            # arc/pad sampling step
 SLOPE       = 2 * (math.sqrt(2) - 1)   # trapezoid added length per bump = SLOPE * h
@@ -280,21 +282,38 @@ def choose_outboard(seg, paired_path):
     return -1 if ((pm[0] - M[0]) * nx + (pm[1] - M[1]) * ny) > 0 else +1
 
 # ----------------------------------------------------------------------------- trapezoid + placement
+def _wlevels(w0):
+    return [w0 + i * (THICKEN_MAX - w0) / THICKEN_STEPS for i in range(THICKEN_STEPS + 1)]
+
+def _gwidth(o, w0, levels):
+    # width allowed at outboard offset o: keeps the inboard edge >= CLEAR from a parallel pair
+    cap = min(THICKEN_MAX, 2.0 * o + w0)
+    w = w0
+    for lv in levels:
+        if lv <= cap + 1e-9:
+            w = lv
+    return w
+
 def build_bumps(A, B, w0, side, N, h, s0):
     ux = B[0] - A[0]; uy = B[1] - A[1]; L = math.hypot(ux, uy); ux, uy = ux / L, uy / L
     nx, ny = -uy * side, ux * side
     def P(t, o=0.0):
         return (A[0] + ux * t + nx * o, A[1] + uy * t + ny * o)
-    edges = []; pitch = (2 * h + W_TOP) + GAP_BUMPS
+    edges = []; levels = _wlevels(w0); steps = max(1, THICKEN_STEPS)
+    pitch = (2 * h + W_TOP) + GAP_BUMPS
     edges.append((A, P(s0), w0, "base"))
     for k in range(N):
         s = s0 + k * pitch
-        p_a = P(s, 0.0); p_b = P(s + h, h); p_c = P(s + h + W_TOP, h); p_d = P(s + 2 * h + W_TOP, 0.0)
-        edges.append((p_a, p_b, w0, "exc"))
-        edges.append((p_b, p_c, THICKEN, "exc"))
-        edges.append((p_c, p_d, w0, "exc"))
+        for j in range(steps):                       # up-slope: thickens moving AWAY from the pair
+            o1, o2 = h * j / steps, h * (j + 1) / steps
+            edges.append((P(s + o1, o1), P(s + o2, o2), _gwidth(o1, w0, levels), "exc"))
+        edges.append((P(s + h, h), P(s + h + W_TOP, h), _gwidth(h, w0, levels), "exc"))   # flat top
+        base = s + h + W_TOP
+        for j in range(steps):                       # down-slope: thins back toward the pair
+            o1, o2 = h * (steps - j) / steps, h * (steps - j - 1) / steps
+            edges.append((P(base + (h - o1), o1), P(base + (h - o2), o2), _gwidth(o2, w0, levels), "exc"))
         if k < N - 1:
-            edges.append((p_d, P(s0 + (k + 1) * pitch), w0, "base"))
+            edges.append((P(s + 2 * h + W_TOP), P(s0 + (k + 1) * pitch), w0, "base"))
     edges.append((P(s0 + (N - 1) * pitch + 2 * h + W_TOP), B, w0, "base"))
     return edges
 
@@ -313,9 +332,9 @@ def try_place(oracle, run, side, k, h, skip_nets):
                 m = oracle.edge_ok(p0, p1, layer, skip_nets, w / 2)
                 if m < mn:
                     mn = m
-            if mn < -EPS:
+            if mn < CLR_MARGIN:
                 break
-        if mn >= -EPS:
+        if mn >= CLR_MARGIN:
             return dict(run=run, members=run["members"], edges=edges, layer=layer,
                         N=k, h=h, s0=s0, side=side, minclr=mn, pair=skip_nets)
         s0 += 0.1
