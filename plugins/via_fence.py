@@ -387,6 +387,17 @@ def _apply_overrides(overrides):
         valid = ", ".join(sorted(n for n in g if n.isupper() and not n.startswith("_")))
         print("[params] ignored: %s\n[params] valid knobs: %s" % (", ".join(sorted(bad)), valid))
 
+def _refresh(board):
+    """Rebuild connectivity, then redraw. Both guarded so it's a no-op when run headless."""
+    try:
+        board.BuildConnectivity()      # stop the ratsnest engine dereferencing removed items -> crash
+    except Exception:
+        pass
+    try:
+        pcbnew.Refresh()
+    except Exception:
+        pass
+
 def run(board=None, apply=None, **overrides):
     _apply_overrides(overrides)
     global VIA_R
@@ -424,10 +435,7 @@ def run(board=None, apply=None, **overrides):
             v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
             v.SetNetCode(f.gnd)
             board.Add(v)
-        try:
-            pcbnew.Refresh()
-        except Exception:
-            pass
+        _refresh(board)
         print("APPLIED: inserted %d GND fence vias -- review, then save (Ctrl+S)." % len(placed))
     else:
         print("DRY RUN: set APPLY = True (or call run(apply=True)) to insert the vias.")

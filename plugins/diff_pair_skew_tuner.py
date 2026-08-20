@@ -537,6 +537,17 @@ def _apply_overrides(overrides):
         valid = ", ".join(sorted(n for n in g if n.isupper() and not n.startswith("_")))
         print("[params] ignored: %s\n[params] valid knobs: %s" % (", ".join(sorted(bad)), valid))
 
+def _refresh(board):
+    """Rebuild connectivity, then redraw. Both guarded so it's a no-op when run headless."""
+    try:
+        board.BuildConnectivity()      # stop the ratsnest engine dereferencing removed items -> crash
+    except Exception:
+        pass
+    try:
+        pcbnew.Refresh()
+    except Exception:
+        pass
+
 def run(board=None, apply=None, **overrides):
     _apply_overrides(overrides)
     if board is None:
@@ -571,10 +582,17 @@ def run(board=None, apply=None, **overrides):
           % (len(results), total, (minslack * 1000 if results else 0), viol))
 
     if apply and results and viol == 0:
+        removed = set()
         for short_net, placements, skew, added in results:
             for p in placements:
                 for m in p["members"]:
-                    board.Remove(m["obj"])
+                    obj = m["obj"]
+                    if id(obj) in removed:        # one host seg can back several bumps
+                        continue
+                    removed.add(id(obj))
+                    try: obj.ClearSelected()      # GUI: don't leave a removed item selected
+                    except Exception: pass
+                    board.Remove(obj)
                 for (p0, p1, w, kind) in p["edges"]:
                     t = pcbnew.PCB_TRACK(board)
                     t.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(p0[0]), pcbnew.FromMM(p0[1])))
@@ -583,10 +601,7 @@ def run(board=None, apply=None, **overrides):
                     t.SetLayer(p["layer"])
                     t.SetNetCode(short_net)
                     board.Add(t)
-        try:
-            pcbnew.Refresh()
-        except Exception:
-            pass
+        _refresh(board)
         print("APPLIED to the board -- review, then save (Ctrl+S).")
     elif viol:
         print("NOT applied: self-check found violations.")

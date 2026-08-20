@@ -170,6 +170,17 @@ def _apply_overrides(overrides):
         valid = ", ".join(sorted(n for n in g if n.isupper() and not n.startswith("_")))
         print("[params] ignored: %s\n[params] valid knobs: %s" % (", ".join(sorted(bad)), valid))
 
+def _refresh(board):
+    """Rebuild connectivity, then redraw. Both guarded so it's a no-op when run headless."""
+    try:
+        board.BuildConnectivity()      # stop the ratsnest engine dereferencing removed items -> crash
+    except Exception:
+        pass
+    try:
+        pcbnew.Refresh()
+    except Exception:
+        pass
+
 def run(board=None, apply=None, **overrides):
     _apply_overrides(overrides)
     if board is None:
@@ -240,6 +251,8 @@ def run(board=None, apply=None, **overrides):
             continue
         edges = rebuild(verts, plan[code])
         for s in objs:
+            try: s["obj"].ClearSelected()        # GUI: don't leave a removed item selected
+            except Exception: pass
             board.Remove(s["obj"])
         for e in edges:
             if e[0] == "seg":
@@ -250,10 +263,7 @@ def run(board=None, apply=None, **overrides):
                 t.SetStart(V2(e[1])); t.SetMid(V2(e[2])); t.SetEnd(V2(e[3]))
             t.SetWidth(pcbnew.FromMM(w)); t.SetLayer(layer); t.SetNetCode(net)
             board.Add(t)
-    try:
-        pcbnew.Refresh()
-    except Exception:
-        pass
+    _refresh(board)
     print("APPLIED -- review, run DRC, then save (Ctrl+S).")
 
 
