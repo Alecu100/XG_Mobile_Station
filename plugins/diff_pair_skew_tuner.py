@@ -663,13 +663,14 @@ def run_selection(data, oracle, sel):
             print("  %-10s you selected the LONGER net; select the shorter net %s instead" % (nm.split("/")[-1], base))
             continue
         skip = {net, partner}
-        paired_path = order_path(data, partner)
+        other = partner if short == net else net       # the non-meandered (longer) net of the pair
+        paired_path = order_path(data, other)
         els = [dict(kind="seg", a=s["a"], b=s["b"], w=s["w"], layer=s["layer"], ref=s) for s in host_segs]
         runs = [r for r in build_runs(data, order_chain(els)) if run_len(r) >= W_TOP + 2 * MARGIN]
         thick = skew >= THICKEN_MIN_SKEW
         placements, added = distribute_selection(oracle, runs, paired_path, skip, skew, short, thick)
         if thick:
-            _plan_partners(data, oracle, placements, short, (partner if short == net else net))
+            _plan_partners(data, oracle, placements, short, other)
         results.append((short, placements, skew, added))
         nb = sum(p["N"] for p in placements)
         resid = skew - added
