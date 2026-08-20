@@ -22,12 +22,16 @@ USAGE (in the PCB editor):
         PARAMS = dict(THICKEN_FACTOR=2.2, THICKEN_STEPS=6, VIA_CLEAR=0.25, PAD_CLEAR=0.6, APPLY=False)
         exec(open(r'.../diff_pair_skew_tuner.py').read())
       (headless: run(board, apply=False, THICKEN_FACTOR=2.2)).
-    Undo via git checkout of the board file (console edits aren't always on Ctrl+Z).
+    UNDO the last apply (e.g. to tune a different segment):  PARAMS = dict(ACTION="revert")  then re-exec.
+    LIST past applies:  PARAMS = dict(ACTION="history").  Stored in <board>.skewtune_history.json.
+    Also undoable via git checkout of the board file (console edits aren't always on Ctrl+Z).
 
 Can also be dropped in the KiCad scripting/plugins folder to appear under Tools > External Plugins.
 """
 import math
 import collections
+import json
+import os
 
 try:
     import pcbnew
@@ -36,6 +40,7 @@ except ImportError:
 
 # ----------------------------------------------------------------------------- knobs (mm)
 APPLY         = True          # False = dry-run (report only, no board changes)
+ACTION        = "tune"        # "tune" | "revert" (undo the last apply) | "history" (list past applies)
 MODE          = "auto-detect" # "auto-detect" = use selection if any else auto | "selection" | "auto"
 TARGET_GROUPS = ("HSIT", "HSOL")   # AUTO mode: net-name groups (short net of each P/N pair gets the meander)
 RETIMER_REF   = "U1"          # component whose pads define "near the retimer" ordering (AUTO mode)
@@ -50,13 +55,16 @@ PARTNER_THICKEN = True        # also thicken the non-meandered partner: mirror t
                               #   each bump, back to normal between) on the partner's own centerline --
                               #   length-neutral, so skew stays nulled and the intra-pair gap is kept
 PARTNER_FACTOR  = None        # partner max width factor; None = match THICKEN_FACTOR (the meander)
+THICKEN_MIN_SKEW = 0.15       # if a pair's skew correction is below this, DON'T thicken (plain w0 meander
+                              #   + skip the partner mirror) -- a tiny bump has no room to taper nicely
 H_MAX       = 0.30            # max bump height (outboard excursion)
 H_TARGET    = 0.22            # preferred (small) trapezoid height for distribution
 W_TOP       = 0.22            # trapezoid flat-top length
 GAP_BUMPS   = 0.30            # min gap between consecutive bumps on the same trace
 MARGIN      = 0.25            # min distance from a bump to a trace corner (host run end)
-SKEW_FLOOR  = 0.020           # skip pairs whose |skew| is below this (fab tolerance)
+SKEW_FLOOR  = 0.010           # skip pairs whose |skew| is below this (fab tolerance)
 CLR_MARGIN  = 0.010           # extra breathing room beyond the hard clearances (DRC safety)
+PARTNER_TOL = 0.020           # a bump may reach the pair's own min gap, but not push INTO the partner
 EPS         = 1e-6
 STEP        = 0.04            # arc/pad sampling step
 SLOPE       = 2 * (math.sqrt(2) - 1)   # trapezoid added length per bump = SLOPE * h
@@ -275,19 +283,40 @@ def build_runs(data, path):
         runs.append(cur)
     return runs
 
+def _closest_point(p, a, b):
+    ax, ay = a; bx, by = b; px, py = p
+    dx, dy = bx - ax, by - ay; L2 = dx * dx + dy * dy
+    if L2 < 1e-15:
+        return (ax, ay)
+    t = max(0.0, min(1.0, ((px - ax) * dx + (py - ay) * dy) / L2))
+    return (ax + t * dx, ay + t * dy)
+
+def partner_slack(p0, p1, hb, paired_path, layer):
+    """Min clearance slack of an excursion edge vs the partner path (catches wrong-side placement)."""
+    worst = 1e9
+    for s in paired_path:
+        if s.get("layer") != layer:
+            continue
+        sl = seg_seg_dist(p0, p1, s["a"], s["b"]) - hb - s["w"] / 2 - CLEAR
+        if sl < worst:
+            worst = sl
+    return worst
+
 def choose_outboard(seg, paired_path):
     A, B = seg["a"], seg["b"]; M = ((A[0] + B[0]) / 2, (A[1] + B[1]) / 2)
-    ux, uy = B[0] - A[0], B[1] - A[1]; L = math.hypot(ux, uy); ux, uy = ux / L, uy / L
-    nx, ny = -uy, ux
-    best = None; bd = 1e9
+    ux, uy = B[0] - A[0], B[1] - A[1]; L = math.hypot(ux, uy)
+    if L < 1e-9:
+        return +1
+    ux, uy = ux / L, uy / L; nx, ny = -uy, ux
+    best = None; bd = 1e9                         # nearest POINT on the partner path to the run midpoint
     for s in paired_path:
-        d = dist_seg(M, s["a"], s["b"])
+        cp = _closest_point(M, s["a"], s["b"])
+        d = math.hypot(cp[0] - M[0], cp[1] - M[1])
         if d < bd:
-            bd, best = d, s
+            bd, best = d, cp
     if best is None:
         return +1
-    pm = ((best["a"][0] + best["b"][0]) / 2, (best["a"][1] + best["b"][1]) / 2)
-    return -1 if ((pm[0] - M[0]) * nx + (pm[1] - M[1]) * ny) > 0 else +1
+    return -1 if ((best[0] - M[0]) * nx + (best[1] - M[1]) * ny) > 0 else +1
 
 # ----------------------------------------------------------------------------- trapezoid + placement
 def _gwidth(o, w0, h, factor=None):
@@ -300,30 +329,30 @@ def _gwidth(o, w0, h, factor=None):
     ramp = w0 + (wmax - w0) * frac
     return max(w0, min(ramp, 2.0 * o + w0, wmax))
 
-def build_bumps(A, B, w0, side, N, h, s0):
+def build_bumps(A, B, w0, side, N, h, s0, thicken=True):
     ux = B[0] - A[0]; uy = B[1] - A[1]; L = math.hypot(ux, uy); ux, uy = ux / L, uy / L
     nx, ny = -uy * side, ux * side
     def P(t, o=0.0):
         return (A[0] + ux * t + nx * o, A[1] + uy * t + ny * o)
-    edges = []; steps = max(1, THICKEN_STEPS)
+    edges = []; steps = max(1, THICKEN_STEPS); fac = None if thicken else 1.0
     pitch = (2 * h + W_TOP) + GAP_BUMPS
     edges.append((A, P(s0), w0, "base"))
     for k in range(N):
         s = s0 + k * pitch
         for j in range(steps):                       # up-slope: thickens moving AWAY from the pair
             o1, o2 = h * j / steps, h * (j + 1) / steps
-            edges.append((P(s + o1, o1), P(s + o2, o2), _gwidth(o1, w0, h), "exc"))
-        edges.append((P(s + h, h), P(s + h + W_TOP, h), _gwidth(h, w0, h), "exc"))   # flat top
+            edges.append((P(s + o1, o1), P(s + o2, o2), _gwidth(o1, w0, h, fac), "exc"))
+        edges.append((P(s + h, h), P(s + h + W_TOP, h), _gwidth(h, w0, h, fac), "exc"))   # flat top
         base = s + h + W_TOP
         for j in range(steps):                       # down-slope: thins back toward the pair
             o1, o2 = h * (steps - j) / steps, h * (steps - j - 1) / steps
-            edges.append((P(base + (h - o1), o1), P(base + (h - o2), o2), _gwidth(o2, w0, h), "exc"))
+            edges.append((P(base + (h - o1), o1), P(base + (h - o2), o2), _gwidth(o2, w0, h, fac), "exc"))
         if k < N - 1:
             edges.append((P(s + 2 * h + W_TOP), P(s0 + (k + 1) * pitch), w0, "base"))
     edges.append((P(s0 + (N - 1) * pitch + 2 * h + W_TOP), B, w0, "base"))
     return edges
 
-def try_place(oracle, run, side, k, h, skip_nets):
+def try_place(oracle, run, side, k, h, skip_nets, paired_path=(), thicken=True):
     A, B = run["a"], run["b"]; w0 = run["w"]; layer = run["layer"]
     segL = math.hypot(B[0] - A[0], B[1] - A[1])
     F = k * (2 * h + W_TOP) + (k - 1) * GAP_BUMPS
@@ -331,35 +360,44 @@ def try_place(oracle, run, side, k, h, skip_nets):
         return None
     s0 = MARGIN
     while s0 <= segL - F - MARGIN + 1e-9:
-        edges = build_bumps(A, B, w0, side, k, h, s0)
-        mn = 1e9
+        edges = build_bumps(A, B, w0, side, k, h, s0, thicken)
+        mn = 1e9; pworst = 1e9
         for (p0, p1, w, kind) in edges:
             if kind == "exc":
                 m = oracle.edge_ok(p0, p1, layer, skip_nets, w / 2)
                 if m < mn:
                     mn = m
+                ps = partner_slack(p0, p1, w / 2, paired_path, layer)   # <0 only if pushing into partner
+                if ps < pworst:
+                    pworst = ps
             if mn < CLR_MARGIN:
                 break
-        if mn >= CLR_MARGIN:
+        if mn >= CLR_MARGIN and pworst >= -PARTNER_TOL:
             return dict(run=run, members=run["members"], edges=edges, layer=layer,
                         N=k, h=h, s0=s0, side=side, minclr=mn, pair=skip_nets)
         s0 += 0.1
     return None
 
-def distribute(oracle, runs, paired_path, skip_nets, M, h):
+def distribute(oracle, runs, paired_path, skip_nets, M, h, thicken=True):
     placements = []; left = M
     for run in runs:
         if left <= 0:
             break
-        side = choose_outboard(run, paired_path)
+        pref = choose_outboard(run, paired_path)
         segL = math.hypot(run["b"][0] - run["a"][0], run["b"][1] - run["a"][1])
         cap = int((segL - 2 * MARGIN + GAP_BUMPS) // (2 * h + W_TOP + GAP_BUMPS))
-        k = min(cap, left)
-        while k >= 1:
-            p = try_place(oracle, run, side, k, h, skip_nets)
-            if p:
-                placements.append(p); left -= k; break
-            k -= 1
+        placed = None
+        for side in (pref, -pref):                   # prefer outboard; fall back to the other side
+            k = min(cap, left)
+            while k >= 1:
+                p = try_place(oracle, run, side, k, h, skip_nets, paired_path, thicken)
+                if p:
+                    placed = p; break
+                k -= 1
+            if placed:
+                break
+        if placed:
+            placements.append(placed); left -= placed["N"]
     return placements, left
 
 def dU1_of(data, p, short_net):
@@ -413,24 +451,27 @@ def order_chain(els):
             walk(Q(els[i]["a"]))
     return out
 
-def distribute_selection(oracle, runs, paired_path, skip, skew, short_net):
+def distribute_selection(oracle, runs, paired_path, skip, skew, short_net, thicken=True):
     """Add up to `skew` of length across the given runs; exact if it fits, else as much as possible."""
     placements = []; added = 0.0
     for run_ in runs:
         if added >= skew - 1e-4:
             break
-        side = choose_outboard(run_, paired_path)
+        pref = choose_outboard(run_, paired_path)
         segL = run_len(run_); remaining = skew - added
         cap = int((segL - 2 * MARGIN + GAP_BUMPS) // (2 * H_TARGET + W_TOP + GAP_BUMPS))
         if cap < 1:
             continue
         need = int(math.ceil(remaining / (SLOPE * H_TARGET)))
         placed = None
-        for k in range(min(cap, need), 0, -1):
-            h = min(H_MAX, remaining / (SLOPE * k)) if k >= need else H_TARGET
-            p = try_place(oracle, run_, side, k, h, skip)
-            if p:
-                placed = (p, k, h); break
+        for side in (pref, -pref):                   # prefer outboard; fall back to the other side
+            for k in range(min(cap, need), 0, -1):
+                h = min(H_MAX, remaining / (SLOPE * k)) if k >= need else H_TARGET
+                p = try_place(oracle, run_, side, k, h, skip, paired_path, thicken)
+                if p:
+                    placed = (p, k, h); break
+            if placed:
+                break
         if placed:
             p, k, h = placed
             for (p0, p1, w, kind) in p["edges"]:
@@ -513,8 +554,12 @@ def plan_partner_mirror(oracle, p, pruns):
         q0, q1 = ppt(s_a), ppt(s_b)
         if wm > w0p + 1e-9:
             slack = oracle.edge_ok(q0, q1, layer, p["pair"], wm / 2)
+            for (m0, m1, mw, mk) in p["edges"]:          # keep CLEAR from the meander itself (same pair)
+                dd = seg_seg_dist(q0, q1, m0, m1) - wm / 2 - mw / 2 - CLEAR
+                if dd < slack:
+                    slack = dd
             if slack < CLR_MARGIN:
-                wm = max(w0p, wm + 2.0 * (slack - CLR_MARGIN))   # shrink to fit outboard neighbours
+                wm = max(w0p, wm + 2.0 * (slack - CLR_MARGIN))   # shrink to fit neighbours + the meander
         edges.append((q0, q1, wm, "pexc" if wm > w0p + 1e-9 else "pbase"))
     if not any(k == "pexc" for (_, _, _, k) in edges):
         return None
@@ -563,11 +608,12 @@ def run_auto(data, oracle):
             Nmin = max(1, int(math.ceil(add / (SLOPE * H_MAX))))
             Mtarget = max(Nmin, int(math.ceil(add / (SLOPE * H_TARGET))))
             chosen = None; used_M = 0; used_h = 0.0
+            thick = add >= THICKEN_MIN_SKEW
             for M in range(Mtarget, Nmin - 1, -1):
                 h = add / (SLOPE * M)
                 if h > H_MAX + 1e-9:
                     continue
-                pl, left = distribute(oracle, runs, paired_path, skip, M, h)
+                pl, left = distribute(oracle, runs, paired_path, skip, M, h, thick)
                 if left == 0:
                     chosen, used_M, used_h = pl, M, h
                     break
@@ -578,7 +624,8 @@ def run_auto(data, oracle):
             for p in chosen:
                 for (p0, p1, w, kind) in p["edges"]:
                     oracle.add_bump(p0, p1, w, p["layer"], short_net)
-            _plan_partners(data, oracle, chosen, short_net, (nP if short_net == nN else nN))
+            if thick:
+                _plan_partners(data, oracle, chosen, short_net, (nP if short_net == nN else nN))
             results.append((short_net, chosen, add, add))
             dU1s = sorted(dU1_of(data, p, short_net) for p in chosen)
             nb = sum(p["N"] for p in chosen); mnclr = min(p["minclr"] for p in chosen)
@@ -619,8 +666,10 @@ def run_selection(data, oracle, sel):
         paired_path = order_path(data, partner)
         els = [dict(kind="seg", a=s["a"], b=s["b"], w=s["w"], layer=s["layer"], ref=s) for s in host_segs]
         runs = [r for r in build_runs(data, order_chain(els)) if run_len(r) >= W_TOP + 2 * MARGIN]
-        placements, added = distribute_selection(oracle, runs, paired_path, skip, skew, short)
-        _plan_partners(data, oracle, placements, short, (partner if short == net else net))
+        thick = skew >= THICKEN_MIN_SKEW
+        placements, added = distribute_selection(oracle, runs, paired_path, skip, skew, short, thick)
+        if thick:
+            _plan_partners(data, oracle, placements, short, (partner if short == net else net))
         results.append((short, placements, skew, added))
         nb = sum(p["N"] for p in placements)
         resid = skew - added
@@ -653,12 +702,149 @@ def _refresh(board):
     except Exception:
         pass
 
+# ----------------------------------------------------------------------------- undo history
+def _history_path(board):
+    f = board.GetFileName()
+    return (f + ".skewtune_history.json") if f else None
+
+def _load_history(board):
+    p = _history_path(board)
+    if p and os.path.exists(p):
+        try:
+            with open(p, "r") as fh:
+                return json.load(fh)
+        except Exception:
+            return []
+    return []
+
+def _save_history(board, hist):
+    p = _history_path(board)
+    if not p:
+        print("[history] board has no filename yet (save it once) -- undo history disabled.")
+        return
+    try:
+        with open(p, "w") as fh:
+            json.dump(hist, fh)
+    except Exception as e:
+        print("[history] could not write %s: %s" % (p, e))
+
+def _track_data(t):
+    d = dict(layer=t.GetLayer(), width=t.GetWidth(), net=t.GetNetname(),
+             start=[t.GetStart().x, t.GetStart().y], end=[t.GetEnd().x, t.GetEnd().y])
+    if isinstance(t, pcbnew.PCB_ARC):
+        d["kind"] = "arc"; m = t.GetMid(); d["mid"] = [m.x, m.y]
+    else:
+        d["kind"] = "seg"
+    return d
+
+def _record_history(board, removed, added, results):
+    if not (removed or added):
+        return
+    hist = _load_history(board)
+    hist.append(dict(note="%d net(s) tuned, +%d / -%d tracks" % (len(results), len(added), len(removed)),
+                     removed=removed, added=added))
+    _save_history(board, hist)
+    print("[history] saved undo step #%d (%s)" % (len(hist), os.path.basename(_history_path(board) or "")))
+
+def _netcode(board, name):
+    try:
+        ni = board.FindNet(name)
+        if ni is not None:
+            return ni.GetNetCode()
+    except Exception:
+        pass
+    for t in board.GetTracks():
+        if t.GetNetname() == name:
+            return t.GetNetCode()
+    return 0
+
+def _pt_near(v, xy, tol=2000):
+    return abs(v.x - xy[0]) <= tol and abs(v.y - xy[1]) <= tol
+
+def _find_track(tracks, d):
+    want_arc = (d["kind"] == "arc")
+    for t in tracks:
+        if isinstance(t, pcbnew.PCB_VIA):
+            continue
+        if isinstance(t, pcbnew.PCB_ARC) != want_arc:
+            continue
+        if t.GetLayer() != d["layer"] or abs(t.GetWidth() - d["width"]) > 500:
+            continue
+        fwd = _pt_near(t.GetStart(), d["start"]) and _pt_near(t.GetEnd(), d["end"])
+        rev = _pt_near(t.GetStart(), d["end"]) and _pt_near(t.GetEnd(), d["start"])
+        if not (fwd or rev):
+            continue
+        if want_arc and not _pt_near(t.GetMid(), d.get("mid", [0, 0])):
+            continue
+        return t
+    return None
+
+def _make_track(board, d):
+    if d["kind"] == "arc":
+        t = pcbnew.PCB_ARC(board)
+        t.SetStart(pcbnew.VECTOR2I(int(d["start"][0]), int(d["start"][1])))
+        t.SetMid(pcbnew.VECTOR2I(int(d["mid"][0]), int(d["mid"][1])))
+        t.SetEnd(pcbnew.VECTOR2I(int(d["end"][0]), int(d["end"][1])))
+    else:
+        t = pcbnew.PCB_TRACK(board)
+        t.SetStart(pcbnew.VECTOR2I(int(d["start"][0]), int(d["start"][1])))
+        t.SetEnd(pcbnew.VECTOR2I(int(d["end"][0]), int(d["end"][1])))
+    t.SetWidth(int(d["width"])); t.SetLayer(d["layer"])
+    t.SetNetCode(_netcode(board, d["net"]))
+    return t
+
+def revert(board=None, steps=1):
+    """Undo the last apply(es): delete the tracks it added, restore the ones it replaced."""
+    if board is None:
+        board = pcbnew.GetBoard()
+    hist = _load_history(board)
+    if not hist:
+        print("No skew-tune history to revert.")
+        return []
+    n = min(steps, len(hist)); missing = 0
+    tracks = list(board.GetTracks())          # snapshot once (repeated GetTracks can choke swig)
+    for _ in range(n):
+        entry = hist.pop()
+        for d in entry.get("added", []):
+            t = _find_track(tracks, d)
+            if t is not None:
+                try: t.ClearSelected()
+                except Exception: pass
+                board.Remove(t)
+            else:
+                missing += 1
+        for d in entry.get("removed", []):
+            board.Add(_make_track(board, d))
+    _save_history(board, hist)
+    _refresh(board)
+    print("Reverted %d step(s)%s; %d left. Review, then save (Ctrl+S)."
+          % (n, (" (%d added track(s) not found)" % missing) if missing else "", len(hist)))
+    return hist
+
+def history(board=None):
+    """List the saved undo steps (most recent last)."""
+    if board is None:
+        board = pcbnew.GetBoard()
+    hist = _load_history(board)
+    if not hist:
+        print("No skew-tune history.")
+        return hist
+    print("Skew-tune history (%s):" % os.path.basename(_history_path(board) or ""))
+    for i, e in enumerate(hist, 1):
+        print("  #%d  %s" % (i, e.get("note", "")))
+    print("Undo the most recent with:  PARAMS=dict(ACTION='revert')  then re-exec.")
+    return hist
+
 def run(board=None, apply=None, **overrides):
     _apply_overrides(overrides)
     if board is None:
         board = pcbnew.GetBoard()
     if apply is None:
         apply = APPLY
+    if ACTION == "revert":
+        return revert(board)
+    if ACTION == "history":
+        return history(board)
     data = read_board(board)
     oracle = Oracle(data)
     sel = [s for s in data["segs"] if s["obj"].IsSelected()]
@@ -694,7 +880,7 @@ def run(board=None, apply=None, **overrides):
           % (len(results), total, (minslack * 1000 if results else 0), viol))
 
     if apply and results and viol == 0:
-        removed = set()
+        removed = set(); h_removed = []; h_added = []
         for short_net, placements, skew, added in results:
             for p in placements:
                 for m in p["members"]:
@@ -702,6 +888,7 @@ def run(board=None, apply=None, **overrides):
                     if id(obj) in removed:        # one host seg can back several bumps
                         continue
                     removed.add(id(obj))
+                    h_removed.append(_track_data(obj))
                     try: obj.ClearSelected()      # GUI: don't leave a removed item selected
                     except Exception: pass
                     board.Remove(obj)
@@ -712,11 +899,12 @@ def run(board=None, apply=None, **overrides):
                     t.SetWidth(pcbnew.FromMM(w))
                     t.SetLayer(p["layer"])
                     t.SetNetCode(short_net)
-                    board.Add(t)
+                    board.Add(t); h_added.append(_track_data(t))
                 for obj in p.get("premoves", []):        # partner segs replaced by the mirrored width
                     if id(obj) in removed:
                         continue
                     removed.add(id(obj))
+                    h_removed.append(_track_data(obj))
                     try: obj.ClearSelected()
                     except Exception: pass
                     board.Remove(obj)
@@ -727,9 +915,11 @@ def run(board=None, apply=None, **overrides):
                     t.SetWidth(pcbnew.FromMM(w))
                     t.SetLayer(p["layer"])
                     t.SetNetCode(p["pnet"])
-                    board.Add(t)
+                    board.Add(t); h_added.append(_track_data(t))
+        _record_history(board, h_removed, h_added, results)
         _refresh(board)
         print("APPLIED to the board -- review, then save (Ctrl+S).")
+        print("Undo:  PARAMS=dict(ACTION='revert'); exec(open(...).read())   (to tune a different segment)")
     elif viol:
         print("NOT applied: self-check found violations.")
     else:
