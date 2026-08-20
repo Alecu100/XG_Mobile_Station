@@ -1,5 +1,5 @@
 """
-Retimer intra-pair skew tuner  --  runs INSIDE KiCad (pcbnew Python API, KiCad 9).
+Differential-pair skew tuner  --  runs INSIDE KiCad (pcbnew Python API, KiCad 9).
 
 Length-matches PCIe diff pairs (nulls internal / intra-pair skew) by adding small trapezoidal
 "meander" bumps on the SHORTER trace, staying clear of pads/vias/other copper.
@@ -16,11 +16,11 @@ All constraints/distances are the constants below (clearances, heights, spacing,
 
 USAGE (in the PCB editor):
     Tools > Scripting Console, then:
-        exec(open(r'd:/Repos/XG_Mobile_Station/plugins/retimer_skew_tuner.py').read())
+        exec(open(r'd:/Repos/XG_Mobile_Station/plugins/diff_pair_skew_tuner.py').read())
     Set APPLY = False for a dry-run (prints the plan, changes nothing).
     Override any knob WITHOUT editing this file: set a PARAMS dict first, e.g.
         PARAMS = dict(THICKEN_FACTOR=2.2, THICKEN_STEPS=6, VIA_CLEAR=0.25, PAD_CLEAR=0.6, APPLY=False)
-        exec(open(r'.../retimer_skew_tuner.py').read())
+        exec(open(r'.../diff_pair_skew_tuner.py').read())
       (headless: run(board, apply=False, THICKEN_FACTOR=2.2)).
     Undo via git checkout of the board file (console edits aren't always on Ctrl+Z).
 
@@ -597,11 +597,11 @@ def run(board=None, apply=None, **overrides):
 
 # Optional: expose as a Tools > External Plugins button when dropped in the plugins folder.
 try:
-    class RetimerSkewTuner(pcbnew.ActionPlugin):
+    class DiffPairSkewTuner(pcbnew.ActionPlugin):
         def defaults(self):
-            self.name = "Retimer intra-pair skew tuner"
+            self.name = "Differential-pair skew tuner"
             self.category = "Modify PCB"
-            self.description = "Add trapezoidal meanders to null PCIe intra-pair skew near the retimer."
+            self.description = "Add trapezoidal meanders to null differential-pair intra-pair skew."
             self.show_toolbar_button = True
 
         def Run(self):
@@ -615,6 +615,6 @@ if __name__ == "__main__":
 else:
     # imported from the plugins folder: register the toolbar button instead of running
     try:
-        RetimerSkewTuner().register()
+        DiffPairSkewTuner().register()
     except Exception:
         pass
