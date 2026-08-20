@@ -40,8 +40,8 @@ CLEAR       = 0.1016          # min bump edge -> other-net copper edge
 VIA_CLEAR   = 0.21            # min bump edge -> any via copper edge
 PAD_CLEAR   = 0.50            # min bump edge -> non-own-net pad edge (esp. U1 pads)
 BUMP_GAP    = 0.30            # min clearance to a different net's meander excursion
-THICKEN_MAX   = 0.20          # max meander width (outboard/top); tapers to the trace width at the pair
-THICKEN_STEPS = 4             # number of discrete width steps from the base width up to THICKEN_MAX
+THICKEN_FACTOR = 1.8          # max meander width = THICKEN_FACTOR x the diff-pair trace width (relative)
+THICKEN_STEPS  = 4            # number of discrete width steps from the trace width up to the max
 H_MAX       = 0.30            # max bump height (outboard excursion)
 H_TARGET    = 0.22            # preferred (small) trapezoid height for distribution
 W_TOP       = 0.22            # trapezoid flat-top length
@@ -283,11 +283,13 @@ def choose_outboard(seg, paired_path):
 
 # ----------------------------------------------------------------------------- trapezoid + placement
 def _wlevels(w0):
-    return [w0 + i * (THICKEN_MAX - w0) / THICKEN_STEPS for i in range(THICKEN_STEPS + 1)]
+    wmax = THICKEN_FACTOR * w0
+    return [w0 + i * (wmax - w0) / THICKEN_STEPS for i in range(THICKEN_STEPS + 1)]
 
 def _gwidth(o, w0, levels):
-    # width allowed at outboard offset o: keeps the inboard edge >= CLEAR from a parallel pair
-    cap = min(THICKEN_MAX, 2.0 * o + w0)
+    # width allowed at outboard offset o: keeps the inboard edge >= CLEAR from a parallel pair,
+    # and never exceeds THICKEN_FACTOR x the trace width (relative to the pair's trace size)
+    cap = min(THICKEN_FACTOR * w0, 2.0 * o + w0)
     w = w0
     for lv in levels:
         if lv <= cap + 1e-9:
