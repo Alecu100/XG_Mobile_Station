@@ -46,6 +46,10 @@ PAD_CLEAR   = 0.50            # min bump edge -> non-own-net pad edge (esp. U1 p
 BUMP_GAP    = 0.30            # min clearance to a different net's meander excursion
 THICKEN_FACTOR = 1.5          # max meander width = THICKEN_FACTOR x the diff-pair trace width (relative)
 THICKEN_STEPS  = 4            # sub-segments used to taper each 45deg slope (higher = smoother gradient)
+PARTNER_THICKEN = True        # also thicken the non-meandered partner: mirror the bumps (swell opposite
+                              #   each bump, back to normal between) on the partner's own centerline --
+                              #   length-neutral, so skew stays nulled and the intra-pair gap is kept
+PARTNER_FACTOR  = None        # partner max width factor; None = match THICKEN_FACTOR (the meander)
 H_MAX       = 0.30            # max bump height (outboard excursion)
 H_TARGET    = 0.22            # preferred (small) trapezoid height for distribution
 W_TOP       = 0.22            # trapezoid flat-top length
@@ -286,11 +290,12 @@ def choose_outboard(seg, paired_path):
     return -1 if ((pm[0] - M[0]) * nx + (pm[1] - M[1]) * ny) > 0 else +1
 
 # ----------------------------------------------------------------------------- trapezoid + placement
-def _gwidth(o, w0, h):
+def _gwidth(o, w0, h, factor=None):
     # Gradual taper: width ramps LINEARLY with the outboard fraction o/h, from w0 (at the pair) to
-    # THICKEN_FACTOR*w0 (at the flat top). 2*o+w0 is a clearance guard that keeps the inboard edge
-    # off the pair near the base; it no longer forces an abrupt jump to max width.
-    wmax = THICKEN_FACTOR * w0
+    # factor*w0 (at the flat top). 2*o+w0 is a clearance guard that keeps the inboard edge off the
+    # pair near the base; it no longer forces an abrupt jump to max width.
+    f = THICKEN_FACTOR if factor is None else factor
+    wmax = f * w0
     frac = 0.0 if h <= 1e-9 else max(0.0, min(1.0, o / h))
     ramp = w0 + (wmax - w0) * frac
     return max(w0, min(ramp, 2.0 * o + w0, wmax))
@@ -433,6 +438,109 @@ def distribute_selection(oracle, runs, paired_path, skip, skew, short_net):
             placements.append(p); added += k * SLOPE * h
     return placements, added
 
+# ----------------------------------------------------------------------------- partner mirror
+def plan_partner_mirror(oracle, p, pruns):
+    """Mirror the meander onto the partner: swell its width opposite each bump (where the meander has
+    moved away, so there is room), back to w0 opposite the gaps -- on the partner's own straight
+    centerline, so its length (and the pair skew) is unchanged and the intra-pair gap is preserved.
+    Returns (partner_run, edges) or None if no aligned straight partner run covers the bump span."""
+    factor_p = PARTNER_FACTOR if PARTNER_FACTOR else THICKEN_FACTOR
+    if factor_p <= 1.0 + 1e-9:
+        return None
+    A, B = p["run"]["a"], p["run"]["b"]
+    ux, uy = B[0] - A[0], B[1] - A[1]; L = math.hypot(ux, uy)
+    if L < 1e-6:
+        return None
+    ux, uy = ux / L, uy / L
+    h = p["h"]; N = p["N"]; s0 = p["s0"]; layer = p["layer"]
+    pitch_b = (2 * h + W_TOP) + GAP_BUMPS
+    s_lo, s_hi = s0, s0 + (N - 1) * pitch_b + (2 * h + W_TOP)
+    best = None; bestd = 1e9
+    for R in pruns:
+        if R["layer"] != layer:
+            continue
+        vx, vy = R["b"][0] - R["a"][0], R["b"][1] - R["a"][1]; Lv = math.hypot(vx, vy)
+        if Lv < 1e-6:
+            continue
+        vx, vy = vx / Lv, vy / Lv
+        if abs(vx * uy - vy * ux) > 0.02:                # not parallel to the meander run
+            continue
+        sa = (R["a"][0] - A[0]) * ux + (R["a"][1] - A[1]) * uy
+        sb = (R["b"][0] - A[0]) * ux + (R["b"][1] - A[1]) * uy
+        if min(sa, sb) > s_lo + 1e-3 or max(sa, sb) < s_hi - 1e-3:
+            continue                                     # doesn't span the bumps
+        perp = abs((R["a"][0] - A[0]) * (-uy) + (R["a"][1] - A[1]) * ux)
+        if perp < 0.05 or perp > 1.0:                    # not the adjacent partner run
+            continue
+        if perp < bestd:
+            bestd, best = perp, (R, sa, vx, vy)
+    if not best:
+        return None
+    R, sa, vx, vy = best
+    w0p = R["w"]; duv = vx * ux + vy * uy
+    def ppt(s):
+        t = (s - sa) * duv
+        return (R["a"][0] + vx * t, R["a"][1] + vy * t)
+    def wprof(s):
+        for k in range(N):
+            b0 = s0 + k * pitch_b
+            if b0 - 1e-9 <= s <= b0 + 2 * h + W_TOP + 1e-9:
+                if s <= b0 + h:
+                    o = s - b0
+                elif s <= b0 + h + W_TOP:
+                    o = h
+                else:
+                    o = (b0 + 2 * h + W_TOP) - s
+                return _gwidth(max(0.0, o), w0p, h, factor_p)
+        return w0p
+    steps = max(1, THICKEN_STEPS)
+    sb_end = (R["b"][0] - A[0]) * ux + (R["b"][1] - A[1]) * uy
+    smin, smax = min(sa, sb_end), max(sa, sb_end)
+    cuts = set([smin, smax])
+    for k in range(N):
+        b0 = s0 + k * pitch_b
+        for j in range(steps + 1):
+            cuts.add(b0 + h * j / steps)
+            cuts.add(b0 + h + W_TOP + h * j / steps)
+        cuts.add(b0 + h); cuts.add(b0 + h + W_TOP)
+    cuts = sorted(c for c in cuts if smin - 1e-9 <= c <= smax + 1e-9)
+    edges = []
+    for i in range(len(cuts) - 1):
+        s_a, s_b = cuts[i], cuts[i + 1]
+        if s_b - s_a < 1e-6:
+            continue
+        wm = wprof(0.5 * (s_a + s_b))
+        q0, q1 = ppt(s_a), ppt(s_b)
+        if wm > w0p + 1e-9:
+            slack = oracle.edge_ok(q0, q1, layer, p["pair"], wm / 2)
+            if slack < CLR_MARGIN:
+                wm = max(w0p, wm + 2.0 * (slack - CLR_MARGIN))   # shrink to fit outboard neighbours
+        edges.append((q0, q1, wm, "pexc" if wm > w0p + 1e-9 else "pbase"))
+    if not any(k == "pexc" for (_, _, _, k) in edges):
+        return None
+    return R, edges
+
+def _plan_partners(data, oracle, placements, short_net, partner_net):
+    if not PARTNER_THICKEN:
+        return
+    pruns = build_runs(data, order_path(data, partner_net))
+    used = set()
+    for p in placements:
+        pm = plan_partner_mirror(oracle, p, pruns)
+        if not pm:
+            continue
+        R, pedges = pm
+        key = tuple(sorted(id(m["obj"]) for m in R["members"]))
+        if key in used:
+            continue
+        used.add(key)
+        p["pnet"] = partner_net
+        p["premoves"] = [m["obj"] for m in R["members"]]
+        p["pedges"] = pedges
+        for (q0, q1, w, kind) in pedges:
+            if kind == "pexc":
+                oracle.add_bump(q0, q1, w, p["layer"], partner_net)
+
 # ----------------------------------------------------------------------------- modes
 def run_auto(data, oracle):
     n2n = data["name2net"]; results = []
@@ -470,6 +578,7 @@ def run_auto(data, oracle):
             for p in chosen:
                 for (p0, p1, w, kind) in p["edges"]:
                     oracle.add_bump(p0, p1, w, p["layer"], short_net)
+            _plan_partners(data, oracle, chosen, short_net, (nP if short_net == nN else nN))
             results.append((short_net, chosen, add, add))
             dU1s = sorted(dU1_of(data, p, short_net) for p in chosen)
             nb = sum(p["N"] for p in chosen); mnclr = min(p["minclr"] for p in chosen)
@@ -511,6 +620,7 @@ def run_selection(data, oracle, sel):
         els = [dict(kind="seg", a=s["a"], b=s["b"], w=s["w"], layer=s["layer"], ref=s) for s in host_segs]
         runs = [r for r in build_runs(data, order_chain(els)) if run_len(r) >= W_TOP + 2 * MARGIN]
         placements, added = distribute_selection(oracle, runs, paired_path, skip, skew, short)
+        _plan_partners(data, oracle, placements, short, (partner if short == net else net))
         results.append((short, placements, skew, added))
         nb = sum(p["N"] for p in placements)
         resid = skew - added
@@ -573,6 +683,13 @@ def run(board=None, apply=None, **overrides):
                 minslack = min(minslack, sl)
                 if sl < -1e-4:
                     viol += 1
+            for (p0, p1, w, kind) in p.get("pedges", []):
+                if kind != "pexc":
+                    continue
+                sl = oracle.edge_ok(p0, p1, p["layer"], p["pair"], w / 2)
+                minslack = min(minslack, sl)
+                if sl < -1e-4:
+                    viol += 1
     print("\n%d meander(s), %d bumps; self-check min clearance = %.1f um, violations = %d"
           % (len(results), total, (minslack * 1000 if results else 0), viol))
 
@@ -595,6 +712,21 @@ def run(board=None, apply=None, **overrides):
                     t.SetWidth(pcbnew.FromMM(w))
                     t.SetLayer(p["layer"])
                     t.SetNetCode(short_net)
+                    board.Add(t)
+                for obj in p.get("premoves", []):        # partner segs replaced by the mirrored width
+                    if id(obj) in removed:
+                        continue
+                    removed.add(id(obj))
+                    try: obj.ClearSelected()
+                    except Exception: pass
+                    board.Remove(obj)
+                for (p0, p1, w, kind) in p.get("pedges", []):
+                    t = pcbnew.PCB_TRACK(board)
+                    t.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(p0[0]), pcbnew.FromMM(p0[1])))
+                    t.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(p1[0]), pcbnew.FromMM(p1[1])))
+                    t.SetWidth(pcbnew.FromMM(w))
+                    t.SetLayer(p["layer"])
+                    t.SetNetCode(p["pnet"])
                     board.Add(t)
         _refresh(board)
         print("APPLIED to the board -- review, then save (Ctrl+S).")
