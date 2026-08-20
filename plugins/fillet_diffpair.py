@@ -10,6 +10,9 @@ USAGE (PCB editor > Tools > Scripting Console):
     - Click-select the track segments of the pair (both nets) around the corner(s), then:
         exec(open(r'd:/Repos/XG_Mobile_Station/plugins/fillet_diffpair.py').read())
     - RADIUS is the inner radius; PITCH auto-measures (gap+width) unless you set it.
+    - Override any knob WITHOUT editing this file: set a PARAMS dict first, e.g.
+        PARAMS = dict(RADIUS=0.15, APPLY=False); exec(open(r'.../fillet_diffpair.py').read())
+      (headless: run(board, apply=False, RADIUS=0.15)).
     - APPLY = False for a dry-run. Undo via git checkout of the board file.
 
 Can also be dropped in KiCad's scripting/plugins folder (Tools > External Plugins).
@@ -152,8 +155,23 @@ def measure_pitch(A, B):
     ds.sort()
     return ds[len(ds) // 2] if ds else None
 
-# ----------------------------------------------------------------------------- main
-def run(board=None, apply=None):
+# ----------------------------------------------------------------------------- overrides + main
+def _apply_overrides(overrides):
+    """Override any UPPERCASE knob at call time: run(..., RADIUS=0.15) or PARAMS=dict(RADIUS=0.15)."""
+    if not overrides:
+        return
+    g = globals(); bad = []
+    for k, v in overrides.items():
+        if k.isupper() and k in g:
+            g[k] = v
+        else:
+            bad.append(k)
+    if bad:
+        valid = ", ".join(sorted(n for n in g if n.isupper() and not n.startswith("_")))
+        print("[params] ignored: %s\n[params] valid knobs: %s" % (", ".join(sorted(bad)), valid))
+
+def run(board=None, apply=None, **overrides):
+    _apply_overrides(overrides)
     if board is None:
         board = pcbnew.GetBoard()
     if apply is None:
@@ -253,7 +271,7 @@ except Exception:
     pass
 
 if __name__ == "__main__":
-    run(pcbnew.GetBoard())
+    run(**globals().get("PARAMS", {}))
 else:
     try:
         FilletDiffPairPlugin().register()

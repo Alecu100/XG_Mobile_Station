@@ -10,6 +10,10 @@ PARAMETERS are the constants below (via size/drill, clearance, pitch, floors, wh
 USAGE (PCB editor > Tools > Scripting Console):
     exec(open(r'd:/Repos/XG_Mobile_Station/plugins/via_fence.py').read())
   - Set APPLY = False for a dry-run (prints stats, changes nothing).
+  - Override any knob WITHOUT editing this file: set a PARAMS dict first, e.g.
+        PARAMS = dict(VIA_SIZE=0.25, PREF=0.7, GAP_MIN=0.2, APPLY=False)
+        exec(open(r'.../via_fence.py').read())
+      (headless: run(board, apply=False, VIA_SIZE=0.25)).
   - If USE_SELECTION and you have track SEGMENTS selected, ONLY those segments are fenced and a fence
     via is dropped only where it collides with ANOTHER SELECTED segment (select a diff pair -> the
     outboard sides get fenced, the inboard vias drop out; select one segment -> both sides fenced).
@@ -369,7 +373,24 @@ class Fence:
         return placed
 
 
-def run(board=None, apply=None):
+def _apply_overrides(overrides):
+    """Override any UPPERCASE knob at call time: run(..., PREF=0.7) or PARAMS=dict(PREF=0.7)."""
+    if not overrides:
+        return
+    g = globals(); bad = []
+    for k, v in overrides.items():
+        if k.isupper() and k in g:
+            g[k] = v
+        else:
+            bad.append(k)
+    if bad:
+        valid = ", ".join(sorted(n for n in g if n.isupper() and not n.startswith("_")))
+        print("[params] ignored: %s\n[params] valid knobs: %s" % (", ".join(sorted(bad)), valid))
+
+def run(board=None, apply=None, **overrides):
+    _apply_overrides(overrides)
+    global VIA_R
+    VIA_R = VIA_SIZE / 2.0          # keep derived value in sync if VIA_SIZE was overridden
     if board is None:
         board = pcbnew.GetBoard()
     if apply is None:
@@ -427,7 +448,7 @@ except Exception:
     pass
 
 if __name__ == "__main__":
-    run(pcbnew.GetBoard())
+    run(**globals().get("PARAMS", {}))
 else:
     try:
         ViaFencePlugin().register()

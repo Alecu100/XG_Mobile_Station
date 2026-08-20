@@ -18,6 +18,10 @@ USAGE (in the PCB editor):
     Tools > Scripting Console, then:
         exec(open(r'd:/Repos/XG_Mobile_Station/plugins/retimer_skew_tuner.py').read())
     Set APPLY = False for a dry-run (prints the plan, changes nothing).
+    Override any knob WITHOUT editing this file: set a PARAMS dict first, e.g.
+        PARAMS = dict(THICKEN_FACTOR=2.2, THICKEN_STEPS=6, VIA_CLEAR=0.25, PAD_CLEAR=0.6, APPLY=False)
+        exec(open(r'.../retimer_skew_tuner.py').read())
+      (headless: run(board, apply=False, THICKEN_FACTOR=2.2)).
     Undo via git checkout of the board file (console edits aren't always on Ctrl+Z).
 
 Can also be dropped in the KiCad scripting/plugins folder to appear under Tools > External Plugins.
@@ -519,7 +523,22 @@ def run_selection(data, oracle, sel):
         print("  %-10s %7.0f %7.0f %9.0f %6d  %s" % (base, skew * 1000, added * 1000, resid * 1000, nb, status))
     return results
 
-def run(board=None, apply=None):
+def _apply_overrides(overrides):
+    """Override any UPPERCASE knob at call time: run(..., PAD_CLEAR=0.6) or PARAMS=dict(PAD_CLEAR=0.6)."""
+    if not overrides:
+        return
+    g = globals(); bad = []
+    for k, v in overrides.items():
+        if k.isupper() and k in g:
+            g[k] = v
+        else:
+            bad.append(k)
+    if bad:
+        valid = ", ".join(sorted(n for n in g if n.isupper() and not n.startswith("_")))
+        print("[params] ignored: %s\n[params] valid knobs: %s" % (", ".join(sorted(bad)), valid))
+
+def run(board=None, apply=None, **overrides):
+    _apply_overrides(overrides)
     if board is None:
         board = pcbnew.GetBoard()
     if apply is None:
@@ -592,7 +611,7 @@ except Exception:
 
 if __name__ == "__main__":
     # exec'd in the Scripting Console: tune the open board now
-    run(pcbnew.GetBoard())
+    run(**globals().get("PARAMS", {}))
 else:
     # imported from the plugins folder: register the toolbar button instead of running
     try:
