@@ -121,7 +121,7 @@ def read_board(board):
     for t in board.GetTracks():
         net = t.GetNetCode(); data["netname"][net] = t.GetNetname()
         if isinstance(t, pcbnew.PCB_VIA):
-            data["vias"].append(dict(c=P2(t.GetPosition()), r=to_mm(t.GetWidth()) / 2.0, net=net))
+            data["vias"].append(dict(c=P2(t.GetPosition()), r=to_mm(t.GetWidth(t.TopLayer())) / 2.0, net=net))
             continue
         if isinstance(t, pcbnew.PCB_ARC):
             a, mid, b = P2(t.GetStart()), P2(t.GetMid()), P2(t.GetEnd())
@@ -317,7 +317,7 @@ def try_place(oracle, run, side, k, h, skip_nets):
                 break
         if mn >= -EPS:
             return dict(run=run, members=run["members"], edges=edges, layer=layer,
-                        N=k, h=h, s0=s0, side=side, minclr=mn)
+                        N=k, h=h, s0=s0, side=side, minclr=mn, pair=skip_nets)
         s0 += 0.1
     return None
 
@@ -345,7 +345,7 @@ def dU1_of(data, p, short_net):
     F = p["N"] * (2 * p["h"] + W_TOP) + (p["N"] - 1) * GAP_BUMPS
     t = p["s0"] + F / 2
     bc = (A[0] + (B[0] - A[0]) / Ls * t, A[1] + (B[1] - A[1]) / Ls * t)
-    return math.hypot(bc[0] - u1p[1], bc[1] - u1p[2])
+    return math.hypot(bc[0] - u1p[0], bc[1] - u1p[1])
 
 # ----------------------------------------------------------------------------- main
 # ----------------------------------------------------------------------------- diff-pair / selection helpers
@@ -523,7 +523,7 @@ def run(board=None, apply=None):
             for (p0, p1, w, kind) in p["edges"]:
                 if kind != "exc":
                     continue
-                sl = oracle.edge_ok(p0, p1, p["layer"], {net}, w / 2)
+                sl = oracle.edge_ok(p0, p1, p["layer"], p["pair"], w / 2)
                 minslack = min(minslack, sl)
                 if sl < -1e-4:
                     viol += 1
@@ -543,7 +543,10 @@ def run(board=None, apply=None):
                     t.SetLayer(p["layer"])
                     t.SetNetCode(short_net)
                     board.Add(t)
-        pcbnew.Refresh()
+        try:
+            pcbnew.Refresh()
+        except Exception:
+            pass
         print("APPLIED to the board -- review, then save (Ctrl+S).")
     elif viol:
         print("NOT applied: self-check found violations.")

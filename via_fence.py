@@ -112,7 +112,7 @@ class Fence:
         self.evias = []
         for t in board.GetTracks():
             if isinstance(t, pcbnew.PCB_VIA):
-                self.evias.append((P2(t.GetPosition()), pcbnew.ToMM(t.GetWidth()) / 2.0, t.GetNetCode()))
+                self.evias.append((P2(t.GetPosition()), pcbnew.ToMM(t.GetWidth(t.TopLayer())) / 2.0, t.GetNetCode()))
                 continue
             if self.selected_scope:
                 if not t.IsSelected():
@@ -403,7 +403,10 @@ def run(board=None, apply=None):
             v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
             v.SetNetCode(f.gnd)
             board.Add(v)
-        pcbnew.Refresh()
+        try:
+            pcbnew.Refresh()
+        except Exception:
+            pass
         print("APPLIED: inserted %d GND fence vias -- review, then save (Ctrl+S)." % len(placed))
     else:
         print("DRY RUN: set APPLY = True (or call run(apply=True)) to insert the vias.")
