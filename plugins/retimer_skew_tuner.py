@@ -16,7 +16,7 @@ All constraints/distances are the constants below (clearances, heights, spacing,
 
 USAGE (in the PCB editor):
     Tools > Scripting Console, then:
-        exec(open(r'd:/Repos/XG_Mobile_Station/retimer_skew_tuner.py').read())
+        exec(open(r'd:/Repos/XG_Mobile_Station/plugins/retimer_skew_tuner.py').read())
     Set APPLY = False for a dry-run (prints the plan, changes nothing).
     Undo via git checkout of the board file (console edits aren't always on Ctrl+Z).
 

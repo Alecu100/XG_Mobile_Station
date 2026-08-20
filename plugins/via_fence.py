@@ -8,7 +8,7 @@ hard minimum away from every HS trace (any layer), existing via, and non-GND pad
 PARAMETERS are the constants below (via size/drill, clearance, pitch, floors, which nets...).
 
 USAGE (PCB editor > Tools > Scripting Console):
-    exec(open(r'd:/Repos/XG_Mobile_Station/via_fence.py').read())
+    exec(open(r'd:/Repos/XG_Mobile_Station/plugins/via_fence.py').read())
   - Set APPLY = False for a dry-run (prints stats, changes nothing).
   - If USE_SELECTION and you have track SEGMENTS selected, ONLY those segments are fenced and a fence
     via is dropped only where it collides with ANOTHER SELECTED segment (select a diff pair -> the
