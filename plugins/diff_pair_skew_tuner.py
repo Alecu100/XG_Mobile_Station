@@ -65,9 +65,11 @@ MARGIN      = 0.25            # min distance from a bump to a trace corner (host
 SKEW_FLOOR  = 0.010           # skip pairs whose |skew| is below this (fab tolerance)
 CLR_MARGIN  = 0.010           # extra breathing room beyond the hard clearances (DRC safety)
 PARTNER_TOL = 0.020           # a bump may reach the pair's own min gap, but not push INTO the partner
-PAD_ANCHOR  = True            # measure skew pad-anchor to pad-anchor (add each net-end -> pad-centre gap)
-                              #   so the target matches KiCad's Routed Length even if a trace doesn't
-                              #   land dead-centre on a pad; a no-op when it already ends on the anchor
+PAD_ANCHOR  = False           # opt-in: add each net-end -> pad-centre gap so the target matches KiCad's
+                              #   pad-to-pad length. OFF by default -- that gap heuristic can misjudge a
+                              #   trace that doesn't end on the anchor (grabbing a far vertex) and then
+                              #   SKEW the target; pure track-length matching (this default) already
+                              #   nulls the copper to ~1nm, which is what KiCad's Routed Length reflects
 EPS         = 1e-6
 STEP        = 0.04            # arc/pad sampling step
 SLOPE       = 2 * (math.sqrt(2) - 1)   # trapezoid added length per bump = SLOPE * h
