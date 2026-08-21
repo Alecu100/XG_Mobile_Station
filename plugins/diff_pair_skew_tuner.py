@@ -65,6 +65,9 @@ MARGIN      = 0.25            # min distance from a bump to a trace corner (host
 SKEW_FLOOR  = 0.010           # skip pairs whose |skew| is below this (fab tolerance)
 CLR_MARGIN  = 0.010           # extra breathing room beyond the hard clearances (DRC safety)
 PARTNER_TOL = 0.020           # a bump may reach the pair's own min gap, but not push INTO the partner
+PAD_ANCHOR  = True            # measure skew pad-anchor to pad-anchor (add each net-end -> pad-centre gap)
+                              #   so the target matches KiCad's Routed Length even if a trace doesn't
+                              #   land dead-centre on a pad; a no-op when it already ends on the anchor
 EPS         = 1e-6
 STEP        = 0.04            # arc/pad sampling step
 SLOPE       = 2 * (math.sqrt(2) - 1)   # trapezoid added length per bump = SLOPE * h
@@ -162,6 +165,21 @@ def read_board(board):
             data["pads"].append(rec)
             if is_u1:
                 data["u1pads"][pad.GetNetCode()] = pos
+    data["pad_stub"] = collections.Counter()          # net-end -> pad-anchor gap, so len == KiCad's
+    if PAD_ANCHOR:
+        verts = collections.defaultdict(list)
+        for s in data["segs"]:
+            verts[s["net"]].extend((s["a"], s["b"]))
+        for a in data["arcs"]:
+            verts[a["net"]].extend((a["a"], a["b"]))
+        for pd in data["pads"]:
+            vs = verts.get(pd["net"])
+            if not vs:
+                continue
+            ax, ay = pd["cx"], pd["cy"]
+            dmin = min(math.hypot(v[0] - ax, v[1] - ay) for v in vs)
+            if dmin <= 0.5 * math.hypot(pd["sx"], pd["sy"]) + 0.05:   # a track end lands in this pad
+                data["pad_stub"][pd["net"]] += dmin
     data["name2net"] = {v: k for k, v in data["netname"].items()}
     return data
 
@@ -597,7 +615,8 @@ def run_auto(data, oracle):
             if nP is None or nN is None:
                 continue
             pathP, pathN = order_path(data, nP), order_path(data, nN)
-            lP, lN = plen(pathP), plen(pathN)
+            lP = plen(pathP) + data["pad_stub"][nP]
+            lN = plen(pathN) + data["pad_stub"][nN]
             add = abs(lP - lN)
             short_net, short_path, paired_path = (nN, pathN, pathP) if lN < lP else (nP, pathP, pathN)
             if add < SKEW_FLOOR:
@@ -651,7 +670,8 @@ def run_selection(data, oracle, sel):
             print("  %-10s no diff-pair partner (%s) -- skip" % (nm.split("/")[-1], pname))
             continue
         handled.add(net); handled.add(partner)
-        lA, lB = data["length"][net], data["length"][partner]
+        lA = data["length"][net] + data["pad_stub"][net]
+        lB = data["length"][partner] + data["pad_stub"][partner]
         skew = abs(lA - lB)
         short = net if lA < lB else partner
         base = data["netname"][short].split("/")[-1]
