@@ -26380,7 +26380,7 @@
 		(uuid "017d30bb-871f-49ad-9689-baba627456d7")
 	)
 	(label "HSIL6P"
-		(at 260.35 208.28 180)
+		(at 260.35 205.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -26450,7 +26450,7 @@
 		(uuid "0813358e-c5e1-41b2-9fa2-01a3f3b6e1af")
 	)
 	(label "HSIL0N"
-		(at 260.35 261.62 180)
+		(at 260.35 264.16 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -26610,7 +26610,7 @@
 		(uuid "1ec8b090-5b17-47b0-b925-d7fdba63e80b")
 	)
 	(label "HSIL5N"
-		(at 260.35 210.82 180)
+		(at 260.35 213.36 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -26710,7 +26710,7 @@
 		(uuid "29c6a37c-cad4-446e-b7b9-07eb27ea033b")
 	)
 	(label "HSIL2P"
-		(at 260.35 254 180)
+		(at 260.35 251.46 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -26730,7 +26730,7 @@
 		(uuid "2aa31e57-fc92-4136-888b-9d1bb35a0ebf")
 	)
 	(label "HSIL1N"
-		(at 260.35 256.54 180)
+		(at 260.35 259.08 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -26930,7 +26930,7 @@
 		(uuid "41c4acda-0b70-4e72-b8b8-098119c5e660")
 	)
 	(label "HSIL2N"
-		(at 260.35 251.46 180)
+		(at 260.35 254 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -27060,7 +27060,7 @@
 		(uuid "4da9a856-cb88-4b38-a1bf-2b3cbc8633b3")
 	)
 	(label "HSIL1P"
-		(at 260.35 259.08 180)
+		(at 260.35 256.54 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -27290,7 +27290,7 @@
 		(uuid "615c2eeb-7055-496b-9575-27483ccebd51")
 	)
 	(label "HSIL6N"
-		(at 260.35 205.74 180)
+		(at 260.35 208.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -27300,7 +27300,7 @@
 		(uuid "61735d89-83c6-42ae-9ca8-bdb551f45d1d")
 	)
 	(label "HSIL7N"
-		(at 260.35 200.66 180)
+		(at 260.35 203.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -27380,7 +27380,7 @@
 		(uuid "6afe2225-46d2-4e4a-96a6-cfd97ecd1119")
 	)
 	(label "HSIL3N"
-		(at 260.35 246.38 180)
+		(at 260.35 248.92 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -27470,7 +27470,7 @@
 		(uuid "74123288-5bb6-4504-89ad-4a2743075507")
 	)
 	(label "HSIL5P"
-		(at 260.35 213.36 180)
+		(at 260.35 210.82 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -27860,7 +27860,7 @@
 		(uuid "a201265d-b6f8-4282-baad-5fe9710d8b84")
 	)
 	(label "HSIL7P"
-		(at 260.35 203.2 180)
+		(at 260.35 200.66 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -27940,7 +27940,7 @@
 		(uuid "ab9c57e9-8f01-4be4-bf79-98a0fab7bce6")
 	)
 	(label "HSIL3P"
-		(at 260.35 248.92 180)
+		(at 260.35 246.38 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -28140,7 +28140,7 @@
 		(uuid "c5894fe1-0fe5-4851-b744-cdc05eddeeb9")
 	)
 	(label "HSIL4N"
-		(at 260.35 215.9 180)
+		(at 260.35 218.44 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -28200,7 +28200,7 @@
 		(uuid "cc182447-2447-48f9-9db3-5ee5cef8c1d1")
 	)
 	(label "HSIL0P"
-		(at 260.35 264.16 180)
+		(at 260.35 261.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -28580,7 +28580,7 @@
 		(uuid "f4b33968-3822-4840-95d7-7a22a173b39e")
 	)
 	(label "HSIL4P"
-		(at 260.35 218.44 180)
+		(at 260.35 215.9 180)
 		(effects
 			(font
 				(size 1.27 1.27)
