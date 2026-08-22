@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.0
+          "min_clearance": 0.1
         }
       },
       "diff_pair_dimensions": [
@@ -191,6 +191,7 @@
         0.0,
         0.2,
         0.3,
+        0.4,
         0.5,
         0.8,
         1.0,
@@ -540,8 +541,8 @@
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.1135,
-        "via_diameter": 0.4,
-        "via_drill": 0.3,
+        "via_diameter": 0.3,
+        "via_drill": 0.2,
         "wire_width": 6
       },
       {

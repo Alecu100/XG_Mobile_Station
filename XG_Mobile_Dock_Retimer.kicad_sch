@@ -28893,7 +28893,7 @@
 			)
 		)
 	)
-	(global_label "+1V17_3"
+	(global_label "+1V17_2"
 		(shape output)
 		(at 417.83 149.86 180)
 		(fields_autoplaced yes)
