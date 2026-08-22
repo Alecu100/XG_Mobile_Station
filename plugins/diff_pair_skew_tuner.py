@@ -559,27 +559,51 @@ def plan_partner_mirror(oracle, p, pruns):
     cuts = set([smin, smax])
     for k in range(N):
         b0 = s0 + k * pitch_b
-        for j in range(steps + 1):
+        for j in range(steps + 1):                        # uniform sub-segs on BOTH slopes and the flat
             cuts.add(b0 + h * j / steps)
+            cuts.add(b0 + h + W_TOP * j / steps)
             cuts.add(b0 + h + W_TOP + h * j / steps)
-        cuts.add(b0 + h); cuts.add(b0 + h + W_TOP)
     cuts = sorted(c for c in cuts if smin - 1e-9 <= c <= smax + 1e-9)
-    edges = []
+    def bump_of(s):
+        for k in range(N):
+            b0 = s0 + k * pitch_b
+            if b0 - 1e-9 <= s <= b0 + 2 * h + W_TOP + 1e-9:
+                return k
+        return -1
+    # Per sub-seg: the mirror target width, clamped to what actually fits (clearance to other nets and
+    # to the meander). Sub-segs are uniform length so the clamp is fair -- a single long flat-top would
+    # otherwise be over-clamped by its worst point while short neighbours escape, sawtoothing the edge.
+    raw = []                                              # [q0, q1, wm, k, offset-from-bump-centre]
     for i in range(len(cuts) - 1):
         s_a, s_b = cuts[i], cuts[i + 1]
         if s_b - s_a < 1e-6:
             continue
-        wm = wprof(0.5 * (s_a + s_b))
+        sm = 0.5 * (s_a + s_b); k = bump_of(sm); wm = wprof(sm)
         q0, q1 = ppt(s_a), ppt(s_b)
-        if wm > w0p + 1e-9:
+        if k >= 0 and wm > w0p + 1e-9:
             slack = oracle.edge_ok(q0, q1, layer, p["pair"], wm / 2)
-            for (m0, m1, mw, mk) in p["edges"]:          # keep CLEAR from the meander itself (same pair)
+            for (m0, m1, mw, mk) in p["edges"]:           # keep CLEAR from the meander itself (same pair)
                 dd = seg_seg_dist(q0, q1, m0, m1) - wm / 2 - mw / 2 - CLEAR
                 if dd < slack:
                     slack = dd
             if slack < CLR_MARGIN:
-                wm = max(w0p, wm + 2.0 * (slack - CLR_MARGIN))   # shrink to fit neighbours + the meander
-        edges.append((q0, q1, wm, "pexc" if wm > w0p + 1e-9 else "pbase"))
+                wm = max(w0p, wm + 2.0 * (slack - CLR_MARGIN))
+        coff = abs(sm - (s0 + k * pitch_b + h + 0.5 * W_TOP)) if k >= 0 else 0.0
+        raw.append([q0, q1, wm, k, coff])
+    # Shape each swell into a clean, symmetric, single-peak bulge: walking outward from the bump centre
+    # the width may only stay level or shrink, and the two symmetric sub-segs at each offset share the
+    # smaller width. This erases any residual clamp sawtooth while never widening past what fits.
+    for k in range(N):
+        groups = {}
+        for j, r in enumerate(raw):
+            if r[3] == k:
+                groups.setdefault(round(r[4], 6), []).append(j)
+        run = wprof(s0 + k * pitch_b + h + 0.5 * W_TOP)
+        for key in sorted(groups):
+            run = min(run, min(raw[j][2] for j in groups[key]))
+            for j in groups[key]:
+                raw[j][2] = run
+    edges = [(q0, q1, wm, "pexc" if wm > w0p + 1e-9 else "pbase") for (q0, q1, wm, k, coff) in raw]
     if not any(k == "pexc" for (_, _, _, k) in edges):
         return None
     return R, edges
