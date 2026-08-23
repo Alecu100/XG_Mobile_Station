@@ -21195,6 +21195,16 @@
 	)
 	(wire
 		(pts
+			(xy 124.46 54.61) (xy 137.16 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ad8597f-4b2b-4dc4-861b-870aa60e7d3f")
+	)
+	(wire
+		(pts
 			(xy 27.94 236.22) (xy 27.94 238.76)
 		)
 		(stroke
@@ -27263,6 +27273,16 @@
 		)
 		(uuid "2212e9fc-d51c-46ac-b8d5-e8df2d0c3982")
 	)
+	(label "PSON"
+		(at 124.46 54.61 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "23828992-3784-40bf-ae59-183fd9afdbe9")
+	)
 	(label "HSOL1N"
 		(at 200.66 256.54 180)
 		(effects
@@ -28243,6 +28263,16 @@
 		)
 		(uuid "840e8d7f-77ad-450f-b9a6-fdfce4b70e30")
 	)
+	(label "PERST_MCU#"
+		(at 158.75 36.83 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "84b5ae23-e0ba-4cc3-aae4-a624661bc7a3")
+	)
 	(label "HSO2N"
 		(at 198.12 86.36 180)
 		(effects
@@ -28422,16 +28452,6 @@
 			(justify left bottom)
 		)
 		(uuid "974996a4-c1d6-4b98-9422-201108a16362")
-	)
-	(label "PERST#"
-		(at 158.75 36.83 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9828b410-c41b-4978-8d45-54e634c7376c")
 	)
 	(label "C_RXP"
 		(at 40.64 80.01 0)
@@ -53322,6 +53342,16 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+		(pin "PB2" bidirectional
+			(at 137.16 54.61 180)
+			(uuid "e7c81768-a9fd-46a3-97d4-f3ad87f9f5d3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances
