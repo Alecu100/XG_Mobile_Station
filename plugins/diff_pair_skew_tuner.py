@@ -62,6 +62,8 @@ THICKEN_MIN_SKEW = 0.15       # if a pair's skew correction is below this, DON'T
 H_MAX       = 0.30            # max bump height (outboard excursion)
 H_TARGET    = 0.22            # preferred (small) trapezoid height for distribution
 W_TOP       = 0.22            # trapezoid flat-top length
+ROUND_RADIUS = 0.15           # >0: round each bump corner with a tangent arc of this radius (rounded
+                              #   serpentine); 0 = sharp trapezoid. Clamped to fit the flat-top + slopes.
 GAP_BUMPS   = 0.30            # min gap between consecutive bumps on the same trace
 MARGIN      = 0.25            # min distance from a bump to a trace corner (host run end)
 SKEW_FLOOR  = 0.010           # skip pairs whose |skew| is below this (fab tolerance)
@@ -73,6 +75,31 @@ PAD_ANCHOR  = True            # measure skew pad-anchor to pad-anchor (add each 
 EPS         = 1e-6
 STEP        = 0.04            # arc/pad sampling step
 SLOPE       = 2 * (math.sqrt(2) - 1)   # trapezoid added length per bump = SLOPE * h
+_CORNER_SHORT = 2.0 * math.tan(math.pi / 8) - math.pi / 4   # length a 45deg fillet removes, per unit radius
+
+def _round_r(h):
+    """Corner-fillet radius that fits a bump of height h; 0 when rounding is off or h is tiny."""
+    if ROUND_RADIUS <= EPS or h <= EPS:
+        return 0.0
+    tf = math.tan(math.pi / 8)
+    return max(0.0, min(ROUND_RADIUS, 0.40 * W_TOP / tf, 0.30 * math.sqrt(2) * h / tf))
+
+def _bump_gain(h):
+    """Copper length one bump adds over the straight baseline (rounded corners shorten the path)."""
+    return SLOPE * h - 4.0 * _round_r(h) * _CORNER_SHORT
+
+def _h_for_gain(g):
+    """Bump height whose gain is g -- bisection, since _bump_gain is monotonic increasing in h."""
+    if g <= 0.0:
+        return 0.0
+    lo, hi = 0.0, g / SLOPE + ROUND_RADIUS + 1.0
+    for _ in range(60):
+        m = 0.5 * (lo + hi)
+        if _bump_gain(m) < g:
+            lo = m
+        else:
+            hi = m
+    return 0.5 * (lo + hi)
 
 # ----------------------------------------------------------------------------- geometry helpers
 def dist_seg(p, a, b):
@@ -350,6 +377,10 @@ def _gwidth(o, w0, h, factor=None):
     ramp = w0 + (wmax - w0) * frac
     return max(w0, min(ramp, 2.0 * o + w0, wmax))
 
+def _edge_check_segs(e):
+    """Straight sub-segments used to clearance-check an edge; an arc (5-tuple) splits at its mid."""
+    return [(e[0], e[4]), (e[4], e[1])] if len(e) > 4 else [(e[0], e[1])]
+
 def build_bumps(A, B, w0, side, N, h, s0, thicken=True):
     ux = B[0] - A[0]; uy = B[1] - A[1]; L = math.hypot(ux, uy); ux, uy = ux / L, uy / L
     nx, ny = -uy * side, ux * side
@@ -357,20 +388,57 @@ def build_bumps(A, B, w0, side, N, h, s0, thicken=True):
         return (A[0] + ux * t + nx * o, A[1] + uy * t + ny * o)
     edges = []; steps = max(1, THICKEN_STEPS); fac = None if thicken else 1.0
     pitch = (2 * h + W_TOP) + GAP_BUMPS
-    edges.append((A, P(s0), w0, "base"))
+    wmax = _gwidth(h, w0, h, fac)
+    r = _round_r(h); SQ = math.sqrt(2)
+    U = (1.0, 0.0); SU = (1.0 / SQ, 1.0 / SQ); SD = (1.0 / SQ, -1.0 / SQ)
+
+    def fillet(Vt, Vo, ein, eout):
+        # Tangent arc of radius r at corner V; ein/eout are unit travel dirs into/out of V (t,o frame).
+        e1 = (-ein[0], -ein[1]); e2 = eout
+        beta = math.acos(max(-1.0, min(1.0, e1[0] * e2[0] + e1[1] * e2[1])))
+        Tc = r / math.tan(beta / 2.0)
+        bx, by = e1[0] + e2[0], e1[1] + e2[1]; bl = math.hypot(bx, by); bx, by = bx / bl, by / bl
+        Cx, Cy = Vt + bx * (r / math.sin(beta / 2.0)), Vo + by * (r / math.sin(beta / 2.0))
+        a = (Vt + e1[0] * Tc, Vo + e1[1] * Tc); b = (Vt + e2[0] * Tc, Vo + e2[1] * Tc)
+        vx, vy = Vt - Cx, Vo - Cy; vl = math.hypot(vx, vy)
+        return a, (Cx + vx / vl * r, Cy + vy / vl * r), b
+
+    cur = 0.0                                        # current t on the baseline (o=0)
     for k in range(N):
         s = s0 + k * pitch
-        for j in range(steps):                       # up-slope: thickens moving AWAY from the pair
-            o1, o2 = h * j / steps, h * (j + 1) / steps
-            edges.append((P(s + o1, o1), P(s + o2, o2), _gwidth(o1, w0, h, fac), "exc"))
-        edges.append((P(s + h, h), P(s + h + W_TOP, h), _gwidth(h, w0, h, fac), "exc"))   # flat top
-        base = s + h + W_TOP
-        for j in range(steps):                       # down-slope: thins back toward the pair
-            o1, o2 = h * (steps - j) / steps, h * (steps - j - 1) / steps
-            edges.append((P(base + (h - o1), o1), P(base + (h - o2), o2), _gwidth(o2, w0, h, fac), "exc"))
-        if k < N - 1:
-            edges.append((P(s + 2 * h + W_TOP), P(s0 + (k + 1) * pitch), w0, "base"))
-    edges.append((P(s0 + (N - 1) * pitch + 2 * h + W_TOP), B, w0, "base"))
+        if r > EPS:
+            a1, m1, b1 = fillet(s, 0.0, U, SU)                    # baseline -> up-slope
+            a2, m2, b2 = fillet(s + h, h, SU, U)                  # up-slope -> flat top
+            a3, m3, b3 = fillet(s + h + W_TOP, h, U, SD)          # flat top -> down-slope
+            a4, m4, b4 = fillet(s + 2 * h + W_TOP, 0.0, SD, U)    # down-slope -> baseline
+            edges.append((P(cur, 0.0), P(*a1), w0, "base"))
+            edges.append((P(*a1), P(*b1), w0, "exc", P(*m1)))
+            os_, oe = b1[1], a2[1]
+            for j in range(steps):                               # graded up-slope between the fillets
+                oj = os_ + (oe - os_) * j / steps; oj2 = os_ + (oe - os_) * (j + 1) / steps
+                edges.append((P(s + oj, oj), P(s + oj2, oj2), _gwidth(0.5 * (oj + oj2), w0, h, fac), "exc"))
+            edges.append((P(*a2), P(*b2), wmax, "exc", P(*m2)))
+            edges.append((P(*b2), P(*a3), wmax, "exc"))          # flat top
+            edges.append((P(*a3), P(*b3), wmax, "exc", P(*m3)))
+            os_, oe = b3[1], a4[1]
+            for j in range(steps):                               # graded down-slope
+                oj = os_ + (oe - os_) * j / steps; oj2 = os_ + (oe - os_) * (j + 1) / steps
+                tj = s + h + W_TOP + (h - oj); tj2 = s + h + W_TOP + (h - oj2)
+                edges.append((P(tj, oj), P(tj2, oj2), _gwidth(0.5 * (oj + oj2), w0, h, fac), "exc"))
+            edges.append((P(*a4), P(*b4), w0, "exc", P(*m4)))
+            cur = b4[0]
+        else:
+            edges.append((P(cur, 0.0), P(s, 0.0), w0, "base"))
+            for j in range(steps):                               # up-slope: thickens away from the pair
+                o1, o2 = h * j / steps, h * (j + 1) / steps
+                edges.append((P(s + o1, o1), P(s + o2, o2), _gwidth(o1, w0, h, fac), "exc"))
+            edges.append((P(s + h, h), P(s + h + W_TOP, h), wmax, "exc"))   # flat top
+            base = s + h + W_TOP
+            for j in range(steps):                               # down-slope: thins back toward the pair
+                o1, o2 = h * (steps - j) / steps, h * (steps - j - 1) / steps
+                edges.append((P(base + (h - o1), o1), P(base + (h - o2), o2), _gwidth(o2, w0, h, fac), "exc"))
+            cur = s + 2 * h + W_TOP
+    edges.append((P(cur, 0.0), B, w0, "base"))
     return edges
 
 def try_place(oracle, run, side, k, h, skip_nets, paired_path=(), thicken=True):
@@ -383,14 +451,16 @@ def try_place(oracle, run, side, k, h, skip_nets, paired_path=(), thicken=True):
     while s0 <= segL - F - MARGIN + 1e-9:
         edges = build_bumps(A, B, w0, side, k, h, s0, thicken)
         mn = 1e9; pworst = 1e9
-        for (p0, p1, w, kind) in edges:
+        for e in edges:
+            p0, p1, w, kind = e[:4]
             if kind == "exc":
-                m = oracle.edge_ok(p0, p1, layer, skip_nets, w / 2)
-                if m < mn:
-                    mn = m
-                ps = partner_slack(p0, p1, w / 2, paired_path, layer)   # <0 only if pushing into partner
-                if ps < pworst:
-                    pworst = ps
+                for (q0, q1) in _edge_check_segs(e):
+                    m = oracle.edge_ok(q0, q1, layer, skip_nets, w / 2)
+                    if m < mn:
+                        mn = m
+                    ps = partner_slack(q0, q1, w / 2, paired_path, layer)   # <0 only if pushing into partner
+                    if ps < pworst:
+                        pworst = ps
             if mn < CLR_MARGIN:
                 break
         if mn >= CLR_MARGIN and pworst >= -PARTNER_TOL:
@@ -483,11 +553,11 @@ def distribute_selection(oracle, runs, paired_path, skip, skew, short_net, thick
         cap = int((segL - 2 * MARGIN + GAP_BUMPS) // (2 * H_TARGET + W_TOP + GAP_BUMPS))
         if cap < 1:
             continue
-        need = int(math.ceil(remaining / (SLOPE * H_TARGET)))
+        need = int(math.ceil(remaining / _bump_gain(H_TARGET)))
         placed = None
         for side in (pref, -pref):                   # prefer outboard; fall back to the other side
             for k in range(min(cap, need), 0, -1):
-                h = min(H_MAX, remaining / (SLOPE * k)) if k >= need else H_TARGET
+                h = min(H_MAX, _h_for_gain(remaining / k)) if k >= need else H_TARGET
                 p = try_place(oracle, run_, side, k, h, skip, paired_path, thicken)
                 if p:
                     placed = (p, k, h); break
@@ -495,9 +565,10 @@ def distribute_selection(oracle, runs, paired_path, skip, skew, short_net, thick
                 break
         if placed:
             p, k, h = placed
-            for (p0, p1, w, kind) in p["edges"]:
-                oracle.add_bump(p0, p1, w, p["layer"], short_net)
-            placements.append(p); added += k * SLOPE * h
+            for e in p["edges"]:
+                for (q0, q1) in _edge_check_segs(e):
+                    oracle.add_bump(q0, q1, e[2], p["layer"], short_net)
+            placements.append(p); added += k * _bump_gain(h)
     return placements, added
 
 # ----------------------------------------------------------------------------- partner mirror
@@ -584,10 +655,12 @@ def plan_partner_mirror(oracle, p, pruns):
         q0, q1 = ppt(s_a), ppt(s_b)
         if k >= 0 and wm > w0p + 1e-9:
             slack = oracle.edge_ok(q0, q1, layer, p["pair"], wm / 2, via_clear=PARTNER_VIA_CLEAR)
-            for (m0, m1, mw, mk) in p["edges"]:           # keep CLEAR from the meander itself (same pair)
-                dd = seg_seg_dist(q0, q1, m0, m1) - wm / 2 - mw / 2 - CLEAR
-                if dd < slack:
-                    slack = dd
+            for me in p["edges"]:                         # keep CLEAR from the meander itself (same pair)
+                mw = me[2]
+                for (mc0, mc1) in _edge_check_segs(me):
+                    dd = seg_seg_dist(q0, q1, mc0, mc1) - wm / 2 - mw / 2 - CLEAR
+                    if dd < slack:
+                        slack = dd
             if slack < CLR_MARGIN:
                 wm = max(w0p, wm + 2.0 * (slack - CLR_MARGIN))
         coff = abs(sm - (s0 + k * pitch_b + h + 0.5 * W_TOP)) if k >= 0 else 0.0
@@ -651,12 +724,12 @@ def run_auto(data, oracle):
                 continue
             skip = {nP, nN}
             runs = [r for r in build_runs(data, short_path) if run_len(r) >= W_TOP + 2 * MARGIN]
-            Nmin = max(1, int(math.ceil(add / (SLOPE * H_MAX))))
-            Mtarget = max(Nmin, int(math.ceil(add / (SLOPE * H_TARGET))))
+            Nmin = max(1, int(math.ceil(add / _bump_gain(H_MAX))))
+            Mtarget = max(Nmin, int(math.ceil(add / _bump_gain(H_TARGET))))
             chosen = None; used_M = 0; used_h = 0.0
             thick = add >= THICKEN_MIN_SKEW
             for M in range(Mtarget, Nmin - 1, -1):
-                h = add / (SLOPE * M)
+                h = _h_for_gain(add / M)
                 if h > H_MAX + 1e-9:
                     continue
                 pl, left = distribute(oracle, runs, paired_path, skip, M, h, thick)
@@ -668,8 +741,9 @@ def run_auto(data, oracle):
                 print("%s%-7d%7.0f %-8s NO FEASIBLE DISTRIBUTION" % (grp, lane, add * 1000, name))
                 continue
             for p in chosen:
-                for (p0, p1, w, kind) in p["edges"]:
-                    oracle.add_bump(p0, p1, w, p["layer"], short_net)
+                for e in p["edges"]:
+                    for (q0, q1) in _edge_check_segs(e):
+                        oracle.add_bump(q0, q1, e[2], p["layer"], short_net)
             if thick:
                 _plan_partners(data, oracle, chosen, short_net, (nP if short_net == nN else nN))
             results.append((short_net, chosen, add, add))
@@ -912,13 +986,14 @@ def run(board=None, apply=None, **overrides):
     minslack = 1e9; viol = 0
     for net, placements, skew, added in results:
         for p in placements:
-            for (p0, p1, w, kind) in p["edges"]:
-                if kind != "exc":
+            for e in p["edges"]:
+                if e[3] != "exc":
                     continue
-                sl = oracle.edge_ok(p0, p1, p["layer"], p["pair"], w / 2)
-                minslack = min(minslack, sl)
-                if sl < -1e-4:
-                    viol += 1
+                for (q0, q1) in _edge_check_segs(e):
+                    sl = oracle.edge_ok(q0, q1, p["layer"], p["pair"], e[2] / 2)
+                    minslack = min(minslack, sl)
+                    if sl < -1e-4:
+                        viol += 1
             for (p0, p1, w, kind) in p.get("pedges", []):
                 if kind != "pexc":
                     continue
@@ -942,10 +1017,17 @@ def run(board=None, apply=None, **overrides):
                     try: obj.ClearSelected()      # GUI: don't leave a removed item selected
                     except Exception: pass
                     board.Remove(obj)
-                for (p0, p1, w, kind) in p["edges"]:
-                    t = pcbnew.PCB_TRACK(board)
-                    t.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(p0[0]), pcbnew.FromMM(p0[1])))
-                    t.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(p1[0]), pcbnew.FromMM(p1[1])))
+                for e in p["edges"]:
+                    p0, p1, w, kind = e[:4]
+                    if len(e) > 4:
+                        t = pcbnew.PCB_ARC(board)
+                        t.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(p0[0]), pcbnew.FromMM(p0[1])))
+                        t.SetMid(pcbnew.VECTOR2I(pcbnew.FromMM(e[4][0]), pcbnew.FromMM(e[4][1])))
+                        t.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(p1[0]), pcbnew.FromMM(p1[1])))
+                    else:
+                        t = pcbnew.PCB_TRACK(board)
+                        t.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(p0[0]), pcbnew.FromMM(p0[1])))
+                        t.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(p1[0]), pcbnew.FromMM(p1[1])))
                     t.SetWidth(pcbnew.FromMM(w))
                     t.SetLayer(p["layer"])
                     t.SetNetCode(short_net)
