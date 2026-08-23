@@ -47,6 +47,8 @@ RETIMER_REF   = "U1"          # component whose pads define "near the retimer" o
 
 CLEAR       = 0.1016          # min bump edge -> other-net copper edge
 VIA_CLEAR   = 0.21            # min bump edge -> any via copper edge
+PARTNER_VIA_CLEAR = 0.1016    # min PARTNER-thickening edge -> via copper edge -- looser than the meander's
+                              #   VIA_CLEAR so the mirror can swell toward a GND via fence (DRC netclass min)
 PAD_CLEAR   = 0.50            # min bump edge -> non-own-net pad edge (esp. U1 pads)
 BUMP_GAP    = 0.30            # min clearance to a different net's meander excursion
 THICKEN_FACTOR = 1.5          # max meander width = THICKEN_FACTOR x the diff-pair trace width (relative)
@@ -214,8 +216,9 @@ class Oracle:
         o = dict(a=a, b=b, w=w, layer=layer, net=net)
         self._add("bump", o, (min(a[0], b[0]), min(a[1], b[1]), max(a[0], b[0]), max(a[1], b[1])))
 
-    def edge_ok(self, p0, p1, layer, skip_nets, hb):
+    def edge_ok(self, p0, p1, layer, skip_nets, hb, via_clear=None):
         """min clearance slack of a new edge (>=0 means it meets every rule)."""
+        vc = VIA_CLEAR if via_clear is None else via_clear
         worst = 1e9; seen = set()
         x0, y0 = min(p0[0], p1[0]), min(p0[1], p1[1]); x1, y1 = max(p0[0], p1[0]), max(p0[1], p1[1])
         for c in cells(x0, y0, x1, y1):
@@ -239,7 +242,7 @@ class Oracle:
                 elif kind == "via":
                     if obj["net"] in skip_nets:
                         continue
-                    slack = dist_seg(obj["c"], p0, p1) - hb - obj["r"] - VIA_CLEAR
+                    slack = dist_seg(obj["c"], p0, p1) - hb - obj["r"] - vc
                 else:  # pad
                     if obj["net"] in skip_nets or not obj["obj"].IsOnLayer(layer):
                         continue
@@ -580,7 +583,7 @@ def plan_partner_mirror(oracle, p, pruns):
         sm = 0.5 * (s_a + s_b); k = bump_of(sm); wm = wprof(sm)
         q0, q1 = ppt(s_a), ppt(s_b)
         if k >= 0 and wm > w0p + 1e-9:
-            slack = oracle.edge_ok(q0, q1, layer, p["pair"], wm / 2)
+            slack = oracle.edge_ok(q0, q1, layer, p["pair"], wm / 2, via_clear=PARTNER_VIA_CLEAR)
             for (m0, m1, mw, mk) in p["edges"]:           # keep CLEAR from the meander itself (same pair)
                 dd = seg_seg_dist(q0, q1, m0, m1) - wm / 2 - mw / 2 - CLEAR
                 if dd < slack:
@@ -919,7 +922,7 @@ def run(board=None, apply=None, **overrides):
             for (p0, p1, w, kind) in p.get("pedges", []):
                 if kind != "pexc":
                     continue
-                sl = oracle.edge_ok(p0, p1, p["layer"], p["pair"], w / 2)
+                sl = oracle.edge_ok(p0, p1, p["layer"], p["pair"], w / 2, via_clear=PARTNER_VIA_CLEAR)
                 minslack = min(minslack, sl)
                 if sl < -1e-4:
                     viol += 1
