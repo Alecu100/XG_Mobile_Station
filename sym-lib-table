@@ -40,4 +40,5 @@
   (lib (name "DS160PT801ACBR")(type "KiCad")(uri "${KIPRJMOD}/Symbols/DS160PT801ACBR.kicad_sym")(options "")(descr ""))
   (lib (name "TPS74601PDRVR")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/TPS74601PDRVR.elibz")(options "")(descr ""))
   (lib (name "TPS74401RGWR")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/TPS74401RGWR.elibz")(options "")(descr ""))
+  (lib (name "BLM41PG600SN1")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/BLM41PG600SN1L.elibz")(options "")(descr ""))
 )
