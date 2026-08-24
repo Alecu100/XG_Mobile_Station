@@ -190,6 +190,7 @@
       "track_widths": [
         0.0,
         0.2,
+        0.25,
         0.3,
         0.4,
         0.5,
@@ -529,6 +530,20 @@
         "wire_width": 6
       },
       {
+        "clearance": 0.2032,
+        "diff_pair_gap": 0.1524,
+        "diff_pair_width": 0.106934,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PCIe Clock",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.106934,
+        "via_diameter": 0.3,
+        "via_drill": 0.2
+      },
+      {
         "bus_width": 12,
         "clearance": 0.1016,
         "diff_pair_gap": 0.1016,
@@ -538,7 +553,7 @@
         "microvia_drill": 0.1,
         "name": "PCIe Signal",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.1135,
         "via_diameter": 0.3,
@@ -547,19 +562,19 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.1,
+        "clearance": 0.1048,
         "diff_pair_gap": 0.1016,
-        "diff_pair_width": 0.170434,
+        "diff_pair_width": 0.1135,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "USB",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.170434,
-        "via_diameter": 0.4,
-        "via_drill": 0.3,
+        "track_width": 0.1135,
+        "via_diameter": 0.3,
+        "via_drill": 0.2,
         "wire_width": 6
       }
     ],
@@ -582,11 +597,11 @@
         "pattern": "/PCIe Redriver/TX*"
       },
       {
-        "netclass": "PCIe Signal",
+        "netclass": "PCIe Clock",
         "pattern": "/CLKP"
       },
       {
-        "netclass": "PCIe Signal",
+        "netclass": "PCIe Clock",
         "pattern": "/CLKN"
       },
       {
@@ -620,6 +635,14 @@
       {
         "netclass": "Default",
         "pattern": "+3V3"
+      },
+      {
+        "netclass": "PCIe Clock",
+        "pattern": "/CLKOUTP"
+      },
+      {
+        "netclass": "PCIe Clock",
+        "pattern": "/CLKOUTN"
       }
     ]
   },
