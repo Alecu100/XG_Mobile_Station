@@ -44432,8 +44432,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -44442,8 +44442,8 @@
 			(uuid "f0365853-5847-4e79-aab1-28245962aa53")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -44452,8 +44452,8 @@
 			(uuid "d8e40866-8b7c-479f-8e1b-a7210b93ee29")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -44462,8 +44462,8 @@
 			(uuid "08656911-536d-482c-a8fc-4ea9090c2968")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -44829,8 +44829,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -44839,8 +44839,8 @@
 			(uuid "376551fc-45a1-46e9-862b-6b5a0ce17322")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -44849,8 +44849,8 @@
 			(uuid "edbef45c-f9ee-4f48-bf1e-8f4ee90bbdd2")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -44859,8 +44859,8 @@
 			(uuid "b7f0e40c-d482-4981-87ba-3f9ca216895b")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -45594,8 +45594,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -45604,8 +45604,8 @@
 			(uuid "4bfbd4d0-a29a-48a6-a611-e1cd57a344fb")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -45614,8 +45614,8 @@
 			(uuid "6e54a295-7ce2-4703-93c6-8219031057a8")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -45624,8 +45624,8 @@
 			(uuid "63ade8b0-a3b6-42f3-869e-52de634a7667")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -45990,8 +45990,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.635001 0.34)
+			(end 0.635 0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -46000,8 +46000,8 @@
 			(uuid "eb5fbb36-3c90-4e63-8a0a-52db4f3509cc")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.635001 -0.34)
+			(end -0.635001 0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -46010,8 +46010,8 @@
 			(uuid "4f69343d-ebe0-443a-a366-58635a6c8b9d")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.635 0.34)
+			(end 0.635 -0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -46020,8 +46020,8 @@
 			(uuid "54763d0a-6140-4fe4-917b-f24938e9af08")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.635 -0.34)
+			(end -0.635001 -0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -46389,8 +46389,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -46399,8 +46399,8 @@
 			(uuid "dde47cbe-765b-40ca-bc3d-dd8f756d0734")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -46409,8 +46409,8 @@
 			(uuid "3a6c7239-41ef-4fa3-ab53-81ce8c2fc870")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -46419,8 +46419,8 @@
 			(uuid "ffe4294c-69fa-400c-86e0-f22e1a55a7a6")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -47154,8 +47154,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -47164,8 +47164,8 @@
 			(uuid "7a39de26-b2c6-4fd0-b660-89b0a5f22b46")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -47174,8 +47174,8 @@
 			(uuid "c50dee2c-c1a3-4565-b3ce-705ddc0462d1")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -47184,8 +47184,8 @@
 			(uuid "5063bbbe-6a42-4fdb-a0d1-60706019ea6b")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -47919,8 +47919,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -47929,8 +47929,8 @@
 			(uuid "aeaabba2-8609-4b3d-a51e-eb13d71a68ee")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -47939,8 +47939,8 @@
 			(uuid "f6111266-38fa-4b61-9398-ab48229d8644")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -47949,8 +47949,8 @@
 			(uuid "99591e3a-3483-49e6-8e0a-de5bea0b77ed")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -48684,8 +48684,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -48694,8 +48694,8 @@
 			(uuid "82e0c0d7-ae25-4ec0-b2db-d1d4a974bafc")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -48704,8 +48704,8 @@
 			(uuid "77b10f2d-1b34-45f1-b5b0-96f706af80a1")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -48714,8 +48714,8 @@
 			(uuid "d6254800-2dc3-4950-8c5e-68e659774100")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -49448,8 +49448,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -49458,8 +49458,8 @@
 			(uuid "58428f7c-7756-4e36-a285-0ba846a4ba7d")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -49468,8 +49468,8 @@
 			(uuid "6cd0bb6f-32a7-4ab1-889b-6af387d8bfc3")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -49478,8 +49478,8 @@
 			(uuid "a7f34ad1-de05-468e-acd3-f7b34c1ac7e2")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -50215,8 +50215,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -50225,8 +50225,8 @@
 			(uuid "d4a72411-fd4d-4b03-b7df-773103e1fa7b")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -50235,8 +50235,8 @@
 			(uuid "3762ed00-0cf4-4b34-b0d4-50df1282c74e")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -50245,8 +50245,8 @@
 			(uuid "336fbea2-3504-4228-9321-f0d6854204d1")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -50612,8 +50612,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -50622,8 +50622,8 @@
 			(uuid "43b9c531-1f83-45bb-9b77-16819929a133")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -50632,8 +50632,8 @@
 			(uuid "d4fbfce3-1bdb-44ff-9483-feaa325cecc2")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -50642,8 +50642,8 @@
 			(uuid "c18184c2-2bfd-4fe4-b76d-5d44b6b50198")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -51009,8 +51009,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -51019,8 +51019,8 @@
 			(uuid "c80bf940-730b-47f2-8567-7ece9f144d69")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -51029,8 +51029,8 @@
 			(uuid "ca014415-813c-4afe-a3ab-b21e22039b5a")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -51039,8 +51039,8 @@
 			(uuid "7f346ca7-2bc5-4c91-9719-657010472ee9")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -51405,8 +51405,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -51415,8 +51415,8 @@
 			(uuid "5d013561-913c-43b5-837f-13082cf9e2f5")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -51425,8 +51425,8 @@
 			(uuid "2561da84-5009-4ce6-9435-59ff9b83b1c3")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -51435,8 +51435,8 @@
 			(uuid "5d532284-9d5f-42ac-be68-54e7a4098abe")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52172,8 +52172,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52182,8 +52182,8 @@
 			(uuid "3dfb8408-7ba3-46ac-9ee9-485fced456f5")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52192,8 +52192,8 @@
 			(uuid "717bc3de-dc31-4bb3-8146-cefd06d52a79")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52202,8 +52202,8 @@
 			(uuid "a3717dc2-b75e-4edf-b587-22f82e4086ba")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52569,8 +52569,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.310001)
+			(end -0.66 -0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52579,8 +52579,8 @@
 			(uuid "8473f5fe-0561-474f-aed8-803e3de08d61")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.310001)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52589,8 +52589,8 @@
 			(uuid "832ed673-2149-4fd3-8384-87a3488c96c6")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52599,8 +52599,8 @@
 			(uuid "c6eed64e-c55f-4d40-bbed-b93d16eec91a")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52966,8 +52966,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52976,8 +52976,8 @@
 			(uuid "f83599b4-b24f-4ca8-b20e-e907248f6b49")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52986,8 +52986,8 @@
 			(uuid "8c1afa34-5096-4f32-9ddb-dd9984c1415e")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -52996,8 +52996,8 @@
 			(uuid "c563f536-d065-4e3a-860c-0e3e79a8d2f3")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -53363,8 +53363,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.310001)
+			(end 0.66 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -53373,8 +53373,8 @@
 			(uuid "dd4e5639-cab8-4b68-a76c-249a1bda9d25")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.310001)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -53383,8 +53383,8 @@
 			(uuid "b3f45c5b-eaa3-40b7-8c99-f19f6c26eac1")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -53393,8 +53393,8 @@
 			(uuid "9e6f3520-f82e-49d7-9a04-b260b09b173b")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -54496,8 +54496,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -54506,8 +54506,8 @@
 			(uuid "d10c30da-a640-4297-84b2-9852b22a5b39")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -54516,8 +54516,8 @@
 			(uuid "0a279c09-c7f1-41f0-8100-10701b5808e4")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -54526,8 +54526,8 @@
 			(uuid "3ad8ac69-828a-436a-938b-257032d57811")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -54893,8 +54893,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -54903,8 +54903,8 @@
 			(uuid "66608f1c-424f-49dd-9430-24fa944e37a3")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -54913,8 +54913,8 @@
 			(uuid "89ca3765-0ec3-485b-880b-b6a1d395e140")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -54923,8 +54923,8 @@
 			(uuid "56f90f26-e945-432c-85d8-48a8343b17ba")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -55659,8 +55659,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.310001)
+			(end 0.66 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -55669,8 +55669,8 @@
 			(uuid "be80eaff-a355-4d4e-b428-e32323d79671")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.310001)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -55679,8 +55679,8 @@
 			(uuid "b50bbec7-fa14-43c9-b19f-527c3e5bb119")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -55689,8 +55689,8 @@
 			(uuid "4c30d4bf-2982-4370-8c7b-58a8bcc15a60")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56055,8 +56055,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56065,8 +56065,8 @@
 			(uuid "faf46ff5-79b2-4e33-bbd5-59c16dfd9f0b")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56075,8 +56075,8 @@
 			(uuid "106b0d4a-62ee-443b-afe0-3571bac0723d")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56085,8 +56085,8 @@
 			(uuid "563cf85e-651e-4752-862d-1e67c1798b7b")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56453,8 +56453,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.310001)
+			(end 0.66 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56463,8 +56463,8 @@
 			(uuid "770366ed-f7a9-4cd0-82f0-1d1d89bfaba8")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.310001)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56473,8 +56473,8 @@
 			(uuid "d9ac3207-9f9f-4d5b-8011-a003614dfbdb")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56483,8 +56483,8 @@
 			(uuid "87f8b18c-af7c-4b9b-82c2-9269653262c9")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56851,8 +56851,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56861,8 +56861,8 @@
 			(uuid "726068a7-304e-469b-82c2-873dd686aff0")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56871,8 +56871,8 @@
 			(uuid "a21e8eb7-2469-433d-8569-cdbcf437704f")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -56881,8 +56881,8 @@
 			(uuid "1488e090-8851-4ff2-8cb3-69b186b7377e")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -57250,8 +57250,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -57260,8 +57260,8 @@
 			(uuid "e6abf8af-5f9a-4c7e-b529-b4427631b8a5")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -57270,8 +57270,8 @@
 			(uuid "97c28703-3241-4d81-9abd-488a8a34db03")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -57280,8 +57280,8 @@
 			(uuid "4075a779-9c43-45cb-8a29-25b46f9950ab")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -57646,8 +57646,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -57656,8 +57656,8 @@
 			(uuid "7036fcdf-48a5-4eb7-8284-40fda0ef2661")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -57666,8 +57666,8 @@
 			(uuid "6d859da5-a009-491f-9c27-ed195ca339bd")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -57676,8 +57676,8 @@
 			(uuid "e5531e40-3620-45eb-b60f-cb943dce7d00")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -58412,8 +58412,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -58422,8 +58422,8 @@
 			(uuid "19f75390-2775-460d-ba46-78fdce25d4a9")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -58432,8 +58432,8 @@
 			(uuid "c0215781-18d7-4cd6-b3bc-6ca5220a8e9e")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -58442,8 +58442,8 @@
 			(uuid "5fc4203e-c865-4b2f-9756-6e6863d2c22c")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -58811,8 +58811,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -58821,8 +58821,8 @@
 			(uuid "60dc1cd8-e8ec-4d91-b69e-19fd7bb243cc")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -58831,8 +58831,8 @@
 			(uuid "5d5f59a0-9486-45e0-8590-87d2ddec7de0")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -58841,8 +58841,8 @@
 			(uuid "30c47c23-fd3a-48d3-b8ad-2c4a8c6a40ce")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -59208,8 +59208,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -59218,8 +59218,8 @@
 			(uuid "6352c107-7b7a-4be2-a2b0-ff30eea6d467")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -59228,8 +59228,8 @@
 			(uuid "771b339e-8772-4ecb-88f8-cc730d9518ab")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -59238,8 +59238,8 @@
 			(uuid "48147c68-98fc-464f-929e-04b58bbf2e33")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -59605,8 +59605,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -59615,8 +59615,8 @@
 			(uuid "1ee31033-8f26-4b9d-8cc2-e2a99d6d42bd")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -59625,8 +59625,8 @@
 			(uuid "ecbd3a01-2fba-4b54-8cb5-ee6fbbe66d6f")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -59635,8 +59635,8 @@
 			(uuid "5eb2946c-5c50-4b25-8d8f-4b6e5b40ab5d")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60002,8 +60002,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60012,8 +60012,8 @@
 			(uuid "59903f1c-165c-4840-9c67-6b0907ff5943")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60022,8 +60022,8 @@
 			(uuid "904c70e4-f6ed-42fd-a478-bc4fed27e2b7")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60032,8 +60032,8 @@
 			(uuid "cd638d4d-2313-47bd-8f02-9ee01cee21c9")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60398,8 +60398,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60408,8 +60408,8 @@
 			(uuid "e6881561-c4fe-4eb8-a3dc-159e80964e94")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60418,8 +60418,8 @@
 			(uuid "92c5c7f1-6760-468f-9102-88b3e7b2bd37")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60428,8 +60428,8 @@
 			(uuid "36b50fac-bb19-40b4-9897-160d0fdcad56")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60797,8 +60797,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60807,8 +60807,8 @@
 			(uuid "2d1904c4-55b2-4402-aee0-632d7a412ae5")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60817,8 +60817,8 @@
 			(uuid "054664f5-7a21-477c-91a1-b74269c6ae7e")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -60827,8 +60827,8 @@
 			(uuid "d0810236-a38a-4877-aef5-9c0579fe2d43")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61196,8 +61196,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.310001)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61206,8 +61206,8 @@
 			(uuid "30158a34-0e8f-4dea-a55d-d21f03937988")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61216,8 +61216,8 @@
 			(uuid "4576774d-fa10-45ed-b082-373ad16bc0dd")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.310001)
+			(end -0.66 -0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61226,8 +61226,8 @@
 			(uuid "29754e07-24ea-40e8-9793-527a59f9b015")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61593,8 +61593,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.31)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61603,8 +61603,8 @@
 			(uuid "dacbe2f9-4341-442e-b4d5-fc6526a841fc")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61613,8 +61613,8 @@
 			(uuid "3ec1d074-8118-407b-a178-122ef0098a88")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61623,8 +61623,8 @@
 			(uuid "9f4f37c5-1367-480b-a4a7-fe81494457b9")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -61990,8 +61990,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.310001)
+			(end 0.66 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -62000,8 +62000,8 @@
 			(uuid "ea1c565c-a3ae-4857-a6be-216bfe24ff1d")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.310001)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -62010,8 +62010,8 @@
 			(uuid "96626d79-fce2-4f83-9760-5a57d0ed67e4")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -62020,8 +62020,8 @@
 			(uuid "4fe6ea85-842d-4734-9b80-4af9d244819b")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -62387,8 +62387,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.635001 -0.34)
+			(end -0.635 -0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -62397,8 +62397,8 @@
 			(uuid "6a584358-f97f-4911-acd0-5c5effd2db86")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.635001 0.34)
+			(end 0.635001 -0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -62407,8 +62407,8 @@
 			(uuid "9079a32e-d6f9-4adf-94ba-732056cfa6f4")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.635 -0.34)
+			(end -0.635 0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -62417,8 +62417,8 @@
 			(uuid "06976d74-557a-40ad-a093-2c41da8eca76")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.635 0.34)
+			(end 0.635001 0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63151,8 +63151,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.310001)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63161,8 +63161,8 @@
 			(uuid "79bb288e-f0de-45f4-a8c7-981a733c603a")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63171,8 +63171,8 @@
 			(uuid "eaeec66d-567c-4dcc-9e81-0a22dd501c4d")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.310001)
+			(end 0.66 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63181,8 +63181,8 @@
 			(uuid "73a85cd6-c907-4f6b-9e81-583c427a292e")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63550,8 +63550,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63560,8 +63560,8 @@
 			(uuid "c16eae79-4af2-461d-8aa7-90ddf82bb789")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63570,8 +63570,8 @@
 			(uuid "c197db28-6a3a-46e2-a747-d6cf1f2183c6")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63580,8 +63580,8 @@
 			(uuid "a82c1b39-f6e7-4d79-898f-592bc48bc576")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63947,8 +63947,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63957,8 +63957,8 @@
 			(uuid "b8d1961d-60ee-4ffa-81fc-f8b4971bcada")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63967,8 +63967,8 @@
 			(uuid "f0ff44c1-d36b-458f-b8d7-2e00004d743d")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -63977,8 +63977,8 @@
 			(uuid "b2870be7-42ec-46a5-8ceb-4198734f715c")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -64344,8 +64344,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -64354,8 +64354,8 @@
 			(uuid "860747c8-f35f-4da1-91ca-170e5d66dfb5")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -64364,8 +64364,8 @@
 			(uuid "a320be51-447d-4b94-9ea9-b8ccba79b663")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -64374,8 +64374,8 @@
 			(uuid "73f1a103-2741-418e-b610-a48e99be042c")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -64741,8 +64741,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -64751,8 +64751,8 @@
 			(uuid "d20a6d0a-8e9b-41a9-a67d-12bb6c07ab62")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -64761,8 +64761,8 @@
 			(uuid "c570fb27-a641-4cba-b3d1-b2815329b21c")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -64771,8 +64771,8 @@
 			(uuid "bc8c3dcf-277f-465b-855c-d9743cb6f5bd")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65138,8 +65138,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65148,8 +65148,8 @@
 			(uuid "d9d97914-dfbc-4006-aac3-92740caf041b")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65158,8 +65158,8 @@
 			(uuid "5a452150-b1eb-4aea-814d-aa23007c1023")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65168,8 +65168,8 @@
 			(uuid "1c7af126-ef21-407e-80cb-67f2bf75ab16")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65535,8 +65535,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65545,8 +65545,8 @@
 			(uuid "1f41b34b-89dd-48d4-9b73-44e98d874c91")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65555,8 +65555,8 @@
 			(uuid "3b79bfda-1c17-4e5e-87e8-40d1581d2f09")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65565,8 +65565,8 @@
 			(uuid "0826ab37-88a9-48d4-b196-fe09883abf6a")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65932,8 +65932,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65942,8 +65942,8 @@
 			(uuid "3a9ea28d-b647-416b-87ab-b5fcccfe20f3")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65952,8 +65952,8 @@
 			(uuid "8cba79ef-008b-48a0-ae10-d478f14f01fa")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -65962,8 +65962,8 @@
 			(uuid "5d093cb1-c7e8-4bf2-bcb3-183ad2e2b122")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -66330,8 +66330,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -66340,8 +66340,8 @@
 			(uuid "230135e8-3d11-4e33-8285-03b06369fa62")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -66350,8 +66350,8 @@
 			(uuid "02b623b7-05da-4994-8be7-2212479009e3")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -66360,8 +66360,8 @@
 			(uuid "e28da3f3-f266-4e57-bb12-5123a6b4a7d5")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -67095,8 +67095,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.660001 0.31)
+			(end 0.660001 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -67105,8 +67105,8 @@
 			(uuid "17982ea1-255e-4fda-8573-3cc6f4af78b2")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.660001 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -67115,8 +67115,8 @@
 			(uuid "eb7b7faf-758d-4820-aa3b-2d4ffa0ac2d9")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -67125,8 +67125,8 @@
 			(uuid "b2c63367-801a-42f0-9404-149db90937f9")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -67492,8 +67492,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -67502,8 +67502,8 @@
 			(uuid "39b8080a-0b6f-4574-9cc5-3f91d7f40ff0")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -67512,8 +67512,8 @@
 			(uuid "c92ad0c2-e30d-47e3-9651-1efc7bf44100")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -67522,8 +67522,8 @@
 			(uuid "d0a86c10-db70-4d17-ae05-118acea3574d")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -68256,8 +68256,8 @@
 		(sheetfile "XG_Mobile_Dock_Retimer.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.660001 -0.310001)
+			(end -0.660001 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -68266,8 +68266,8 @@
 			(uuid "7aa6e1e8-970a-431e-b214-2dd792212931")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.660001 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -68276,8 +68276,8 @@
 			(uuid "29364f47-c1a9-4b53-9772-0a2386b997ab")
 		)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.310001)
+			(end -0.660001 -0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -68286,8 +68286,8 @@
 			(uuid "f844f575-6d3e-4fd3-a324-8a4a1b1c35a1")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.310001)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -68655,8 +68655,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.635001 -0.34)
+			(end -0.635 -0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -68665,8 +68665,8 @@
 			(uuid "1dfba7cf-f0eb-4e37-b63a-216871ebb65f")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.635001 0.34)
+			(end 0.635001 -0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -68675,8 +68675,8 @@
 			(uuid "9a094b98-9820-4694-818d-6a7714348925")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.635 -0.34)
+			(end -0.635 0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -68685,8 +68685,8 @@
 			(uuid "ddbf60c2-b4f9-4fb4-a6e6-a7f6b913c383")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.635 0.34)
+			(end 0.635001 0.34)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -69052,8 +69052,8 @@
 		(zone_connect 2)
 		(attr smd)
 		(fp_line
-			(start 0.7 -0.35)
-			(end -0.7 -0.35)
+			(start 0.66 -0.31)
+			(end -0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -69062,8 +69062,8 @@
 			(uuid "fa76ac8c-2116-4f34-bdb6-42df80bd7995")
 		)
 		(fp_line
-			(start -0.7 -0.35)
-			(end -0.7 0.35)
+			(start -0.66 -0.31)
+			(end -0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -69072,8 +69072,8 @@
 			(uuid "6112ef39-9b4b-4675-bf00-176756237f5b")
 		)
 		(fp_line
-			(start 0.7 0.35)
-			(end 0.7 -0.35)
+			(start 0.66 0.31)
+			(end 0.66 -0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -69082,8 +69082,8 @@
 			(uuid "c5f93bfe-449b-40f6-adc3-a2faa0b7c3b0")
 		)
 		(fp_line
-			(start -0.7 0.35)
-			(end 0.7 0.35)
+			(start -0.66 0.31)
+			(end 0.66 0.31)
 			(stroke
 				(width 0.05)
 				(type solid)
