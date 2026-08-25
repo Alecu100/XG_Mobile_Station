@@ -44172,7 +44172,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "0a32543e-2bbd-4593-b9a0-85e4489ecdd7")
 		(at 118.866 114.049 -90)
@@ -44966,7 +44966,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "0bac71de-1f36-4a5c-a114-babf1896d72c")
 		(at 118.13 110.011 -90)
@@ -45731,7 +45731,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "10877ff1-a894-446c-b9f0-7c91683fa893")
 		(at 120.02 109.08)
@@ -46128,7 +46128,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "11e55174-2597-4b69-a815-1a00307c87b6")
 		(at 110.113 106.804 -45)
@@ -46526,7 +46526,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "16e7999f-6f04-4379-99f3-f7eb751bf128")
 		(at 115.33 108.93 180)
@@ -47291,7 +47291,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "1c177b80-c58e-4e3b-9e22-a951fcf8ea6d")
 		(at 117.26 117.03 -90)
@@ -48056,7 +48056,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "1e858f96-1b1d-426c-a961-2a5a57854fb2")
 		(at 112.31 110.45)
@@ -48821,7 +48821,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "26394055-8392-49a8-95de-8b0475d9a2ad")
 		(at 120.795 110.339)
@@ -49586,7 +49586,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "3043f9e9-ebe0-4170-824a-9e7d781e0c63")
 		(at 121.802 107.66)
@@ -50352,7 +50352,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "361b337e-a668-4346-887a-b9f0c20cbb46")
 		(at 116.01 111.22 180)
@@ -50749,7 +50749,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "3f304889-2765-4762-9ee9-2e4d7b725248")
 		(at 111.75 112.01 180)
@@ -51146,7 +51146,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "3ff6fd42-3815-4dbe-be47-dfb3cbede76d")
 		(at 122.668 113.674)
@@ -51940,7 +51940,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "4b9968f4-3f50-4c4f-be51-31792a19d604")
 		(at 113.712 113.601)
@@ -52706,7 +52706,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "54f2daa3-a59b-4aa2-8534-2e8169df9ba7")
 		(at 122.323 113.013 180)
@@ -53103,7 +53103,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "55169dbd-b129-499a-8d0d-b4dba24446cd")
 		(at 117.513 110.003 90)
@@ -53500,7 +53500,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "5593ae17-9368-4252-9302-3b4ab289d8ba")
 		(at 115.699 111.842 180)
@@ -53897,7 +53897,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "59568e90-0397-43a0-9547-c673ea210a25")
 		(at 117.281 112.693 -90)
@@ -55030,7 +55030,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "600b930b-9d92-4a36-8844-47da0f95b594")
 		(at 121.665 113.98 -90)
@@ -55427,7 +55427,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "6012efb9-bd90-4674-b040-aadf3c66dc07")
 		(at 113.71 112.99 180)
@@ -56987,7 +56987,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "67e39c28-1c8e-479b-a940-5ff0ce23be65")
 		(at 122.72 110.92 -90)
@@ -57384,7 +57384,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "6ba22381-98ae-4374-bd70-4472e1663134")
 		(at 115.146 110.438)
@@ -57782,7 +57782,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "6f3a1a26-b597-43b1-9a52-291a0e726f85")
 		(at 113.724 114.213)
@@ -58180,7 +58180,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "73473c32-3bba-46a0-bda3-ec616f80f58a")
 		(at 113.735 110.2 180)
@@ -58578,7 +58578,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "7a3159eb-3063-4256-84b6-a44ca9e93a12")
 		(at 121.903 111.418 90)
@@ -58975,7 +58975,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "7b0b3944-ddd4-4e8b-82fb-3152f14441bb")
 		(at 110.19 115.45 180)
@@ -59741,7 +59741,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "83cf21d3-9b5c-4f36-8592-313b31fef9f9")
 		(at 116.502 109.71)
@@ -60536,7 +60536,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "8a29fce2-9d3c-4d07-a993-03fb1d970099")
 		(at 119.38 113.042 180)
@@ -60933,7 +60933,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "8b708eb9-cc69-4202-9389-0198b12c56cd")
 		(at 125.173 111.345)
@@ -61330,7 +61330,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "8c401d3e-6f0d-45f5-92d0-7dc10b2547f9")
 		(at 120.7 112.575)
@@ -61727,7 +61727,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "9ac1fbcc-59cf-4143-875e-4fbd18fef881")
 		(at 118.261 112.427 180)
@@ -62124,7 +62124,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "9c7a9fe5-ef59-4eac-ab2d-aaa929bc7948")
 		(at 112.299 109.835 180)
@@ -62522,7 +62522,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "9f222662-93b6-43ed-8b07-98f3d64fc5d4")
 		(at 123.335 110.91 90)
@@ -62921,7 +62921,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "a12cd2e9-44f7-4d7b-9c86-015325451507")
 		(at 115.15 109.82)
@@ -63318,7 +63318,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "b4b17954-b47e-4e5b-8fb2-814b01b08d51")
 		(at 112.068 113.244)
@@ -63715,7 +63715,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "bbb1dd2d-3255-4d77-8337-7b7bc166f1d7")
 		(at 121.695 109.25 -90)
@@ -64112,7 +64112,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "c0fef7e6-3b2c-428b-8032-5f4c7ae7d1fc")
 		(at 120.735 118.51 135)
@@ -64877,7 +64877,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "c54fb2c9-db41-424e-a769-d89247ed4c3d")
 		(at 113.679 108.972)
@@ -65275,7 +65275,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "c5b9e0c3-0672-46ee-9ea7-8c93f6bd7987")
 		(at 119.224 112.041 -90)
@@ -65672,7 +65672,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "c5e717a7-f0c6-40cb-924a-4e586cf5a609")
 		(at 122.31 109.25 -90)
@@ -66069,7 +66069,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "c7294ce8-d764-4cfe-be60-bb0484711280")
 		(at 113.274 111.414 90)
@@ -66466,7 +66466,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "c7c1dbd1-485d-405d-b0b7-229261aa268f")
 		(at 118.248 110.976)
@@ -66863,7 +66863,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "c91b1fdc-8d29-482b-a53c-504030eb63e3")
 		(at 120.67 113.82 180)
@@ -67260,7 +67260,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "d5dcb710-61a3-4d72-bdc4-3eaf6a04224a")
 		(at 122.935 109.135 -90)
@@ -67657,7 +67657,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "d753edad-4908-425d-ac98-8dc84cf9f1b9")
 		(at 113.7 112.375 180)
@@ -68055,7 +68055,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "dc54546e-4fe4-41a2-8b89-b1454d4fd866")
 		(at 122.325 112.388 180)
@@ -68820,7 +68820,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "e07b7779-ba19-4870-a990-cfe6fc561a2f")
 		(at 112.324 108.765 180)
@@ -69614,7 +69614,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "ee421e30-53a9-496b-88b2-d3434abb0e4a")
 		(at 118.237 111.59 180)
@@ -70379,7 +70379,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "f61d46ec-9b4c-4716-aebf-269186ce7642")
 		(at 112.049 112.625)
@@ -70777,7 +70777,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "fac91bed-99c7-4ba8-91f4-55fe08ca6a01")
 		(at 127.258 115.123 135)
@@ -71174,7 +71174,7 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:C_0201_0603Metric"
+	(footprint "XG_Mobile:C_0201_0603Metric_Tight"
 		(layer "B.Cu")
 		(uuid "fc399cd5-2e2d-4ee6-a029-eb91c690d560")
 		(at 116.667 112.243 90)
