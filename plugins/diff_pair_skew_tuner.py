@@ -308,9 +308,6 @@ def order_path(data, net):
         path.append(s); cur = s["b"]
     return path
 
-def plen(path):
-    return sum(math.hypot(s["b"][0] - s["a"][0], s["b"][1] - s["a"][1]) for s in path)
-
 def build_runs(data, path):
     def has_via_at(pt):
         return any(math.hypot(v["c"][0] - pt[0], v["c"][1] - pt[1]) < 0.06 for v in data["vias"])
@@ -715,8 +712,10 @@ def run_auto(data, oracle):
             if nP is None or nN is None:
                 continue
             pathP, pathN = order_path(data, nP), order_path(data, nN)
-            lP = plen(pathP) + data["pad_stub"][nP]
-            lN = plen(pathN) + data["pad_stub"][nN]
+            # Measure skew from total copper (order-independent, counts true arc length) so it matches
+            # KiCad's net length and run_selection; order_path can shortcut serpentines and undercount.
+            lP = data["length"][nP] + data["pad_stub"][nP]
+            lN = data["length"][nN] + data["pad_stub"][nN]
             add = abs(lP - lN)
             short_net, short_path, paired_path = (nN, pathN, pathP) if lN < lP else (nP, pathP, pathN)
             if add < SKEW_FLOOR:
