@@ -18355,7 +18355,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "10nF 0201B103K250NT MfPArt C285010 LCSC 0201\n100nF GRM033R61C104KE84D MfPart C76937 LCSC 0201\n220nF GRM033R61C224KE14D MfPart C161474 LCSC 0201\n1uf CL03A105MO3NRNH MfPart C307385 LCSC LCSC 0201\n1k 1206W4F1001T5E MfPart C4410 LCSC 1206 Footprint\n430 0603WAF4300T5E MfPart C23170 LCSC 0603 Footprint\n30 0603WAF300JT5E MfPart C22985 LCSC 0603 Footprint\n3 0603WAF300KT5E MfPart C23157 LCSC 0603 Footprint\n240 0603WAF2400T5E MfPart C23350 LCSC 0603 Footprint\n10 0603WAF100JT5E MfPart C22859 LCSC 0603 Footprint\n4.7 uF CL10A475KP8NNNC MfPart C1705 LCSC 0603 Footprint\n60O @ 100Mhz BLM41PG600SN1L MfPArt C85844 LCSC 1806 Footprint\n100k 0.1% RT0603BRD07100KL MfPart C122538 LCSC 0603 Footprint\n133k 0.1% RT0402BRD07133KL MfPart C852517 LCSC 0402 Footprint\n22.1k 0.1% RT0603BRD0722K1L MfPart C723484 LCSC 0603 Footprint\n174 0.1%  ARG02BTC1740 MfPart C5266100 LCSC 0402 Footprint\n10k 0.1% RT0402BRD0710KL MfPart C190095 LCSC 0402 Footprint\n22uF TMK316BBJ226ML-T MfPart C386093 LCSC 1206 Footprint\n4.7uF GRM188C81E475KE11D MfPArt C417145 LCSC 0603 Footprint\n1uF GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.1uF 50V CL05B104KB54PNC MfPart C307331 LCSC 0402 Footprint\n200uF 6.3V GRM31CR60J227ME11L MfPart C412252 LCSC 1206 Footprint\n100uF 6.3V CL31A107MQHNNNE MfPart C15008 LCSC 1206 Footprint\n47uF 6.3V C3216X7S0J476MT000E MfPart C342599 LCSC 1206 Footprint\n10uF 10V CL21A106KPFNNNE MfPArt C17024 LCSC 0805 Footprint\n3.3uF 16V CL31B335KOHNNNE MfPart C3908730 LCSC 1206 Footprint\n1uf 25V GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.47uF 16V C1206C474K4RACTU MfPart C2167327 LCSC 1206 Footprint\n0.1uF 25V GRM155R71E104KE14D MfPart C77014 LCSC 0402 Footprint\n42.2k RT0402BRD0742K2L MfPart C852782 LCSC 0402 Footprint\n30.1k RT0402BRD0730K1L MfPart C852714 LCSC 0402 Footprint\n1 0805W8J010JT5E MfPart C25288 LCSC 0805 Footprint\n1nF CC0402JRX7R9BB102 Mfpart C93920 LCSC 0402 Footprint"
+	(text "10nF 0201B103K250NT MfPArt C285010 LCSC 0201\n100nF GRM033R61C104KE84D MfPart C76937 LCSC 0201\n220nF GRM033R61C224KE14D MfPart C161474 LCSC 0201\n1uf CL03A105MO3NRNH MfPart C307385 LCSC LCSC 0201\n1k 1206W4F1001T5E MfPart C4410 LCSC 1206 Footprint\n430 0603WAF4300T5E MfPart C23170 LCSC 0603 Footprint\n30 0603WAF300JT5E MfPart C22985 LCSC 0603 Footprint\n3 0603WAF300KT5E MfPart C23157 LCSC 0603 Footprint\n240 0603WAF2400T5E MfPart C23350 LCSC 0603 Footprint\n10 0603WAF100JT5E MfPart C22859 LCSC 0603 Footprint\n4.7 uF CL10A475KP8NNNC MfPart C1705 LCSC 0603 Footprint\n60O @ 100Mhz BLM41PG600SN1L MfPArt C85844 LCSC 1806 Footprint\n100k 0.1% RT0603BRD07100KL MfPart C122538 LCSC 0603 Footprint\n133k 0.1% RT0402BRD07133KL MfPart C852517 LCSC 0402 Footprint\n22.1k 0.1% RT0603BRD0722K1L MfPart C723484 LCSC 0603 Footprint\n174 0.1%  ARG02BTC1740 MfPart C5266100 LCSC 0402 Footprint\n10k 0.1% RT0402BRD0710KL MfPart C190095 LCSC 0402 Footprint\n22uF TMK316BBJ226ML-T MfPart C386093 LCSC 1206 Footprint\n4.7uF GRM188C81E475KE11D MfPArt C417145 LCSC 0603 Footprint\n1uF GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.1uF 50V CL05B104KB54PNC MfPart C307331 LCSC 0402 Footprint\n200uF 6.3V GRM31CR60J227ME11L MfPart C412252 LCSC 1206 Footprint\n100uF 6.3V CL31A107MQHNNNE MfPart C15008 LCSC 1206 Footprint\n47uF 6.3V C3216X7S0J476MT000E MfPart C342599 LCSC 1206 Footprint\n10uF 10V CL21A106KPFNNNE MfPArt C17024 LCSC 0805 Footprint\n3.3uF 16V CL31B335KOHNNNE MfPart C3908730 LCSC 1206 Footprint\n1uf 25V GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.47uF 16V C1206C474K4RACTU MfPart C2167327 LCSC 1206 Footprint\n0.1uF 25V GRM155R71E104KE14D MfPart C77014 LCSC 0402 Footprint\n42.2k RT0402BRD0742K2L MfPart C852782 LCSC 0402 Footprint\n30.1k RT0402BRD0730K1L MfPart C852714 LCSC 0402 Footprint\n1 0805W8J010JT5E MfPart C25288 LCSC 0805 Footprint\n1nF CC0402JRX7R9BB102 Mfpart C93920 LCSC 0402 Footprint\n1 1% CRCW04021R00FKEDC MfPart C2077765 LCSC 0402 Footprint"
 		(exclude_from_sim no)
 		(at 419.862 33.528 0)
 		(effects
@@ -20542,6 +20542,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b5fe1197-3c0f-4d89-9846-0ef737cdd7ba")
+	)
+	(junction
+		(at 519.43 311.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b70178c2-8117-482a-b133-75aeb708b22c")
 	)
 	(junction
 		(at 143.51 208.28)
@@ -24218,6 +24224,16 @@
 			(type default)
 		)
 		(uuid "45ac2c5a-bdde-434b-8249-9d8f0c17d678")
+	)
+	(wire
+		(pts
+			(xy 519.43 311.15) (xy 521.97 311.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45ca43e7-c9d5-458b-a61b-7eca262dc2a8")
 	)
 	(wire
 		(pts
@@ -29551,6 +29567,16 @@
 	)
 	(wire
 		(pts
+			(xy 511.81 311.15) (xy 519.43 311.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dea0e013-109f-425e-9539-d7fe6e21efa4")
+	)
+	(wire
+		(pts
 			(xy 334.01 180.34) (xy 334.01 182.88)
 		)
 		(stroke
@@ -34651,6 +34677,199 @@
 			(project "XG_Mobile_Dock_Lite"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 525.78 311.15 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "04e0aa8c-3db5-4342-8279-4b589c769d07")
+		(property "Reference" "R13"
+			(at 525.526 308.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1"
+			(at 525.78 313.944 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 525.78 309.372 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2077765"
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CRCW04021R00FKEDC"
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 525.78 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "104f473d-9d3a-40bb-9f9d-ae847c602965")
+		)
+		(pin "1"
+			(uuid "6b26e5d8-72a1-4e64-b34f-4558c27ac312")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -47115,6 +47334,92 @@
 			(project "XG_Mobile_Dock_Lite"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "TP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 519.43 314.96 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5cadca77-e3c3-4267-bbcd-37656d138963")
+		(property "Reference" "C30"
+			(at 518.16 318.77 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1uF"
+			(at 518.16 323.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 520.3952 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 519.43 314.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 519.43 314.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "GRM155R61E105KA12D"
+			(at 519.43 314.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C77009"
+			(at 519.43 314.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f8d458fc-c8c2-4574-9c6f-6f7f5036518b")
+		)
+		(pin "2"
+			(uuid "43e537b5-5a03-4fcf-b89b-8e719f4880b8")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C30")
 					(unit 1)
 				)
 			)
@@ -64355,6 +64660,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 529.59 311.15 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bc3360c4-ea7f-4ebc-875f-91727a6fdfce")
+		(property "Reference" "#PWR061"
+			(at 535.94 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 533.4 311.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 529.59 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 529.59 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 529.59 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c4a403da-da65-4fef-9127-c65109a42c59")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "#PWR061")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 356.87 278.13 270)
 		(unit 1)
@@ -71936,6 +72308,72 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 519.43 318.77 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e95dfa01-d53e-4dd1-9a8c-9650279cb5ee")
+		(property "Reference" "#PWR060"
+			(at 519.43 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 519.43 323.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 519.43 318.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 519.43 318.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 519.43 318.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77cc5381-a6e2-4f84-97cb-ec233e871dfb")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "#PWR060")
 					(unit 1)
 				)
 			)
