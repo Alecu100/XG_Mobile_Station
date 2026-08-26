@@ -43,4 +43,5 @@
   (lib (name "BLM41PG600SN1")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/BLM41PG600SN1L.elibz")(options "")(descr ""))
   (lib (name "TPS548B22RVFR")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/TPS548B22RVFR.elibz")(options "")(descr ""))
   (lib (name "MWSA0603S-R68MT")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/MWSA0603S-R68MT.elibz")(options "")(descr ""))
+  (lib (name "20TQC100MYF")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/20TQC100MYF.elibz")(options "")(descr ""))
 )
