@@ -61010,7 +61010,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "ab2691a2-b956-444e-9cd2-792c41aed05d")
 		(property "Reference" "#PWR0118"
 			(at 46.99 21.59 0)
@@ -61021,12 +61020,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 46.99 12.7 0)
+		(property "Value" "+3V3MCU"
+			(at 45.974 13.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
