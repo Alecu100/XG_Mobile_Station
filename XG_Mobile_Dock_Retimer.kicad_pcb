@@ -17250,6 +17250,17 @@
 			(uuid "3a470b7c-7a2c-4187-9e78-860b1cf3496e")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/STM32F103RCT6.step"
+			(offset
+				(xyz -6.5 11.5 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "5-1775443-8:5-1775443-8"
 		(layer "F.Cu")
