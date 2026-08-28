@@ -3998,12 +3998,6 @@
 		(uuid "a5fec365-c1dd-4fa9-b5de-af6ca8c3b231")
 	)
 	(junction
-		(at 27.94 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b471125d-aa56-4a68-b422-44cbee70a828")
-	)
-	(junction
 		(at 201.93 63.5)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4320,16 +4314,6 @@
 			(type default)
 		)
 		(uuid "3e77690d-2c33-4957-b66f-ffd051cfa75d")
-	)
-	(wire
-		(pts
-			(xy 25.4 53.34) (xy 27.94 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4014e5a2-28dc-4d12-a5c0-6500965512b1")
 	)
 	(wire
 		(pts
@@ -8304,79 +8288,6 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
 					(reference "Q16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 25.4 53.34 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4fac01d0-b695-4d90-94ed-fccbfc858a1a")
-		(property "Reference" "#PWR063"
-			(at 19.05 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 21.59 53.3399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 25.4 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 25.4 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 25.4 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "643cefde-b2fc-44c9-8f75-026ce46b9802")
-		)
-		(instances
-			(project "MCU_Retimer"
-				(path "/e44dba81-61f4-41e9-92bb-329e30057892"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-			(project "XG_Mobile_Dock_Retimer"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
-					(reference "#PWR063")
 					(unit 1)
 				)
 			)
