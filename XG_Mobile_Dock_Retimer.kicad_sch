@@ -18355,9 +18355,9 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "10nF 0201B103K250NT MfPArt C285010 LCSC 0201\n100nF GRM033R61C104KE84D MfPart C76937 LCSC 0201\n220nF GRM033R61C224KE14D MfPart C161474 LCSC 0201\n1uf CL03A105MO3NRNH MfPart C307385 LCSC LCSC 0201\n1k 1206W4F1001T5E MfPart C4410 LCSC 1206 Footprint\n430 0603WAF4300T5E MfPart C23170 LCSC 0603 Footprint\n30 0603WAF300JT5E MfPart C22985 LCSC 0603 Footprint\n3 0603WAF300KT5E MfPart C23157 LCSC 0603 Footprint\n240 0603WAF2400T5E MfPart C23350 LCSC 0603 Footprint\n10 0603WAF100JT5E MfPart C22859 LCSC 0603 Footprint\n4.7 uF CL10A475KP8NNNC MfPart C1705 LCSC 0603 Footprint\n60O @ 100Mhz BLM41PG600SN1L MfPArt C85844 LCSC 1806 Footprint\n100k 0.1% RT0603BRD07100KL MfPart C122538 LCSC 0603 Footprint\n133k 0.1% RT0402BRD07133KL MfPart C852517 LCSC 0402 Footprint\n22.1k 0.1% RT0603BRD0722K1L MfPart C723484 LCSC 0603 Footprint\n174 0.1%  ARG02BTC1740 MfPart C5266100 LCSC 0402 Footprint\n10k 0.1% RT0402BRD0710KL MfPart C190095 LCSC 0402 Footprint\n22uF TMK316BBJ226ML-T MfPart C386093 LCSC 1206 Footprint\n4.7uF GRM188C81E475KE11D MfPArt C417145 LCSC 0603 Footprint\n1uF GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.1uF 50V CL05B104KB54PNC MfPart C307331 LCSC 0402 Footprint\n200uF 6.3V GRM31CR60J227ME11L MfPart C412252 LCSC 1206 Footprint\n100uF 6.3V CL31A107MQHNNNE MfPart C15008 LCSC 1206 Footprint\n47uF 6.3V C3216X7S0J476MT000E MfPart C342599 LCSC 1206 Footprint\n10uF 10V CL21A106KPFNNNE MfPArt C17024 LCSC 0805 Footprint\n3.3uF 16V CL31B335KOHNNNE MfPart C3908730 LCSC 1206 Footprint\n1uf 25V GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.47uF 16V C1206C474K4RACTU MfPart C2167327 LCSC 1206 Footprint\n0.1uF 25V GRM155R71E104KE14D MfPart C77014 LCSC 0402 Footprint\n42.2k RT0402BRD0742K2L MfPart C852782 LCSC 0402 Footprint\n30.1k RT0402BRD0730K1L MfPart C852714 LCSC 0402 Footprint\n1 0805W8J010JT5E MfPart C25288 LCSC 0805 Footprint\n1nF CC0402JRX7R9BB102 Mfpart C93920 LCSC 0402 Footprint\n1 1% CRCW04021R00FKEDC MfPart C2077765 LCSC 0402 Footprint"
+	(text "10nF 0201B103K250NT MfPArt C285010 LCSC 0201\n100nF GRM033R61C104KE84D MfPart C76937 LCSC 0201\n220nF GRM033R61C224KE14D MfPart C161474 LCSC 0201\n1uf CL03A105MO3NRNH MfPart C307385 LCSC LCSC 0201\n1k 1206W4F1001T5E MfPart C4410 LCSC 1206 Footprint\n430 0603WAF4300T5E MfPart C23170 LCSC 0603 Footprint\n30 0603WAF300JT5E MfPart C22985 LCSC 0603 Footprint\n3 0603WAF300KT5E MfPart C23157 LCSC 0603 Footprint\n240 0603WAF2400T5E MfPart C23350 LCSC 0603 Footprint\n10 0603WAF100JT5E MfPart C22859 LCSC 0603 Footprint\n4.7 uF CL10A475KP8NNNC MfPart C1705 LCSC 0603 Footprint\n60O @ 100Mhz BLM41PG600SN1L MfPArt C85844 LCSC 1806 Footprint\n100k 0.1% RT0603BRD07100KL MfPart C122538 LCSC 0603 Footprint\n133k 0.1% RT0402BRD07133KL MfPart C852517 LCSC 0402 Footprint\n22.1k 0.1% RT0603BRD0722K1L MfPart C723484 LCSC 0603 Footprint\n174 0.1%  ARG02BTC1740 MfPart C5266100 LCSC 0402 Footprint\n10k 0.1% RT0402BRD0710KL MfPart C190095 LCSC 0402 Footprint\n22uF TMK316BBJ226ML-T MfPart C386093 LCSC 1206 Footprint\n4.7uF GRM188C81E475KE11D MfPArt C417145 LCSC 0603 Footprint\n1uF GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.1uF 50V CL05B104KB54PNC MfPart C307331 LCSC 0402 Footprint\n200uF 6.3V GRM31CR60J227ME11L MfPart C412252 LCSC 1206 Footprint\n100uF 6.3V CL31A107MQHNNNE MfPart C15008 LCSC 1206 Footprint\n47uF 6.3V C3216X7S0J476MT000E MfPart C342599 LCSC 1206 Footprint\n10uF 10V CL21A106KPFNNNE MfPArt C17024 LCSC 0805 Footprint\n3.3uF 16V CL31B335KOHNNNE MfPart C3908730 LCSC 1206 Footprint\n1uf 25V GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.47uF 16V C1206C474K4RACTU MfPart C2167327 LCSC 1206 Footprint\n0.1uF 25V GRM155R71E104KE14D MfPart C77014 LCSC 0402 Footprint\n42.2k RT0402BRD0742K2L MfPart C852782 LCSC 0402 Footprint\n30.1k RT0402BRD0730K1L MfPart C852714 LCSC 0402 Footprint\n1 0805W8J010JT5E MfPart C25288 LCSC 0805 Footprint\n1nF CC0402JRX7R9BB102 Mfpart C93920 LCSC 0402 Footprint\n1 1% CRCW04021R00FKEDC MfPart C2077765 LCSC 0402 Footprint\n33 1% RC-01W33R0FT MfPart C320843 LCSC 0201 Footprint"
 		(exclude_from_sim no)
-		(at 419.862 33.528 0)
+		(at 420.624 20.574 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -23387,6 +23387,16 @@
 	)
 	(wire
 		(pts
+			(xy 298.45 80.01) (xy 311.15 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d0191f9-f8c8-49c2-8933-012bcc5675f5")
+	)
+	(wire
+		(pts
 			(xy 55.88 182.88) (xy 55.88 195.58)
 		)
 		(stroke
@@ -24414,6 +24424,16 @@
 			(type default)
 		)
 		(uuid "49bb261c-2ff3-44a3-a157-a44f45499a78")
+	)
+	(wire
+		(pts
+			(xy 298.45 82.55) (xy 311.15 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a250e67-70a1-410f-9f51-bd92a99c7d29")
 	)
 	(wire
 		(pts
@@ -26384,6 +26404,26 @@
 			(type default)
 		)
 		(uuid "810efe00-9755-4fa3-aaf8-fb4e48dad3cd")
+	)
+	(wire
+		(pts
+			(xy 284.48 82.55) (xy 290.83 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8155c3ce-3493-4d8b-864f-7bb2b48cc1ef")
+	)
+	(wire
+		(pts
+			(xy 284.48 80.01) (xy 290.83 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8266acba-e36f-410c-964f-3c43eabdf3db")
 	)
 	(wire
 		(pts
@@ -31506,7 +31546,7 @@
 		(uuid "4bb21589-19eb-4136-becd-d81f79ed1d38")
 	)
 	(label "CLKOUTP"
-		(at 311.15 80.01 180)
+		(at 284.48 80.01 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -31846,7 +31886,7 @@
 		(uuid "6522c774-b3ad-4a78-8f88-0f437f028bc5")
 	)
 	(label "CLKOUTN"
-		(at 311.15 82.55 180)
+		(at 284.48 82.55 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -32895,6 +32935,16 @@
 		)
 		(uuid "d43d0b71-c7fe-48d5-af85-c92c795f8f18")
 	)
+	(label "CLKOUT_T_N"
+		(at 309.88 82.55 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d499e310-75e1-478b-91a6-cc072dfc9628")
+	)
 	(label "HSIT7N"
 		(at 191.77 177.8 0)
 		(effects
@@ -33254,6 +33304,16 @@
 			(justify left bottom)
 		)
 		(uuid "f82f13a2-a5d7-4e2b-befb-0917cff176a2")
+	)
+	(label "CLKOUT_T_P"
+		(at 309.88 80.01 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "fb215237-e7a4-4660-9f0d-aad05fd44bde")
 	)
 	(label "HSIL3N"
 		(at 223.52 101.6 0)
@@ -55231,6 +55291,199 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 294.64 82.55 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "861734a3-2163-4cc0-91f6-992d575ae125")
+		(property "Reference" "R15"
+			(at 291.338 85.344 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "33"
+			(at 294.64 85.344 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 294.64 80.772 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C320843"
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "RC-01W33R0FT "
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 294.64 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "cd94e24b-21f9-4590-bb00-ecbccceb822f")
+		)
+		(pin "1"
+			(uuid "914a2b57-a719-4139-90a5-4f67c16cdd24")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "R15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 464.82 327.66 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -62644,6 +62897,199 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C195")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 294.64 80.01 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "aeff5fba-fa02-4ecb-967b-c55a74384f69")
+		(property "Reference" "R14"
+			(at 294.386 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "33"
+			(at 297.434 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 294.64 78.232 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C320843"
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "RC-01W33R0FT "
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 294.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b6fdc69e-7724-49e3-96b8-cb4f7c06f357")
+		)
+		(pin "1"
+			(uuid "a025916b-1bc8-4732-9d36-c55d4e422444")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "R14")
 					(unit 1)
 				)
 			)
