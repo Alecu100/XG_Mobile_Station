@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.8,
-          "height": 2.3,
-          "width": 2.3
+          "drill": 0.0,
+          "height": 3.5,
+          "width": 2.35
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -189,6 +189,8 @@
       ],
       "track_widths": [
         0.0,
+        0.125,
+        0.15,
         0.2,
         0.25,
         0.3,
@@ -643,6 +645,14 @@
       {
         "netclass": "Pcie Clock",
         "pattern": "/CLKOUTP"
+      },
+      {
+        "netclass": "Pcie Clock",
+        "pattern": "/CLKOUT_T_N"
+      },
+      {
+        "netclass": "Pcie Clock",
+        "pattern": "/CLKOUT_T_P"
       }
     ]
   },
