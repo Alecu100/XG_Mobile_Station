@@ -157,7 +157,8 @@ def find_corners(chain):
             continue
         indir = unit(sub(V, prev)); outdir = unit(sub(nxt, V))
         cs.append(dict(i=i, prev=prev, V=V, nxt=nxt, e1=e1, e2=e2, beta=beta,
-                       turn=cross(indir, outdir), indir=indir, chain=chain))
+                       turn=cross(indir, outdir), indir=indir,
+                       bis=unit(add(e1, e2)), chain=chain))   # bis -> concave side, traversal-invariant
     return cs
 
 def measure_pitch(A, B):
@@ -197,9 +198,9 @@ def plan_single(c):
 
 def plan_concentric(cA, cB):
     """Concentric fillet for a matched pair corner (inner RADIUS, outer RADIUS+pitch); shrink to fit."""
-    indir = cA["indir"]
-    ncen = mul((-indir[1], indir[0]), 1.0 if cA["turn"] > 0 else -1.0)
-    a_inner = dot(sub(cA["V"], cB["V"]), ncen) > 0
+    # inner = the corner whose vertex sits on its own concave side relative to the partner (bis is
+    # traversal-invariant, unlike turn/indir which flip with chain ordering direction)
+    a_inner = dot(sub(cA["V"], cB["V"]), cA["bis"]) > 0
     cin, cout = (cA, cB) if a_inner else (cB, cA)
     r = RADIUS
     for _ in range(24):
@@ -287,16 +288,14 @@ def run(board=None, apply=None, **overrides):
                 if usedB[j] or cB["chain"]["layer"] != cA["chain"]["layer"]:
                     continue
                 d = norm(sub(cA["V"], cB["V"]))
-                if d < bestd and (p and d <= PAIR_DIST * p) and cA["turn"] * cB["turn"] > 0:
+                if d < bestd and (p and d <= PAIR_DIST * p) and dot(cA["bis"], cB["bis"]) > 0.5:
                     bestd = d; best = j
             if best >= 0:
                 cB = cornersB[best]; usedB[best] = True
                 if plan_concentric(cA, cB):
                     done += 2; pd += 1
-                else:                                   # too tight for concentric -> round each on its own
-                    for c in (cA, cB):
-                        if plan_single(c): done += 1
-                        else: skipped += 1
+                else:                                   # too tight for a proper concentric bend -> skip
+                    skipped += 2                        #   (never fillet a pair bend with mismatched radii)
             else:
                 if plan_single(cA): done += 1
                 else: skipped += 1
