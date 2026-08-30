@@ -1,19 +1,27 @@
 """
 Differential-pair fillet  --  runs INSIDE KiCad (pcbnew Python API, KiCad 9).
 
-Rounds the corners of the SELECTED diff-pair track segments. The two traces are filleted as
-CONCENTRIC arcs sharing one center: the INNER trace by RADIUS, the OUTER trace by
-RADIUS + (diff-pair gap + trace width) = RADIUS + pitch. This keeps the gap constant through
-the bend (equal phase / matched coupling). A single selected trace is filleted normally by RADIUS.
+Rounds the SHARP corners of SELECTED tracks. Handles:
+  * MULTIPLE diff pairs at once -- selected nets are grouped into pairs by name (P/N, +/-),
+    each pair filleted independently; leftover single nets are filleted on their own.
+  * Pairs that are already length-tuned (meander ARCS in the run) -- arcs are kept as-is and only
+    the straight seg-to-seg routing corners are rounded.
+  * Vias / multi-layer routes -- each net is split into per-LAYER runs; a via is a run end, so the
+    FANOUT dog-legs into vias get filleted too.
+For a matched pair corner the two traces are filleted as CONCENTRIC arcs sharing one center (inner
+by RADIUS, outer by RADIUS + pitch) so the gap stays constant. Where the pair diverges (e.g. a
+fanout that breaks out to separate vias) each corner is filleted independently by RADIUS. Fillets
+auto-shrink to fit short segments (so tight fanout stubs still round).
 
 USAGE (PCB editor > Tools > Scripting Console):
-    - Click-select the track segments of the pair (both nets) around the corner(s), then:
+    - Select the track segments to round (one or many pairs; include the arcs/vias in the run,
+      it's fine), then:
         exec(open(r'd:/Repos/XG_Mobile_Station/plugins/fillet_diffpair.py').read())
-    - RADIUS is the inner radius; PITCH auto-measures (gap+width) unless you set it.
+    - RADIUS is the inner radius; PITCH auto-measures (gap+width) per pair unless you set it.
     - Override any knob WITHOUT editing this file: set a PARAMS dict first, e.g.
-        PARAMS = dict(RADIUS=0.15, APPLY=False); exec(open(r'.../fillet_diffpair.py').read())
-      (headless: run(board, apply=False, RADIUS=0.15)).
-    - APPLY = False for a dry-run. Undo via git checkout of the board file.
+        PARAMS = dict(RADIUS=0.2, APPLY=False); exec(open(r'.../fillet_diffpair.py').read())
+      (headless: run(board, apply=False, RADIUS=0.2)).
+    - APPLY = False for a dry-run. Undo via Edit > Undo or git checkout of the board file.
 
 Can also be dropped in KiCad's scripting/plugins folder (Tools > External Plugins).
 """
@@ -26,11 +34,13 @@ except ImportError:
     raise SystemExit("Run this from KiCad's PCB editor Scripting Console (pcbnew not importable).")
 
 # ----------------------------------------------------------------------------- parameters (mm)
-APPLY     = True
-RADIUS    = 0.30          # inner fillet radius (the "specific amount"); outer = RADIUS + pitch
-PITCH     = None          # center-to-center diff-pair spacing (gap+width); None = auto-measure
-ANGLE_MIN = 3.0           # deg; skip near-straight vertices below this deflection
-FIT       = 0.95          # a fillet may consume at most this fraction of an adjacent segment
+APPLY      = True
+RADIUS     = 0.30         # inner fillet radius; outer diff-pair arc = RADIUS + pitch
+PITCH      = None         # center-to-center diff-pair spacing (gap+width); None = auto-measure per pair
+ANGLE_MIN  = 3.0          # deg; skip near-straight vertices below this deflection
+FIT        = 0.90         # a fillet may consume at most this fraction of an adjacent segment
+MIN_RADIUS = 0.05         # don't place a fillet whose (shrunk) radius falls below this
+PAIR_DIST  = 2.5          # match a P corner to an N corner within this many pitches (same turn)
 
 # ----------------------------------------------------------------------------- vector helpers
 def sub(a, b): return (a[0] - b[0], a[1] - b[1])
@@ -54,57 +64,7 @@ def dist_seg(p, a, b):
 def P2(v): return (pcbnew.ToMM(v.x), pcbnew.ToMM(v.y))
 def V2(p): return pcbnew.VECTOR2I(pcbnew.FromMM(p[0]), pcbnew.FromMM(p[1]))
 
-# ----------------------------------------------------------------------------- read selection
-def read_selection(board):
-    nets = collections.defaultdict(list)   # netcode -> [seg dict]
-    for t in board.GetTracks():
-        if isinstance(t, pcbnew.PCB_VIA) or isinstance(t, pcbnew.PCB_ARC):
-            continue
-        if not t.IsSelected():
-            continue
-        nets[t.GetNetCode()].append(dict(a=P2(t.GetStart()), b=P2(t.GetEnd()),
-                                         w=pcbnew.ToMM(t.GetWidth()), layer=t.GetLayer(),
-                                         net=t.GetNetCode(), name=t.GetNetname(), obj=t))
-    return nets
-
-def order_net(segs):
-    """Order the segments head-to-tail; return (vertices, width, layer, net, orig_objs) or None."""
-    Q = lambda p: (round(p[0], 5), round(p[1], 5))
-    adj = collections.defaultdict(list)
-    for i, s in enumerate(segs):
-        adj[Q(s["a"])].append((i, 0)); adj[Q(s["b"])].append((i, 1))
-    ends = [k for k, v in adj.items() if len(v) == 1]
-    start = ends[0] if ends else Q(segs[0]["a"])
-    used = [False] * len(segs); verts = []; objs = []; key = start; first = True
-    for _ in range(len(segs) + 1):
-        nxt = next(((i, e) for (i, e) in adj[key] if not used[i]), None)
-        if nxt is None:
-            break
-        i, e = nxt; used[i] = True; s = segs[i]
-        a, b = (s["a"], s["b"]) if e == 0 else (s["b"], s["a"])
-        if first:
-            verts.append(a); first = False
-        verts.append(b); objs.append(s); key = Q(b)
-    if len(objs) != len(segs):        # selection isn't a single clean chain
-        return None
-    return verts, segs[0]["w"], segs[0]["layer"], segs[0]["net"], objs
-
-def find_corners(verts):
-    """Interior vertices with a real direction change; returns list of dicts."""
-    cs = []
-    for i in range(1, len(verts) - 1):
-        prev, V, nxt = verts[i - 1], verts[i], verts[i + 1]
-        e1 = unit(sub(prev, V)); e2 = unit(sub(nxt, V))
-        c = max(-1.0, min(1.0, dot(e1, e2)))
-        beta = math.acos(c)                       # interior angle at the corner
-        defl = math.degrees(math.pi - beta)       # deflection from straight
-        if defl < ANGLE_MIN or beta < 1e-3:
-            continue
-        indir = unit(sub(V, prev)); outdir = unit(sub(nxt, V))
-        cs.append(dict(i=i, prev=prev, V=V, nxt=nxt, e1=e1, e2=e2, beta=beta,
-                       turn=cross(indir, outdir), indir=indir))
-    return cs
-
+# ----------------------------------------------------------------------------- fillet geometry
 def fillet_center(c, r):
     """Inner fillet at corner c, radius r: return (center, P1, P2, mid, T)."""
     beta = c["beta"]; V = c["V"]; e1 = c["e1"]; e2 = c["e2"]
@@ -125,39 +85,137 @@ def outer_from_center(c, C):
     T = max(norm(sub(V, P1)), norm(sub(V, P2)))
     return P1, P2, mid, T
 
-def seg_len_ok(verts, i, T):
-    """T must not eat more than FIT of either adjacent segment."""
-    l1 = norm(sub(verts[i], verts[i - 1])); l2 = norm(sub(verts[i + 1], verts[i]))
-    return T <= FIT * l1 and T <= FIT * l2
+def adj_len(c):
+    """Shorter of the two segments meeting at corner c."""
+    return min(norm(sub(c["V"], c["prev"])), norm(sub(c["nxt"], c["V"])))
 
-def rebuild(verts, fillets):
-    """fillets: {i: (P1, P2, mid)}. Return list of ('seg',a,b) / ('arc',a,mid,b)."""
-    out = []; cur = verts[0]
-    for i in range(1, len(verts) - 1):
-        if i in fillets:
-            P1, P2, mid = fillets[i]
-            if norm(sub(cur, P1)) > 1e-4:
-                out.append(("seg", cur, P1))
-            out.append(("arc", P1, mid, P2)); cur = P2
+# ----------------------------------------------------------------------------- read + chain build
+def read_selection(board):
+    """Selected tracks (segments + arcs, not vias) grouped by netcode; each carries kind/mid/obj."""
+    edges = collections.defaultdict(list)
+    for t in board.GetTracks():
+        if isinstance(t, pcbnew.PCB_VIA) or not t.IsSelected():
+            continue
+        if isinstance(t, pcbnew.PCB_ARC):
+            edges[t.GetNetCode()].append(dict(kind="arc", a=P2(t.GetStart()), b=P2(t.GetEnd()),
+                                              mid=P2(t.GetMid()), w=pcbnew.ToMM(t.GetWidth()),
+                                              layer=t.GetLayer(), net=t.GetNetCode(),
+                                              name=t.GetNetname(), obj=t))
         else:
-            out.append(("seg", cur, verts[i])); cur = verts[i]
-    if norm(sub(cur, verts[-1])) > 1e-4:
-        out.append(("seg", cur, verts[-1]))
-    return out
+            edges[t.GetNetCode()].append(dict(kind="seg", a=P2(t.GetStart()), b=P2(t.GetEnd()),
+                                              mid=None, w=pcbnew.ToMM(t.GetWidth()),
+                                              layer=t.GetLayer(), net=t.GetNetCode(),
+                                              name=t.GetNetname(), obj=t))
+    return edges
+
+def build_chains(elist):
+    """Order the net's selected edges head-to-tail, PER LAYER; return a chain dict per run.
+    Arcs stay in the chain (kept as-is); vias aren't here, so a via is just a run end."""
+    Q = lambda p: (round(p[0], 4), round(p[1], 4))
+    chains = []
+    bylayer = collections.defaultdict(list)
+    for e in elist:
+        bylayer[e["layer"]].append(e)
+    for layer, edges in bylayer.items():
+        adj = collections.defaultdict(list)
+        for i, e in enumerate(edges):
+            adj[Q(e["a"])].append(i); adj[Q(e["b"])].append(i)
+        used = [False] * len(edges)
+        def walk(node):
+            verts = []; kinds = []; mids = []; objs = []; first = True
+            while True:
+                nxt = next((i for i in adj[node] if not used[i]), None)
+                if nxt is None:
+                    break
+                e = edges[nxt]; used[nxt] = True
+                a, b = (e["a"], e["b"]) if Q(e["a"]) == node else (e["b"], e["a"])
+                if first:
+                    verts.append(a); first = False
+                verts.append(b); kinds.append(e["kind"]); mids.append(e["mid"]); objs.append(e)
+                node = Q(b)
+            return verts, kinds, mids, objs
+        order = [n for n, l in adj.items() if len(l) == 1] + [Q(e["a"]) for e in edges]
+        for node in order:
+            if any(not used[i] for i in adj[node]):
+                v, k, m, o = walk(node)
+                if o:
+                    chains.append(dict(layer=layer, verts=v, kinds=k, mids=m, objs=o,
+                                       net=o[0]["net"], name=o[0]["name"], fillets={}))
+    return chains
+
+def find_corners(chain):
+    """Interior vertices where two STRAIGHT segments meet with a real direction change."""
+    verts = chain["verts"]; kinds = chain["kinds"]; cs = []
+    for i in range(1, len(verts) - 1):
+        if kinds[i - 1] != "seg" or kinds[i] != "seg":   # leave arc (tuned/rounded) junctions alone
+            continue
+        prev, V, nxt = verts[i - 1], verts[i], verts[i + 1]
+        e1 = unit(sub(prev, V)); e2 = unit(sub(nxt, V))
+        c = max(-1.0, min(1.0, dot(e1, e2)))
+        beta = math.acos(c)
+        if math.degrees(math.pi - beta) < ANGLE_MIN or beta < 1e-3:
+            continue
+        indir = unit(sub(V, prev)); outdir = unit(sub(nxt, V))
+        cs.append(dict(i=i, prev=prev, V=V, nxt=nxt, e1=e1, e2=e2, beta=beta,
+                       turn=cross(indir, outdir), indir=indir, chain=chain))
+    return cs
 
 def measure_pitch(A, B):
+    """Median center-to-center spacing between two nets' straight segments."""
     ds = []
     for sa in A:
-        if norm(sub(sa["b"], sa["a"])) < 0.3:
+        if sa["kind"] != "seg" or norm(sub(sa["b"], sa["a"])) < 0.3:
             continue
         mid = mul(add(sa["a"], sa["b"]), 0.5)
-        ds.append(min(dist_seg(mid, sb["a"], sb["b"]) for sb in B))
+        cand = [dist_seg(mid, sb["a"], sb["b"]) for sb in B if sb["kind"] == "seg"]
+        if cand:
+            ds.append(min(cand))
     ds.sort()
     return ds[len(ds) // 2] if ds else None
 
-# ----------------------------------------------------------------------------- overrides + main
+def diff_partner(name):
+    """Partner net name for a diff-pair member, or None."""
+    base = name.rsplit("/", 1)[-1]
+    pre = name[:len(name) - len(base)]
+    for p, n in (("P", "N"), ("+", "-"), ("_P", "_N")):
+        if base.endswith(p):
+            return pre + base[:-len(p)] + n
+        if base.endswith(n):
+            return pre + base[:-len(n)] + p
+    return None
+
+# ----------------------------------------------------------------------------- fillet planners
+def plan_single(c):
+    """Fillet one corner by RADIUS, shrunk to fit its shorter neighbour. Returns True if planned."""
+    Tmax = FIT * adj_len(c)
+    r = min(RADIUS, Tmax * math.tan(c["beta"] / 2.0))
+    if r < MIN_RADIUS:
+        return False
+    _, P1, P2, mid, _ = fillet_center(c, r)
+    c["chain"]["fillets"][c["i"]] = (P1, P2, mid)
+    return True
+
+def plan_concentric(cA, cB):
+    """Concentric fillet for a matched pair corner (inner RADIUS, outer RADIUS+pitch); shrink to fit."""
+    indir = cA["indir"]
+    ncen = mul((-indir[1], indir[0]), 1.0 if cA["turn"] > 0 else -1.0)
+    a_inner = dot(sub(cA["V"], cB["V"]), ncen) > 0
+    cin, cout = (cA, cB) if a_inner else (cB, cA)
+    r = RADIUS
+    for _ in range(24):
+        C, P1i, P2i, midi, Ti = fillet_center(cin, r)
+        P1o, P2o, mido, To = outer_from_center(cout, C)
+        if Ti <= FIT * adj_len(cin) and To <= FIT * adj_len(cout):
+            cin["chain"]["fillets"][cin["i"]] = (P1i, P2i, midi)
+            cout["chain"]["fillets"][cout["i"]] = (P1o, P2o, mido)
+            return True
+        r *= 0.85
+        if r < MIN_RADIUS:
+            return False
+    return False
+
+# ----------------------------------------------------------------------------- overrides + refresh
 def _apply_overrides(overrides):
-    """Override any UPPERCASE knob at call time: run(..., RADIUS=0.15) or PARAMS=dict(RADIUS=0.15)."""
     if not overrides:
         return
     g = globals(); bad = []
@@ -171,108 +229,123 @@ def _apply_overrides(overrides):
         print("[params] ignored: %s\n[params] valid knobs: %s" % (", ".join(sorted(bad)), valid))
 
 def _refresh(board):
-    """Rebuild connectivity, then redraw. Both guarded so it's a no-op when run headless."""
-    try:
-        board.BuildConnectivity()      # stop the ratsnest engine dereferencing removed items -> crash
-    except Exception:
-        pass
-    try:
-        pcbnew.Refresh()
-    except Exception:
-        pass
+    try: board.BuildConnectivity()      # stop ratsnest engine dereferencing removed items -> crash
+    except Exception: pass
+    try: pcbnew.Refresh()
+    except Exception: pass
 
+def _move_end(obj, frm, to):
+    """Move whichever end of the track object is at point `frm` (mm) to `to` (mm)."""
+    if norm(sub(P2(obj.GetStart()), frm)) <= norm(sub(P2(obj.GetEnd()), frm)):
+        obj.SetStart(V2(to))
+    else:
+        obj.SetEnd(V2(to))
+
+# ----------------------------------------------------------------------------- main
 def run(board=None, apply=None, **overrides):
     _apply_overrides(overrides)
     if board is None:
         board = pcbnew.GetBoard()
     if apply is None:
         apply = APPLY
-    nets = read_selection(board)
-    if not nets:
-        print("Nothing selected. Select the diff-pair track segments around the corner(s) and re-run.")
+    edges = read_selection(board)
+    if not edges:
+        print("Nothing selected. Select the track segments to fillet and re-run.")
         return
-    if len(nets) > 2:
-        print("Selected %d nets; select just one pair (2 nets) or one trace." % len(nets)); return
+    chains_by_net = {net: build_chains(elist) for net, elist in edges.items()}
+    name_by_net = {net: elist[0]["name"] for net, elist in edges.items()}
+    net_by_name = {nm.rsplit("/", 1)[-1]: net for net, nm in name_by_net.items()}
 
-    ordered = {}
-    for code, segs in nets.items():
-        r = order_net(segs)
-        if r is None:
-            print("Net %s: selection is not a single connected chain -- select a contiguous run." %
-                  segs[0]["name"]); return
-        ordered[code] = r
-
-    plan = collections.defaultdict(dict)   # code -> {i: (P1,P2,mid)}
-    done = 0; skipped = 0
-
-    if len(nets) == 2:
-        (ca, ra), (cb, rb) = list(ordered.items())
-        vA, wA, lA, nA, oA = ra; vB, wB, lB, nB, oB = rb
-        p = PITCH if PITCH else measure_pitch(nets[ca], nets[cb])
-        if not p:
-            print("Could not measure diff-pair pitch; set PITCH manually."); return
-        cornersA = find_corners(vA); cornersB = find_corners(vB)
-        print("pair %s / %s  pitch=%.4f mm  inner R=%.3f outer R=%.3f  cornersA=%d cornersB=%d"
-              % (ra[3] and nets[ca][0]["name"], nets[cb][0]["name"], p, RADIUS, RADIUS + p,
-                 len(cornersA), len(cornersB)))
-        for cA in cornersA:
-            cB = min(cornersB, key=lambda c: norm(sub(c["V"], cA["V"])), default=None)
-            if cB is None or norm(sub(cB["V"], cA["V"])) > 2.5 * p or cA["turn"] * cB["turn"] <= 0:
-                skipped += 1; continue
-            # inner = the vertex on the concave (turn-center) side
-            indir = cA["indir"]; ncen = mul((-indir[1], indir[0]), 1.0 if cA["turn"] > 0 else -1.0)
-            a_inner = dot(sub(cA["V"], cB["V"]), ncen) > 0
-            cin, cout = (cA, cB) if a_inner else (cB, cA)
-            vin, vout = (vA, vB) if a_inner else (vB, vA)
-            code_in, code_out = (ca, cb) if a_inner else (cb, ca)
-            C, P1i, P2i, midi, Ti = fillet_center(cin, RADIUS)
-            P1o, P2o, mido, To = outer_from_center(cout, C)
-            if not (seg_len_ok(vin, cin["i"], Ti) and seg_len_ok(vout, cout["i"], To)):
-                skipped += 1; continue
-            plan[code_in][cin["i"]] = (P1i, P2i, midi)
-            plan[code_out][cout["i"]] = (P1o, P2o, mido)
-            done += 1
-    else:   # single trace: normal fillet by RADIUS
-        code, (v, w, l, n, o) = list(ordered.items())[0]
-        print("single trace %s  R=%.3f  corners=%d" % (nets[code][0]["name"], RADIUS, len(find_corners(v))))
-        for c in find_corners(v):
-            C, P1, P2, mid, T = fillet_center(c, RADIUS)
-            if not seg_len_ok(v, c["i"], T):
-                skipped += 1; continue
-            plan[code][c["i"]] = (P1, P2, mid); done += 1
-
-    print("fillets: %d applied, %d skipped (didn't fit / unmatched)" % (done, skipped))
-    if not apply or done == 0:
-        print("DRY RUN (or nothing to do): set APPLY = True to modify the board." if not apply else "")
-        return
-
-    for code, (verts, w, layer, net, objs) in ordered.items():
-        if code not in plan:
+    pairs = []; singles = []; seen = set()
+    for net, nm in name_by_net.items():
+        if net in seen:
             continue
-        edges = rebuild(verts, plan[code])
-        for s in objs:
-            try: s["obj"].ClearSelected()        # GUI: don't leave a removed item selected
-            except Exception: pass
-            board.Remove(s["obj"])
-        for e in edges:
-            if e[0] == "seg":
-                t = pcbnew.PCB_TRACK(board)
-                t.SetStart(V2(e[1])); t.SetEnd(V2(e[2]))
+        pbase = diff_partner(nm)
+        pbase = pbase.rsplit("/", 1)[-1] if pbase else None
+        pnet = net_by_name.get(pbase)
+        if pnet is not None and pnet != net and pnet not in seen:
+            pairs.append((net, pnet)); seen.add(net); seen.add(pnet)
+        else:
+            singles.append(net); seen.add(net)
+
+    done = 0; skipped = 0
+    print("selection: %d net(s) -> %d pair(s) + %d single(s)" % (len(edges), len(pairs), len(singles)))
+
+    for a, b in pairs:
+        p = PITCH if PITCH else measure_pitch(edges[a], edges[b])
+        na = name_by_net[a].rsplit("/", 1)[-1]; nb = name_by_net[b].rsplit("/", 1)[-1]
+        if not p:
+            print("  pair %s/%s: no pitch (traces not parallel?) -- filleting each independently" % (na, nb))
+            p = 0.0
+        cornersA = [c for ch in chains_by_net[a] for c in find_corners(ch)]
+        cornersB = [c for ch in chains_by_net[b] for c in find_corners(ch)]
+        usedB = [False] * len(cornersB)
+        pd = 0
+        for cA in cornersA:
+            best = -1; bestd = 1e9
+            for j, cB in enumerate(cornersB):
+                if usedB[j] or cB["chain"]["layer"] != cA["chain"]["layer"]:
+                    continue
+                d = norm(sub(cA["V"], cB["V"]))
+                if d < bestd and (p and d <= PAIR_DIST * p) and cA["turn"] * cB["turn"] > 0:
+                    bestd = d; best = j
+            if best >= 0:
+                cB = cornersB[best]; usedB[best] = True
+                if plan_concentric(cA, cB):
+                    done += 2; pd += 1
+                else:                                   # too tight for concentric -> round each on its own
+                    for c in (cA, cB):
+                        if plan_single(c): done += 1
+                        else: skipped += 1
             else:
+                if plan_single(cA): done += 1
+                else: skipped += 1
+        for j, cB in enumerate(cornersB):
+            if not usedB[j]:
+                if plan_single(cB): done += 1
+                else: skipped += 1
+        print("  pair %s/%s pitch=%.4f cornersA=%d cornersB=%d concentric=%d"
+              % (na, nb, p, len(cornersA), len(cornersB), pd))
+
+    for net in singles:
+        cs = [c for ch in chains_by_net[net] for c in find_corners(ch)]
+        for c in cs:
+            ok = plan_single(c); done += ok; skipped += (not ok)
+        print("  single %s corners=%d" % (name_by_net[net].rsplit("/", 1)[-1], len(cs)))
+
+    print("total: %d corner(s) rounded, %d skipped (too tight)" % (done, skipped))
+    if not apply or done == 0:
+        print("DRY RUN: set APPLY = True (or run(apply=True)) to modify the board." if not apply
+              else "Nothing to fillet.")
+        return
+
+    added = 0
+    for chains in chains_by_net.values():
+        for ch in chains:
+            if not ch["fillets"]:
+                continue
+            verts = ch["verts"]; objs = ch["objs"]
+            for i, (P1, P2, mid) in ch["fillets"].items():
+                eb = objs[i - 1]["obj"]; ea = objs[i]["obj"]
+                w = eb.GetWidth()
+                try: eb.ClearSelected(); ea.ClearSelected()
+                except Exception: pass
+                _move_end(eb, verts[i], P1)
+                _move_end(ea, verts[i], P2)
                 t = pcbnew.PCB_ARC(board)
-                t.SetStart(V2(e[1])); t.SetMid(V2(e[2])); t.SetEnd(V2(e[3]))
-            t.SetWidth(pcbnew.FromMM(w)); t.SetLayer(layer); t.SetNetCode(net)
-            board.Add(t)
+                t.SetStart(V2(P1)); t.SetMid(V2(mid)); t.SetEnd(V2(P2))
+                t.SetWidth(w); t.SetLayer(ch["layer"]); t.SetNetCode(ch["net"])
+                board.Add(t); added += 1
     _refresh(board)
-    print("APPLIED -- review, run DRC, then save (Ctrl+S).")
+    print("APPLIED %d fillet arc(s) -- review, run DRC, then save (Ctrl+S)." % added)
 
 
 try:
     class FilletDiffPairPlugin(pcbnew.ActionPlugin):
         def defaults(self):
-            self.name = "Fillet differential pair"
+            self.name = "Fillet differential pair(s)"
             self.category = "Modify PCB"
-            self.description = "Fillet selected diff-pair corners (inner R, outer R+pitch, concentric)."
+            self.description = "Fillet selected diff-pair / fanout corners (concentric where matched)."
             self.show_toolbar_button = True
 
         def Run(self):
