@@ -32740,6 +32740,16 @@
 		)
 		(uuid "8b40ec4f-04e4-409f-baef-a152bb4ffc3a")
 	)
+	(label "SDA2"
+		(at 137.16 27.94 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8b8e8dcc-6276-4356-b121-58399fb7535b")
+	)
 	(label "HSOT4P"
 		(at 243.84 346.71 0)
 		(effects
@@ -32840,6 +32850,16 @@
 		)
 		(uuid "930e42f2-fb0b-442d-b9b4-c98629f717e0")
 	)
+	(label "SCL2"
+		(at 372.11 92.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "96519ced-2279-415b-ad57-41c6b1db115a")
+	)
 	(label "HSI2P"
 		(at 158.75 361.95 0)
 		(effects
@@ -32869,6 +32889,16 @@
 			(justify left bottom)
 		)
 		(uuid "96ced18f-600a-4137-9bc7-cc9dc4880f2d")
+	)
+	(label "SCL2"
+		(at 137.16 25.4 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "97baf1ed-c55e-480b-821a-b25da57f4fd0")
 	)
 	(label "C_RXP"
 		(at 40.64 80.01 0)
@@ -33619,6 +33649,16 @@
 			(justify left bottom)
 		)
 		(uuid "e8beced9-a123-4c4b-9c50-5bd7d4b7b8ca")
+	)
+	(label "SDA2"
+		(at 372.11 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e8f26dfa-f02c-45cd-806a-10a9b5a9bd04")
 	)
 	(label "HSO2P"
 		(at 227.33 101.6 180)
@@ -78465,8 +78505,8 @@
 		)
 	)
 	(sheet
-		(at 137.16 21.59)
-		(size 21.59 34.29)
+		(at 137.16 19.05)
+		(size 21.59 36.83)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -78481,7 +78521,7 @@
 		)
 		(uuid "ee7d8714-c34c-4773-b74b-c8779559fec9")
 		(property "Sheetname" "MCU_Retimer"
-			(at 137.16 20.8784 0)
+			(at 137.16 18.3384 0)
 			(effects
 				(font
 					(size 1.27 1.27)
