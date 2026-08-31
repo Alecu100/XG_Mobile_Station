@@ -1570,6 +1570,190 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "FBMJ2125HS420-T:FBMJ2125HS420-T"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "L"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "FBMJ2125HS420-T:L0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://item.szlcsc.com/datasheet/FBMJ2125HS420-T/94078.html"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer Part" "FBMJ2125HS420-T"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "TAIYO YUDEN(太诱)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier Part" "C92884"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier" "LCSC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part Name" "单路 0805磁珠 阻抗42Ω@100MHz"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "FBMJ2125HS420-T_1_0"
+				(arc
+					(start -4.064 0)
+					(mid -3.0226 1.016)
+					(end -2.032 0)
+					(stroke
+						(width 0.254)
+						(type solid)
+						(color 160 0 0 1)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.032 0)
+					(mid -0.9906 1.016)
+					(end 0 0)
+					(stroke
+						(width 0.254)
+						(type solid)
+						(color 160 0 0 1)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 1.016 1.016)
+					(end 2.032 0)
+					(stroke
+						(width 0.254)
+						(type solid)
+						(color 160 0 0 1)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.032 0)
+					(mid 3.048 1.016)
+					(end 4.064 0)
+					(stroke
+						(width 0.254)
+						(type solid)
+						(color 160 0 0 1)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 1.016)
+					(name "1"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 1.016)
+					(name "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "STM32F103RCT6:STM32F103RCT6"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3950,12 +4134,6 @@
 		(uuid "398fc31b-8d4e-45dc-871f-7352d5b029a0")
 	)
 	(junction
-		(at 53.34 101.6)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "407b6b7d-fc93-4ea4-8aeb-29332d6e5466")
-	)
-	(junction
 		(at 242.57 59.69)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3986,6 +4164,12 @@
 		(uuid "9059464b-1741-485f-a948-3758eee3b242")
 	)
 	(junction
+		(at 73.66 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9738326c-14ce-4454-aa07-f65ce0ba04ad")
+	)
+	(junction
 		(at 213.36 63.5)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4014,6 +4198,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ba50841d-f997-4f40-94c4-59b3a0744ec7")
+	)
+	(junction
+		(at 53.34 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c639664b-bbd7-432c-a07c-ea928b4bd163")
 	)
 	(junction
 		(at 213.36 49.53)
@@ -4047,6 +4237,16 @@
 	)
 	(wire
 		(pts
+			(xy 59.69 99.06) (xy 62.23 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0241e31f-427f-4222-8043-4d22f66fca5f")
+	)
+	(wire
+		(pts
 			(xy 210.82 30.48) (xy 210.82 38.1)
 		)
 		(stroke
@@ -4054,6 +4254,16 @@
 			(type default)
 		)
 		(uuid "0366e0d4-dc78-4d3c-b9c9-2a8f4dc2e6de")
+	)
+	(wire
+		(pts
+			(xy 59.69 90.17) (xy 59.69 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08c8209e-84e3-4e13-b034-ec60d223ce96")
 	)
 	(wire
 		(pts
@@ -4164,6 +4374,16 @@
 			(type default)
 		)
 		(uuid "1ed87abc-db9a-49da-9c7d-236f824d448a")
+	)
+	(wire
+		(pts
+			(xy 48.26 92.71) (xy 48.26 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ff493a6-408e-4acd-980c-62065d1a169b")
 	)
 	(wire
 		(pts
@@ -4354,6 +4574,16 @@
 			(type default)
 		)
 		(uuid "4b53b45e-2aed-4051-a073-80b94dd5abf1")
+	)
+	(wire
+		(pts
+			(xy 73.66 130.81) (xy 73.66 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56d5fd12-acf7-4925-b2c7-3844b8e00b26")
 	)
 	(wire
 		(pts
@@ -4587,16 +4817,6 @@
 	)
 	(wire
 		(pts
-			(xy 53.34 101.6) (xy 45.72 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8b3043c3-0814-4bbe-b36a-1664249bd317")
-	)
-	(wire
-		(pts
 			(xy 102.87 157.48) (xy 104.14 157.48)
 		)
 		(stroke
@@ -4604,6 +4824,16 @@
 			(type default)
 		)
 		(uuid "8b8eb3d2-8ce8-4d6a-9211-e932e9b2c7f4")
+	)
+	(wire
+		(pts
+			(xy 27.94 101.6) (xy 30.48 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "917e6ba8-c292-4316-9631-732930985593")
 	)
 	(wire
 		(pts
@@ -4797,6 +5027,16 @@
 	)
 	(wire
 		(pts
+			(xy 40.64 101.6) (xy 53.34 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6917cd7-3830-4d19-892e-581c03d6ef28")
+	)
+	(wire
+		(pts
 			(xy 201.93 31.75) (xy 201.93 30.48)
 		)
 		(stroke
@@ -4967,6 +5207,16 @@
 	)
 	(wire
 		(pts
+			(xy 48.26 90.17) (xy 59.69 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dac9a5c5-f5b7-44a1-9706-ca94a681ce8e")
+	)
+	(wire
+		(pts
 			(xy 68.58 49.53) (xy 68.58 53.34)
 		)
 		(stroke
@@ -5064,6 +5314,16 @@
 			(type default)
 		)
 		(uuid "f8731e85-fe08-4605-96c2-66b701e44081")
+	)
+	(wire
+		(pts
+			(xy 73.66 121.92) (xy 73.66 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcfdadc2-aaea-454f-a52b-b6aef0cc53fa")
 	)
 	(label "~{CASE_LED}"
 		(at 113.03 93.98 0)
@@ -5941,7 +6201,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 62.23 99.06 270)
+		(at 38.1 92.71 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5950,7 +6210,7 @@
 		(fields_autoplaced yes)
 		(uuid "0c031eea-9d03-40a7-8a2e-d0be3d800d9a")
 		(property "Reference" "#PWR089"
-			(at 55.88 99.06 0)
+			(at 31.75 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5959,7 +6219,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 58.42 99.0599 90)
+			(at 34.29 92.7099 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5968,7 +6228,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 62.23 99.06 0)
+			(at 38.1 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5977,7 +6237,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 62.23 99.06 0)
+			(at 38.1 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5986,7 +6246,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 62.23 99.06 0)
+			(at 38.1 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6915,6 +7175,200 @@
 	)
 	(symbol
 		(lib_id "Device:C")
+		(at 77.47 130.81 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2eb90ed1-230a-419f-88f5-f3d96bf88352")
+		(property "Reference" "C86"
+			(at 77.47 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0.1µF"
+			(at 77.47 135.89 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 73.66 131.7752 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C307331"
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL05B104KB54PNC"
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 77.47 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1826c59e-b91b-4987-84f6-35570aa1c0f8")
+		)
+		(pin "2"
+			(uuid "a775e427-ea29-49a8-83ce-3ce7281560d1")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
+					(reference "C86")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
 		(at 110.49 130.81 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7108,6 +7562,101 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
 					(reference "C33")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "FBMJ2125HS420-T:FBMJ2125HS420-T")
+		(at 43.18 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3066e363-fca4-4367-92bb-a206cd061f6d")
+		(property "Reference" "L5"
+			(at 43.18 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FBMJ2125HS420-T"
+			(at 43.18 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "FBMJ2125HS420-T:L0805"
+			(at 43.18 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/datasheet/FBMJ2125HS420-T/94078.html"
+			(at 43.18 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 43.18 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "FBMJ2125HS420-T"
+			(at 43.18 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "TAIYO YUDEN(太诱)"
+			(at 43.18 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C92884"
+			(at 43.18 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1ace6a8c-37d7-477d-a51e-4647d3b7f9ce")
+		)
+		(pin "2"
+			(uuid "4c43e50d-a021-49ec-89fb-5c786c87d335")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
+					(reference "L5")
 					(unit 1)
 				)
 			)
@@ -9015,7 +9564,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 45.72 101.6 90)
+		(at 27.94 101.6 90)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9024,7 +9573,7 @@
 		(dnp no)
 		(uuid "79d32da0-3f56-4a7c-b01a-6534b3ecc26d")
 		(property "Reference" "#PWR074"
-			(at 49.53 101.6 0)
+			(at 31.75 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9033,7 +9582,7 @@
 			)
 		)
 		(property "Value" "+3V3MCU"
-			(at 40.132 101.6 0)
+			(at 22.352 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9042,7 +9591,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 45.72 101.6 0)
+			(at 27.94 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9051,7 +9600,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 45.72 101.6 0)
+			(at 27.94 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9060,7 +9609,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 45.72 101.6 0)
+			(at 27.94 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9360,6 +9909,73 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 81.28 130.81 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "811e7d44-cd49-4f14-a9b4-38b81f96b485")
+		(property "Reference" "#PWR084"
+			(at 87.63 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 85.09 130.8101 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 81.28 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 81.28 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 81.28 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "69f6c81b-0495-48e0-8116-700f8273247b")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
+					(reference "#PWR084")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 81.28 39.37 90)
 		(mirror x)
 		(unit 1)
@@ -9513,7 +10129,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "88ff4d07-80fd-4704-b5cc-8b11fc436407")
 		(property "Reference" "#PWR073"
 			(at 53.34 87.63 0)
@@ -9525,7 +10140,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 53.3399 90.17 90)
+			(at 55.88 94.996 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10113,6 +10728,101 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
 					(reference "#FLG06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "FBMJ2125HS420-T:FBMJ2125HS420-T")
+		(at 35.56 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9b07de81-7c92-4e0f-bfa7-dbc7b0b2d194")
+		(property "Reference" "L4"
+			(at 35.56 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FBMJ2125HS420-T"
+			(at 35.56 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "FBMJ2125HS420-T:L0805"
+			(at 35.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/datasheet/FBMJ2125HS420-T/94078.html"
+			(at 35.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 35.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "FBMJ2125HS420-T"
+			(at 35.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "TAIYO YUDEN(太诱)"
+			(at 35.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C92884"
+			(at 35.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "23de178e-ef90-4d88-94ac-aa1aafe7e72a")
+		)
+		(pin "2"
+			(uuid "da648510-0509-4080-af86-b0ac7e1a92f7")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
+					(reference "L4")
 					(unit 1)
 				)
 			)
@@ -12769,6 +13479,72 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
 					(reference "#PWR0101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 73.66 138.43 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f39a0eb9-93bf-4dc9-80ca-b9edaa020dc3")
+		(property "Reference" "#PWR083"
+			(at 73.66 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3MCU"
+			(at 71.628 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 73.66 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 73.66 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6f3bc4dc-c6ee-499f-9b24-de0ad6abd1f5")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e/ee7d8714-c34c-4773-b74b-c8779559fec9"
+					(reference "#PWR083")
 					(unit 1)
 				)
 			)
