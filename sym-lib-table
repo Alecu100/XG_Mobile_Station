@@ -47,4 +47,5 @@
   (lib (name "STM32F103RCT6")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/STM32F103RCT6.elibz")(options "")(descr ""))
   (lib (name "CF4008M00012001")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/CF4008M00012001.elibz")(options "")(descr ""))
   (lib (name "FBMJ2125HS420-T")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/FBMJ2125HS420-T.elibz")(options "")(descr ""))
+  (lib (name "STM32F405RGT6")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/Symbols/STM32F405RGT6.elibz")(options "")(descr ""))
 )
