@@ -5412,6 +5412,17 @@
 		)
 		(uuid "5fccef8e-f44d-4ecb-adfb-2896bbad0600")
 	)
+	(hierarchical_label "PC2"
+		(shape bidirectional)
+		(at 50.8 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "695976ab-7951-40d6-aff7-f47b074e9e7a")
+	)
 	(hierarchical_label "USBDP"
 		(shape bidirectional)
 		(at 50.8 60.96 180)
@@ -5422,6 +5433,17 @@
 			(justify right)
 		)
 		(uuid "6bf9029e-4aa2-4a3b-91d8-5b4d330964ac")
+	)
+	(hierarchical_label "PC3"
+		(shape bidirectional)
+		(at 50.8 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6ca94f67-9ee8-4f9c-8f30-53bc243ea809")
 	)
 	(hierarchical_label "PA15"
 		(shape bidirectional)
@@ -5466,6 +5488,17 @@
 			(justify left)
 		)
 		(uuid "99b7df44-a708-479b-af72-5b5a052ea2a9")
+	)
+	(hierarchical_label "PC0"
+		(shape bidirectional)
+		(at 50.8 73.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "99bc734d-a251-4733-b15c-7d7c81f73b38")
 	)
 	(hierarchical_label "PA4"
 		(shape bidirectional)
@@ -5576,6 +5609,17 @@
 			(justify left)
 		)
 		(uuid "eb6e4357-1cf4-49c5-9102-73d3c598e750")
+	)
+	(hierarchical_label "PC1"
+		(shape bidirectional)
+		(at 50.8 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f1c497ed-6a19-405e-bee8-22cb444181f2")
 	)
 	(symbol
 		(lib_id "Device:C")
