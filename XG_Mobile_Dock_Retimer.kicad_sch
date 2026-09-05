@@ -30771,6 +30771,16 @@
 	)
 	(wire
 		(pts
+			(xy 302.26 100.33) (xy 306.07 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e84a5f59-52ee-4bcc-8d81-8ed4c4ab9438")
+	)
+	(wire
+		(pts
 			(xy 444.5 90.17) (xy 450.85 90.17)
 		)
 		(stroke
@@ -31018,6 +31028,16 @@
 			(type default)
 		)
 		(uuid "f0517926-b192-4bd2-807e-a5c696dc70b1")
+	)
+	(wire
+		(pts
+			(xy 302.26 97.79) (xy 306.07 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f09a6ce0-c682-407f-95f0-aaf27533f445")
 	)
 	(wire
 		(pts
@@ -32409,6 +32429,16 @@
 		)
 		(uuid "50e03a5f-9318-4b40-bfd7-4515f2fa2103")
 	)
+	(label "PRT0_RST_N"
+		(at 137.16 17.78 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "520269a0-1d64-4667-bdaf-ddc9bb6fc284")
+	)
 	(label "HSOL2P"
 		(at 74.93 82.55 0)
 		(effects
@@ -33429,6 +33459,16 @@
 		)
 		(uuid "a7edf83a-c7a8-4be5-9105-309d42eeebcb")
 	)
+	(label "PRT1_RST_N"
+		(at 137.16 20.32 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a810ae1b-217e-4b5a-80a8-5929440c0630")
+	)
 	(label "HSIL3P"
 		(at 245.11 116.84 0)
 		(effects
@@ -34339,6 +34379,28 @@
 			)
 		)
 	)
+	(global_label "+1V8"
+		(shape output)
+		(at 302.26 100.33 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "17384595-0047-438e-94d2-ac80118b5df0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 294.1948 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "+12V"
 		(shape output)
 		(at 57.15 158.75 180)
@@ -34704,6 +34766,28 @@
 		(uuid "9e187b8a-8643-4ab9-8767-52923e3bd324")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 47.8148 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+1V8"
+		(shape output)
+		(at 302.26 97.79 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a2a5276c-1843-469d-9529-31a555f16198")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 294.1948 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -50913,6 +50997,120 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Small")
+		(at 308.61 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "60bb0158-dc7a-41a8-b841-863dfea28fb3")
+		(property "Reference" "R32"
+			(at 303.022 102.108 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 311.658 101.854 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 308.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 308.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 308.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "0402WGF1001TCE"
+			(at 308.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C11702"
+			(at 308.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 308.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 308.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 308.61 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "50a3026b-9069-4a04-a741-3cb7f5ae01aa")
+		)
+		(pin "2"
+			(uuid "757361f3-2cb4-4b1a-8706-a7c2b273a8c5")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "R32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 419.1 154.94 270)
 		(unit 1)
@@ -58825,6 +59023,120 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 308.61 97.79 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "80483f37-01ca-4930-a2f6-f9e414c54c75")
+		(property "Reference" "R31"
+			(at 308.864 95.504 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 312.42 95.758 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 308.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 308.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 308.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "0402WGF1001TCE"
+			(at 308.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C11702"
+			(at 308.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 308.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 308.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 308.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a3274a7-95dc-40a7-92f6-f4f4b3a21b61")
+		)
+		(pin "2"
+			(uuid "856957b5-b3a5-41d0-9b75-6c68bddd3bc0")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "R31")
 					(unit 1)
 				)
 			)
@@ -83130,6 +83442,26 @@
 		(pin "USBDP" bidirectional
 			(at 137.16 13.97 180)
 			(uuid "44165bfc-e251-41e2-ad47-4f6819b61dc2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PC11" bidirectional
+			(at 137.16 17.78 180)
+			(uuid "1267df49-4ac2-4e1f-91ca-78e9cd70e0e1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PC12" bidirectional
+			(at 137.16 20.32 180)
+			(uuid "3ef599af-01fa-4df2-bcae-85a08840d434")
 			(effects
 				(font
 					(size 1.27 1.27)

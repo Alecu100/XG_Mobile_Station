@@ -5335,6 +5335,17 @@
 		)
 		(uuid "317be348-19f9-4fe0-8439-bceeebf3c121")
 	)
+	(hierarchical_label "PC11"
+		(shape bidirectional)
+		(at 50.8 104.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "36f6b773-c4a0-43a0-8d63-b5a7c5570b51")
+	)
 	(hierarchical_label "PA7"
 		(shape bidirectional)
 		(at 50.8 45.72 180)
@@ -5510,6 +5521,17 @@
 			(justify right)
 		)
 		(uuid "a0a31257-199f-4801-905e-d976c5aadfd5")
+	)
+	(hierarchical_label "PC12"
+		(shape bidirectional)
+		(at 50.8 106.68 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a325b693-b2dc-4d45-a169-d4317bde334e")
 	)
 	(hierarchical_label "PA1"
 		(shape bidirectional)
