@@ -7317,7 +7317,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "250"
+		(property "Value" "150"
 			(at 110.4901 81.28 0)
 			(effects
 				(font
@@ -7353,7 +7353,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "FRC0402F2700TS"
+		(property "Part_Number" "0402WGF1500TCE"
 			(at 111.76 83.82 0)
 			(effects
 				(font
@@ -7362,7 +7362,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2909342"
+		(property "LCSC" "C25082"
 			(at 111.76 83.82 0)
 			(effects
 				(font
