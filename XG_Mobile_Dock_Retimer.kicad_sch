@@ -18504,6 +18504,12 @@
 		(uuid "0e17032e-b9a5-4a5e-a521-5dd240c41e7e")
 	)
 	(junction
+		(at 481.33 255.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0efce0e8-1136-4019-b7f6-e7b4e303185d")
+	)
+	(junction
 		(at 473.71 199.39)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -21924,6 +21930,12 @@
 		(uuid "fb34895f-3e7a-43c8-b873-9e61c83d8dc5")
 	)
 	(junction
+		(at 473.71 252.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fba3ecc5-c8c4-413e-a4a4-8a9caec58bf0")
+	)
+	(junction
 		(at 481.33 228.6)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -24201,7 +24213,7 @@
 	)
 	(wire
 		(pts
-			(xy 481.33 252.73) (xy 481.33 257.81)
+			(xy 481.33 252.73) (xy 481.33 255.27)
 		)
 		(stroke
 			(width 0)
@@ -30021,6 +30033,16 @@
 	)
 	(wire
 		(pts
+			(xy 481.33 255.27) (xy 481.33 257.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c19ca5fe-ade9-4460-ae30-738766fe1cd2")
+	)
+	(wire
+		(pts
 			(xy 243.84 311.15) (xy 252.73 311.15)
 		)
 		(stroke
@@ -30978,6 +31000,16 @@
 			(type default)
 		)
 		(uuid "db1338d1-ea57-426b-8275-f0754e1aa541")
+	)
+	(wire
+		(pts
+			(xy 473.71 252.73) (xy 473.71 255.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dbbc190e-b6fa-4bec-a727-61799c89450a")
 	)
 	(wire
 		(pts
@@ -36107,6 +36139,200 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR061")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 477.52 255.27 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "02cb401e-a34c-48c0-8bb1-a8480085b9f9")
+		(property "Reference" "C123"
+			(at 477.52 247.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 477.52 250.19 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 473.71 256.2352 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C15525"
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL05A106MQ5NUNC"
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 477.52 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "667b931c-0fb2-4fb4-a1ef-4cd966a7e037")
+		)
+		(pin "2"
+			(uuid "b3d9d1e0-f0ee-49b2-8d72-eafac80a3344")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C123")
 					(unit 1)
 				)
 			)
