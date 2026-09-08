@@ -18325,7 +18325,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "10nF 0201B103K250NT MfPArt C285010 LCSC 0201\n100nF GRM033R61C104KE84D MfPart C76937 LCSC 0201\n220nF GRM033R61C224KE14D MfPart C161474 LCSC 0201\n1uf CL03A105MO3NRNH MfPart C307385 LCSC LCSC 0201\n1k 1206W4F1001T5E MfPart C4410 LCSC 1206 Footprint\n430 0603WAF4300T5E MfPart C23170 LCSC 0603 Footprint\n30 0603WAF300JT5E MfPart C22985 LCSC 0603 Footprint\n3 0603WAF300KT5E MfPart C23157 LCSC 0603 Footprint\n240 0603WAF2400T5E MfPart C23350 LCSC 0603 Footprint\n10 0603WAF100JT5E MfPart C22859 LCSC 0603 Footprint\n4.7 uF CL10A475KP8NNNC MfPart C1705 LCSC 0603 Footprint\n60O @ 100Mhz BLM41PG600SN1L MfPArt C85844 LCSC 1806 Footprint\n100k 0.1% RT0603BRD07100KL MfPart C122538 LCSC 0603 Footprint\n133k 0.1% RT0402BRD07133KL MfPart C852517 LCSC 0402 Footprint\n22.1k 0.1% RT0603BRD0722K1L MfPart C723484 LCSC 0603 Footprint\n174 0.1%  ARG02BTC1740 MfPart C5266100 LCSC 0402 Footprint\n10k 0.1% RT0402BRD0710KL MfPart C190095 LCSC 0402 Footprint\n22uF TMK316BBJ226ML-T MfPart C386093 LCSC 1206 Footprint\n4.7uF GRM188C81E475KE11D MfPArt C417145 LCSC 0603 Footprint\n1uF GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.1uF 50V CL05B104KB54PNC MfPart C307331 LCSC 0402 Footprint\n200uF 6.3V GRM31CR60J227ME11L MfPart C412252 LCSC 1206 Footprint\n100uF 6.3V CL31A107MQHNNNE MfPart C15008 LCSC 1206 Footprint\n47uF 6.3V C3216X7S0J476MT000E MfPart C342599 LCSC 1206 Footprint\n10uF 10V CL21A106KPFNNNE MfPArt C17024 LCSC 0805 Footprint\n3.3uF 16V CL31B335KOHNNNE MfPart C3908730 LCSC 1206 Footprint\n1uf 25V GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.47uF 16V C1206C474K4RACTU MfPart C2167327 LCSC 1206 Footprint\n0.1uF 25V GRM155R71E104KE14D MfPart C77014 LCSC 0402 Footprint\n42.2k RT0402BRD0742K2L MfPart C852782 LCSC 0402 Footprint\n30.1k RT0402BRD0730K1L MfPart C852714 LCSC 0402 Footprint\n1 0805W8J010JT5E MfPart C25288 LCSC 0805 Footprint\n1nF CC0402JRX7R9BB102 Mfpart C93920 LCSC 0402 Footprint\n1 1% CRCW04021R00FKEDC MfPart C2077765 LCSC 0402 Footprint\n33 1% RC-01W33R0FT MfPart C320843 LCSC 0201 Footprint"
+	(text "10nF 0201B103K250NT MfPArt C285010 LCSC 0201\n100nF GRM033R61C104KE84D MfPart C76937 LCSC 0201\n220nF GRM033R61C224KE14D MfPart C161474 LCSC 0201\n1uf CL03A105MO3NRNH MfPart C307385 LCSC LCSC 0201\n1k 1206W4F1001T5E MfPart C4410 LCSC 1206 Footprint\n430 0603WAF4300T5E MfPart C23170 LCSC 0603 Footprint\n30 0603WAF300JT5E MfPart C22985 LCSC 0603 Footprint\n3 0603WAF300KT5E MfPart C23157 LCSC 0603 Footprint\n240 0603WAF2400T5E MfPart C23350 LCSC 0603 Footprint\n10 0603WAF100JT5E MfPart C22859 LCSC 0603 Footprint\n4.7 uF CL10A475KP8NNNC MfPart C1705 LCSC 0603 Footprint\n60O @ 100Mhz BLM41PG600SN1L MfPArt C85844 LCSC 1806 Footprint\n100k 0.1% RT0603BRD07100KL MfPart C122538 LCSC 0603 Footprint\n133k 0.1% RT0402BRD07133KL MfPart C852517 LCSC 0402 Footprint\n22.1k 0.1% RT0603BRD0722K1L MfPart C723484 LCSC 0603 Footprint\n174 0.1%  ARG02BTC1740 MfPart C5266100 LCSC 0402 Footprint\n10k 0.1% RT0402BRD0710KL MfPart C190095 LCSC 0402 Footprint\n22uF TMK316BBJ226ML-T MfPart C386093 LCSC 1206 Footprint\n4.7uF GRM188C81E475KE11D MfPArt C417145 LCSC 0603 Footprint\n1uF GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.1uF 50V CL05B104KB54PNC MfPart C307331 LCSC 0402 Footprint\n200uF 6.3V GRM31CR60J227ME11L MfPart C412252 LCSC 1206 Footprint\n100uF 6.3V CL31A107MQHNNNE MfPart C15008 LCSC 1206 Footprint\n47uF 6.3V C3216X7S0J476MT000E MfPart C342599 LCSC 1206 Footprint\n10uF 10V CL21A106KPFNNNE MfPArt C17024 LCSC 0805 Footprint\n3.3uF 16V CL31B335KOHNNNE MfPart C3908730 LCSC 1206 Footprint\n1uf 25V GRM155R61E105KA12D MfPart C77009 LCSC 0402 Footprint\n0.47uF 16V C1206C474K4RACTU MfPart C2167327 LCSC 1206 Footprint\n0.1uF 25V GRM155R71E104KE14D MfPart C77014 LCSC 0402 Footprint\n42.2k RT0402BRD0742K2L MfPart C852782 LCSC 0402 Footprint\n30.1k RT0402BRD0730K1L MfPart C852714 LCSC 0402 Footprint\n1 0805W8J010JT5E MfPart C25288 LCSC 0805 Footprint\n1nF CC0402JRX7R9BB102 Mfpart C93920 LCSC 0402 Footprint\n1 1% CRCW04021R00FKEDC MfPart C2077765 LCSC 0402 Footprint\n33 1% RC-01W33R0FT MfPart C320843 LCSC 0201 Footprint\n10uF CL05A106MQ5NUNC MfPart C15525 LCSC 0402 Footprint"
 		(exclude_from_sim no)
 		(at 420.624 20.574 0)
 		(effects
@@ -18724,6 +18724,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1de1803e-7bd6-4aec-ab04-8432dea6da4a")
+	)
+	(junction
+		(at 473.71 250.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1de97ae0-b548-4d57-9a71-379b03b84f08")
 	)
 	(junction
 		(at 415.29 200.66)
@@ -19138,6 +19144,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "38d7dd48-f864-400b-b0cf-53daac06e8f0")
+	)
+	(junction
+		(at 481.33 252.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "391ccb2e-eda8-4f67-b606-1886afd915f1")
 	)
 	(junction
 		(at 379.73 139.7)
@@ -20166,6 +20178,12 @@
 		(uuid "8168e113-39a5-4242-a746-4dbbc9fe74c1")
 	)
 	(junction
+		(at 481.33 245.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "819edd57-825d-4b98-8833-8ec3016282aa")
+	)
+	(junction
 		(at 415.29 274.32)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -20388,6 +20406,12 @@
 		(uuid "8e1b9580-da36-4ed1-b4d1-8c604891caa0")
 	)
 	(junction
+		(at 473.71 242.57)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e5b6315-6100-414f-923f-463c291a343f")
+	)
+	(junction
 		(at 334.01 226.06)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -20566,6 +20590,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9acb4e37-5982-4f7d-afec-e14cb5ace6f4")
+	)
+	(junction
+		(at 481.33 247.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9b2f74f4-2262-4f3e-9ac4-ea5e202b84b3")
 	)
 	(junction
 		(at 252.73 139.7)
@@ -20758,6 +20788,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a5f41e15-6e74-4245-bf8a-da61f7f6665c")
+	)
+	(junction
+		(at 481.33 250.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a5f96882-6f35-49d0-a984-1c604c2d8921")
 	)
 	(junction
 		(at 218.44 228.6)
@@ -21234,6 +21270,12 @@
 		(uuid "d2a12b33-cdf2-41cd-bd0b-40df1ad2eb25")
 	)
 	(junction
+		(at 473.71 247.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d31796bb-df93-4004-9dee-8828f47d3bfb")
+	)
+	(junction
 		(at 546.1 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -21586,6 +21628,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e7991513-1597-409b-8d75-219514ab5e6c")
+	)
+	(junction
+		(at 473.71 245.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e7c8af84-e536-4d6d-95e4-71dac238225e")
 	)
 	(junction
 		(at 334.01 147.32)
@@ -23553,6 +23601,16 @@
 	)
 	(wire
 		(pts
+			(xy 481.33 245.11) (xy 481.33 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21938eed-b656-4594-9516-8606f9968b90")
+	)
+	(wire
+		(pts
 			(xy 218.44 218.44) (xy 227.33 218.44)
 		)
 		(stroke
@@ -24140,6 +24198,16 @@
 			(type default)
 		)
 		(uuid "3054b9ab-bbde-474d-882b-858361e0fb0b")
+	)
+	(wire
+		(pts
+			(xy 481.33 252.73) (xy 481.33 257.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "305c0b0c-e057-402e-87ad-3f88556ca11e")
 	)
 	(wire
 		(pts
@@ -25873,6 +25941,16 @@
 	)
 	(wire
 		(pts
+			(xy 473.71 242.57) (xy 473.71 245.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c124d29-baa8-405d-bb44-07ae1028f27d")
+	)
+	(wire
+		(pts
 			(xy 511.81 290.83) (xy 514.35 290.83)
 		)
 		(stroke
@@ -25983,6 +26061,16 @@
 	)
 	(wire
 		(pts
+			(xy 473.71 250.19) (xy 473.71 252.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5df8439d-9313-40c0-9f26-a7881b822141")
+	)
+	(wire
+		(pts
 			(xy 218.44 88.9) (xy 218.44 96.52)
 		)
 		(stroke
@@ -26020,6 +26108,16 @@
 			(type default)
 		)
 		(uuid "5eeaa0db-be7b-47ae-975d-e7b1448bd232")
+	)
+	(wire
+		(pts
+			(xy 481.33 247.65) (xy 481.33 250.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5eecf273-7f62-4885-9442-477e63c187c8")
 	)
 	(wire
 		(pts
@@ -26243,7 +26341,7 @@
 	)
 	(wire
 		(pts
-			(xy 481.33 242.57) (xy 481.33 246.38)
+			(xy 481.33 242.57) (xy 481.33 245.11)
 		)
 		(stroke
 			(width 0)
@@ -30043,6 +30141,16 @@
 	)
 	(wire
 		(pts
+			(xy 481.33 250.19) (xy 481.33 252.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c33a8426-ea46-4f1e-8a26-393d5625a1da")
+	)
+	(wire
+		(pts
 			(xy 35.56 19.05) (xy 46.99 19.05)
 		)
 		(stroke
@@ -30130,6 +30238,16 @@
 			(type default)
 		)
 		(uuid "c69c3954-6e9c-4b81-a015-1e77f36e5c72")
+	)
+	(wire
+		(pts
+			(xy 473.71 245.11) (xy 473.71 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c69f11bf-5cce-467b-b873-029f1399fd4c")
 	)
 	(wire
 		(pts
@@ -32140,6 +32258,16 @@
 			(type default)
 		)
 		(uuid "fc213a50-8efa-4c63-baa9-aadb4858d686")
+	)
+	(wire
+		(pts
+			(xy 473.71 247.65) (xy 473.71 250.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc319739-b16c-4736-9776-9474ff603a26")
 	)
 	(wire
 		(pts
@@ -39199,6 +39327,200 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C180")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 477.52 245.11 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0b4a432b-b097-4689-8d97-a0d3ebbd686f")
+		(property "Reference" "C119"
+			(at 477.52 237.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 477.52 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 473.71 246.0752 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C15525"
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL05A106MQ5NUNC"
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 477.52 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6f0b5760-d713-4359-8b1e-2db16572b3ad")
+		)
+		(pin "2"
+			(uuid "443e27eb-2ce0-45ad-990f-2c29336c9972")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C119")
 					(unit 1)
 				)
 			)
@@ -51869,6 +52191,200 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 477.52 252.73 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5c32514e-976c-4625-ac6e-6cf96cfcea97")
+		(property "Reference" "C122"
+			(at 477.52 245.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 477.52 247.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 473.71 253.6952 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C15525"
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL05A106MQ5NUNC"
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 477.52 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "82082684-085a-4319-bc27-3eea1e717c16")
+		)
+		(pin "2"
+			(uuid "8b9239f7-27ea-4326-967d-71d3143899d0")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C122")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 556.26 151.13 0)
 		(unit 1)
@@ -62535,6 +63051,200 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 477.52 247.65 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "88065fc5-dbb7-4fde-b555-8d4fc1db9420")
+		(property "Reference" "C120"
+			(at 477.52 240.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 477.52 242.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 473.71 248.6152 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C15525"
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL05A106MQ5NUNC"
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 477.52 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "971023bb-a096-4ab5-9522-2c97ad300c8b")
+		)
+		(pin "2"
+			(uuid "2da2df90-d1aa-46fb-90b7-d4f0ace93815")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C120")
 					(unit 1)
 				)
 			)
@@ -79972,7 +80682,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 481.33 246.38 0)
+		(at 481.33 257.81 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -79980,7 +80690,7 @@
 		(dnp no)
 		(uuid "d2605ba1-fea4-4993-aea3-943a7e57539a")
 		(property "Reference" "#PWR0103"
-			(at 481.33 252.73 0)
+			(at 481.33 264.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -79989,7 +80699,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 481.33 251.46 0)
+			(at 481.33 262.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -79997,7 +80707,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 481.33 246.38 0)
+			(at 481.33 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -80006,7 +80716,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 481.33 246.38 0)
+			(at 481.33 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -80015,7 +80725,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 481.33 246.38 0)
+			(at 481.33 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -82136,6 +82846,200 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 477.52 250.19 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e026285c-75cc-462e-b8ab-c7c9e86ae51c")
+		(property "Reference" "C121"
+			(at 477.52 242.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF"
+			(at 477.52 245.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 473.71 251.1552 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C15525"
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "CL05A106MQ5NUNC"
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 477.52 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "17d201ab-b6be-438e-ae7d-de3930a2a7da")
+		)
+		(pin "2"
+			(uuid "9b79e2f2-43e1-4b57-a745-0df98932e01a")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C121")
 					(unit 1)
 				)
 			)
