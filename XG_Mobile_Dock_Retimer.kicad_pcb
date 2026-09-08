@@ -125041,7 +125041,7 @@
 		(uuid "6b0a716c-0be8-4947-ba47-603e04843f48")
 	)
 	(via
-		(at 110.26 107.81)
+		(at 110.235 107.78)
 		(size 0.3)
 		(drill 0.2)
 		(layers "F.Cu" "B.Cu")
@@ -336597,6 +336597,38 @@
 				(xy 102.205521 79.385489) (xy 102.162817 79.376382) (xy 102.11368 79.366029) (xy 102.111379 79.365289)
 				(xy 102.043864 79.335577) (xy 102.037672 79.329108) (xy 102.037868 79.320155) (xy 102.038824 79.318405)
 				(xy 102.133959 79.175083) (xy 102.141388 79.170088) (xy 102.141412 79.170082) (xy 102.312061 79.137059)
+			)
+		)
+	)
+	(zone
+		(net 0)
+		(net_name "")
+		(layer "B.Cu")
+		(uuid "68e7a704-75e0-4625-9fa4-af29b041f323")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(filled_areas_thickness no)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour not_allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+		)
+		(polygon
+			(pts
+				(xy 102.53 111.47) (xy 102.86234 111.80234) (xy 102.438919 112.225761) (xy 102.106579 111.893421)
 			)
 		)
 	)
