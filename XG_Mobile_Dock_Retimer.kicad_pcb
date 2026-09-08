@@ -217812,38 +217812,6 @@
 		)
 	)
 	(zone
-		(net 0)
-		(net_name "")
-		(layer "F.Cu")
-		(uuid "1dcb965d-9792-4153-9edc-93fff32caecb")
-		(hatch edge 0.5)
-		(connect_pads
-			(clearance 0)
-		)
-		(min_thickness 0.25)
-		(filled_areas_thickness no)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour not_allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "")
-		)
-		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-		)
-		(polygon
-			(pts
-				(xy 221.55 108.435) (xy 221.55 104.45) (xy 226.5 104.45) (xy 226.5 108.4)
-			)
-		)
-	)
-	(zone
 		(net 156)
 		(net_name "/HSOT3P")
 		(layer "F.Cu")
