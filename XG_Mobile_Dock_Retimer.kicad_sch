@@ -15363,142 +15363,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "KEYSTONE_8730:8730"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at -5.08 3.302 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Value" "8730"
-				(at -5.08 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Footprint" "8730:KEYSTONE_8730"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "PARTREV" "C"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "SNAPEDA_PN" "8730"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "STANDARD" "Manufacturer Recommendations"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "MAXIMUM_PACKAGE_HEIGHT" "6.25 mm"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "MANUFACTURER" "Keystone"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(symbol "8730_0_0"
-				(rectangle
-					(start -5.08 -2.54)
-					(end 5.08 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at -10.16 0 0)
-					(length 5.08)
-					(name "1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "KT-0603R:KT-0603R"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -16621,6 +16485,142 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "T31000:T31000"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "T31000:CONN-SMD_T31000"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20200107/C481468_C71AD29EE3547CB6EB2C94611C55257F.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer Part" "T31000"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" "XFCN(兴飞)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier Part" "C481468"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier" "LCSC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part Name" "一脚 M3 二件套 T31000"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "T31000_1_0"
+				(rectangle
+					(start -2.54 -2.54)
+					(end 2.54 2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -1.27 1.27)
+					(radius 0.381)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -23162,16 +23162,6 @@
 			(type default)
 		)
 		(uuid "16d481ec-ae1d-4ed9-8775-0db9407d94b2")
-	)
-	(wire
-		(pts
-			(xy 287.02 29.21) (xy 287.02 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "17626aba-48ba-474a-bd12-332342767680")
 	)
 	(wire
 		(pts
@@ -40286,17 +40276,17 @@
 		)
 	)
 	(symbol
-		(lib_id "KEYSTONE_8730:8730")
-		(at 297.18 29.21 0)
+		(lib_id "T31000:T31000")
+		(at 45.72 298.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "0bf61637-d320-43e0-b9bd-a603e3a245a0")
-		(property "Reference" "J17"
-			(at 303.53 27.9399 0)
+		(uuid "0bddba6d-b507-4fd2-bc70-dea94a9eeae7")
+		(property "Reference" "U4"
+			(at 49.53 297.8149 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40304,8 +40294,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "8730"
-			(at 303.53 30.4799 0)
+		(property "Value" "~"
+			(at 49.53 299.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40313,18 +40303,17 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "KEYSTONE_8730:KEYSTONE_8730"
-			(at 297.18 29.21 0)
+		(property "Footprint" "CONN-SMD_T31000:CONN-SMD_T31000"
+			(at 45.72 298.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify bottom)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 297.18 29.21 0)
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20200107/C481468_C71AD29EE3547CB6EB2C94611C55257F.pdf"
+			(at 45.72 298.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40333,7 +40322,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 297.18 29.21 0)
+			(at 45.72 298.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40341,58 +40330,8 @@
 				(hide yes)
 			)
 		)
-		(property "PARTREV" "C"
-			(at 297.18 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "SNAPEDA_PN" "8730"
-			(at 297.18 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 297.18 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "6.25 mm"
-			(at 297.18 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" "Keystone"
-			(at 297.18 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 297.18 29.21 0)
+		(property "Manufacturer" "XFCN(兴飞)"
+			(at 45.72 298.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40400,8 +40339,8 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Pins" ""
-			(at 297.18 29.21 0)
+		(property "Part_Number" "T31000"
+			(at 45.72 298.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40409,8 +40348,8 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Type" ""
-			(at 297.18 29.21 0)
+		(property "LCSC" "C481468"
+			(at 45.72 298.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -40419,12 +40358,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "0643a438-afad-46cd-8c96-96c87e9865b1")
+			(uuid "7bed3e65-cc24-4a0e-bb60-e8349f4e525e")
 		)
 		(instances
-			(project "XG_Mobile_Dock_Lite"
+			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "J17")
+					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -65261,6 +65200,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 40.64 313.69 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "89f44be5-7ca9-4201-bb7a-f755e9039d87")
+		(property "Reference" "#PWR071"
+			(at 34.29 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 36.83 313.6899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 40.64 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e780fcf0-c79f-4e39-80d7-af509c786e65")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "#PWR071")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 524.51 332.74 0)
 		(mirror x)
@@ -73352,6 +73358,73 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 40.64 298.45 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ae6e46c3-20fa-4d89-90b8-160589370f8d")
+		(property "Reference" "#PWR070"
+			(at 34.29 298.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 36.83 298.4499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 298.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 298.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 40.64 298.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "477bfdd2-10b0-4e34-9575-5ae2a9449650")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "#PWR070")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 82.55 140.97 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -77666,6 +77739,100 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C117")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "T31000:T31000")
+		(at 45.72 313.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bf808aab-4e16-420a-9297-4b0eb362c0f8")
+		(property "Reference" "U6"
+			(at 49.53 313.0549 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 49.53 314.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "CONN-SMD_T31000:CONN-SMD_T31000"
+			(at 45.72 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://atta.szlcsc.com/upload/public/pdf/source/20200107/C481468_C71AD29EE3547CB6EB2C94611C55257F.pdf"
+			(at 45.72 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 45.72 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "XFCN(兴飞)"
+			(at 45.72 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "T31000"
+			(at 45.72 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C481468"
+			(at 45.72 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "428d328a-83e2-407b-b3f6-e54876b39ce8")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "U6")
 					(unit 1)
 				)
 			)
@@ -83980,72 +84147,6 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C169")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 287.02 34.29 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d7abbb18-57e0-4220-9b26-57fc1a47d0c5")
-		(property "Reference" "#PWR0100"
-			(at 287.02 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 287.02 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 287.02 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 287.02 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 287.02 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "612424bc-91aa-4a17-b1aa-2b32fab1eab6")
-		)
-		(instances
-			(project "XG_Mobile_Dock_Lite"
-				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
-					(reference "#PWR0100")
 					(unit 1)
 				)
 			)
