@@ -32903,6 +32903,16 @@
 		)
 		(uuid "1a080962-5ae9-4920-902d-5a9c8853c067")
 	)
+	(label "BUCK_ON"
+		(at 332.74 300.99 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1bb61e68-f29c-4e51-abba-03874cf47099")
+	)
 	(label "HSOL0N"
 		(at 193.04 392.43 180)
 		(effects
@@ -32932,6 +32942,16 @@
 			(justify left bottom)
 		)
 		(uuid "1c9df63f-d408-441e-950f-60ff00735ea6")
+	)
+	(label "BUCK_ON_MCU"
+		(at 137.16 8.89 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1d118522-debf-4734-8f0c-36d45dee90de")
 	)
 	(label "LOCK_SW"
 		(at 40.64 29.21 0)
@@ -33942,6 +33962,16 @@
 			(justify left bottom)
 		)
 		(uuid "6eb5afcd-d206-422f-a13a-fcd7e24ef550")
+	)
+	(label "BUCK_ON_MCU"
+		(at 332.74 295.91 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "700553bb-58b6-4035-ad07-9a956bc702db")
 	)
 	(label "HSI0N"
 		(at 158.75 369.57 0)
@@ -35503,6 +35533,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3V3"
+		(shape output)
+		(at 332.74 306.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1d78f981-98ec-4fa9-a5d8-926df744030c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 340.8052 306.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -43438,6 +43490,106 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR057")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SS-12D10L5:SS-12D10L5")
+		(at 330.2 300.99 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "19fafc9b-502f-44f2-98d8-f559711dfb69")
+		(property "Reference" "SW2"
+			(at 329.1206 308.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 327.2155 308.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "SS-12D10L5:SW-TH_SS-12D10L5"
+			(at 330.2 300.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://item.szlcsc.com/datasheet/SS-12D10L5/300104.html"
+			(at 330.2 300.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Circuit:SPDT Actuator Style:Rectangular Columnar Termination Style:PC Pin Length:13mm Width:6.8mm Switch Height:6.4mm Mounting Type:Through Hole Actuator Color:Black Current Rating:3A Voltage Rating:125V Life:10,000 Cycles Operating Temperature:-40°C~+85°C"
+			(at 330.2 300.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "SS-12D10L5"
+			(at 330.2 300.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "XKB Connection(中国星坤)"
+			(at 330.2 300.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C319012"
+			(at 330.2 300.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "c56d328c-40ed-42a9-946c-1e733606ecc0")
+		)
+		(pin "1"
+			(uuid "48a31c6a-afa1-4923-a0b1-856faf4e722a")
+		)
+		(pin "2"
+			(uuid "160ebeaf-79af-429b-93e9-03f88bc47c63")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "SW2")
 					(unit 1)
 				)
 			)
