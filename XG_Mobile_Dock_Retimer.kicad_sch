@@ -22170,10 +22170,6 @@
 		(uuid "1e48102c-fe8d-4975-b094-cb32f54e2a69")
 	)
 	(no_connect
-		(at 215.9 -43.18)
-		(uuid "1f091501-6aa6-447f-b898-de84aac8b107")
-	)
-	(no_connect
 		(at 544.83 34.29)
 		(uuid "2050b450-8e8b-46a8-a118-fafd8de3c171")
 	)
@@ -22204,10 +22200,6 @@
 	(no_connect
 		(at 372.11 80.01)
 		(uuid "73269fec-2fa2-42cd-9d83-8114c4ecf4f9")
-	)
-	(no_connect
-		(at 243.84 -43.18)
-		(uuid "74141b95-7ca3-49e9-b3aa-37d8f223dff3")
 	)
 	(no_connect
 		(at 514.35 148.59)
@@ -22866,6 +22858,16 @@
 			(type default)
 		)
 		(uuid "0d6d8692-b923-43ca-8ed9-2d4376b26ca5")
+	)
+	(wire
+		(pts
+			(xy 215.9 -43.18) (xy 243.84 -43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0de7fed2-1e58-4017-8755-c92d80db5bf7")
 	)
 	(wire
 		(pts
@@ -34476,6 +34478,16 @@
 			(justify left bottom)
 		)
 		(uuid "6eb5afcd-d206-422f-a13a-fcd7e24ef550")
+	)
+	(label "VBUS_USB2"
+		(at 243.84 -43.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6fafc556-3ff6-45c8-8652-7d50f9833cc3")
 	)
 	(label "BUCK_ON_MCU"
 		(at 332.74 295.91 0)
