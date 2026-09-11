@@ -57,4 +57,6 @@
   (lib (name "CF4008M00012001")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/CF4008M00012001/CF4008M00012001.elibz")(options "")(descr ""))
   (lib (name "FBMJ2125HS420-T")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/FBMJ2125HS420-T/FBMJ2125HS420-T.elibz")(options "")(descr ""))
   (lib (name "STM32F405RGT6")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/STM32F405RGT6/STM32F405RGT6.elibz")(options "")(descr ""))
+  (lib (name "PZ254V-12-8P")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/PZ254V-12-8P/PZ254V-12-8P.elibz")(options "")(descr ""))
+  (lib (name "2.54Short Circuit Cap Opening")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/2.54Short Circuit Cap Opening/2.54Short Circuit Cap Opening.elibz")(options "")(descr ""))
 )
