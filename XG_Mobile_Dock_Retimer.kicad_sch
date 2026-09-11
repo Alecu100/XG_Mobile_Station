@@ -24949,6 +24949,16 @@
 	)
 	(wire
 		(pts
+			(xy 529.59 273.05) (xy 529.59 275.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3adcd27a-1838-4520-8614-1ac3087c98d0")
+	)
+	(wire
+		(pts
 			(xy 27.94 236.22) (xy 27.94 238.76)
 		)
 		(stroke
@@ -33207,6 +33217,16 @@
 		)
 		(uuid "017d30bb-871f-49ad-9689-baba627456d7")
 	)
+	(label "PGOOD_BUCK"
+		(at 511.81 293.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "030d27d0-4cff-4b4a-9c09-48ae09ef7f25")
+	)
 	(label "HSIL6P"
 		(at 243.84 313.69 0)
 		(effects
@@ -33516,6 +33536,16 @@
 			(justify left bottom)
 		)
 		(uuid "23828992-3784-40bf-ae59-183fd9afdbe9")
+	)
+	(label "PGOOD_BUCK"
+		(at 529.59 275.59 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2390dd16-91c8-4852-bd71-c5cfc9284e10")
 	)
 	(label "HSIL7N"
 		(at 245.11 165.1 0)
@@ -35007,6 +35037,16 @@
 		)
 		(uuid "a1881dab-0409-4c26-bd05-e92fa3368f4d")
 	)
+	(label "PGOOD_BUCK"
+		(at 158.75 13.97 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a1f473db-68a1-4df9-b1e9-ea7733aa59a4")
+	)
 	(label "HSOT1N"
 		(at 243.84 389.89 0)
 		(effects
@@ -36473,6 +36513,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+3V3MCU"
+		(shape output)
+		(at 529.59 265.43 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a332d886-bb60-4d35-ab9f-2c7901c30c05")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 529.59 253.3129 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -77218,6 +77280,199 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "C204")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 529.59 269.24 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b9bdc0a3-55ee-4c46-a70e-8246f6901547")
+		(property "Reference" "R39"
+			(at 532.13 268.986 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "42.2k"
+			(at 526.796 269.24 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 531.368 269.24 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C852782"
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "RT0402BRD0742K2L"
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 529.59 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d91bbb7d-d4c5-4bfd-8508-20ce5334ae3d")
+		)
+		(pin "1"
+			(uuid "d59857e7-76b1-4992-88eb-64896833fd11")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "R39")
 					(unit 1)
 				)
 			)
