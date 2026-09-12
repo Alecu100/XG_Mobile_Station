@@ -53,12 +53,12 @@ PAD_CLEAR   = 0.50            # min bump edge -> non-own-net pad edge (esp. U1 p
 BUMP_GAP    = 0.30            # min clearance to a different net's meander excursion
 THICKEN_FACTOR = 1.5          # max meander width = THICKEN_FACTOR x the diff-pair trace width (relative)
 THICKEN_STEPS  = 4            # sub-segments used to taper each 45deg slope (higher = smoother gradient)
+THICKEN_FULL_HEIGHT = 0.22    # bump height that reaches THICKEN_FACTOR; smaller bumps scale proportionally
 PARTNER_THICKEN = True        # also thicken the non-meandered partner: mirror the bumps (swell opposite
                               #   each bump, back to normal between) on the partner's own centerline --
                               #   length-neutral, so skew stays nulled and the intra-pair gap is kept
 PARTNER_FACTOR  = None        # partner max width factor; None = match THICKEN_FACTOR (the meander)
-THICKEN_MIN_SKEW = 0.15       # if a pair's skew correction is below this, DON'T thicken (plain w0 meander
-                              #   + skip the partner mirror) -- a tiny bump has no room to taper nicely
+THICKEN_MIN_SKEW = 0.0        # minimum correction to thicken; height scaling now keeps tiny bumps near w0
 H_MAX       = 0.30            # max bump height (outboard excursion)
 H_TARGET    = 0.22            # preferred (small) trapezoid height for distribution
 W_TOP       = 0.22            # trapezoid flat-top length
@@ -366,10 +366,13 @@ def choose_outboard(seg, paired_path):
 # ----------------------------------------------------------------------------- trapezoid + placement
 def _gwidth(o, w0, h, factor=None):
     # Gradual taper: width ramps LINEARLY with the outboard fraction o/h, from w0 (at the pair) to
-    # factor*w0 (at the flat top). 2*o+w0 is a clearance guard that keeps the inboard edge off the
-    # pair near the base; it no longer forces an abrupt jump to max width.
+    # a height-scaled peak at the flat top. A THICKEN_FULL_HEIGHT bump keeps the previous maximum;
+    # smaller bumps thicken proportionally less, while larger bumps remain capped at that maximum.
+    # 2*o+w0 is a clearance guard that keeps the inboard edge off the pair near the base.
     f = THICKEN_FACTOR if factor is None else factor
-    wmax = f * w0
+    height_scale = 1.0 if THICKEN_FULL_HEIGHT <= 1e-9 else min(1.0, max(0.0, h / THICKEN_FULL_HEIGHT))
+    effective_factor = 1.0 + (f - 1.0) * height_scale
+    wmax = effective_factor * w0
     frac = 0.0 if h <= 1e-9 else max(0.0, min(1.0, o / h))
     ramp = w0 + (wmax - w0) * frac
     return max(w0, min(ramp, 2.0 * o + w0, wmax))
