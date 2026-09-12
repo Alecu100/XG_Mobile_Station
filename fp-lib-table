@@ -59,4 +59,5 @@
   (lib (name "STM32F405RGT6")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/STM32F405RGT6/STM32F405RGT6.elibz")(options "")(descr ""))
   (lib (name "PZ254V-12-8P")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/PZ254V-12-8P/PZ254V-12-8P.elibz")(options "")(descr ""))
   (lib (name "2.54Short Circuit Cap Opening")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/2.54Short Circuit Cap Opening/2.54Short Circuit Cap Opening.elibz")(options "")(descr ""))
+  (lib (name "APS0630M1R0A")(type "EasyEDA / JLCEDA Pro")(uri "${KIPRJMOD}/Footprints/APS0630M1R0A/APS0630M1R0A.elibz")(options "")(descr ""))
 )
