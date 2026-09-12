@@ -610,10 +610,21 @@ def plan_partner_mirror(oracle, p, pruns):
     if not best:
         return None
     R, sa, vx, vy = best
-    w0p = R["w"]; duv = vx * ux + vy * uy
+    duv = vx * ux + vy * uy
     def ppt(s):
         t = (s - sa) * duv
         return (R["a"][0] + vx * t, R["a"][1] + vy * t)
+    # A repeat tuning pass can overlap a partner run that already contains mirrored thickening.
+    # Preserve that piecewise profile as a floor instead of rebuilding the whole run from its first width.
+    existing_spans = []
+    for member in R["members"]:
+        ma = (member["a"][0] - A[0]) * ux + (member["a"][1] - A[1]) * uy
+        mb = (member["b"][0] - A[0]) * ux + (member["b"][1] - A[1]) * uy
+        existing_spans.append((min(ma, mb), max(ma, mb), member["w"]))
+    w0p = min(width for (_, _, width) in existing_spans)
+    def existing_width(s):
+        widths = [width for (lo, hi, width) in existing_spans if lo - 1e-6 <= s <= hi + 1e-6]
+        return max(widths) if widths else w0p
     def wprof(s):
         for k in range(N):
             b0 = s0 + k * pitch_b
@@ -630,6 +641,8 @@ def plan_partner_mirror(oracle, p, pruns):
     sb_end = (R["b"][0] - A[0]) * ux + (R["b"][1] - A[1]) * uy
     smin, smax = min(sa, sb_end), max(sa, sb_end)
     cuts = set([smin, smax])
+    for lo, hi, _ in existing_spans:
+        cuts.add(lo); cuts.add(hi)
     for k in range(N):
         b0 = s0 + k * pitch_b
         for j in range(steps + 1):                        # uniform sub-segs on BOTH slopes and the flat
@@ -646,14 +659,15 @@ def plan_partner_mirror(oracle, p, pruns):
     # Per sub-seg: the mirror target width, clamped to what actually fits (clearance to other nets and
     # to the meander). Sub-segs are uniform length so the clamp is fair -- a single long flat-top would
     # otherwise be over-clamped by its worst point while short neighbours escape, sawtoothing the edge.
-    raw = []                                              # [q0, q1, wm, k, offset-from-bump-centre]
+    raw = []                              # [q0, q1, width, bump, offset-from-centre, existing-width floor]
     for i in range(len(cuts) - 1):
         s_a, s_b = cuts[i], cuts[i + 1]
         if s_b - s_a < 1e-6:
             continue
-        sm = 0.5 * (s_a + s_b); k = bump_of(sm); wm = wprof(sm)
+        sm = 0.5 * (s_a + s_b); k = bump_of(sm); old_w = existing_width(sm)
+        requested_w = wprof(sm); wm = max(old_w, requested_w)
         q0, q1 = ppt(s_a), ppt(s_b)
-        if k >= 0 and wm > w0p + 1e-9:
+        if k >= 0 and requested_w > old_w + 1e-9:
             slack = oracle.edge_ok(q0, q1, layer, p["pair"], wm / 2, via_clear=PARTNER_VIA_CLEAR)
             for me in p["edges"]:                         # keep CLEAR from the meander itself (same pair)
                 mw = me[2]
@@ -662,9 +676,9 @@ def plan_partner_mirror(oracle, p, pruns):
                     if dd < slack:
                         slack = dd
             if slack < CLR_MARGIN:
-                wm = max(w0p, wm + 2.0 * (slack - CLR_MARGIN))
+                wm = max(old_w, wm + 2.0 * (slack - CLR_MARGIN))
         coff = abs(sm - (s0 + k * pitch_b + h + 0.5 * W_TOP)) if k >= 0 else 0.0
-        raw.append([q0, q1, wm, k, coff])
+        raw.append([q0, q1, wm, k, coff, old_w])
     # Shape each swell into a clean, symmetric, single-peak bulge: walking outward from the bump centre
     # the width may only stay level or shrink, and the two symmetric sub-segs at each offset share the
     # smaller width. This erases any residual clamp sawtooth while never widening past what fits.
@@ -677,8 +691,9 @@ def plan_partner_mirror(oracle, p, pruns):
         for key in sorted(groups):
             run = min(run, min(raw[j][2] for j in groups[key]))
             for j in groups[key]:
-                raw[j][2] = run
-    edges = [(q0, q1, wm, "pexc" if wm > w0p + 1e-9 else "pbase") for (q0, q1, wm, k, coff) in raw]
+                raw[j][2] = max(raw[j][5], run)
+    edges = [(q0, q1, wm, "pexc" if wm > w0p + 1e-9 else "pbase")
+             for (q0, q1, wm, k, coff, old_w) in raw]
     if not any(k == "pexc" for (_, _, _, k) in edges):
         return None
     return R, edges
