@@ -35206,7 +35206,7 @@
 		(uuid "739d0a73-25e5-4858-8931-ca79d1660357")
 	)
 	(label "LED_RED#"
-		(at 158.75 46.99 0)
+		(at 158.75 2.54 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -35426,12 +35426,12 @@
 		(uuid "887b0ab7-0b41-4b9f-a184-0503accd2da9")
 	)
 	(label "LOCK_SW"
-		(at 158.75 41.91 0)
+		(at 137.16 16.51 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "888d7823-7813-4703-ac91-dc142d517d37")
 	)
@@ -35676,7 +35676,7 @@
 		(uuid "9937311c-1021-44b6-b11c-b0bbb0e47eaa")
 	)
 	(label "LED_WHITE#"
-		(at 158.75 44.45 0)
+		(at 158.75 5.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -97553,6 +97553,56 @@
 		(pin "USBVBUS" bidirectional
 			(at 158.75 8.89 0)
 			(uuid "4acd6441-72fc-413b-9c09-fba1b02f1161")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PC4" bidirectional
+			(at 137.16 16.51 180)
+			(uuid "6c3919fc-506d-405d-ad71-043bb9d35449")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PC5" bidirectional
+			(at 137.16 19.05 180)
+			(uuid "8e0e3d30-9250-4ace-986d-bdc344d9e12e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PB7" bidirectional
+			(at 137.16 21.59 180)
+			(uuid "acefe905-27d0-42b4-b4bc-afec4be9bd33")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PC9" bidirectional
+			(at 158.75 5.08 0)
+			(uuid "853f0119-e324-466a-8ad4-0fc91521f8a6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PD2" bidirectional
+			(at 158.75 2.54 0)
+			(uuid "5f8e48f5-c512-4d3f-b0e7-eeb1127cc2a6")
 			(effects
 				(font
 					(size 1.27 1.27)

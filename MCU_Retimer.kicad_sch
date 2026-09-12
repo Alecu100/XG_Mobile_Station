@@ -5280,6 +5280,17 @@
 		)
 		(uuid "022a723a-0a4a-42f4-ab2c-04e3c2b678c1")
 	)
+	(hierarchical_label "PC5"
+		(shape bidirectional)
+		(at 50.8 86.36 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0e43cee8-41c5-4e32-9a61-1e6f83168a77")
+	)
 	(hierarchical_label "PB12"
 		(shape bidirectional)
 		(at 96.52 60.96 0)
@@ -5379,6 +5390,17 @@
 		)
 		(uuid "44f42ce7-f34a-4f94-83fc-39f0776dc00c")
 	)
+	(hierarchical_label "PB7"
+		(shape bidirectional)
+		(at 96.52 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "54044b26-55d4-4bf0-87c3-cb8e9aff53b5")
+	)
 	(hierarchical_label "PA0"
 		(shape bidirectional)
 		(at 50.8 27.94 180)
@@ -5445,6 +5467,28 @@
 		)
 		(uuid "6ca94f67-9ee8-4f9c-8f30-53bc243ea809")
 	)
+	(hierarchical_label "PC4"
+		(shape bidirectional)
+		(at 50.8 83.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7284379d-2b88-4a5b-a364-2ba88b18b27c")
+	)
+	(hierarchical_label "PB0"
+		(shape bidirectional)
+		(at 96.52 27.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7b7ffb65-9142-4843-bb96-2fffd9963cce")
+	)
 	(hierarchical_label "USBVBUS"
 		(shape bidirectional)
 		(at 50.8 53.34 180)
@@ -5510,6 +5554,17 @@
 			(justify right)
 		)
 		(uuid "99bc734d-a251-4733-b15c-7d7c81f73b38")
+	)
+	(hierarchical_label "PA6"
+		(shape bidirectional)
+		(at 50.8 43.18 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9f99731f-2de3-48e3-bba5-a9fd8fc127e7")
 	)
 	(hierarchical_label "PA4"
 		(shape bidirectional)
@@ -5599,6 +5654,17 @@
 		)
 		(uuid "c5850d31-0617-4e84-8fea-fca8d5ab3696")
 	)
+	(hierarchical_label "PD2"
+		(shape bidirectional)
+		(at 96.52 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d2e276b1-ecee-4845-b686-3fea356914e5")
+	)
 	(hierarchical_label "PF1"
 		(shape bidirectional)
 		(at 50.8 91.44 180)
@@ -5631,6 +5697,17 @@
 			(justify left)
 		)
 		(uuid "eb6e4357-1cf4-49c5-9102-73d3c598e750")
+	)
+	(hierarchical_label "PC9"
+		(shape bidirectional)
+		(at 50.8 99.06 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ebba7f87-fa02-4111-b0d1-2e9157525df1")
 	)
 	(hierarchical_label "PC1"
 		(shape bidirectional)
