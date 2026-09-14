@@ -3536,6 +3536,17 @@
 			(uuid "e7fdb95d-8f36-41cf-8466-c6694f2c4b9c")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DS160PR410RNQR.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -50838,6 +50849,17 @@
 			(uuid "1c7c7218-cd9d-4df9-bd58-ab5d6171aba5")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DS160PR410RNQR.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
 		(layer "F.Cu")
@@ -73856,6 +73878,17 @@
 			(uuid "3dc19212-ad7f-4acb-b074-39f337a8699e")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DS160PR410RNQR.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "B.Cu")
@@ -80645,6 +80678,17 @@
 			(uuid "0bb8ade5-85c3-4573-8376-3d2eb4de4c32")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DS160PR410RNQR.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "B.Cu")
