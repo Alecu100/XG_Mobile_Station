@@ -22396,7 +22396,7 @@
 		)
 		(uuid "965f701c-b72b-4e41-ac01-7459aeda167e")
 	)
-	(label "U1_PD0"
+	(label "U2_PD0"
 		(at 613.41 474.98 0)
 		(effects
 			(font
@@ -22846,7 +22846,7 @@
 		)
 		(uuid "bf4dd2f6-61f7-4fc7-897c-a17f6f959cd5")
 	)
-	(label "U1_PD0"
+	(label "U2_PD0"
 		(at 626.11 379.73 0)
 		(effects
 			(font
