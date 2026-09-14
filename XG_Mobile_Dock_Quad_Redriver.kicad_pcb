@@ -88348,6 +88348,18 @@
 		(layer "F.CrtYd")
 		(uuid "e4cb75b0-94c7-4e01-9d6a-70ac735c2441")
 	)
+	(gr_text "L3"
+		(at 202.89 109.93 0)
+		(layer "F.SilkS")
+		(uuid "043e2f44-abcf-4c5d-8903-9ca784852472")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "PSU POWER"
 		(at 206.26 127.94 90)
 		(layer "F.SilkS")
@@ -88372,7 +88384,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L3 = ALL OFF"
+	(gr_text "L2 = ALL OFF"
 		(at 205.99 101.74 90)
 		(layer "F.SilkS")
 		(uuid "08b52cf2-9079-4bed-812f-0a1511d3cb8d")
@@ -88538,6 +88550,18 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "L2 = ALL OFF"
+		(at 205.865 120.895 90)
+		(layer "F.SilkS")
+		(uuid "2384c184-d205-477a-a581-a2077b26c10f")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "CPU->CPU"
 		(at 54.195 118.375 0)
 		(layer "F.SilkS")
@@ -88550,7 +88574,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L2"
+	(gr_text "L3"
 		(at 219.215 100.6 0)
 		(layer "F.SilkS")
 		(uuid "2de05385-842e-4b25-8821-ad8d810df8cd")
@@ -88610,6 +88634,18 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "L2 = ALL OFF"
+		(at 206.045 111.34 90)
+		(layer "F.SilkS")
+		(uuid "37894f69-23d0-4cf0-ac1f-5e24d4d3a872")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "VBUS"
 		(at 78.71 103.627 0)
 		(layer "F.SilkS")
@@ -88622,7 +88658,7 @@
 			(justify right bottom)
 		)
 	)
-	(gr_text "L2"
+	(gr_text "L3"
 		(at 202.835 100.33 0)
 		(layer "F.SilkS")
 		(uuid "3917cf61-8599-42d1-8c8a-4c523d071b0d")
@@ -88790,7 +88826,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L3 = ALL OFF"
+	(gr_text "L2 = ALL OFF"
 		(at 222.37 102.01 90)
 		(layer "F.SilkS")
 		(uuid "60bcfe43-b732-48bb-aa0f-5ce68f95b66b")
@@ -88886,7 +88922,7 @@
 			(justify right bottom)
 		)
 	)
-	(gr_text "L3 = ALL OFF"
+	(gr_text "L2 = ALL OFF"
 		(at 205.85 92.165 90)
 		(layer "F.SilkS")
 		(uuid "7d68cf5a-68ae-4be6-abfb-d840483772d2")
@@ -88905,18 +88941,6 @@
 		(effects
 			(font
 				(size 0.8 0.8)
-				(thickness 0.1)
-			)
-			(justify left bottom)
-		)
-	)
-	(gr_text "EXTERNAL"
-		(at 201.21 108.91 0)
-		(layer "F.SilkS")
-		(uuid "84705028-c697-407b-b6ea-467b9243929e")
-		(effects
-			(font
-				(size 0.6 0.6)
 				(thickness 0.1)
 			)
 			(justify left bottom)
@@ -88946,7 +88970,19 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L3 = ALL OFF"
+	(gr_text "L1"
+		(at 202.9 107.41 0)
+		(layer "F.SilkS")
+		(uuid "8dc7263c-1764-4f33-a098-39f5afea0c6c")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "L2 = ALL OFF"
 		(at 222.64 111.29 90)
 		(layer "F.SilkS")
 		(uuid "8dea5683-5fdb-4d30-bbfe-93529e3182fc")
@@ -89030,10 +89066,10 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "MCU"
-		(at 201.235 111.46 0)
+	(gr_text "CPU->GPU"
+		(at 194 52.015 0)
 		(layer "F.SilkS")
-		(uuid "94a11e31-a868-4919-a66c-d89fae67daf0")
+		(uuid "9738e44c-0d7b-45d4-a854-0f25cae571a5")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -89042,10 +89078,10 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "CPU->GPU"
-		(at 194 52.015 0)
+	(gr_text "L0"
+		(at 202.83 104.86 0)
 		(layer "F.SilkS")
-		(uuid "9738e44c-0d7b-45d4-a854-0f25cae571a5")
+		(uuid "97c38a73-e155-4a97-ae51-b713d34e2c98")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -89078,7 +89114,7 @@
 			(justify right bottom)
 		)
 	)
-	(gr_text "L2"
+	(gr_text "L3"
 		(at 219.485 109.88 0)
 		(layer "F.SilkS")
 		(uuid "9feac0d2-886a-4ca9-b73f-8293557bbd1a")
@@ -89094,6 +89130,18 @@
 		(at 219.34 116.845 0)
 		(layer "F.SilkS")
 		(uuid "a0d635de-b002-4e91-b39c-8cf4044bf5a1")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "L1"
+		(at 202.72 116.965 0)
+		(layer "F.SilkS")
+		(uuid "a4bbdcab-8dda-4edd-a47a-c667b5b6920c")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -89162,6 +89210,18 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "L3"
+		(at 202.71 119.485 0)
+		(layer "F.SilkS")
+		(uuid "ad0300c8-b527-4db3-b6b4-10773442b05f")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "XG Mobile Dock Single Redriver v0.8"
 		(at 75.621496 55.121496 0)
 		(layer "F.SilkS")
@@ -89175,7 +89235,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L2"
+	(gr_text "L3"
 		(at 202.695 90.755 0)
 		(layer "F.SilkS")
 		(uuid "afddc79b-fa30-4cb1-a005-7ea17e7998d1")
@@ -89343,7 +89403,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L2"
+	(gr_text "L3"
 		(at 219.33 119.365 0)
 		(layer "F.SilkS")
 		(uuid "bd559b7e-14cc-461d-bf49-853abb860cde")
@@ -89355,7 +89415,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L2"
+	(gr_text "L3"
 		(at 218.695 90.42 0)
 		(layer "F.SilkS")
 		(uuid "bfcd7490-9a47-48e8-9759-98068dbbf154")
@@ -89403,7 +89463,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L3 = ALL OFF"
+	(gr_text "L2 = ALL OFF"
 		(at 222.485 120.775 90)
 		(layer "F.SilkS")
 		(uuid "c6d8113b-5308-4423-85f8-0135f0c0e47c")
@@ -89463,7 +89523,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "L3 = ALL OFF"
+	(gr_text "L2 = ALL OFF"
 		(at 226.105 91.465 90)
 		(layer "F.SilkS")
 		(uuid "ec204c52-d6a0-424a-a3f0-6a7b7e73a309")
@@ -89482,6 +89542,18 @@
 		(effects
 			(font
 				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "L0"
+		(at 202.65 114.415 0)
+		(layer "F.SilkS")
+		(uuid "ef3ae08b-1df9-46ce-b4aa-fceddb10f9af")
+		(effects
+			(font
+				(size 0.8 0.8)
 				(thickness 0.1)
 			)
 			(justify left bottom)
