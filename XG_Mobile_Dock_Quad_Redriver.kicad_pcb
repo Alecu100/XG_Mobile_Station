@@ -4871,6 +4871,17 @@
 			(uuid "ebaa83c6-72c2-42bd-adaf-f11287ae7fce")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "DSWB02LHGET:SW-TH_DSWB02LHGET"
 		(layer "F.Cu")
@@ -5447,15 +5458,15 @@
 			(uuid "978785c8-5ba0-4a8f-a76c-5bc114be7aba")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/SW-TH_DS-02.step"
+		(model "${KIPRJMOD}/Models/DSWB02LHGET.step"
 			(offset
-				(xyz 0 0 -3.2)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -6621,6 +6632,17 @@
 			(uuid "bd7f0365-9047-4646-bd9c-fcc4ed88c8fc")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -2.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "TPS7A8400A:RGR0020A"
 		(layer "F.Cu")
@@ -11720,6 +11742,17 @@
 			(uuid "50bdbac0-38e6-4b0e-8a5f-9df57130e696")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Package_QFP:LQFP-48_7x7mm_P0.5mm"
 		(layer "F.Cu")
@@ -20944,6 +20977,17 @@
 			(uuid "53770234-b558-42c9-8bb9-1fb91ada0cf6")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "DSWB02LHGET:SW-TH_DSWB02LHGET"
 		(layer "F.Cu")
@@ -21520,15 +21564,15 @@
 			(uuid "18ca0bfd-f164-47b4-af36-09014a9e50f6")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/SW-TH_DS-02.step"
+		(model "${KIPRJMOD}/Models/DSWB02LHGET.step"
 			(offset
-				(xyz 0 0 -3.2)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -22850,15 +22894,15 @@
 			(uuid "df8d0a2e-ef89-4d2c-a08c-b1c1e6e97578")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/SW-TH_DS-02.step"
+		(model "${KIPRJMOD}/Models/DSWB02LHGET.step"
 			(offset
-				(xyz 0 0 -3.2)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -31668,6 +31712,17 @@
 			(uuid "0ee1e1f7-3eb2-407e-9b4e-e02655ece9bf")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
 		(layer "F.Cu")
@@ -32737,15 +32792,15 @@
 			(uuid "bf87b1a7-d603-4d98-83fe-d6c25cac6e6d")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/SW-TH_DS-02.step"
+		(model "${KIPRJMOD}/Models/DSWB02LHGET.step"
 			(offset
-				(xyz 0 0 -3.2)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -35243,6 +35298,17 @@
 			(uuid "0df98cd7-f9bb-471a-a613-3eedd8111920")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
 		(layer "F.Cu")
@@ -36770,6 +36836,17 @@
 			(uuid "68b65af1-d240-4567-8173-26c335234d49")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "SS-12D10L5:SW-TH_SS-12D10L5"
 		(layer "F.Cu")
@@ -37934,6 +38011,17 @@
 			(uuid "fdf7aa43-1192-442c-a9a2-f36f7b1852ae")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
@@ -41859,6 +41947,17 @@
 			(uuid "218da85f-f097-4fb0-a6cb-6b290b770505")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
@@ -43347,6 +43446,17 @@
 			(uuid "aa9b5d80-b0d5-40a2-9bd8-1aeb41ea22c1")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
@@ -44246,15 +44356,15 @@
 			(uuid "94dedc10-a876-4d91-ae4b-be59960d9cce")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/SW-TH_DS-02.step"
+		(model "${KIPRJMOD}/Models/DSWB02LHGET.step"
 			(offset
-				(xyz 0 0 -3.2)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -45646,15 +45756,15 @@
 			(uuid "ac6bf567-1bd5-4f0c-a417-aa2d78f027ba")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/SW-TH_DS-02.step"
+		(model "${KIPRJMOD}/Models/DSWB02LHGET.step"
 			(offset
-				(xyz 0 0 -3.2)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -46395,15 +46505,15 @@
 			(uuid "a9813463-6a34-4d5b-a75c-f30579d0495c")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/SW-TH_DS-02.step"
+		(model "${KIPRJMOD}/Models/DSWB02LHGET.step"
 			(offset
-				(xyz 0 0 -3.2)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
@@ -58342,6 +58452,17 @@
 			(uuid "0c50e212-3661-4913-be51-1e3bfbad60c2")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/Models/DSWB03LHGET.step"
+			(offset
+				(xyz -5.2 10.2 -1.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -59145,15 +59266,15 @@
 			(uuid "df67a670-9f21-428d-8be2-84b446847e15")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/EASYEDA_MODELS/SW-TH_DS-02.step"
+		(model "${KIPRJMOD}/Models/DSWB02LHGET.step"
 			(offset
-				(xyz 0 0 -3.2)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz 0 0 0)
 			)
 		)
 	)
