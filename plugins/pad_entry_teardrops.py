@@ -37,6 +37,7 @@ PAIR_ANGLE = 12.0        # maximum direction mismatch for paired pad-entry track
 PAIR_DISTANCE = 2.0      # maximum pad-entry separation considered a local pair
 PAIR_TOL = 0.00001       # numerical tolerance only; reject any measurable pair-gap reduction
 END_TOL = 0.03           # fallback tolerance when testing whether an endpoint lies in a pad
+BOUNDARY_STEPS = 40      # binary-search iterations for the pad-outline crossing
 
 
 def add(a, b): return (a[0] + b[0], a[1] + b[1])
@@ -134,15 +135,48 @@ def _endpoint_pad(pads, track, endpoint):
     return min(candidates, key=lambda item: item[0])[1] if candidates else None
 
 
+def _pad_hit(pad, point):
+    """True when a centerline point lies within the actual pad shape."""
+    try:
+        return pad.HitTest(v2(point))
+    except Exception:
+        center = p2(pad.GetPosition())
+        size = pad.GetSize()
+        radius = 0.5 * math.hypot(pcbnew.ToMM(size.x), pcbnew.ToMM(size.y)) + END_TOL
+        return norm(sub(point, center)) <= radius
+
+
+def _pad_entry(pad, outside, inside):
+    """First centerline point entering the pad, found from an outside-to-inside segment."""
+    if _pad_hit(pad, outside) or not _pad_hit(pad, inside):
+        return None
+    low, high = 0.0, 1.0
+    delta = sub(inside, outside)
+    for _ in range(max(8, int(BOUNDARY_STEPS))):
+        middle = 0.5 * (low + high)
+        point = add(outside, mul(delta, middle))
+        if _pad_hit(pad, point):
+            high = middle
+        else:
+            low = middle
+    # Step a few internal units into the pad so integer rounding cannot leave
+    # the bridge endpoint microscopically outside the pad outline.
+    fraction = min(1.0, high + 2.0 / max(norm(delta) * 1e6, 1.0))
+    return add(outside, mul(delta, fraction))
+
+
 def _candidate(board, track, endpoint, other_end, pad):
     """Describe a taper directed from the routed trace toward its pad."""
-    direction = unit(sub(endpoint, other_end))
-    length = norm(sub(endpoint, other_end))
+    entry = _pad_entry(pad, other_end, endpoint)
+    if entry is None:
+        return None
+    direction = unit(sub(entry, other_end))
+    length = norm(sub(entry, other_end))
     if length < max(2.0 * MIN_SEGMENT, 0.05):
         return None
     return dict(
         obj=track, net=track.GetNetCode(), name=track.GetNetname(), layer=track.GetLayer(),
-        pad=pad, end=endpoint, far=other_end, direction=direction,
+        pad=pad, end=entry, pad_end=endpoint, far=other_end, direction=direction,
         normal=(-direction[1], direction[0]), length=length,
         width=pcbnew.ToMM(track.GetWidth()), partner=None, side=None,
     )
@@ -263,8 +297,9 @@ def plan_candidate(candidate):
         if index == stages - 1:
             segment_width = width1
         pieces.append((nodes[index], nodes[index + 1], segment_width))
+    bridge = (nodes[-1], candidate["pad_end"], width1)
     return dict(candidate=candidate, start=start, end=nodes[-1], width0=width0,
-                width1=width1, pieces=pieces, side=side, length=taper_length)
+                width1=width1, pieces=pieces, bridge=bridge, side=side, length=taper_length)
 
 
 def verify_pair_gaps(plans):
@@ -285,6 +320,9 @@ def verify_pair_gaps(plans):
         original_gap = (segment_distance(candidate["far"], candidate["end"],
                                          partner["far"], partner["end"])
                         - candidate["width"] / 2.0 - partner["width"] / 2.0)
+        # The bridge runs beneath its own pad copper from the outline crossing to
+        # the original endpoint. Pair-route clearance is meaningful only through
+        # the pad boundary; inside it, the fixed pad geometry controls clearance.
         first_geometry = [(candidate["far"], plan["start"], candidate["width"])] + plan["pieces"]
         second_geometry = [(partner["far"], other["start"], partner["width"])] + other["pieces"]
         tapered_gap = min(segment_distance(a0, a1, b0, b1) - aw / 2.0 - bw / 2.0
@@ -389,6 +427,16 @@ def run(board=None, apply=None, **overrides):
             track.SetLayer(candidate["layer"])
             track.SetNetCode(candidate["net"])
             board.Add(track)
+            made += 1
+        start, end, width = plan["bridge"]
+        if norm(sub(end, start)) >= 1e-6:
+            bridge = pcbnew.PCB_TRACK(board)
+            bridge.SetStart(v2(start))
+            bridge.SetEnd(v2(end))
+            bridge.SetWidth(pcbnew.FromMM(width))
+            bridge.SetLayer(candidate["layer"])
+            bridge.SetNetCode(candidate["net"])
+            board.Add(bridge)
             made += 1
     _refresh(board)
     print("APPLIED: %d staged track segment(s). Review pad overlap and run DRC before save." % made)
