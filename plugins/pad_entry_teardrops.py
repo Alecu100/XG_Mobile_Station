@@ -12,8 +12,11 @@ Usage in PCB Editor > Tools > Scripting Console:
     exec(open(r'd:/Repos/XG_Mobile_Station/plugins/pad_entry_teardrops.py').read())
 
 Quad-redriver RX entries (select pads 29/30, 32/33, 36/37, 39/40 entry items):
-    PARAMS = dict(APPLY=True, LENGTH=0.4, TARGET_WIDTH=0.13,
-                  EXTEND_PATH=True, SHIFT_PAD_FANIN=True)
+    PARAMS = dict(APPLY=True, LENGTH=0.55, TARGET_WIDTH=0.13,
+                  EXTEND_PATH=True, CONSTANT_WIDTH=True, ENTRY_JOG=0.05,
+                  SHIFT_PAD_FANIN=True)
+Use the measured lateral-ground-loss length plus ENTRY_JOG for LENGTH. This board's
+16 RX pairs require 0.525-0.635 mm total, corresponding to 0.475-0.585 mm wide sections.
 
 Select only the final track or arc entering each pad. Select both members of
 a differential pair for symmetric tapers. Review the result and run DRC before save.
@@ -35,6 +38,8 @@ LENGTH = 0.80            # distance over which the trace widens and moves outwar
 STEPS = 8                # width/offset stages; higher values make a smoother transition
 TARGET_WIDTH = None      # exact final width; None derives it from MAX_FACTOR and pad room
 EXTEND_PATH = False      # consume unique upstream items to reach LENGTH
+CONSTANT_WIDTH = False   # use a uniform wide section after an original-width entry jog
+ENTRY_JOG = 0.05         # lateral transition length before a CONSTANT_WIDTH section
 PAD_NECK = 0.0           # return to original width over this distance before the pad boundary
 SHIFT_PAD_FANIN = False  # move a unique under-pad continuation with the widened endpoint
 MAX_FACTOR = 2.0         # maximum width relative to the entering trace
@@ -46,7 +51,7 @@ PAIR_DISTANCE = 2.0      # maximum pad-entry separation considered a local pair
 PAIR_TOL = 0.00001       # numerical tolerance only; reject any measurable pair-gap reduction
 END_TOL = 0.03           # fallback tolerance when testing whether an endpoint lies in a pad
 BOUNDARY_STEPS = 40      # binary-search iterations for the pad-outline crossing
-ARC_SAMPLES = 8          # chords used to prove clearance for each tapered arc stage
+ARC_SAMPLES = 64         # chords used to prove clearance for each tapered arc stage
 
 
 def add(a, b): return (a[0] + b[0], a[1] + b[1])
@@ -207,7 +212,8 @@ def _extend_candidate(board, candidate):
                                  norm(sub(p2(candidate["obj"].GetEnd()), candidate["pad_end"]))))
     components = [base]
     used = {_item_key(candidate["obj"])}
-    required = max(LENGTH / 0.80, LENGTH + MIN_SEGMENT)
+    required = (LENGTH + MIN_SEGMENT if CONSTANT_WIDTH
+                else max(LENGTH / 0.80, LENGTH + MIN_SEGMENT))
     while EXTEND_PATH and sum(component["length"] for component in components) + 1e-9 < required:
         join = components[0]["far"]
         choices = []
@@ -505,7 +511,8 @@ def plan_candidate(candidate):
     if width1 - width0 < MIN_WIDTH_GAIN:
         return None
     side = candidate["side"] if candidate["side"] is not None else _single_side(candidate)
-    taper_length = min(LENGTH, candidate["length"] * 0.80)
+    taper_length = min(LENGTH, (candidate["length"] - MIN_SEGMENT
+                               if CONSTANT_WIDTH else candidate["length"] * 0.80))
     stage_count = max(2, min(int(STEPS), int(taper_length / MIN_SEGMENT)))
     path_start = candidate["path_end"] - taper_length
 
@@ -515,8 +522,13 @@ def plan_candidate(candidate):
         outboard = mul((-tangent[1], tangent[0]), side)
         return add(base, mul(outboard, (width - width0) / 2.0))
 
-    distances = [path_start + taper_length * index / stage_count
-                 for index in range(stage_count + 1)]
+    if CONSTANT_WIDTH:
+        jog_length = min(max(MIN_SEGMENT, float(ENTRY_JOG)), taper_length / 2.0)
+        distances = [path_start, path_start + jog_length, candidate["path_end"]]
+    else:
+        jog_length = 0.0
+        distances = [path_start + taper_length * index / stage_count
+                     for index in range(stage_count + 1)]
     neck_length = min(max(0.0, float(PAD_NECK)), taper_length / 2.0)
     if neck_length > 0.0:
         neck_start = candidate["path_end"] - neck_length
@@ -529,6 +541,11 @@ def plan_candidate(candidate):
     nodes = []
     widths = []
     for distance in distances:
+        if CONSTANT_WIDTH:
+            width = width0 if distance <= path_start + 1e-12 else width1
+            nodes.append(tapered_point(distance, width))
+            widths.append(width)
+            continue
         if neck_length > 0.0 and distance >= candidate["path_end"] - neck_length:
             fraction = (candidate["path_end"] - distance) / neck_length
         else:
@@ -547,13 +564,14 @@ def plan_candidate(candidate):
     pieces = []
     for index in range(len(distances) - 1):
         narrowing = neck_length > 0.0 and distances[index] >= candidate["path_end"] - neck_length
-        segment_width = widths[index + 1] if narrowing else widths[index]
+        segment_width = (width0 if CONSTANT_WIDTH and index == 0 else
+                 widths[index + 1] if narrowing else widths[index])
         if neck_length <= 0.0 and index == len(distances) - 2:
             segment_width = width1
         middle = None
         middle_distance = 0.5 * (distances[index] + distances[index + 1])
         component, _ = candidate["component_at"](middle_distance)
-        if component["kind"] == "arc":
+        if component["kind"] == "arc" and not (CONSTANT_WIDTH and index == 0):
             middle_width = 0.5 * (widths[index] + widths[index + 1])
             if neck_length <= 0.0 and index == len(distances) - 2:
                 middle_width = width1
