@@ -74684,7 +74684,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "a0f923b0-b426-460a-abd2-c3631f984430")
 		(property "Reference" "C35"
 			(at 419.1 241.3 90)
@@ -82721,10 +82720,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "bd0afc6e-1c48-4f33-b4cf-b527c4f5593f")
 		(property "Reference" "C92"
-			(at 477.52 234.95 90)
+			(at 484.124 242.57 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -82739,7 +82737,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 473.71 243.5352 0)
 			(effects
 				(font
@@ -82766,7 +82764,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C15525"
+		(property "LCSC" "C15850"
 			(at 477.52 242.57 0)
 			(effects
 				(font
@@ -82775,7 +82773,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part_Number" "CL05A106MQ5NUNC"
+		(property "Part_Number" "CL21A106KAYNNNE"
 			(at 477.52 242.57 0)
 			(effects
 				(font
@@ -86888,7 +86886,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "cb11c466-1eb7-4b0d-9074-55120f2c06d7")
 		(property "Reference" "C36"
 			(at 419.1 243.84 90)
@@ -95327,7 +95324,7 @@
 		(dnp no)
 		(uuid "ea96813c-a756-4a8f-8060-af4d6125a140")
 		(property "Reference" "C90"
-			(at 415.29 242.57 90)
+			(at 425.958 244.094 90)
 			(effects
 				(font
 					(size 1.27 1.27)
