@@ -11,7 +11,11 @@ Usage in PCB Editor > Tools > Scripting Console:
     PARAMS = dict(APPLY=False)  # optional dry run
     exec(open(r'd:/Repos/XG_Mobile_Station/plugins/pad_entry_teardrops.py').read())
 
-Select only the final straight segment(s) entering the pads. Select both members of
+Quad-redriver RX entries (select pads 29/30, 32/33, 36/37, 39/40 entry items):
+    PARAMS = dict(APPLY=True, LENGTH=0.4, TARGET_WIDTH=0.13,
+                  EXTEND_PATH=True, SHIFT_PAD_FANIN=True)
+
+Select only the final track or arc entering each pad. Select both members of
 a differential pair for symmetric tapers. Review the result and run DRC before save.
 The operation is undoable with Edit > Undo while the board remains open.
 """
@@ -29,9 +33,13 @@ APPLY = True
 USE_SELECTION = True
 LENGTH = 0.80            # distance over which the trace widens and moves outward
 STEPS = 8                # width/offset stages; higher values make a smoother transition
+TARGET_WIDTH = None      # exact final width; None derives it from MAX_FACTOR and pad room
+EXTEND_PATH = False      # consume unique upstream items to reach LENGTH
+PAD_NECK = 0.0           # return to original width over this distance before the pad boundary
+SHIFT_PAD_FANIN = False  # move a unique under-pad continuation with the widened endpoint
 MAX_FACTOR = 2.0         # maximum width relative to the entering trace
 PAD_FILL = 0.82          # maximum fraction of pad half-span used in the outboard direction
-MIN_WIDTH_GAIN = 0.015   # skip tapers whose useful width increase is smaller than this
+MIN_WIDTH_GAIN = 0.005   # skip tapers whose useful width increase is smaller than this
 MIN_SEGMENT = 0.025      # do not create extremely short stage segments
 PAIR_ANGLE = 12.0        # maximum direction mismatch for paired pad-entry tracks (degrees)
 PAIR_DISTANCE = 2.0      # maximum pad-entry separation considered a local pair
@@ -59,6 +67,13 @@ def p2(vector):
 
 def v2(point):
     return pcbnew.VECTOR2I(pcbnew.FromMM(point[0]), pcbnew.FromMM(point[1]))
+
+
+def _item_key(item):
+    try:
+        return item.m_Uuid.AsString()
+    except Exception:
+        return str(getattr(item, "this", id(item)))
 
 
 def smoothstep(value):
@@ -110,6 +125,108 @@ def _arc_path(track, inside_at_start):
 
     return dict(length=length, point_at=point_at, tangent_at=tangent_at,
                 far=point_at(0.0), pad_end=point_at(length))
+
+
+def _segment_path(track, toward_start):
+    far = p2(track.GetEnd() if toward_start else track.GetStart())
+    near = p2(track.GetStart() if toward_start else track.GetEnd())
+    delta = sub(near, far)
+    length = norm(delta)
+    direction = unit(delta)
+    return dict(length=length,
+                point_at=lambda distance: add(far, mul(direction, max(0.0, min(length, distance)))),
+                tangent_at=lambda distance: direction, far=far, pad_end=near)
+
+
+def _route_component(track, toward):
+    start, end = p2(track.GetStart()), p2(track.GetEnd())
+    if norm(sub(start, toward)) <= 0.002:
+        path = (_arc_path(track, True) if isinstance(track, pcbnew.PCB_ARC)
+                else _segment_path(track, True))
+        toward_at_start = True
+    elif norm(sub(end, toward)) <= 0.002:
+        path = (_arc_path(track, False) if isinstance(track, pcbnew.PCB_ARC)
+                else _segment_path(track, False))
+        toward_at_start = False
+    else:
+        return None
+    if path is None:
+        return None
+    path.update(obj=track, kind="arc" if isinstance(track, pcbnew.PCB_ARC) else "seg",
+                toward_at_start=toward_at_start)
+    return path
+
+
+def _compose_candidate_path(candidate, components):
+    offsets = []
+    total = 0.0
+    for component in components:
+        offsets.append(total)
+        total += component["length"]
+
+    def locate(distance):
+        bounded = max(0.0, min(total, distance))
+        for index in range(len(components) - 1, -1, -1):
+            if bounded + 1e-12 >= offsets[index]:
+                return components[index], bounded - offsets[index]
+        return components[0], 0.0
+
+    candidate["components"] = components
+    candidate["component_offsets"] = offsets
+    candidate["point_at"] = lambda distance: locate(distance)[0]["point_at"](locate(distance)[1])
+    candidate["tangent_at"] = lambda distance: locate(distance)[0]["tangent_at"](locate(distance)[1])
+    candidate["component_at"] = locate
+    candidate["component_breaks"] = offsets[1:]
+    candidate["length"] = total
+    candidate["path_end"] = total
+    candidate["far"] = components[0]["far"]
+    candidate["kind"] = "path" if len(components) > 1 else components[0]["kind"]
+
+
+def _extend_candidate(board, candidate):
+    candidate["terminal_kind"] = candidate["kind"]
+    candidate["terminal_point_at"] = candidate["point_at"]
+    candidate["terminal_tangent_at"] = candidate["tangent_at"]
+    candidate["terminal_entry"] = candidate["path_end"]
+    candidate["terminal_total"] = candidate.get("total_path", candidate["path_end"])
+    downstream = []
+    for track in board.GetTracks():
+        if (isinstance(track, pcbnew.PCB_VIA) or _item_key(track) == _item_key(candidate["obj"]) or
+                track.GetNetCode() != candidate["net"] or track.GetLayer() != candidate["layer"]):
+            continue
+        start, end = p2(track.GetStart()), p2(track.GetEnd())
+        if norm(sub(start, candidate["pad_end"])) <= 0.002 and _pad_hit(candidate["pad"], end):
+            downstream.append((track, True))
+        elif norm(sub(end, candidate["pad_end"])) <= 0.002 and _pad_hit(candidate["pad"], start):
+            downstream.append((track, False))
+    candidate["downstream"] = downstream[0] if len(downstream) == 1 else None
+    base = dict(length=candidate["path_end"], point_at=candidate["point_at"],
+                tangent_at=candidate["tangent_at"], far=candidate["far"],
+                pad_end=candidate["end"], obj=candidate["obj"], kind=candidate["kind"],
+                toward_at_start=(norm(sub(p2(candidate["obj"].GetStart()), candidate["pad_end"])) <
+                                 norm(sub(p2(candidate["obj"].GetEnd()), candidate["pad_end"]))))
+    components = [base]
+    used = {_item_key(candidate["obj"])}
+    required = max(LENGTH / 0.80, LENGTH + MIN_SEGMENT)
+    while EXTEND_PATH and sum(component["length"] for component in components) + 1e-9 < required:
+        join = components[0]["far"]
+        choices = []
+        for track in board.GetTracks():
+            if (isinstance(track, pcbnew.PCB_VIA) or _item_key(track) in used or
+                    track.GetNetCode() != candidate["net"] or track.GetLayer() != candidate["layer"] or
+                    abs(pcbnew.ToMM(track.GetWidth()) - candidate["width"]) > 0.0005):
+                continue
+            component = _route_component(track, join)
+            if component is not None:
+                choices.append(component)
+        if len(choices) != 1:
+            break
+        component = choices[0]
+        components.insert(0, component)
+        used.add(_item_key(component["obj"]))
+    _compose_candidate_path(candidate, components)
+    candidate["direction"] = candidate["tangent_at"](candidate["path_end"])
+    candidate["normal"] = (-candidate["direction"][1], candidate["direction"][0])
 
 
 def _arc_piece_points(first, middle, last, samples):
@@ -262,16 +379,18 @@ def _candidate(board, track, endpoint, other_end, pad):
     length = entry_distance
     if length < max(2.0 * MIN_SEGMENT, 0.05):
         return None
-    return dict(
+    candidate = dict(
         obj=track, net=track.GetNetCode(), name=track.GetNetname(), layer=track.GetLayer(),
         pad=pad, end=entry, pad_end=endpoint, far=other_end, direction=direction,
         normal=(-direction[1], direction[0]), length=length,
         width=pcbnew.ToMM(track.GetWidth()), partner=None, side=None, kind="seg",
         point_at=point_at, tangent_at=tangent_at, path_end=entry_distance,
     )
+    _extend_candidate(board, candidate)
+    return candidate
 
 
-def _arc_candidate(track, endpoint, pad, inside_at_start):
+def _arc_candidate(board, track, endpoint, pad, inside_at_start):
     path = _arc_path(track, inside_at_start)
     if path is None:
         return None
@@ -280,7 +399,7 @@ def _arc_candidate(track, endpoint, pad, inside_at_start):
         return None
     entry = path["point_at"](entry_distance)
     direction = path["tangent_at"](entry_distance)
-    return dict(
+    candidate = dict(
         obj=track, net=track.GetNetCode(), name=track.GetNetname(), layer=track.GetLayer(),
         pad=pad, end=entry, pad_end=endpoint, far=path["far"], direction=direction,
         normal=(-direction[1], direction[0]), length=entry_distance,
@@ -288,6 +407,8 @@ def _arc_candidate(track, endpoint, pad, inside_at_start):
         point_at=path["point_at"], tangent_at=path["tangent_at"],
         path_end=entry_distance, total_path=path["length"],
     )
+    _extend_candidate(board, candidate)
+    return candidate
 
 
 def read_candidates(board):
@@ -307,13 +428,13 @@ def read_candidates(board):
         start_pad = _endpoint_pad(net_pads, track, start)
         end_pad = _endpoint_pad(net_pads, track, end)
         if start_pad:
-            candidate = (_arc_candidate(track, start, start_pad, True)
+            candidate = (_arc_candidate(board, track, start, start_pad, True)
                          if isinstance(track, pcbnew.PCB_ARC)
                          else _candidate(board, track, start, end, start_pad))
             if candidate:
                 result.append(candidate)
         if end_pad and end_pad is not start_pad:
-            candidate = (_arc_candidate(track, end, end_pad, False)
+            candidate = (_arc_candidate(board, track, end, end_pad, False)
                          if isinstance(track, pcbnew.PCB_ARC)
                          else _candidate(board, track, end, start, end_pad))
             if candidate:
@@ -336,9 +457,9 @@ def pair_candidates(candidates):
             if other["partner"] is not None or other["layer"] != candidate["layer"]:
                 continue
             first_direction = (candidate["tangent_at"](0.0)
-                               if candidate["kind"] == "arc" else candidate["direction"])
+                               if candidate["kind"] != "seg" else candidate["direction"])
             second_direction = (other["tangent_at"](0.0)
-                                if other["kind"] == "arc" else other["direction"])
+                                if other["kind"] != "seg" else other["direction"])
             alignment = abs(dot(first_direction, second_direction))
             if alignment < math.cos(math.radians(PAIR_ANGLE)):
                 continue
@@ -373,7 +494,8 @@ def _target_width(candidate):
     endpoint_projection = dot(sub(candidate["end"], center), outboard)
     room = PAD_FILL * _pad_half_span(candidate["pad"], outboard) - endpoint_projection
     pad_limited = room + candidate["width"] / 2.0
-    return max(candidate["width"], min(MAX_FACTOR * candidate["width"], pad_limited))
+    requested = MAX_FACTOR * candidate["width"] if TARGET_WIDTH is None else float(TARGET_WIDTH)
+    return max(candidate["width"], min(requested, pad_limited))
 
 
 def plan_candidate(candidate):
@@ -384,7 +506,7 @@ def plan_candidate(candidate):
         return None
     side = candidate["side"] if candidate["side"] is not None else _single_side(candidate)
     taper_length = min(LENGTH, candidate["length"] * 0.80)
-    stages = max(2, min(int(STEPS), int(taper_length / MIN_SEGMENT)))
+    stage_count = max(2, min(int(STEPS), int(taper_length / MIN_SEGMENT)))
     path_start = candidate["path_end"] - taper_length
 
     def tapered_point(distance, width):
@@ -393,57 +515,84 @@ def plan_candidate(candidate):
         outboard = mul((-tangent[1], tangent[0]), side)
         return add(base, mul(outboard, (width - width0) / 2.0))
 
+    distances = [path_start + taper_length * index / stage_count
+                 for index in range(stage_count + 1)]
+    neck_length = min(max(0.0, float(PAD_NECK)), taper_length / 2.0)
+    if neck_length > 0.0:
+        neck_start = candidate["path_end"] - neck_length
+        neck_steps = max(2, int(math.ceil(neck_length / MIN_SEGMENT)))
+        distances.extend(neck_start + neck_length * index / neck_steps
+                         for index in range(neck_steps + 1))
+    distances.extend(distance for distance in candidate.get("component_breaks", ())
+                     if path_start + 1e-9 < distance < candidate["path_end"] - 1e-9)
+    distances = sorted(set(round(distance, 12) for distance in distances))
     nodes = []
     widths = []
-    distances = []
-    for index in range(stages + 1):
-        fraction = index / float(stages)
-        shaped = smoothstep(fraction)
+    for distance in distances:
+        if neck_length > 0.0 and distance >= candidate["path_end"] - neck_length:
+            fraction = (candidate["path_end"] - distance) / neck_length
+        else:
+            rise_length = taper_length - neck_length
+            fraction = (distance - path_start) / rise_length
+        shaped = smoothstep(max(0.0, min(1.0, fraction)))
         width = width0 + (width1 - width0) * shaped
-        distance = path_start + taper_length * fraction
         nodes.append(tapered_point(distance, width))
         widths.append(width)
-        distances.append(distance)
 
     # Make the last stage full width. Each widening starts at a shared node whose
     # center has already moved outward, so its inboard edge never crosses inward.
-    if stages >= 2:
+    if neck_length <= 0.0 and len(distances) >= 3:
         widths[-2] = width1
         nodes[-2] = tapered_point(distances[-2], width1)
     pieces = []
-    for index in range(stages):
-        segment_width = widths[index]
-        if index == stages - 1:
+    for index in range(len(distances) - 1):
+        narrowing = neck_length > 0.0 and distances[index] >= candidate["path_end"] - neck_length
+        segment_width = widths[index + 1] if narrowing else widths[index]
+        if neck_length <= 0.0 and index == len(distances) - 2:
             segment_width = width1
         middle = None
-        if candidate["kind"] == "arc":
-            middle_distance = 0.5 * (distances[index] + distances[index + 1])
+        middle_distance = 0.5 * (distances[index] + distances[index + 1])
+        component, _ = candidate["component_at"](middle_distance)
+        if component["kind"] == "arc":
             middle_width = 0.5 * (widths[index] + widths[index + 1])
-            if index == stages - 1:
+            if neck_length <= 0.0 and index == len(distances) - 2:
                 middle_width = width1
             middle = tapered_point(middle_distance, middle_width)
         pieces.append((nodes[index], nodes[index + 1], segment_width, middle))
 
     bridge_middle = None
-    if candidate["kind"] == "arc":
-        bridge_distance = 0.5 * (candidate["path_end"] + candidate["total_path"])
-        base = candidate["point_at"](bridge_distance)
-        tangent = candidate["tangent_at"](bridge_distance)
+    if candidate["terminal_kind"] == "arc":
+        bridge_distance = 0.5 * (candidate["terminal_entry"] + candidate["terminal_total"])
+        base = candidate["terminal_point_at"](bridge_distance)
+        tangent = candidate["terminal_tangent_at"](bridge_distance)
         outboard = mul((-tangent[1], tangent[0]), side)
         bridge_middle = add(base, mul(outboard, (width1 - width0) / 4.0))
-    bridge = (nodes[-1], candidate["pad_end"], width1, bridge_middle)
+    bridge_width = width0 if neck_length > 0.0 else width1
+    bridge_end = candidate["pad_end"]
+    if SHIFT_PAD_FANIN and candidate.get("downstream") is not None and neck_length <= 0.0:
+        tangent = candidate["terminal_tangent_at"](candidate["terminal_total"])
+        outboard = mul((-tangent[1], tangent[0]), side)
+        bridge_end = add(bridge_end, mul(outboard, (width1 - width0) / 2.0))
+    bridge = (nodes[-1], bridge_end, bridge_width, bridge_middle)
 
     baseline = []
-    baseline_steps = max(2, stages * (ARC_SAMPLES if candidate["kind"] == "arc" else 1))
-    previous = candidate["point_at"](path_start)
-    for index in range(1, baseline_steps + 1):
-        point = candidate["point_at"](path_start + taper_length * index / baseline_steps)
+    baseline_distances = [path_start + taper_length * index / (stage_count * ARC_SAMPLES)
+                          for index in range(stage_count * ARC_SAMPLES + 1)]
+    baseline_distances.extend(distance for distance in candidate.get("component_breaks", ())
+                              if path_start < distance < candidate["path_end"])
+    baseline_distances = sorted(set(baseline_distances))
+    previous = candidate["point_at"](baseline_distances[0])
+    for distance in baseline_distances[1:]:
+        point = candidate["point_at"](distance)
         baseline.append((previous, point, width0))
         previous = point
-    prefix_middle = candidate["point_at"](path_start / 2.0) if candidate["kind"] == "arc" else None
+    active_component, active_distance = candidate["component_at"](path_start)
+    prefix_middle = (active_component["point_at"](active_distance / 2.0)
+                     if active_component["kind"] == "arc" else None)
     return dict(candidate=candidate, start=nodes[0], end=nodes[-1], width0=width0,
                 width1=width1, pieces=pieces, bridge=bridge, baseline=baseline,
-                prefix_mid=prefix_middle, side=side, length=taper_length)
+                prefix_mid=prefix_middle, active_component=active_component,
+                path_start=path_start, side=side, length=taper_length)
 
 
 def verify_pair_gaps(plans):
@@ -556,20 +705,30 @@ def run(board=None, apply=None, **overrides):
     made = 0
     for plan in safe_plans:
         candidate = plan["candidate"]
-        original = candidate["obj"]
-        far = candidate["far"]
-        try:
-            original.ClearSelected()
-        except Exception:
-            pass
-        far_at_start = norm(sub(p2(original.GetStart()), far)) <= norm(sub(p2(original.GetEnd()), far))
-        if far_at_start:
-            original.SetEnd(v2(plan["start"]))
-        else:
+        active = plan["active_component"]
+        original = active["obj"]
+        active_index = candidate["components"].index(active)
+        for component in candidate["components"]:
+            try:
+                component["obj"].ClearSelected()
+            except Exception:
+                pass
+        for component in candidate["components"][active_index + 1:]:
+            board.Remove(component["obj"])
+        if active["toward_at_start"]:
             original.SetStart(v2(plan["start"]))
-        if candidate["kind"] == "arc":
+        else:
+            original.SetEnd(v2(plan["start"]))
+        if active["kind"] == "arc":
             original.SetMid(v2(plan["prefix_mid"]))
         original.SetWidth(pcbnew.FromMM(plan["width0"]))
+        downstream = candidate.get("downstream")
+        if SHIFT_PAD_FANIN and downstream is not None:
+            downstream_track, at_start = downstream
+            if at_start:
+                downstream_track.SetStart(v2(plan["bridge"][1]))
+            else:
+                downstream_track.SetEnd(v2(plan["bridge"][1]))
         for start, end, width, middle in plan["pieces"]:
             track = pcbnew.PCB_ARC(board) if middle is not None else pcbnew.PCB_TRACK(board)
             track.SetStart(v2(start))
