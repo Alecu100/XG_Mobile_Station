@@ -28507,7 +28507,7 @@
 				)
 			)
 		)
-		(property "Value" "DS160PR410RNQR"
+		(property "Value" "DS160PR410RNQT"
 			(at 161.29 318.77 0)
 			(effects
 				(font
@@ -28525,7 +28525,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "DS160PR410RNQR"
+		(property "Datasheet" "DS160PR410RNQT"
 			(at 128.27 326.39 0)
 			(effects
 				(font
@@ -28536,6 +28536,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 128.27 326.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "DS160PR410RNQT"
+			(at 128.27 326.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2873337"
 			(at 128.27 326.39 0)
 			(effects
 				(font
@@ -51632,7 +51650,7 @@
 				)
 			)
 		)
-		(property "Value" "DS160PR410RNQR"
+		(property "Value" "DS160PR410RNQT"
 			(at 161.29 391.16 0)
 			(effects
 				(font
@@ -51650,7 +51668,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "DS160PR410RNQR"
+		(property "Datasheet" "DS160PR410RNQT"
 			(at 128.27 398.78 0)
 			(effects
 				(font
@@ -51661,6 +51679,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 128.27 398.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "DS160PR410RNQT"
+			(at 128.27 398.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2873337"
 			(at 128.27 398.78 0)
 			(effects
 				(font
@@ -57629,7 +57665,7 @@
 				)
 			)
 		)
-		(property "Value" "DS160PR410RNQR"
+		(property "Value" "DS160PR410RNQT"
 			(at 525.78 430.53 0)
 			(effects
 				(font
@@ -57647,7 +57683,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "DS160PR410RNQR"
+		(property "Datasheet" "DS160PR410RNQT"
 			(at 492.76 438.15 0)
 			(effects
 				(font
@@ -57658,6 +57694,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 492.76 438.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "DS160PR410RNQT"
+			(at 492.76 438.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2873337"
 			(at 492.76 438.15 0)
 			(effects
 				(font
@@ -60672,7 +60726,7 @@
 				)
 			)
 		)
-		(property "Value" "DS160PR410RNQR"
+		(property "Value" "DS160PR410RNQT"
 			(at 538.48 335.28 0)
 			(effects
 				(font
@@ -60690,7 +60744,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "DS160PR410RNQR"
+		(property "Datasheet" "DS160PR410RNQT"
 			(at 505.46 342.9 0)
 			(effects
 				(font
@@ -60701,6 +60755,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 505.46 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "DS160PR410RNQT"
+			(at 505.46 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2873337"
 			(at 505.46 342.9 0)
 			(effects
 				(font
