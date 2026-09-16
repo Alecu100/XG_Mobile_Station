@@ -126,6 +126,14 @@ extern I2C_HandleTypeDef hi2c2;
  * confirms the command record shape but does not disclose prefix bit encoding:
  * https://www.ti.com/lit/ug/snlu254a/snlu254a.pdf#page=12
  *
+ * [TI-EVM-GUI] The embedded screenshots on pages 10-17 show Manager address
+ * 0x20 and Follower address 0x22. Section 1.2 explicitly calls these 8-bit
+ * addresses, corresponding to 7-bit addresses 0x10 and 0x11. The low-level
+ * screenshot also shows F1=24 and F6/F7=72/41, corroborating the identity
+ * values used below. The high-level page confirms that link-width changes must
+ * be applied before link establishment and that CTLE/DFE adapt automatically:
+ * https://www.ti.com/lit/ug/snlu254a/snlu254a.pdf#page=10
+ *
  * [TI-PUBLIC-X8-SCHEMATIC] A separate public E2E design-verification thread
  * includes a user-posted Gen4 x8 DS160PT801 schematic PDF and TI review. TI
  * confirms the REFCLK-to-retimer/REFCLK_OUT-to-endpoint topology, 33-ohm
@@ -175,16 +183,19 @@ typedef struct {
     uint8_t verify;
 } retimer_register_t;
 
-/* Probe the board's expected 7-bit address first. The related DS160PR810
- * programming guide explicitly defines 7-bit address pairs from 0x18 through
- * 0x37. Retain that broad range as a heuristic; only 0x20 and 0x28 have direct
- * DS160PT801 public examples cited above. */
+/* STM32 HAL takes the 7-bit address shifted left once at each call site.
+ * TI's EVM guide labels SigCon's 0x20/0x22 values as 8-bit addresses, so their
+ * HAL-independent 7-bit forms are 0x10/0x11. The E2E 0x28 example does not
+ * state its notation, so probe both 0x14 and 0x28. Keep the board's provisional
+ * 0x1A expectation first and retain the related-device range as a fallback. */
 static const uint8_t retimer_address_candidates[] = {
-    0x1A, /* [BOARD-ADDR]: expected address for this assembly */
+    0x1A, /* [BOARD-ADDR]: provisional expected address for this assembly */
+    0x10, 0x11, /* [TI-EVM-GUI]: EVM 8-bit addresses 0x20/0x22 */
+    0x14, /* [TI-ADDR28]: 7-bit interpretation of published 0x28 */
     0x18, 0x19, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F,
-    0x20, /* [TI-ADDR20] */
+    0x20, /* Alternate interpretation of published 0x20 */
     0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27,
-    0x28, /* [TI-ADDR28] */
+    0x28, /* Alternate interpretation of published 0x28 */
     0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
     0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37,
 };
