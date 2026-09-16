@@ -88,6 +88,12 @@ extern I2C_HandleTypeDef hi2c2;
  * related redriver supports the broad probe heuristic, not PT801 equivalence:
  * https://www.ti.com/lit/pdf/SNLU268
  *
+ * [TI-PR410-EEPROM] Public DS160PR410 EEPROM application report. Its
+ * multi-device format uses a three-byte header, address-indexed map headers,
+ * and shared setting slots. That format is structurally different from the
+ * PT801 four-byte command records; PT801 prefixes are not decoded from it:
+ * https://www.ti.com/lit/pdf/SNLA320
+ *
  * Hardware design provenance for the PCB and schematics:
  *
  * [TI-PUBLIC-PINOUT] TI's public Ultra Librarian integration supplies the
@@ -121,6 +127,13 @@ extern I2C_HandleTypeDef hi2c2;
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1669549/ds160pt801-ds160pt801acbr-schematic-design-verification
  * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/Gen4_2D00_x8_2D00_PCIe_2D00_Retimer_2D00_DS160PT801ACBR.pdf
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1669549/ds160pt801-ds160pt801acbr-schematic-design-verification/6441595
+ *
+ * [TI-PUBLIC-FIBER-SCHEMATIC] Public E2E customer schematic showing a
+ * DS160PT801 with switch-selectable x8/two-x4 WIDTH straps, separate SMBus and
+ * EEPROM interfaces, REFCLK_OUT, PERST, CLKREQ, and a four-lane fiber module.
+ * It contains no retimer register sequence or EEPROM payload and is hardware
+ * comparison material only, not a TI reference design or firmware source:
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/ds160pt801-with-FIBER.pdf
  *
  * [TI-PUBLIC-EFOCU8B-SCHEMATIC] Another public E2E thread includes a posted
  * EFOCU8B schematic archive used as a comparison design. The archive is
