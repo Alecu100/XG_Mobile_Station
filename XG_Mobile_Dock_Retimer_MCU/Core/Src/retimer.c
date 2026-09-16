@@ -19,10 +19,12 @@ extern I2C_HandleTypeDef hi2c2;
  * before PCIe link training when WIDTH is floating:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4552175
  *
- * [TI-ADDR20] Public TI review identifying strap address 0x20:
+ * [TI-ADDR20] Public TI review identifying displayed 8-bit strap address 0x20
+ * (7-bit address 0x10):
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4472257
  *
- * [TI-ADDR28] Public TI support discussion using single-chip address 0x28:
+ * [TI-ADDR28] Public TI support discussion using displayed 8-bit single-chip
+ * address 0x28 (7-bit address 0x14):
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6248261
  *
  * [TI-PR410-ADDR] Public DS160PR410 datasheet, section 7.5.1.2, documents
@@ -56,23 +58,26 @@ typedef struct {
     uint8_t verify;
 } retimer_register_t;
 
-/* Probe the board's expected address first, then the original broad fallback
- * range retained from the related DS160PR410 implementation [TI-PR410-ADDR].
- * Only 0x20 and 0x28 have direct DS160PT801 public examples cited above; the
- * remaining fallback addresses are probes, not claimed DS160PT801 straps. */
+/* Probe the board's expected 7-bit address first. SigCon's public screenshot
+ * lists even 8-bit addresses 0x20..0x34, corresponding to 7-bit 0x10..0x1A;
+ * this converts the cited 0x20 and 0x28 examples to 0x10 and 0x14. Retain the
+ * original broad fallback range as probes, not claimed DS160PT801 straps. */
 static const uint8_t retimer_address_candidates[] = {
     0x1A, /* [BOARD-ADDR]: expected address for this assembly */
+    0x10, /* [TI-ADDR20]: displayed 8-bit address 0x20 */
+    0x11, 0x12, 0x13,
+    0x14, /* [TI-ADDR28]: displayed 8-bit address 0x28 */
+    0x15, 0x16, 0x17,
     0x18, 0x19, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F,
-    0x20, /* [TI-ADDR20] */
-    0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27,
-    0x28, /* [TI-ADDR28] */
-    0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
+    0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27,
+    0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
 };
 
 /* [TI-X8-RESULTS]: exact command order from EFOCU8x_clk_x8_Pass.hex.
- * The two prefix bytes are retained for provenance but are not sent over the
- * direct SMBus register interface because their EEPROM-loader meaning is not
- * publicly documented. Unknown registers are written without readback gating;
+ * A public SigCon screenshot identifies 1C 07 configurations as device 0,
+ * shared page, both dies, mask 1, one-byte payload, active Manager. It does not
+ * establish direct-SMBus operations for 1D 07 or 1C 17, so all prefix bytes are
+ * retained as provenance but not sent. Unknown registers are written without readback gating;
  * the three publicly identified settings are verified before reset release.
  * The comparison image's additional 1C 07 FA 30 command is omitted. The forum
  * author cautions that the initial "Pass" may not have included a power cycle,
