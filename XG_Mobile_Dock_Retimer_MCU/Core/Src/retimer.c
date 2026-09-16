@@ -1,0 +1,229 @@
+#include "main.h"
+
+#include <stdint.h>
+#include <stdio.h>
+
+extern I2C_HandleTypeDef hi2c2;
+
+/* DS160PT801 source map (all TI links are publicly accessible):
+ *
+ * [TI-X8-IMAGE] TI employee posts the original x8/REFCLK_OUT EEPROM image:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6188921
+ *
+ * [TI-X8-RESULTS] User posts image.zip, F2=81/F3=A0, 0D=91, and explicitly
+ * cautions that the initial "Pass" might be inaccurate without a power cycle:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6213179
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/image.zip
+ *
+ * [TI-WIDTH] 0xF2/0xF3 are global link-width registers and must be written
+ * before PCIe link training when WIDTH is floating:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4552175
+ *
+ * [TI-ADDR20] Public TI review identifying strap address 0x20:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4472257
+ *
+ * [TI-ADDR28] Public TI support discussion using single-chip address 0x28:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6248261
+ *
+ * [TI-PR410-ADDR] Public DS160PR410 datasheet, section 7.5.1.2, documents
+ * SMBus/I2C register control and strap-selected addresses. This related
+ * redriver is only the heuristic origin for the broad fallback scan; it does
+ * not prove that every scanned address is valid for DS160PT801:
+ * https://www.ti.com/document-viewer/DS160PR410/datasheet#smbus-i2c-register-control-interface-t5706319-18/t5706319-18
+ *
+ * [BOARD-ADDR] This board's floating SMB_ADDR_0/1 straps and U1 wiring:
+ * ../../../XG_Mobile_Dock_Retimer.kicad_sch
+ */
+
+/* Software-only sentinel and timeout; these are implementation choices, not
+ * DS160PT801 register or strap values. */
+#define RETIMER_ADDRESS_INVALID         0xFFU
+#define RETIMER_I2C_TIMEOUT_MS          50U
+
+#define RETIMER_REG_REFCLK_OUT          0x0DU /* [TI-X8-RESULTS] */
+#define RETIMER_REG_LINK_WIDTH_0        0xF2U /* [TI-X8-RESULTS], [TI-WIDTH] */
+#define RETIMER_REG_LINK_WIDTH_1        0xF3U /* [TI-X8-RESULTS], [TI-WIDTH] */
+
+#define RETIMER_REFCLK_OUT_ENABLED      0x91U /* [TI-X8-RESULTS] */
+#define RETIMER_LINK_WIDTH_X8_0         0x81U /* [TI-X8-RESULTS] */
+#define RETIMER_LINK_WIDTH_X8_1         0xA0U /* [TI-X8-RESULTS] */
+
+typedef struct {
+    uint8_t source_prefix0;
+    uint8_t source_prefix1;
+    uint8_t reg;
+    uint8_t value;
+    uint8_t verify;
+} retimer_register_t;
+
+/* Probe the board's expected address first, then the original broad fallback
+ * range retained from the related DS160PR410 implementation [TI-PR410-ADDR].
+ * Only 0x20 and 0x28 have direct DS160PT801 public examples cited above; the
+ * remaining fallback addresses are probes, not claimed DS160PT801 straps. */
+static const uint8_t retimer_address_candidates[] = {
+    0x1A, /* [BOARD-ADDR]: expected address for this assembly */
+    0x18, 0x19, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F,
+    0x20, /* [TI-ADDR20] */
+    0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27,
+    0x28, /* [TI-ADDR28] */
+    0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
+};
+
+/* [TI-X8-RESULTS]: exact command order from EFOCU8x_clk_x8_Pass.hex.
+ * The two prefix bytes are retained for provenance but are not sent over the
+ * direct SMBus register interface because their EEPROM-loader meaning is not
+ * publicly documented. Unknown registers are written without readback gating;
+ * the three publicly identified settings are verified before reset release.
+ * The comparison image's additional 1C 07 FA 30 command is omitted. The forum
+ * author cautions that the initial "Pass" may not have included a power cycle,
+ * so this sequence still requires cold-boot validation on this board. */
+static const retimer_register_t retimer_public_x8_sequence[] = {
+    { 0x1C, 0x07, 0xDA, 0x01, 0 },
+    { 0x1C, 0x07, 0xDE, 0x10, 0 },
+    { 0x1C, 0x07, 0xDF, 0x10, 0 },
+    { 0x1C, 0x17, 0xE0, 0x01, 0 },
+    { 0x1D, 0x07, 0x9E, 0x44, 0 },
+    { 0x1C, 0x07, 0xD6, 0x07, 0 },
+    { 0x1D, 0x07, 0x58, 0xC0, 0 },
+    { 0x1D, 0x07, 0xC0, 0x00, 0 },
+    { 0x1C, 0x07, 0xB7, 0x00, 0 },
+    { 0x1D, 0x07, 0x91, 0x0A, 0 },
+    { 0x1C, 0x07, 0x93, 0x03, 0 },
+    { 0x1D, 0x07, 0x07, 0x03, 0 },
+    { 0x1C, 0x07, 0xDA, 0x05, 0 },
+    { 0x1C, 0x07, RETIMER_REG_LINK_WIDTH_0, RETIMER_LINK_WIDTH_X8_0, 1 },
+    { 0x1C, 0x07, RETIMER_REG_LINK_WIDTH_1, RETIMER_LINK_WIDTH_X8_1, 1 },
+    { 0x1C, 0x07, RETIMER_REG_REFCLK_OUT, RETIMER_REFCLK_OUT_ENABLED, 1 },
+};
+
+static uint8_t retimer_address = RETIMER_ADDRESS_INVALID;
+
+static HAL_StatusTypeDef retimer_read(uint8_t reg, uint8_t *value)
+{
+    return HAL_I2C_Mem_Read(&hi2c2, (uint16_t)(retimer_address << 1), reg,
+                            I2C_MEMADD_SIZE_8BIT, value, 1,
+                            RETIMER_I2C_TIMEOUT_MS);
+}
+
+static HAL_StatusTypeDef retimer_write(uint8_t reg, uint8_t value)
+{
+    return HAL_I2C_Mem_Write(
+        &hi2c2, (uint16_t)(retimer_address << 1), reg,
+        I2C_MEMADD_SIZE_8BIT, &value, 1, RETIMER_I2C_TIMEOUT_MS);
+}
+
+static HAL_StatusTypeDef retimer_write_verified(uint8_t reg, uint8_t value)
+{
+    uint8_t readback = 0;
+    HAL_StatusTypeDef status = retimer_write(reg, value);
+
+    if (status != HAL_OK) {
+        return status;
+    }
+
+    status = retimer_read(reg, &readback);
+    if (status != HAL_OK) {
+        return status;
+    }
+
+    return readback == value ? HAL_OK : HAL_ERROR;
+}
+
+static HAL_StatusTypeDef retimer_verify_public_x8_sequence(void)
+{
+    for (size_t index = 0;
+         index < sizeof(retimer_public_x8_sequence) /
+                     sizeof(retimer_public_x8_sequence[0]);
+         ++index) {
+        const retimer_register_t *setting = &retimer_public_x8_sequence[index];
+        uint8_t value = 0;
+
+        if (retimer_read(setting->reg, &value) != HAL_OK ||
+            value != setting->value) {
+            printf("DS160PT801 final verify failed: reg 0x%02X expected 0x%02X got 0x%02X\n",
+                   setting->reg, setting->value, value);
+            return HAL_ERROR;
+        }
+    }
+
+    return HAL_OK;
+}
+
+HAL_StatusTypeDef retimer_probe(void)
+{
+    retimer_address = RETIMER_ADDRESS_INVALID;
+
+    for (size_t index = 0;
+         index < sizeof(retimer_address_candidates) / sizeof(retimer_address_candidates[0]);
+         ++index) {
+        uint8_t candidate = retimer_address_candidates[index];
+        if (HAL_I2C_IsDeviceReady(&hi2c2, (uint16_t)(candidate << 1), 2,
+                                  RETIMER_I2C_TIMEOUT_MS) == HAL_OK) {
+            retimer_address = candidate;
+            printf("DS160PT801 found at 7-bit address 0x%02X\n", candidate);
+            return HAL_OK;
+        }
+    }
+
+    printf("DS160PT801 not found on I2C2\n");
+    return HAL_ERROR;
+}
+
+HAL_StatusTypeDef retimer_configure_x8(void)
+{
+    if (retimer_address == RETIMER_ADDRESS_INVALID && retimer_probe() != HAL_OK) {
+        return HAL_ERROR;
+    }
+
+    printf("DS160PT801 init 1/4: replay public Pass-image register values\n");
+    for (size_t index = 0;
+         index < sizeof(retimer_public_x8_sequence) /
+                     sizeof(retimer_public_x8_sequence[0]);
+         ++index) {
+        const retimer_register_t *setting = &retimer_public_x8_sequence[index];
+
+        if (setting->reg == RETIMER_REG_LINK_WIDTH_0) {
+            printf("DS160PT801 init 2/4: program x8 width before PCIe training\n");
+        }
+        if (setting->reg == RETIMER_REG_REFCLK_OUT) {
+            printf("DS160PT801 init 3/4: enable REFCLK_OUT (0x0D=0x91)\n");
+        }
+        HAL_StatusTypeDef status = setting->verify
+            ? retimer_write_verified(setting->reg, setting->value)
+            : retimer_write(setting->reg, setting->value);
+        if (status != HAL_OK) {
+            printf("DS160PT801 command %02X %02X %02X %02X failed%s\n",
+                   setting->source_prefix0, setting->source_prefix1,
+                   setting->reg, setting->value,
+                   setting->verify ? " write/readback" : " write");
+            return HAL_ERROR;
+        }
+    }
+
+    printf("DS160PT801 init 4/4: verify documented settings\n");
+    if (retimer_verify_public_x8_sequence() != HAL_OK) {
+        return HAL_ERROR;
+    }
+
+    printf("DS160PT801 x8 and REFCLK_OUT configuration verified at 0x%02X\n",
+           retimer_address);
+    return HAL_OK;
+}
+
+void retimer_print_status(void)
+{
+    uint8_t width0 = 0;
+    uint8_t width1 = 0;
+    uint8_t refclk = 0;
+
+    if (retimer_address == RETIMER_ADDRESS_INVALID && retimer_probe() != HAL_OK) {
+        return;
+    }
+
+    if (retimer_read(RETIMER_REG_LINK_WIDTH_0, &width0) == HAL_OK &&
+        retimer_read(RETIMER_REG_LINK_WIDTH_1, &width1) == HAL_OK &&
+        retimer_read(RETIMER_REG_REFCLK_OUT, &refclk) == HAL_OK) {
+        printf("DS160PT801 0x%02X: F2=%02X F3=%02X REFCLK=%02X\n",
+               retimer_address, width0, width1, refclk);
+    }
+}
