@@ -82,6 +82,41 @@ extern I2C_HandleTypeDef hi2c2;
  * related redriver supports the broad probe heuristic, not PT801 equivalence:
  * https://www.ti.com/lit/pdf/SNLU268
  *
+ * Hardware design provenance for the PCB and schematics:
+ *
+ * [TI-ASUS-SCHEMATIC-REVIEW] The retimer schematic was based in part on this
+ * public TI E2E review of an ASUS design. TI reviews the PCIe coupling,
+ * REFCLK/REFCLK_OUT, JTAG, reset, CLKREQ#, WIDTH, SMBus straps and pull-ups,
+ * EEPROM interface, and power rails. The follow-up explicitly records comments
+ * from an ASUS email for public reference:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4472257
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4473059
+ *
+ * [TI-ASUS-LAYOUT-REVIEW] TI's public PCB review calls for back-drilling
+ * high-speed via stubs, nearby ground vias, less than 5 mil intra-pair skew,
+ * and ground voids under series coupling capacitors. TI also confirms the
+ * shared 100 MHz clock topology shown by the ASUS discussion:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4475450
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4488485
+ *
+ * [TI-EVM-HARDWARE] Public DS160PT801X16EVM schematic and TI high-speed layout
+ * guidance used as additional schematic and PCB references:
+ * https://www.ti.com/lit/ug/snlu254a/snlu254a.pdf
+ * https://www.ti.com/lit/an/slla414/slla414.pdf
+ *
+ * [TI-PUBLIC-X8-SCHEMATIC] A separate public E2E design-verification thread
+ * includes a user-posted Gen4 x8 DS160PT801 schematic PDF and TI review. TI
+ * confirms the REFCLK-to-retimer/REFCLK_OUT-to-endpoint topology, 33-ohm
+ * REFCLK_OUT resistor, RX_DET_BYP, EEPROM mode, and shared SMBus usage:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1669549/ds160pt801-ds160pt801acbr-schematic-design-verification
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/Gen4_2D00_x8_2D00_PCIe_2D00_Retimer_2D00_DS160PT801ACBR.pdf
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1669549/ds160pt801-ds160pt801acbr-schematic-design-verification/6441595
+ *
+ * [TI-PUBLIC-EFOCU8B-SCHEMATIC] Another public E2E thread includes a posted
+ * EFOCU8B schematic archive used as a comparison design. The archive is
+ * password protected, so only the publicly visible discussion was relied on:
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/SPK_5F00_EFOCU8B_5F00_V01_5F00_1023_5F00_SCH_5F00_lock.zip
+ *
  * [BOARD-ADDR] This board's floating SMB_ADDR_0/1 straps and U1 wiring:
  * ../../../XG_Mobile_Dock_Retimer.kicad_sch
  */
