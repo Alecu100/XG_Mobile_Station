@@ -60,6 +60,7 @@ extern void fans_start(void);
 extern void fans_stop(void);
 extern HAL_StatusTypeDef retimer_configure_x8(void);
 extern void retimer_print_status(void);
+extern void retimer_reset_state(void);
 
 /* --- Non-blocking UART logging ---------------------------------------------
  * printf() is called from ISR context (the EXTI callback and every I2C slave
@@ -296,6 +297,7 @@ void turn_power_off() {
     set_perst(GPIO_PIN_RESET);
     set_retimer_perst(1);
     gState.retimer_config_pending = 0;
+    retimer_reset_state();
     HAL_GPIO_WritePin(PWROK_GPIO_Port, PWROK_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(BUCK_ON_GPIO_Port, BUCK_ON_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(PCI_12V_EN_GPIO_Port, PCI_12V_EN_Pin, GPIO_PIN_RESET);

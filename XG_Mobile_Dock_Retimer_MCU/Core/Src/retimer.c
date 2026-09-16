@@ -30,6 +30,11 @@ extern I2C_HandleTypeDef hi2c2;
  * switch the device to the 8-bit mode assumed by most of the programming guide:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1188590/ds160pt801-smbus-interface/4481703
  *
+ * [OPENBIC] Public Apache-2.0 DS160PT801 driver. It switches power-up 16-bit
+ * mode to 8-bit mode by transmitting 68 01 00, then uses the 8-bit register
+ * map. It identifies vendor 0x4172 at F6 and device 0x24 at F1:
+ * https://github.com/facebook/OpenBIC/blob/main/common/dev/ds160pt801.c
+ *
  * [TI-WIDTH] 0xF2/0xF3 are global link-width registers and must be written
  * before PCIe link training when WIDTH is floating:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4552175
@@ -61,12 +66,16 @@ extern I2C_HandleTypeDef hi2c2;
 #define RETIMER_I2C_TIMEOUT_MS          50U
 
 #define RETIMER_REG_REFCLK_OUT          0x0DU /* [TI-X8-RESULTS] */
+#define RETIMER_REG_DEVICE_ID           0xF1U /* [OPENBIC] */
 #define RETIMER_REG_LINK_WIDTH_0        0xF2U /* [TI-X8-RESULTS], [TI-WIDTH] */
 #define RETIMER_REG_LINK_WIDTH_1        0xF3U /* [TI-X8-RESULTS], [TI-WIDTH] */
+#define RETIMER_REG_VENDOR_ID           0xF6U /* [OPENBIC] */
 
 #define RETIMER_REFCLK_OUT_ENABLED      0x91U /* [TI-X8-RESULTS] */
 #define RETIMER_LINK_WIDTH_X8_0         0x81U /* [TI-X8-RESULTS] */
 #define RETIMER_LINK_WIDTH_X8_1         0xA0U /* [TI-X8-RESULTS] */
+#define RETIMER_DEVICE_ID               0x24U /* [OPENBIC] */
+#define RETIMER_VENDOR_ID               0x4172U /* [OPENBIC] */
 
 typedef struct {
     uint8_t source_prefix0;
@@ -121,43 +130,77 @@ static const retimer_register_t retimer_public_x8_sequence[] = {
 };
 
 static uint8_t retimer_address = RETIMER_ADDRESS_INVALID;
+static uint8_t retimer_8bit_mode;
 
-/* Experimental mapping: EEPROM prefix byte 1 is the high offset byte and the
- * published 8-bit register is the low byte. Prefix byte 0 remains metadata. */
-static uint16_t retimer_offset(const retimer_register_t *setting)
+static HAL_StatusTypeDef retimer_read(uint8_t reg, uint8_t *value)
 {
-    return ((uint16_t)setting->source_prefix1 << 8) | setting->reg;
-}
-
-static HAL_StatusTypeDef retimer_read(uint16_t offset, uint8_t *value)
-{
-    return HAL_I2C_Mem_Read(&hi2c2, (uint16_t)(retimer_address << 1), offset,
-                            I2C_MEMADD_SIZE_16BIT, value, 1,
+    return HAL_I2C_Mem_Read(&hi2c2, (uint16_t)(retimer_address << 1), reg,
+                            I2C_MEMADD_SIZE_8BIT, value, 1,
                             RETIMER_I2C_TIMEOUT_MS);
 }
 
-static HAL_StatusTypeDef retimer_write(uint16_t offset, uint8_t value)
+static HAL_StatusTypeDef retimer_write(uint8_t reg, uint8_t value)
 {
     return HAL_I2C_Mem_Write(
-        &hi2c2, (uint16_t)(retimer_address << 1), offset,
-        I2C_MEMADD_SIZE_16BIT, &value, 1, RETIMER_I2C_TIMEOUT_MS);
+        &hi2c2, (uint16_t)(retimer_address << 1), reg,
+        I2C_MEMADD_SIZE_8BIT, &value, 1, RETIMER_I2C_TIMEOUT_MS);
 }
 
-static HAL_StatusTypeDef retimer_write_verified(uint16_t offset, uint8_t value)
+static HAL_StatusTypeDef retimer_write_verified(uint8_t reg, uint8_t value)
 {
     uint8_t readback = 0;
-    HAL_StatusTypeDef status = retimer_write(offset, value);
+    HAL_StatusTypeDef status = retimer_write(reg, value);
 
     if (status != HAL_OK) {
         return status;
     }
 
-    status = retimer_read(offset, &readback);
+    status = retimer_read(reg, &readback);
     if (status != HAL_OK) {
         return status;
     }
 
     return readback == value ? HAL_OK : HAL_ERROR;
+}
+
+static HAL_StatusTypeDef retimer_enter_8bit_mode(void)
+{
+    static uint8_t mode_switch[] = { 0x68U, 0x01U, 0x00U }; /* [OPENBIC] */
+    uint8_t vendor[2] = { 0 };
+    uint8_t device = 0;
+
+    if (!retimer_8bit_mode) {
+        if (HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(retimer_address << 1),
+                                    mode_switch, sizeof(mode_switch),
+                                    RETIMER_I2C_TIMEOUT_MS) != HAL_OK) {
+            return HAL_ERROR;
+        }
+        retimer_8bit_mode = 1;
+    }
+
+    if (HAL_I2C_Mem_Read(&hi2c2, (uint16_t)(retimer_address << 1),
+                         RETIMER_REG_VENDOR_ID, I2C_MEMADD_SIZE_8BIT,
+                         vendor, sizeof(vendor), RETIMER_I2C_TIMEOUT_MS) != HAL_OK ||
+        retimer_read(RETIMER_REG_DEVICE_ID, &device) != HAL_OK) {
+        return HAL_ERROR;
+    }
+
+    if (((uint16_t)vendor[0] | ((uint16_t)vendor[1] << 8)) != RETIMER_VENDOR_ID ||
+        device != RETIMER_DEVICE_ID) {
+        printf("DS160PT801 identity mismatch: vendor=%02X%02X device=%02X\n",
+               vendor[1], vendor[0], device);
+        return HAL_ERROR;
+    }
+
+    printf("DS160PT801 switched to 8-bit mode; vendor=0x%04X device=0x%02X\n",
+           RETIMER_VENDOR_ID, RETIMER_DEVICE_ID);
+    return HAL_OK;
+}
+
+void retimer_reset_state(void)
+{
+    retimer_address = RETIMER_ADDRESS_INVALID;
+    retimer_8bit_mode = 0;
 }
 
 static HAL_StatusTypeDef retimer_verify_public_x8_sequence(void)
@@ -168,16 +211,15 @@ static HAL_StatusTypeDef retimer_verify_public_x8_sequence(void)
          ++index) {
         const retimer_register_t *setting = &retimer_public_x8_sequence[index];
         uint8_t value = 0;
-        uint16_t offset = retimer_offset(setting);
 
         if (!setting->verify) {
             continue;
         }
 
-        if (retimer_read(offset, &value) != HAL_OK ||
+        if (retimer_read(setting->reg, &value) != HAL_OK ||
             value != setting->value) {
-            printf("DS160PT801 final verify failed: offset 0x%04X expected 0x%02X got 0x%02X\n",
-                   offset, setting->value, value);
+            printf("DS160PT801 final verify failed: reg 0x%02X expected 0x%02X got 0x%02X\n",
+                   setting->reg, setting->value, value);
             return HAL_ERROR;
         }
     }
@@ -211,13 +253,17 @@ HAL_StatusTypeDef retimer_configure_x8(void)
         return HAL_ERROR;
     }
 
-    printf("DS160PT801 init 1/4: replay Pass image using experimental 16-bit offsets\n");
+    if (retimer_enter_8bit_mode() != HAL_OK) {
+        printf("DS160PT801 failed to enter verified 8-bit register mode\n");
+        return HAL_ERROR;
+    }
+
+    printf("DS160PT801 init 1/4: replay public Pass-image register values\n");
     for (size_t index = 0;
          index < sizeof(retimer_public_x8_sequence) /
                      sizeof(retimer_public_x8_sequence[0]);
          ++index) {
         const retimer_register_t *setting = &retimer_public_x8_sequence[index];
-        uint16_t offset = retimer_offset(setting);
 
         if (setting->reg == RETIMER_REG_LINK_WIDTH_0) {
             printf("DS160PT801 init 2/4: program x8 width before PCIe training\n");
@@ -226,12 +272,12 @@ HAL_StatusTypeDef retimer_configure_x8(void)
             printf("DS160PT801 init 3/4: enable REFCLK_OUT (0x0D=0x91)\n");
         }
         HAL_StatusTypeDef status = setting->verify
-            ? retimer_write_verified(offset, setting->value)
-            : retimer_write(offset, setting->value);
+            ? retimer_write_verified(setting->reg, setting->value)
+            : retimer_write(setting->reg, setting->value);
         if (status != HAL_OK) {
-            printf("DS160PT801 command %02X %02X %02X %02X (offset 0x%04X) failed%s\n",
+            printf("DS160PT801 command %02X %02X %02X %02X failed%s\n",
                    setting->source_prefix0, setting->source_prefix1,
-                   setting->reg, setting->value, offset,
+                   setting->reg, setting->value,
                    setting->verify ? " write/readback" : " write");
             return HAL_ERROR;
         }
@@ -257,9 +303,9 @@ void retimer_print_status(void)
         return;
     }
 
-    if (retimer_read(0x0700U | RETIMER_REG_LINK_WIDTH_0, &width0) == HAL_OK &&
-        retimer_read(0x0700U | RETIMER_REG_LINK_WIDTH_1, &width1) == HAL_OK &&
-        retimer_read(0x0700U | RETIMER_REG_REFCLK_OUT, &refclk) == HAL_OK) {
+    if (retimer_read(RETIMER_REG_LINK_WIDTH_0, &width0) == HAL_OK &&
+        retimer_read(RETIMER_REG_LINK_WIDTH_1, &width1) == HAL_OK &&
+        retimer_read(RETIMER_REG_REFCLK_OUT, &refclk) == HAL_OK) {
         printf("DS160PT801 0x%02X: F2=%02X F3=%02X REFCLK=%02X\n",
                retimer_address, width0, width1, refclk);
     }
