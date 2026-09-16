@@ -19,12 +19,10 @@ extern I2C_HandleTypeDef hi2c2;
  * before PCIe link training when WIDTH is floating:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4552175
  *
- * [TI-ADDR20] Public TI review identifying displayed 8-bit strap address 0x20
- * (7-bit address 0x10):
+ * [TI-ADDR20] Public TI review identifying strap address 0x20:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4472257
  *
- * [TI-ADDR28] Public TI support discussion using displayed 8-bit single-chip
- * address 0x28 (7-bit address 0x14):
+ * [TI-ADDR28] Public TI support discussion using single-chip address 0x28:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6248261
  *
  * [TI-PR410-ADDR] Public DS160PR410 datasheet, section 7.5.1.2, documents
@@ -32,6 +30,11 @@ extern I2C_HandleTypeDef hi2c2;
  * redriver is only the heuristic origin for the broad fallback scan; it does
  * not prove that every scanned address is valid for DS160PT801:
  * https://www.ti.com/document-viewer/DS160PR410/datasheet#smbus-i2c-register-control-interface-t5706319-18/t5706319-18
+ *
+ * [TI-PR810-ADDR] Public DS160PR810 Programming Guide, section 1.1,
+ * explicitly labels its complete 0x18..0x37 map as 7-bit addresses. This
+ * related redriver supports the broad probe heuristic, not PT801 equivalence:
+ * https://www.ti.com/lit/pdf/SNLU268
  *
  * [BOARD-ADDR] This board's floating SMB_ADDR_0/1 straps and U1 wiring:
  * ../../../XG_Mobile_Dock_Retimer.kicad_sch
@@ -58,19 +61,18 @@ typedef struct {
     uint8_t verify;
 } retimer_register_t;
 
-/* Probe the board's expected 7-bit address first. SigCon's public screenshot
- * lists even 8-bit addresses 0x20..0x34, corresponding to 7-bit 0x10..0x1A;
- * this converts the cited 0x20 and 0x28 examples to 0x10 and 0x14. Retain the
- * original broad fallback range as probes, not claimed DS160PT801 straps. */
+/* Probe the board's expected 7-bit address first. The related DS160PR810
+ * programming guide explicitly defines 7-bit address pairs from 0x18 through
+ * 0x37. Retain that broad range as a heuristic; only 0x20 and 0x28 have direct
+ * DS160PT801 public examples cited above. */
 static const uint8_t retimer_address_candidates[] = {
     0x1A, /* [BOARD-ADDR]: expected address for this assembly */
-    0x10, /* [TI-ADDR20]: displayed 8-bit address 0x20 */
-    0x11, 0x12, 0x13,
-    0x14, /* [TI-ADDR28]: displayed 8-bit address 0x28 */
-    0x15, 0x16, 0x17,
     0x18, 0x19, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F,
-    0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27,
-    0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
+    0x20, /* [TI-ADDR20] */
+    0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27,
+    0x28, /* [TI-ADDR28] */
+    0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x2F,
+    0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37,
 };
 
 /* [TI-X8-RESULTS]: exact command order from EFOCU8x_clk_x8_Pass.hex.
