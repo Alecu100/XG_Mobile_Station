@@ -84,6 +84,10 @@ extern I2C_HandleTypeDef hi2c2;
  *
  * Hardware design provenance for the PCB and schematics:
  *
+ * [TI-PUBLIC-PINOUT] TI's public Ultra Librarian integration supplies the
+ * DS160PT801ACBR ACB-332 CAD symbol and complete ball-to-signal mapping:
+ * https://vendor.ultralibrarian.com/TI/embedded/?gpn=DS160PT801&package=ACB&pin=332&sid=019aa0ca92500020f4d7bdfbcb200507d002a07500a83&c=1
+ *
  * [TI-ASUS-SCHEMATIC-REVIEW] The retimer schematic was based in part on this
  * public TI E2E review of an ASUS design. TI reviews the PCIe coupling,
  * REFCLK/REFCLK_OUT, JTAG, reset, CLKREQ#, WIDTH, SMBus straps and pull-ups,
