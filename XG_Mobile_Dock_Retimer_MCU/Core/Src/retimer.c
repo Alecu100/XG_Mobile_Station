@@ -37,9 +37,11 @@ extern I2C_HandleTypeDef hi2c2;
  * and is a global register that may need manual insertion into an EEPROM image:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6180846
  *
- * [TI-DFE-THREAD] Public DS160PT801 discussion associates register 0x58 with
- * DFE control/masking attempts and identifies C3-C6 plus B6[3:2] as override
- * controls. Exact fields and a working sequence were not published:
+ * [TI-DFE-THREAD] In a public DS160PT801 discussion, a customer reports DFE and
+ * VREF override attempts using 0x58, C3-C6, and B6[3:2]. The attempts did not
+ * stop adaptation and prevented progression beyond Gen1 when applied before
+ * training. TI says override is generally not recommended and shared its test
+ * scripts only by private message; no fields or working sequence are public:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1584903/ds160pt801-is-there-an-algorithm-to-override-dfe-and-ref0-ref1
  *
  * [TI-SMBUS] TI confirms that the device powers up in 16-bit offset mode and
@@ -114,6 +116,15 @@ extern I2C_HandleTypeDef hi2c2;
  * shared 100 MHz clock topology shown by the ASUS discussion:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4475450
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4488485
+ *
+ * [TI-ASUS-GUI-IMAGES] Original-resolution images and diagnostic archives in
+ * the same thread show global reset defaults, live F2/F3 width investigation,
+ * lane status, adaptive EQ, and x4 lane-routing failures. The global screenshot
+ * corroborates F1=24 and F6/F7=72/41, but captured width/EQ/status values are
+ * system-specific diagnostics and are not replayed by this firmware:
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/pastedimage1678952644404v1.png
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/high-level.zip
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/1581.x4-notebook.zip
  *
  * [TI-EVM-HARDWARE] Public DS160PT801X16EVM schematic and TI high-speed layout
  * guidance used as additional schematic and PCB references:
