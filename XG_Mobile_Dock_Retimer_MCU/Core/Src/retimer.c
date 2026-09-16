@@ -120,6 +120,12 @@ extern I2C_HandleTypeDef hi2c2;
  * https://www.ti.com/lit/ug/snlu254a/snlu254a.pdf
  * https://www.ti.com/lit/an/slla414/slla414.pdf
  *
+ * [TI-EVM-EEPROM-PAGE] Section 3.4, PDF page 12, documents SigCon's EEPROM
+ * controls and shows 22 00 00 04 followed by 1D 03 00 00 for device 0x20,
+ * all channels, both dies, payload size 1, and active device Manager. This
+ * confirms the command record shape but does not disclose prefix bit encoding:
+ * https://www.ti.com/lit/ug/snlu254a/snlu254a.pdf#page=12
+ *
  * [TI-PUBLIC-X8-SCHEMATIC] A separate public E2E design-verification thread
  * includes a user-posted Gen4 x8 DS160PT801 schematic PDF and TI review. TI
  * confirms the REFCLK-to-retimer/REFCLK_OUT-to-endpoint topology, 33-ohm
