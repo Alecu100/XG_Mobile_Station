@@ -5,7 +5,21 @@
 
 extern I2C_HandleTypeDef hi2c2;
 
-/* DS160PT801 source map (all TI links are publicly accessible):
+/* DS160PT801 source map (all links are publicly accessible):
+ *
+ * [TI-IMAGE-THREAD] Base thread containing the public EEPROM images, SigCon
+ * screenshots, configuration discussion, and test results:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device
+ *
+ * [TI-4X4-IMAGE] Public 4x4 EEPROM image attachment:
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/DS160PT801_5F00_4x4.zip
+ *
+ * [TI-4X4X4X4-IMAGE] TI reply with the working 4x4x4x4 image and SigCon
+ * configuration screenshot:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6166320
+ *
+ * [TI-4X4-CLKREQ-IMAGE] TI reply with the 4x4 CLKREQ EEPROM image:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6180872
  *
  * [TI-X8-IMAGE] TI employee posts the original x8/REFCLK_OUT EEPROM image:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6188921
@@ -14,6 +28,10 @@ extern I2C_HandleTypeDef hi2c2;
  * cautions that the initial "Pass" might be inaccurate without a power cycle:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6213179
  * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/image.zip
+ *
+ * [TI-REGISTER-DUMP] Public register-dump attachment, renamed from .hex to
+ * .txt for upload. It contains one active EEPROM command:
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/EFOCU8B_5F00_20251128_5F00_1426.txt
  *
  * [TI-CLKREQ] TI confirms that 0xFA contains the intended CLKREQ# control bits
  * and is a global register that may need manual insertion into an EEPROM image:
@@ -30,6 +48,10 @@ extern I2C_HandleTypeDef hi2c2;
  * switch the device to the 8-bit mode assumed by most of the programming guide:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1188590/ds160pt801-smbus-interface/4481703
  *
+ * [TI-NON-COMMON-CLOCK] Public discussion identifying AF/SRIS_EN and related
+ * field names; TI's configuration answer was moved to private messages:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1421060/ds160pt801-eeprom-config-for-non-common-clock
+ *
  * [OPENBIC] Public Apache-2.0 DS160PT801 driver. It switches power-up 16-bit
  * mode to 8-bit mode by transmitting 68 01 00, then uses the 8-bit register
  * map. It identifies vendor 0x4172 at F6 and device 0x24 at F1:
@@ -38,6 +60,10 @@ extern I2C_HandleTypeDef hi2c2;
  * [TI-WIDTH] 0xF2/0xF3 are global link-width registers and must be written
  * before PCIe link training when WIDTH is floating:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4552175
+ *
+ * [TI-WIDTH-EDIT] Public configuration-set-14 screenshot showing the metadata
+ * used for the F3 EEPROM command:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1592822/ds160pt801-can-t-link-device/6195109
  *
  * [TI-ADDR20] Public TI review identifying strap address 0x20:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1185828/ds160pt801-asking-for-ds160pt801-updated-design-review-and-suggestions/4472257
