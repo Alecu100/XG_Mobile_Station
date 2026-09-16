@@ -52,6 +52,12 @@ extern I2C_HandleTypeDef hi2c2;
  * field names; TI's configuration answer was moved to private messages:
  * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1421060/ds160pt801-eeprom-config-for-non-common-clock
  *
+ * [TI-SRIS-IMAGE] A later public TI reply supplies an EEPROM image specifically
+ * for PCIe x4 with REFCLK_OUT and SRIS enabled. It writes AF=DC. This board
+ * uses a common reference clock, so that topology-specific setting is not used:
+ * https://e2e.ti.com/support/interface-group/interface/f/interface-forum/1631316/ds160pt801-ds160pt801-sincon-eeprom-programming-sris-mode-configuration-pcie-x4-refclkout/6295540
+ * https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/138/DS160PT801_5F00_4x4_5F00_REFCLKen_5F00_SRIS.hex
+ *
  * [OPENBIC] Public Apache-2.0 DS160PT801 driver. It switches power-up 16-bit
  * mode to 8-bit mode by transmitting 68 01 00, then uses the 8-bit register
  * map. It identifies vendor 0x4172 at F6 and device 0x24 at F1:
