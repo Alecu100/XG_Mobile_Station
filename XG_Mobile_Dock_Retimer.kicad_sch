@@ -43468,7 +43468,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "2.54短路帽开口"
+		(property "Part_Number" "2.54短路帽开口"
 			(at 542.29 226.06 0)
 			(effects
 				(font
@@ -43486,25 +43486,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C5305"
-			(at 542.29 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 542.29 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "2.54mm 开顶式"
+		(property "LCSC" "C5305"
 			(at 542.29 226.06 0)
 			(effects
 				(font
@@ -46719,7 +46701,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "PZ254V-12-8P"
+		(property "Part_Number" "PZ254V-12-8P"
 			(at 502.92 241.3 0)
 			(effects
 				(font
@@ -46737,25 +46719,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C492421"
-			(at 502.92 241.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 502.92 241.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "2x4P 间距:2.54mm 方针 直插"
+		(property "LCSC" "C492421"
 			(at 502.92 241.3 0)
 			(effects
 				(font
@@ -47537,7 +47501,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "2.54短路帽开口"
+		(property "Part_Number" "2.54短路帽开口"
 			(at 504.19 228.6 0)
 			(effects
 				(font
@@ -47555,25 +47519,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C5305"
-			(at 504.19 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 504.19 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "2.54mm 开顶式"
+		(property "LCSC" "C5305"
 			(at 504.19 228.6 0)
 			(effects
 				(font
@@ -87208,7 +87154,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "PZ254V-12-8P"
+		(property "Part_Number" "PZ254V-12-8P"
 			(at 537.21 242.57 0)
 			(effects
 				(font
@@ -87226,25 +87172,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C492421"
-			(at 537.21 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 537.21 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "2x4P 间距:2.54mm 方针 直插"
+		(property "LCSC" "C492421"
 			(at 537.21 242.57 0)
 			(effects
 				(font
