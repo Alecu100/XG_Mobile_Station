@@ -20,7 +20,7 @@ Use the measured lateral-ground-loss length plus ENTRY_JOG for LENGTH. This boar
 
 Fine-pitch BGA escape (select both members of each differential pair):
     PARAMS = dict(APPLY=True, LENGTH=0.80, PAD_ESCAPE=True,
-                  PAD_ENTRY_WIDTH=0.09, STEPS=12)
+                  PAD_ENTRY_WIDTH=0.09, STEPS=24)
 The narrow width is used at the pad and increases monotonically to the existing
 routed width. The existing centerline path provides the pair fanout, without a
 wide under-pad bridge or a teardrop-shaped width reversal.
@@ -657,6 +657,19 @@ def plan_pad_escape(candidate):
     nodes = [escape_point(distance, width)
              for distance, width in zip(distances, widths)]
 
+    left_edge = []
+    right_edge = []
+    for distance, center, width in zip(distances, nodes, widths):
+        tangent = candidate["tangent_at"](distance)
+        normal = (-tangent[1], tangent[0])
+        left_edge.append(add(center, mul(normal, width / 2.0)))
+        right_edge.append(add(center, mul(normal, -width / 2.0)))
+    terminal_tangent = candidate["terminal_tangent_at"](candidate["terminal_total"])
+    terminal_normal = (-terminal_tangent[1], terminal_tangent[0])
+    left_edge.append(add(candidate["pad_end"], mul(terminal_normal, pad_width / 2.0)))
+    right_edge.append(add(candidate["pad_end"], mul(terminal_normal, -pad_width / 2.0)))
+    polygon = left_edge + list(reversed(right_edge))
+
     pieces = []
     for index in range(len(distances) - 1):
         middle = None
@@ -691,6 +704,7 @@ def plan_pad_escape(candidate):
                      if active_component["kind"] == "arc" else None)
     return dict(candidate=candidate, start=nodes[0], end=nodes[-1],
                 width0=route_width, width1=pad_width, pieces=pieces, bridge=bridge,
+                polygon=polygon,
                 baseline=baseline, prefix_mid=prefix_middle,
                 active_component=active_component, path_start=path_start,
                 side=side, length=taper_length)
@@ -830,6 +844,22 @@ def run(board=None, apply=None, **overrides):
                 downstream_track.SetStart(v2(plan["bridge"][1]))
             else:
                 downstream_track.SetEnd(v2(plan["bridge"][1]))
+        if PAD_ESCAPE:
+            outline = pcbnew.SHAPE_LINE_CHAIN()
+            for point in plan["polygon"]:
+                outline.Append(v2(point))
+            outline.SetClosed(True)
+            polygon = pcbnew.SHAPE_POLY_SET()
+            polygon.AddOutline(outline)
+            taper = pcbnew.PCB_SHAPE(board, pcbnew.SHAPE_T_POLY)
+            taper.SetPolyShape(polygon)
+            taper.SetFilled(True)
+            taper.SetWidth(0)
+            taper.SetLayer(candidate["layer"])
+            taper.SetNetCode(candidate["net"])
+            board.Add(taper)
+            made += 1
+            continue
         for start, end, width, middle in plan["pieces"]:
             track = pcbnew.PCB_ARC(board) if middle is not None else pcbnew.PCB_TRACK(board)
             track.SetStart(v2(start))
@@ -854,7 +884,8 @@ def run(board=None, apply=None, **overrides):
             board.Add(bridge)
             made += 1
     _refresh(board)
-    print("APPLIED: %d staged track segment(s). Review pad overlap and run DRC before save." % made)
+    item_kind = "copper taper polygon(s)" if PAD_ESCAPE else "staged track segment(s)"
+    print("APPLIED: %d %s. Review pad overlap and run DRC before save." % (made, item_kind))
     return made
 
 
