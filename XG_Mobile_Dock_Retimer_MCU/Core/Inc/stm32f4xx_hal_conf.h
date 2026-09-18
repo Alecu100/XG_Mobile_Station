@@ -22,6 +22,7 @@ extern "C" {
 #define HSI_VALUE               16000000U
 #define LSI_VALUE               32000U
 #define LSE_VALUE               32768U
+#define LSE_STARTUP_TIMEOUT     5000U
 #define EXTERNAL_CLOCK_VALUE    12288000U
 
 #define VDD_VALUE               3300U
@@ -47,6 +48,9 @@ extern "C" {
 
 #ifdef USE_FULL_ASSERT
 void assert_failed(uint8_t *file, uint32_t line);
+#define assert_param(expr) ((expr) ? (void)0U : assert_failed((uint8_t *)__FILE__, __LINE__))
+#else
+#define assert_param(expr) ((void)0U)
 #endif
 
 #ifdef __cplusplus
