@@ -20,10 +20,10 @@ Use the measured lateral-ground-loss length plus ENTRY_JOG for LENGTH. This boar
 
 Fine-pitch BGA escape (select both members of each differential pair):
     PARAMS = dict(APPLY=True, LENGTH=0.80, PAD_ESCAPE=True,
-                  PAD_ENTRY_WIDTH=0.09, STEPS=24)
-The narrow width is used at the pad and increases monotonically to the existing
-routed width. The existing centerline path provides the pair fanout, without a
-wide under-pad bridge or a teardrop-shaped width reversal.
+                  PAD_ENTRY_WIDTH=0.20, STEPS=24)
+The existing routed width is used at the route end and increases monotonically
+toward the pad. The existing centerline path provides the pair fanout, without
+round-ended staged tracks or an abrupt width step.
 
 Select only the final track or arc entering each pad. Select both members of
 a differential pair for symmetric tapers. Review the result and run DRC before save.
@@ -49,8 +49,8 @@ CONSTANT_WIDTH = False   # use a uniform wide section after an original-width en
 ENTRY_JOG = 0.05         # lateral transition length before a CONSTANT_WIDTH section
 PAD_NECK = 0.0           # return to original width over this distance before the pad boundary
 SHIFT_PAD_FANIN = False  # move a unique under-pad continuation with the widened endpoint
-PAD_ESCAPE = False       # narrow at the pad, then widen into the existing routed trace
-PAD_ENTRY_WIDTH = None   # required pad-end width when PAD_ESCAPE is enabled
+PAD_ESCAPE = False       # widen from the existing routed trace toward a fine-pitch pad
+PAD_ENTRY_WIDTH = None   # required wider pad-end width when PAD_ESCAPE is enabled
 MAX_FACTOR = 2.0         # maximum width relative to the entering trace
 PAD_FILL = 0.82          # maximum fraction of pad half-span used in the outboard direction
 MIN_WIDTH_GAIN = 0.005   # skip tapers whose useful width increase is smaller than this
@@ -625,13 +625,13 @@ def plan_candidate(candidate):
 
 
 def plan_pad_escape(candidate):
-    """Narrow at a fine-pitch pad and widen monotonically into the routed trace."""
+    """Follow the existing fanout and widen monotonically from route to pad."""
     route_width = candidate["width"]
     if PAD_ENTRY_WIDTH is None:
         raise ValueError("PAD_ENTRY_WIDTH must be set when PAD_ESCAPE=True")
     pad_width = float(PAD_ENTRY_WIDTH)
-    if pad_width <= 0.0 or pad_width >= route_width - MIN_WIDTH_GAIN:
-        return None
+    if pad_width <= route_width + MIN_WIDTH_GAIN:
+        raise ValueError("PAD_ENTRY_WIDTH must be wider than the existing route when PAD_ESCAPE=True")
 
     taper_length = min(float(LENGTH), candidate["length"] * 0.80)
     stage_count = max(2, min(int(STEPS), int(taper_length / MIN_SEGMENT)))
@@ -644,18 +644,11 @@ def plan_pad_escape(candidate):
 
     side = candidate["side"] if candidate["side"] is not None else _single_side(candidate)
 
-    def escape_point(distance, width):
-        base = candidate["point_at"](distance)
-        tangent = candidate["tangent_at"](distance)
-        outboard = mul((-tangent[1], tangent[0]), side)
-        return add(base, mul(outboard, (width - route_width) / 2.0))
-
     widths = []
     for distance in distances:
         fraction = (distance - path_start) / taper_length
         widths.append(route_width + (pad_width - route_width) * smoothstep(fraction))
-    nodes = [escape_point(distance, width)
-             for distance, width in zip(distances, widths)]
+    nodes = [candidate["point_at"](distance) for distance in distances]
 
     left_edge = []
     right_edge = []
@@ -676,8 +669,7 @@ def plan_pad_escape(candidate):
         middle_distance = 0.5 * (distances[index] + distances[index + 1])
         component, _ = candidate["component_at"](middle_distance)
         if component["kind"] == "arc":
-            middle_width = 0.5 * (widths[index] + widths[index + 1])
-            middle = escape_point(middle_distance, middle_width)
+            middle = candidate["point_at"](middle_distance)
         pieces.append((nodes[index], nodes[index + 1],
                        0.5 * (widths[index] + widths[index + 1]), middle))
 
