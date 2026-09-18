@@ -1,5 +1,5 @@
 """
-Pad-entry teardrops for KiCad 9, with differential-pair gap preservation.
+Pad-entry tapers for KiCad 9, with differential-pair gap preservation.
 
 The script replaces each SELECTED straight track or arc that ends in a same-net pad
 with a short, stepped-width taper. For a differential pair, select both pad-entry items.
@@ -14,9 +14,16 @@ Usage in PCB Editor > Tools > Scripting Console:
 Quad-redriver RX entries (select pads 29/30, 32/33, 36/37, 39/40 entry items):
     PARAMS = dict(APPLY=True, LENGTH=0.55, TARGET_WIDTH=0.13,
                   EXTEND_PATH=True, CONSTANT_WIDTH=True, ENTRY_JOG=0.05,
-                  SHIFT_PAD_FANIN=True)
+                  SHIFT_PAD_FANIN=True, PAD_ESCAPE=False)
 Use the measured lateral-ground-loss length plus ENTRY_JOG for LENGTH. This board's
 16 RX pairs require 0.525-0.635 mm total, corresponding to 0.475-0.585 mm wide sections.
+
+Fine-pitch BGA escape (select both members of each differential pair):
+    PARAMS = dict(APPLY=True, LENGTH=0.80, PAD_ESCAPE=True,
+                  PAD_ENTRY_WIDTH=0.09, STEPS=12)
+The narrow width is used at the pad and increases monotonically to the existing
+routed width. The existing centerline path provides the pair fanout, without a
+wide under-pad bridge or a teardrop-shaped width reversal.
 
 Select only the final track or arc entering each pad. Select both members of
 a differential pair for symmetric tapers. Review the result and run DRC before save.
@@ -42,6 +49,8 @@ CONSTANT_WIDTH = False   # use a uniform wide section after an original-width en
 ENTRY_JOG = 0.05         # lateral transition length before a CONSTANT_WIDTH section
 PAD_NECK = 0.0           # return to original width over this distance before the pad boundary
 SHIFT_PAD_FANIN = False  # move a unique under-pad continuation with the widened endpoint
+PAD_ESCAPE = False       # narrow at the pad, then widen into the existing routed trace
+PAD_ENTRY_WIDTH = None   # required pad-end width when PAD_ESCAPE is enabled
 MAX_FACTOR = 2.0         # maximum width relative to the entering trace
 PAD_FILL = 0.82          # maximum fraction of pad half-span used in the outboard direction
 MIN_WIDTH_GAIN = 0.005   # skip tapers whose useful width increase is smaller than this
@@ -507,6 +516,8 @@ def _target_width(candidate):
 def plan_candidate(candidate):
     """Build connected, staged track geometry while holding the inboard edge fixed."""
     width0 = candidate["width"]
+    if PAD_ESCAPE:
+        return plan_pad_escape(candidate)
     width1 = _target_width(candidate)
     if width1 - width0 < MIN_WIDTH_GAIN:
         return None
@@ -611,6 +622,78 @@ def plan_candidate(candidate):
                 width1=width1, pieces=pieces, bridge=bridge, baseline=baseline,
                 prefix_mid=prefix_middle, active_component=active_component,
                 path_start=path_start, side=side, length=taper_length)
+
+
+def plan_pad_escape(candidate):
+    """Narrow at a fine-pitch pad and widen monotonically into the routed trace."""
+    route_width = candidate["width"]
+    if PAD_ENTRY_WIDTH is None:
+        raise ValueError("PAD_ENTRY_WIDTH must be set when PAD_ESCAPE=True")
+    pad_width = float(PAD_ENTRY_WIDTH)
+    if pad_width <= 0.0 or pad_width >= route_width - MIN_WIDTH_GAIN:
+        return None
+
+    taper_length = min(float(LENGTH), candidate["length"] * 0.80)
+    stage_count = max(2, min(int(STEPS), int(taper_length / MIN_SEGMENT)))
+    path_start = candidate["path_end"] - taper_length
+    distances = [path_start + taper_length * index / stage_count
+                 for index in range(stage_count + 1)]
+    distances.extend(distance for distance in candidate.get("component_breaks", ())
+                     if path_start + 1e-9 < distance < candidate["path_end"] - 1e-9)
+    distances = sorted(set(round(distance, 12) for distance in distances))
+
+    side = candidate["side"] if candidate["side"] is not None else _single_side(candidate)
+
+    def escape_point(distance, width):
+        base = candidate["point_at"](distance)
+        tangent = candidate["tangent_at"](distance)
+        outboard = mul((-tangent[1], tangent[0]), side)
+        return add(base, mul(outboard, (width - route_width) / 2.0))
+
+    widths = []
+    for distance in distances:
+        fraction = (distance - path_start) / taper_length
+        widths.append(route_width + (pad_width - route_width) * smoothstep(fraction))
+    nodes = [escape_point(distance, width)
+             for distance, width in zip(distances, widths)]
+
+    pieces = []
+    for index in range(len(distances) - 1):
+        middle = None
+        middle_distance = 0.5 * (distances[index] + distances[index + 1])
+        component, _ = candidate["component_at"](middle_distance)
+        if component["kind"] == "arc":
+            middle_width = 0.5 * (widths[index] + widths[index + 1])
+            middle = escape_point(middle_distance, middle_width)
+        pieces.append((nodes[index], nodes[index + 1],
+                       0.5 * (widths[index] + widths[index + 1]), middle))
+
+    bridge_middle = None
+    if candidate["terminal_kind"] == "arc":
+        bridge_distance = 0.5 * (candidate["terminal_entry"] + candidate["terminal_total"])
+        bridge_middle = candidate["terminal_point_at"](bridge_distance)
+    bridge = (nodes[-1], candidate["pad_end"], pad_width, bridge_middle)
+
+    baseline = []
+    baseline_distances = [path_start + taper_length * index / (stage_count * ARC_SAMPLES)
+                          for index in range(stage_count * ARC_SAMPLES + 1)]
+    baseline_distances.extend(distance for distance in candidate.get("component_breaks", ())
+                              if path_start < distance < candidate["path_end"])
+    baseline_distances = sorted(set(baseline_distances))
+    previous = candidate["point_at"](baseline_distances[0])
+    for distance in baseline_distances[1:]:
+        point = candidate["point_at"](distance)
+        baseline.append((previous, point, route_width))
+        previous = point
+
+    active_component, active_distance = candidate["component_at"](path_start)
+    prefix_middle = (active_component["point_at"](active_distance / 2.0)
+                     if active_component["kind"] == "arc" else None)
+    return dict(candidate=candidate, start=nodes[0], end=nodes[-1],
+                width0=route_width, width1=pad_width, pieces=pieces, bridge=bridge,
+                baseline=baseline, prefix_mid=prefix_middle,
+                active_component=active_component, path_start=path_start,
+                side=side, length=taper_length)
 
 
 def verify_pair_gaps(plans):
@@ -778,9 +861,9 @@ def run(board=None, apply=None, **overrides):
 try:
     class PadEntryTeardropPlugin(pcbnew.ActionPlugin):
         def defaults(self):
-            self.name = "Pad-entry teardrops (diff-pair safe)"
+            self.name = "Pad-entry tapers (diff-pair safe)"
             self.category = "Modify PCB"
-            self.description = "Widen selected pad entries while preserving differential-pair gap."
+            self.description = "Taper selected pad entries while preserving differential-pair gap."
             self.show_toolbar_button = True
 
         def Run(self):
