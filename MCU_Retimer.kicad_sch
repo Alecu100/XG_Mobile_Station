@@ -9556,7 +9556,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "STM32F405RGT6"
+		(property "Part_Number" "STM32F405RGT6"
 			(at 73.66 71.12 0)
 			(effects
 				(font
@@ -9574,25 +9574,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C15742"
-			(at 73.66 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Supplier" "LCSC"
-			(at 73.66 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "带DSP和FPU的高性能基础系列ARM Cortex-M4 MCU，具有1 MB Flash、168 MHz CPU和ART加速器"
+		(property "LCSC" "C15742"
 			(at 73.66 71.12 0)
 			(effects
 				(font
@@ -10740,15 +10722,6 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part" "STM32F405RGT6"
-			(at 74.93 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Manufacturer" "ST(意法半导体)"
 			(at 74.93 143.51 0)
 			(effects
@@ -10758,7 +10731,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier Part" "C15742"
+		(property "Part_Number" "STM32F405RGT6"
 			(at 74.93 143.51 0)
 			(effects
 				(font
@@ -10767,16 +10740,7 @@
 				(hide yes)
 			)
 		)
-		(property "Supplier" "LCSC"
-			(at 74.93 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part Name" "带DSP和FPU的高性能基础系列ARM Cortex-M4 MCU，具有1 MB Flash、168 MHz CPU和ART加速器"
+		(property "LCSC" "C15742"
 			(at 74.93 143.51 0)
 			(effects
 				(font
