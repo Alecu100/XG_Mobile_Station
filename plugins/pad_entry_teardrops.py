@@ -223,7 +223,7 @@ def _extend_candidate(board, candidate):
     used = {_item_key(candidate["obj"])}
     required = (LENGTH + MIN_SEGMENT if CONSTANT_WIDTH
                 else max(LENGTH / 0.80, LENGTH + MIN_SEGMENT))
-    while EXTEND_PATH and sum(component["length"] for component in components) + 1e-9 < required:
+    while (EXTEND_PATH or PAD_ESCAPE) and sum(component["length"] for component in components) + 1e-9 < required:
         join = components[0]["far"]
         choices = []
         for track in board.GetTracks():
@@ -625,7 +625,7 @@ def plan_candidate(candidate):
 
 
 def plan_pad_escape(candidate):
-    """Follow the existing fanout and widen monotonically from route to pad."""
+    """Curve smoothly from the routed pair into a wider pad entry."""
     route_width = candidate["width"]
     if PAD_ENTRY_WIDTH is None:
         raise ValueError("PAD_ENTRY_WIDTH must be set when PAD_ESCAPE=True")
@@ -636,48 +636,55 @@ def plan_pad_escape(candidate):
     taper_length = min(float(LENGTH), candidate["length"] * 0.80)
     stage_count = max(2, min(int(STEPS), int(taper_length / MIN_SEGMENT)))
     path_start = candidate["path_end"] - taper_length
-    distances = [path_start + taper_length * index / stage_count
-                 for index in range(stage_count + 1)]
-    distances.extend(distance for distance in candidate.get("component_breaks", ())
-                     if path_start + 1e-9 < distance < candidate["path_end"] - 1e-9)
-    distances = sorted(set(round(distance, 12) for distance in distances))
-
     side = candidate["side"] if candidate["side"] is not None else _single_side(candidate)
+    route_end = candidate["point_at"](path_start)
+    pad_end = candidate["pad_end"]
+    chord = sub(pad_end, route_end)
+    chord_length = norm(chord)
+    route_tangent = unit(candidate["tangent_at"](path_start))
+    pad_tangent = unit(candidate["terminal_tangent_at"](candidate["terminal_total"]))
+    if dot(route_tangent, chord) < 0.0:
+        route_tangent = mul(route_tangent, -1.0)
+    if dot(pad_tangent, chord) < 0.0:
+        pad_tangent = mul(pad_tangent, -1.0)
+    handle = min(taper_length / 3.0, chord_length / 3.0)
+    control1 = add(route_end, mul(route_tangent, handle))
+    control2 = sub(pad_end, mul(pad_tangent, handle))
 
-    widths = []
-    for distance in distances:
-        fraction = (distance - path_start) / taper_length
-        widths.append(route_width + (pad_width - route_width) * smoothstep(fraction))
-    nodes = [candidate["point_at"](distance) for distance in distances]
+    def curve_point(fraction):
+        inverse = 1.0 - fraction
+        return add(add(mul(route_end, inverse ** 3),
+                       mul(control1, 3.0 * inverse * inverse * fraction)),
+                   add(mul(control2, 3.0 * inverse * fraction * fraction),
+                       mul(pad_end, fraction ** 3)))
+
+    def curve_tangent(fraction):
+        inverse = 1.0 - fraction
+        derivative = add(add(mul(sub(control1, route_end), 3.0 * inverse * inverse),
+                             mul(sub(control2, control1), 6.0 * inverse * fraction)),
+                         mul(sub(pad_end, control2), 3.0 * fraction * fraction))
+        return unit(derivative)
+
+    fractions = [index / stage_count for index in range(stage_count + 1)]
+    widths = [route_width + (pad_width - route_width) * smoothstep(fraction)
+              for fraction in fractions]
+    nodes = [curve_point(fraction) for fraction in fractions]
 
     left_edge = []
     right_edge = []
-    for distance, center, width in zip(distances, nodes, widths):
-        tangent = candidate["tangent_at"](distance)
+    for fraction, center, width in zip(fractions, nodes, widths):
+        tangent = curve_tangent(fraction)
         normal = (-tangent[1], tangent[0])
         left_edge.append(add(center, mul(normal, width / 2.0)))
         right_edge.append(add(center, mul(normal, -width / 2.0)))
-    terminal_tangent = candidate["terminal_tangent_at"](candidate["terminal_total"])
-    terminal_normal = (-terminal_tangent[1], terminal_tangent[0])
-    left_edge.append(add(candidate["pad_end"], mul(terminal_normal, pad_width / 2.0)))
-    right_edge.append(add(candidate["pad_end"], mul(terminal_normal, -pad_width / 2.0)))
     polygon = left_edge + list(reversed(right_edge))
 
     pieces = []
-    for index in range(len(distances) - 1):
-        middle = None
-        middle_distance = 0.5 * (distances[index] + distances[index + 1])
-        component, _ = candidate["component_at"](middle_distance)
-        if component["kind"] == "arc":
-            middle = candidate["point_at"](middle_distance)
+    for index in range(len(fractions) - 1):
         pieces.append((nodes[index], nodes[index + 1],
-                       0.5 * (widths[index] + widths[index + 1]), middle))
+                       0.5 * (widths[index] + widths[index + 1]), None))
 
-    bridge_middle = None
-    if candidate["terminal_kind"] == "arc":
-        bridge_distance = 0.5 * (candidate["terminal_entry"] + candidate["terminal_total"])
-        bridge_middle = candidate["terminal_point_at"](bridge_distance)
-    bridge = (nodes[-1], candidate["pad_end"], pad_width, bridge_middle)
+    bridge = (nodes[-1], pad_end, pad_width, None)
 
     baseline = []
     baseline_distances = [path_start + taper_length * index / (stage_count * ARC_SAMPLES)
@@ -789,8 +796,6 @@ def run(board=None, apply=None, **overrides):
         candidate = plan["candidate"]
         label = candidate["name"].rsplit("/", 1)[-1]
         kind = "paired/outboard" if candidate["partner"] is not None else "single"
-        print("  %-20s %s  %.3f -> %.3f mm over %.3f mm (%d stages)"
-              % (label, kind, plan["width0"], plan["width1"], plan["length"], len(plan["pieces"])))
 
     if not apply or not plans:
         print("DRY RUN: set APPLY=True after reviewing the plan." if not apply else "Nothing changed.")
