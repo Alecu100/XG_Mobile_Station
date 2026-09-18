@@ -21044,6 +21044,12 @@
 		(uuid "5a750370-1254-49c9-b296-2de24c90bd2d")
 	)
 	(junction
+		(at 481.33 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a76198d-0f84-4501-85eb-d2adb4798589")
+	)
+	(junction
 		(at 379.73 175.26)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -21482,6 +21488,12 @@
 		(uuid "726f2285-8896-4dc9-a218-2e300c3842f2")
 	)
 	(junction
+		(at 473.71 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "727bb21a-61f9-44e7-b0b8-ce2b34c83c18")
+	)
+	(junction
 		(at 82.55 85.09)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -21876,6 +21888,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8d3aa94d-b08e-497c-9531-434d9f20950a")
+	)
+	(junction
+		(at 481.33 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8d5b6242-7209-43af-b641-b9b3761fcc14")
 	)
 	(junction
 		(at 143.51 243.84)
@@ -22494,6 +22512,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b43a3c6e-f9cc-4879-9a58-011fe08a7ff2")
+	)
+	(junction
+		(at 473.71 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b442d6d0-f831-4aae-9c6b-4c645250c039")
 	)
 	(junction
 		(at 27.94 236.22)
@@ -24451,6 +24475,16 @@
 	)
 	(wire
 		(pts
+			(xy 481.33 107.95) (xy 481.33 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0fa218cc-a55e-408b-9eb7-f802a1fe7533")
+	)
+	(wire
+		(pts
 			(xy 35.56 113.03) (xy 46.99 113.03)
 		)
 		(stroke
@@ -24528,6 +24562,16 @@
 			(type default)
 		)
 		(uuid "11a9281c-a7bb-41f4-8187-6ac562c5e1f7")
+	)
+	(wire
+		(pts
+			(xy 473.71 107.95) (xy 473.71 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11d3b7af-ce0d-4bda-9038-f8c3d1245e4e")
 	)
 	(wire
 		(pts
@@ -27771,6 +27815,16 @@
 	)
 	(wire
 		(pts
+			(xy 481.33 110.49) (xy 481.33 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57de0f2a-457d-4f4a-95c4-b7458468c919")
+	)
+	(wire
+		(pts
 			(xy 473.71 115.57) (xy 473.71 121.92)
 		)
 		(stroke
@@ -30978,6 +31032,16 @@
 			(type default)
 		)
 		(uuid "9e317488-6690-460f-a91a-6c99f02ab12c")
+	)
+	(wire
+		(pts
+			(xy 473.71 110.49) (xy 473.71 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ed0ceab-a0ea-4aa9-aab1-1d1cb8f09d87")
 	)
 	(wire
 		(pts
@@ -56158,6 +56222,200 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 477.52 110.49 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4f5fdf17-9eb2-4aab-b22c-44675ba1442c")
+		(property "Reference" "C215"
+			(at 477.52 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 477.52 105.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+			(at 473.71 111.4552 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C76937"
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "GRM033R61C104KE84D"
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 477.52 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e5032eae-c433-4935-83e0-cb07f01dcebe")
+		)
+		(pin "2"
+			(uuid "24ba726a-4d30-4fc0-8313-ee61ddddc249")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C215")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 502.92 81.28 0)
 		(unit 1)
@@ -57899,6 +58157,200 @@
 			(project "XG_Mobile_Dock_Retimer"
 				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
 					(reference "#PWR061")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 477.52 107.95 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5922954a-a638-44ed-82f7-5aee5eb7459d")
+		(property "Reference" "C216"
+			(at 477.52 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 477.52 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+			(at 473.71 108.9152 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C76937"
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part_Number" "GRM033R61C104KE84D"
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vend" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Datasheet_Link" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK_Detail_Page" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Family" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Status" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 477.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cc3893dc-6093-4907-8ea9-41fffce07c47")
+		)
+		(pin "2"
+			(uuid "4d25eff3-cc70-40dd-813b-00ddfb3273ac")
+		)
+		(instances
+			(project "XG_Mobile_Dock_Retimer"
+				(path "/f97e6956-ab08-42cb-8fed-03fa58e87f0e"
+					(reference "C216")
 					(unit 1)
 				)
 			)
