@@ -82,11 +82,11 @@
           ""
         ],
         [
-          "clearance|102025000|96390000|2ec3fa8e-f820-43e2-93d2-8b6f96da7074|7053cdcd-4437-454a-ab51-90db350ae30f",
+          "clearance|102025000|96010000|7053cdcd-4437-454a-ab51-90db350ae30f|2ec3fa8e-f820-43e2-93d2-8b6f96da7074",
           ""
         ],
         [
-          "clearance|104325000|96010000|28fbb5b5-8401-47e6-8ca4-578053e5f44d|9165af38-3ae5-49a6-84f2-c68abac02282",
+          "clearance|104325000|96390000|9165af38-3ae5-49a6-84f2-c68abac02282|28fbb5b5-8401-47e6-8ca4-578053e5f44d",
           ""
         ],
         [
@@ -98,11 +98,11 @@
           ""
         ],
         [
-          "clearance|108025000|96010000|70199a22-6a89-4ab6-ad3f-20e19ec20b80|dafabd36-b0d0-463f-82aa-b2d882d36b76",
+          "clearance|108025000|96390000|dafabd36-b0d0-463f-82aa-b2d882d36b76|70199a22-6a89-4ab6-ad3f-20e19ec20b80",
           ""
         ],
         [
-          "clearance|110325000|96390000|2fdb37a0-9170-4091-939f-45dc3fb59b80|daadfdf1-7528-4830-bbd5-73bafee54369",
+          "clearance|110325000|96010000|daadfdf1-7528-4830-bbd5-73bafee54369|2fdb37a0-9170-4091-939f-45dc3fb59b80",
           ""
         ],
         [
@@ -118,11 +118,11 @@
           ""
         ],
         [
-          "clearance|116325000|96010000|214f5d59-3e32-4b4d-b324-a4fc07e4db2f|5ef3f6e8-6ecd-4fa5-8c84-77546d917cc1",
+          "clearance|116325000|96390000|5ef3f6e8-6ecd-4fa5-8c84-77546d917cc1|214f5d59-3e32-4b4d-b324-a4fc07e4db2f",
           ""
         ],
         [
-          "clearance|117025000|96390000|db5bf4c6-4fa2-4826-a0e6-c6b9d596eb3a|c96eeb52-8513-4c96-be7a-60a8d8728627",
+          "clearance|117025000|96010000|c96eeb52-8513-4c96-be7a-60a8d8728627|db5bf4c6-4fa2-4826-a0e6-c6b9d596eb3a",
           ""
         ],
         [
@@ -130,11 +130,11 @@
           ""
         ],
         [
-          "clearance|129525000|96390000|2de0ed4d-9115-4f28-b892-87369ac7098b|206f3c3c-d80e-4e11-8515-66e2329fbd54",
+          "clearance|129525000|96010000|206f3c3c-d80e-4e11-8515-66e2329fbd54|2de0ed4d-9115-4f28-b892-87369ac7098b",
           ""
         ],
         [
-          "clearance|131825000|96390000|d113a933-86c5-4c10-ba5a-c61f581cf6a1|24abd405-a7b2-4cd3-906d-e98db23b5043",
+          "clearance|131825000|96010000|24abd405-a7b2-4cd3-906d-e98db23b5043|d113a933-86c5-4c10-ba5a-c61f581cf6a1",
           ""
         ],
         [
@@ -313,7 +313,7 @@
         "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.2,
-        "min_hole_to_hole": 0.4,
+        "min_hole_to_hole": 0.2,
         "min_microvia_diameter": 0.0,
         "min_microvia_drill": 0.0,
         "min_resolved_spokes": 2,
