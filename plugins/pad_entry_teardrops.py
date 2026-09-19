@@ -28,8 +28,9 @@ FOLLOW_ROUTE=True retains the actual segment/arc path, including existing fillet
 through the pad entry and its unique under-pad continuation. It does not create
 fillets on sharp corners. Folded offsets or paths that cannot preserve the facing
 edge are rejected as a pair. Final width is the gap-based limit at the exact pad
-entry. Before entry, widening is eased by both distance progress and gap progress
-relative to the entry gap, reaching zero growth rate at entry; width then stays
+entry. Before entry, widening responds immediately to gap progress using
+2*p - p*p, where p is separation gain relative to the entry gap. There is no
+distance-based delay. Growth eases to zero at entry; width then stays
 constant inside the pad. Reconverging routes may narrow before entry.
 GROWTH_BIAS, CURVE_HANDLE_RATIO and ALIGN_PAD_TRACK do not reshape this
 mode. FOLLOW_ROUTE=False restores the replacement Bezier curve in gap mode.
@@ -825,10 +826,10 @@ def _plan_follow_route(candidate, spacing_probe=False):
     if entry_gap <= start_gap or entry_width <= width0 + MIN_WIDTH_GAIN:
         print("  REJECTED %s: insufficient separation gain at pad entry" % candidate["name"])
         return None
-    widths = [width0 + (entry_width - width0) * smoothstep((distance - path_start) / length)
-              * smoothstep((gap - start_gap) / (entry_gap - start_gap))
+    progress = [max(0.0, min(1.0, (gap - start_gap) / (entry_gap - start_gap))) for gap in gaps]
+    widths = [width0 + (entry_width - width0) * fraction * (2.0 - fraction)
               if distance < candidate["path_end"] else entry_width
-              for distance, gap in zip(distances, gaps)]
+              for distance, fraction in zip(distances, progress)]
     if abs(widths[0] - width0) > 0.000001 or max(widths) <= width0 + MIN_WIDTH_GAIN:
         print("  REJECTED %s: insufficient widening or a step at the route join" % candidate["name"])
         return None
