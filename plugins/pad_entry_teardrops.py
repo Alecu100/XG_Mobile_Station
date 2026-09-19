@@ -2,10 +2,10 @@
 Pad-entry tapers for KiCad 9, with differential-pair gap preservation.
 
 The script replaces each SELECTED straight track or arc that ends in a same-net pad
-with a short, stepped-width taper. For a differential pair, select both pad-entry items.
-As each track widens, its centerline moves away from its partner by half the added
-width. The inboard copper edge therefore stays where the original trace edge was,
-so the pair gap cannot shrink as the traces fan apart into the pads.
+with a continuous filled copper outline. For a differential pair, select both entries.
+The outline follows a tangent-matched curve and widens into the actual pad shape.
+Both members are rejected if their polygon edges reduce the original pair gap.
+CONSTANT_WIDTH is a separate, staged-track mode for redriver reference-loss routing.
 
 Usage in PCB Editor > Tools > Scripting Console:
     PARAMS = dict(APPLY=False)  # optional dry run
@@ -27,7 +27,7 @@ round-ended staged tracks or an abrupt width step.
 
 Select only the final track or arc entering each pad. Select both members of
 a differential pair for symmetric tapers. Review the result and run DRC before save.
-The operation is undoable with Edit > Undo while the board remains open.
+Test on a copy first: direct pcbnew edits do not create an editor undo transaction.
 """
 import collections
 import math
@@ -41,9 +41,9 @@ except ImportError:
 # Parameters (mm unless noted)
 APPLY = True
 USE_SELECTION = True
-LENGTH = 0.80            # distance over which the trace widens and moves outward
-STEPS = 8                # width/offset stages; higher values make a smoother transition
-TARGET_WIDTH = None      # exact final width; None derives it from MAX_FACTOR and pad room
+LENGTH = 0.55            # exposed-route length consumed by the pad transition
+STEPS = 8                # legacy stages; continuous outlines use at least 64 samples
+TARGET_WIDTH = None      # pad-end width; None fits the pad (constant mode uses MAX_FACTOR)
 EXTEND_PATH = False      # consume unique upstream items to reach LENGTH
 CONSTANT_WIDTH = False   # use a uniform wide section after an original-width entry jog
 ENTRY_JOG = 0.05         # lateral transition length before a CONSTANT_WIDTH section
@@ -223,7 +223,7 @@ def _extend_candidate(board, candidate):
     used = {_item_key(candidate["obj"])}
     required = (LENGTH + MIN_SEGMENT if CONSTANT_WIDTH
                 else max(LENGTH / 0.80, LENGTH + MIN_SEGMENT))
-    while (EXTEND_PATH or PAD_ESCAPE) and sum(component["length"] for component in components) + 1e-9 < required:
+    while (EXTEND_PATH or PAD_ESCAPE or not CONSTANT_WIDTH) and sum(component["length"] for component in components) + 1e-9 < required:
         join = components[0]["far"]
         choices = []
         for track in board.GetTracks():
@@ -476,7 +476,7 @@ def pair_candidates(candidates):
             second_direction = (other["tangent_at"](0.0)
                                 if other["kind"] != "seg" else other["direction"])
             alignment = abs(dot(first_direction, second_direction))
-            if alignment < math.cos(math.radians(PAIR_ANGLE)):
+            if CONSTANT_WIDTH and alignment < math.cos(math.radians(PAIR_ANGLE)):
                 continue
             distance = norm(sub(candidate["end"], other["end"]))
             if distance <= PAIR_DISTANCE:
@@ -516,7 +516,7 @@ def _target_width(candidate):
 def plan_candidate(candidate):
     """Build connected, staged track geometry while holding the inboard edge fixed."""
     width0 = candidate["width"]
-    if PAD_ESCAPE:
+    if PAD_ESCAPE or not CONSTANT_WIDTH:
         return plan_pad_escape(candidate)
     width1 = _target_width(candidate)
     if width1 - width0 < MIN_WIDTH_GAIN:
@@ -627,18 +627,12 @@ def plan_candidate(candidate):
 def plan_pad_escape(candidate):
     """Curve smoothly from the routed pair into a wider pad entry."""
     route_width = candidate["width"]
-    if PAD_ENTRY_WIDTH is None:
-        raise ValueError("PAD_ENTRY_WIDTH must be set when PAD_ESCAPE=True")
-    pad_width = float(PAD_ENTRY_WIDTH)
-    if pad_width <= route_width + MIN_WIDTH_GAIN:
-        raise ValueError("PAD_ENTRY_WIDTH must be wider than the existing route when PAD_ESCAPE=True")
-
     taper_length = min(float(LENGTH), candidate["length"] * 0.80)
-    stage_count = max(2, min(int(STEPS), int(taper_length / MIN_SEGMENT)))
+    stage_count = max(64, int(STEPS))
     path_start = candidate["path_end"] - taper_length
     side = candidate["side"] if candidate["side"] is not None else _single_side(candidate)
     route_end = candidate["point_at"](path_start)
-    pad_end = candidate["pad_end"]
+    pad_end = candidate["pad_end"] if PAD_ESCAPE else p2(candidate["pad"].GetPosition())
     chord = sub(pad_end, route_end)
     chord_length = norm(chord)
     route_tangent = unit(candidate["tangent_at"](path_start))
@@ -647,6 +641,23 @@ def plan_pad_escape(candidate):
         route_tangent = mul(route_tangent, -1.0)
     if dot(pad_tangent, chord) < 0.0:
         pad_tangent = mul(pad_tangent, -1.0)
+    pad_normal = (-pad_tangent[1], pad_tangent[0])
+    pad = candidate["pad"]
+    half_widths = []
+    for sign in (-1.0, 1.0):
+        low, high = 0.0, norm(p2(pad.GetSize()))
+        for _ in range(BOUNDARY_STEPS):
+            middle = (low + high) / 2.0
+            if _pad_hit(pad, add(pad_end, mul(pad_normal, sign * middle))):
+                low = middle
+            else:
+                high = middle
+        half_widths.append(low)
+    available_width = 2.0 * min(half_widths) * PAD_FILL
+    requested = PAD_ENTRY_WIDTH if PAD_ESCAPE else TARGET_WIDTH
+    pad_width = available_width if requested is None else min(float(requested), available_width)
+    if pad_width <= route_width + MIN_WIDTH_GAIN:
+        return None
     handle = min(taper_length / 3.0, chord_length / 3.0)
     control1 = add(route_end, mul(route_tangent, handle))
     control2 = sub(pad_end, mul(pad_tangent, handle))
@@ -666,7 +677,7 @@ def plan_pad_escape(candidate):
         return unit(derivative)
 
     fractions = [index / stage_count for index in range(stage_count + 1)]
-    widths = [route_width + (pad_width - route_width) * smoothstep(fraction)
+    widths = [route_width + (pad_width - route_width) * smoothstep(fraction) ** 2
               for fraction in fractions]
     nodes = [curve_point(fraction) for fraction in fractions]
 
@@ -678,17 +689,20 @@ def plan_pad_escape(candidate):
         left_edge.append(add(center, mul(normal, width / 2.0)))
         right_edge.append(add(center, mul(normal, -width / 2.0)))
     polygon = left_edge + list(reversed(right_edge))
+    if not _simple_polygon(polygon):
+        print("  REJECTED %s: taper outline folds over itself" % candidate["name"])
+        return None
 
     pieces = []
     for index in range(len(fractions) - 1):
         pieces.append((nodes[index], nodes[index + 1],
-                       0.5 * (widths[index] + widths[index + 1]), None))
+                   max(widths[index], widths[index + 1]), None))
 
     bridge = (nodes[-1], pad_end, pad_width, None)
 
     baseline = []
-    baseline_distances = [path_start + taper_length * index / (stage_count * ARC_SAMPLES)
-                          for index in range(stage_count * ARC_SAMPLES + 1)]
+    baseline_distances = [path_start + taper_length * index / stage_count
+                          for index in range(stage_count + 1)]
     baseline_distances.extend(distance for distance in candidate.get("component_breaks", ())
                               if path_start < distance < candidate["path_end"])
     baseline_distances = sorted(set(baseline_distances))
@@ -707,6 +721,41 @@ def plan_pad_escape(candidate):
                 baseline=baseline, prefix_mid=prefix_middle,
                 active_component=active_component, path_start=path_start,
                 side=side, length=taper_length)
+
+
+def _polygon_edges(polygon):
+    return list(zip(polygon, polygon[1:] + polygon[:1]))
+
+
+def _simple_polygon(polygon):
+    edges = _polygon_edges(polygon)
+    for index, (start, end) in enumerate(edges):
+        if norm(sub(end, start)) < 0.000001:
+            return False
+        for other_index in range(index + 2, len(edges)):
+            if index == 0 and other_index == len(edges) - 1:
+                continue
+            if segment_distance(start, end, *edges[other_index]) < 0.000001:
+                return False
+    return True
+
+
+def _polygon_contains(polygon, point):
+    inside = False
+    for start, end in _polygon_edges(polygon):
+        if (start[1] > point[1]) != (end[1] > point[1]):
+            crossing = start[0] + (point[1] - start[1]) * (end[0] - start[0]) / (end[1] - start[1])
+            if point[0] < crossing:
+                inside = not inside
+    return inside
+
+
+def _polygon_gap(first, second):
+    if _polygon_contains(first, second[0]) or _polygon_contains(second, first[0]):
+        return 0.0
+    return min(segment_distance(first_start, first_end, second_start, second_end)
+               for first_start, first_end in _polygon_edges(first)
+               for second_start, second_end in _polygon_edges(second))
 
 
 def verify_pair_gaps(plans):
@@ -736,9 +785,12 @@ def verify_pair_gaps(plans):
         # the pad boundary; inside it, the fixed pad geometry controls clearance.
         first_geometry = _geometry_lines(plan["pieces"])
         second_geometry = _geometry_lines(other["pieces"])
-        tapered_gap = min(segment_distance(a0, a1, b0, b1) - aw / 2.0 - bw / 2.0
-                          for a0, a1, aw in first_geometry
-                          for b0, b1, bw in second_geometry)
+        if "polygon" in plan and "polygon" in other:
+            tapered_gap = _polygon_gap(plan["polygon"], other["polygon"])
+        else:
+            tapered_gap = min(segment_distance(a0, a1, b0, b1) - aw / 2.0 - bw / 2.0
+                              for a0, a1, aw in first_geometry
+                              for b0, b1, bw in second_geometry)
         label = candidate["name"].rsplit("/", 1)[-1]
         print("  pair-gap %-16s original=%.4f mm tapered=%.4f mm"
               % (label, original_gap, tapered_gap))
@@ -841,7 +893,7 @@ def run(board=None, apply=None, **overrides):
                 downstream_track.SetStart(v2(plan["bridge"][1]))
             else:
                 downstream_track.SetEnd(v2(plan["bridge"][1]))
-        if PAD_ESCAPE:
+        if "polygon" in plan:
             outline = pcbnew.SHAPE_LINE_CHAIN()
             for point in plan["polygon"]:
                 outline.Append(v2(point))
@@ -881,7 +933,7 @@ def run(board=None, apply=None, **overrides):
             board.Add(bridge)
             made += 1
     _refresh(board)
-    item_kind = "copper taper polygon(s)" if PAD_ESCAPE else "staged track segment(s)"
+    item_kind = "copper taper polygon(s)" if PAD_ESCAPE or not CONSTANT_WIDTH else "staged track segment(s)"
     print("APPLIED: %d %s. Review pad overlap and run DRC before save." % (made, item_kind))
     return made
 
