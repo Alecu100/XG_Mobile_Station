@@ -3,27 +3,36 @@ Pad-entry tapers for KiCad 9, with differential-pair gap preservation.
 
 The script replaces each SELECTED straight track or arc that ends in a same-net pad
 with a continuous filled copper outline. For a differential pair, select both entries.
-The outline follows a tangent-matched curve. By default, paired trace widths grow
-with their local reference copper-edge gap, not with pad size or taper progress.
+By default the outline follows the existing straight tracks and circular fillets;
+paired trace widths grow with their local reference copper-edge gap, not pad size.
 Both members are rejected if their polygon edges reduce the original pair gap.
-Paired flares are shifted outward to preserve the original facing copper boundary
-at every transverse section, including the wider clearance next to the pads.
+Extra width is added on the outboard side, preserving the original facing copper
+boundary at every transverse section, including clearance next to the fixed pads.
 CONSTANT_WIDTH is a separate, staged-track mode for redriver reference-loss routing.
 
 Separation-driven paired entries (default):
-    PARAMS = dict(APPLY=False, GAP_WIDTH_MODE=True, LENGTH=0.45,
+    PARAMS = dict(APPLY=False, GAP_WIDTH_MODE=True, FOLLOW_ROUTE=True, LENGTH=0.45,
                   GAP_START=None, GAP_FULL_WIDTH=0.40, GAP_MAX_MULTIPLIER=1.5)
 GAP_START=None measures each member's incoming gap; an explicit value sets the
-gap below which width stays unchanged. Width increases by smoothstep from 1x to
-GAP_MAX_MULTIPLIER at GAP_FULL_WIDTH (mm), then stays capped. Gap means copper-edge
-separation across matched sections of the proposed routes at ORIGINAL widths,
-before outward safety correction. This avoids width/spacing feedback. It is not
+gap below which width stays unchanged. The gap-based width limit increases by
+smoothstep from 1x to GAP_MAX_MULTIPLIER at GAP_FULL_WIDTH (mm). Gap means copper-edge
+separation across matched sections of the original routes at ORIGINAL widths.
+This avoids width/spacing feedback. It is not
 pad center pitch. Pad room may further limit the width; the existing pad gap must
 not shrink. Select both members: unpaired entries are skipped in this mode.
 An already-wide start or an explicit GAP_START producing a join-width step is
 rejected. Extend the selected transition upstream or adjust the threshold instead.
 This is a geometric rule, not an impedance model or signal-integrity validation.
 Set GAP_WIDTH_MODE=False to use the former pad-sized flare and growth-bias recipe.
+FOLLOW_ROUTE=True retains the actual segment/arc path, including existing fillets,
+through the pad entry and its unique under-pad continuation. It does not create
+fillets on sharp corners. Folded offsets or paths that cannot preserve the facing
+edge are rejected as a pair. Final width is the gap-based limit at the exact pad
+entry. Before entry, widening is eased by both distance progress and gap progress
+relative to the entry gap, reaching zero growth rate at entry; width then stays
+constant inside the pad. Reconverging routes may narrow before entry.
+GROWTH_BIAS, CURVE_HANDLE_RATIO and ALIGN_PAD_TRACK do not reshape this
+mode. FOLLOW_ROUTE=False restores the replacement Bezier curve in gap mode.
 
 Usage in PCB Editor > Tools > Scripting Console:
     PARAMS = dict(APPLY=False)  # optional dry run
@@ -32,6 +41,14 @@ Usage in PCB Editor > Tools > Scripting Console:
 Retimer HSO capacitor entries C38-C53 use LENGTH=0.45. Curved HSI entries require
 more room (LENGTH=0.55); any folded outline and its partner are left unchanged.
 These lengths are board-specific. Refill zones and run DRC after applying.
+
+PCIe connector direct pad entries (select both P/N terminal tracks):
+    PARAMS = dict(APPLY=False, GAP_WIDTH_MODE=True, FOLLOW_ROUTE=True,
+                  LENGTH=0.45, GAP_MAX_MULTIPLIER=2.0)
+This raises the separated-trace cap from 1.5x to 2x while retaining routed fillets.
+Normal polygon mode trims a straight under-pad continuation's exposed cap into
+the pad. Pad positions, sizes and spacing never change.
+Use an untapered board copy; this does not replace previously generated polygons.
 
 Progression and pad-size scaling (legacy pad-sized polygon mode):
     PARAMS = dict(APPLY=False, GAP_WIDTH_MODE=False, GROWTH_BIAS=1.5, AUTO_LENGTH=True,
@@ -80,7 +97,10 @@ LENGTH_PER_PAD_WIDTH = 0.8
 MIN_LENGTH = 0.10
 MAX_LENGTH = 0.80
 GROWTH_BIAS = 1.0
+CURVE_HANDLE_RATIO = 1.0 / 3.0
+ALIGN_PAD_TRACK = False
 GAP_WIDTH_MODE = True
+FOLLOW_ROUTE = True
 GAP_START = None
 GAP_FULL_WIDTH = 0.40
 GAP_MAX_MULTIPLIER = 1.5
@@ -476,7 +496,7 @@ def _candidate(board, track, endpoint, other_end, pad):
         pad=pad, end=entry, pad_end=endpoint, far=other_end, direction=direction,
         normal=(-direction[1], direction[0]), length=length,
         width=pcbnew.ToMM(track.GetWidth()), partner=None, side=None, kind="seg",
-        point_at=point_at, tangent_at=tangent_at, path_end=entry_distance,
+        point_at=point_at, tangent_at=tangent_at, path_end=entry_distance, total_path=total_length,
     )
     _extend_candidate(board, candidate)
     return candidate
@@ -731,8 +751,125 @@ def _section_gap(point, tangent, partner_nodes, partner_width, route_width, towa
     return max(0.0, min(gaps)) if gaps else None
 
 
+def _sample_existing_route(candidate, start):
+    components = [dict(component) for component in candidate["components"]]
+    terminal = components[-1]
+    terminal.update(length=candidate["terminal_total"],
+                    point_at=candidate["terminal_point_at"],
+                    tangent_at=candidate["terminal_tangent_at"])
+    downstream = candidate.get("downstream")
+    if downstream is not None:
+        track, at_start = downstream
+        continuation = (_arc_path(track, not at_start) if isinstance(track, pcbnew.PCB_ARC)
+                        else _segment_path(track, not at_start))
+        if continuation is not None:
+            continuation.update(obj=track, kind="arc" if isinstance(track, pcbnew.PCB_ARC) else "seg")
+            components.append(continuation)
+    route = dict(candidate)
+    _compose_candidate_path(route, components)
+    distances = [start]
+    for offset, component in zip(route["component_offsets"], components):
+        first, last = max(start, offset), offset + component["length"]
+        if last <= first + 1e-9:
+            continue
+        count = max(8, int(math.ceil((last - first) / 0.005)))
+        if component["kind"] == "arc":
+            count = max(count, int(ARC_SAMPLES))
+        distances.extend(first + (last - first) * index / count for index in range(1, count + 1))
+    return route, distances
+
+
+def _plan_follow_route(candidate, spacing_probe=False):
+    partner = candidate["partner"]
+    if partner is None:
+        return None
+    length = min(candidate.get("requested_length", _requested_length(candidate)), candidate["length"] * 0.80)
+    path_start = candidate["path_end"] - length
+    route, distances = _sample_existing_route(candidate, path_start)
+    distances = sorted(set(distances + [candidate["path_end"]]))
+    route_nodes = [route["point_at"](distance) for distance in distances]
+    if spacing_probe:
+        prefix_route, prefix_distances = _sample_existing_route(candidate, 0.0)
+        return [prefix_route["point_at"](distance) for distance in prefix_distances]
+    toward = unit(sub(p2(partner["pad"].GetPosition()), p2(candidate["pad"].GetPosition())))
+    tangents = [unit(route["tangent_at"](distance)) for distance in distances]
+    normals = [(-tangent[1], tangent[0]) for tangent in tangents]
+    projections = [dot(normal, toward) for normal in normals]
+    if min(projections) <= 0 <= max(projections):
+        print("  REJECTED %s: route changes its facing side" % candidate["name"])
+        return None
+    sign = -1.0 if projections[0] > 0 else 1.0
+    partner_nodes = _plan_follow_route(partner, spacing_probe=True)
+    if partner_nodes is None:
+        return None
+    width0 = candidate["width"]
+    gaps = [_section_gap(point, tangent, partner_nodes, partner["width"], width0, toward)
+            for point, tangent in zip(route_nodes, tangents)]
+    if any(gap is None for gap in gaps):
+        print("  REJECTED %s: pair sections do not overlap" % candidate["name"])
+        return None
+    start_gap = gaps[0] if GAP_START is None else float(GAP_START)
+    if GAP_START is None and start_gap >= GAP_FULL_WIDTH:
+        print("  REJECTED %s: incoming gap already exceeds full-width threshold" % candidate["name"])
+        return None
+    limit = _pad_cross_section(candidate["pad"], tangents[-1]) * PAD_FILL
+    if TARGET_WIDTH is not None:
+        limit = min(limit, float(TARGET_WIDTH))
+    widths = [min(limit, width0 * _gap_multiplier(gap, start_gap)) for gap in gaps]
+    if abs(widths[0] - width0) > 0.000001:
+        print("  REJECTED %s: start gap would create a width step at the route join" % candidate["name"])
+        return None
+    entry_index = distances.index(candidate["path_end"])
+    entry_width = widths[entry_index]
+    entry_gap = gaps[entry_index]
+    if entry_gap <= start_gap or entry_width <= width0 + MIN_WIDTH_GAIN:
+        print("  REJECTED %s: insufficient separation gain at pad entry" % candidate["name"])
+        return None
+    widths = [width0 + (entry_width - width0) * smoothstep((distance - path_start) / length)
+              * smoothstep((gap - start_gap) / (entry_gap - start_gap))
+              if distance < candidate["path_end"] else entry_width
+              for distance, gap in zip(distances, gaps)]
+    if abs(widths[0] - width0) > 0.000001 or max(widths) <= width0 + MIN_WIDTH_GAIN:
+        print("  REJECTED %s: insufficient widening or a step at the route join" % candidate["name"])
+        return None
+    nodes = [add(point, mul(normal, sign * (width - width0) / 2.0))
+             for point, normal, width in zip(route_nodes, normals, widths)]
+    inner = [add(point, mul(normal, -sign * width0 / 2.0))
+             for point, normal in zip(route_nodes, normals)]
+    outer = [add(point, mul(normal, sign * (width - width0 / 2.0)))
+             for point, normal, width in zip(route_nodes, normals, widths)]
+    polygon = inner + list(reversed(outer))
+    fractions = [(distance - path_start) / (distances[-1] - path_start) for distance in distances]
+    weights = [16.0 * fraction ** 2 * (1.0 - fraction) ** 2 for fraction in fractions]
+    correction = _facing_edge_correction(candidate, polygon, weights + list(reversed(weights)))
+    if correction is None or norm(correction) > 0.00001:
+        print("  REJECTED %s: route-following outline would move the facing edge" % candidate["name"])
+        return None
+    polygon = [add(point, mul(correction, weight))
+               for point, weight in zip(polygon, weights + list(reversed(weights)))]
+    nodes = [add(point, mul(correction, weight)) for point, weight in zip(nodes, weights)]
+    if not _simple_polygon(polygon):
+        print("  REJECTED %s: route-following outline folds over itself" % candidate["name"])
+        return None
+    active, active_distance = candidate["component_at"](path_start)
+    prefix_middle = active["point_at"](active_distance / 2.0) if active["kind"] == "arc" else None
+    pieces = [(first, last, max(widths[index], widths[index + 1]), None)
+              for index, (first, last) in enumerate(zip(nodes, nodes[1:]))]
+    baseline = [(first, last, width0) for first, last in zip(route_nodes, route_nodes[1:])]
+    return dict(candidate=candidate, start=route_nodes[0], end=route_nodes[-1],
+                width0=width0, width1=widths[-1], pieces=pieces,
+                bridge=(nodes[-1], route_nodes[-1], widths[-1], None),
+                polygon=polygon, nodes=nodes, widths=widths, reference_gaps=gaps,
+                route_nodes=route_nodes, route_distances=distances,
+                baseline=baseline, prefix_mid=prefix_middle,
+                active_component=active, path_start=path_start,
+                side=candidate["side"], length=length)
+
+
 def plan_pad_escape(candidate, spacing_probe=False):
     """Curve smoothly from the routed pair into a wider pad entry."""
+    if FOLLOW_ROUTE and GAP_WIDTH_MODE and not PAD_ESCAPE:
+        return _plan_follow_route(candidate, spacing_probe)
     route_width = candidate["width"]
     taper_length = min(candidate.get("requested_length", _requested_length(candidate)), candidate["length"] * 0.80)
     _growth_profile(0.5)
@@ -745,6 +882,11 @@ def plan_pad_escape(candidate, spacing_probe=False):
     chord_length = norm(chord)
     route_tangent = unit(candidate["tangent_at"](path_start))
     pad_tangent = unit(candidate["terminal_tangent_at"](candidate["terminal_total"]))
+    downstream = candidate.get("downstream")
+    if ALIGN_PAD_TRACK and not PAD_ESCAPE and downstream is not None and not isinstance(downstream[0], pcbnew.PCB_ARC):
+        track, at_start = downstream
+        pad_tangent = unit(sub(p2(track.GetEnd() if at_start else track.GetStart()),
+                               p2(track.GetStart() if at_start else track.GetEnd())))
     if dot(route_tangent, chord) < 0.0:
         route_tangent = mul(route_tangent, -1.0)
     if dot(pad_tangent, chord) < 0.0:
@@ -766,7 +908,9 @@ def plan_pad_escape(candidate, spacing_probe=False):
     pad_width = available_width if requested is None else min(float(requested), available_width)
     if pad_width <= route_width + MIN_WIDTH_GAIN:
         return None
-    handle = min(taper_length / 3.0, chord_length / 3.0)
+    if not math.isfinite(float(CURVE_HANDLE_RATIO)) or not 0 < CURVE_HANDLE_RATIO <= 1:
+        raise ValueError("CURVE_HANDLE_RATIO must be finite and in (0, 1]")
+    handle = min(taper_length, chord_length) * CURVE_HANDLE_RATIO
     control1 = add(route_end, mul(route_tangent, handle))
     control2 = sub(pad_end, mul(pad_tangent, handle))
 
@@ -883,6 +1027,44 @@ def plan_pad_escape(candidate, spacing_probe=False):
                 baseline=baseline, prefix_mid=prefix_middle,
                 active_component=active_component, path_start=path_start,
                 side=side, length=taper_length)
+
+
+def _trim_pad_continuation(candidate):
+    downstream = candidate.get("downstream")
+    if downstream is None or isinstance(downstream[0], pcbnew.PCB_ARC):
+        return
+    track, at_start = downstream
+    start = p2(track.GetStart() if at_start else track.GetEnd())
+    end = p2(track.GetEnd() if at_start else track.GetStart())
+    pad_copper = pcbnew.SHAPE_POLY_SET()
+    candidate["pad"].TransformShapeToPolygon(
+        pad_copper, candidate["layer"], 0, 1, pcbnew.ERROR_INSIDE)
+    probe = pcbnew.PCB_TRACK(None)
+    probe.SetWidth(track.GetWidth())
+    probe.SetLayer(track.GetLayer())
+    probe.SetEnd(v2(end))
+
+    def contained(fraction):
+        probe.SetStart(v2(add(start, mul(sub(end, start), fraction))))
+        copper = pcbnew.SHAPE_POLY_SET()
+        probe.TransformShapeToPolygon(copper, candidate["layer"], 0, 1, pcbnew.ERROR_OUTSIDE)
+        copper.BooleanSubtract(pad_copper)
+        return copper.OutlineCount() == 0
+
+    if contained(0.0) or not contained(1.0):
+        return
+    low, high = 0.0, 1.0
+    for _ in range(BOUNDARY_STEPS):
+        middle = (low + high) / 2.0
+        if contained(middle):
+            high = middle
+        else:
+            low = middle
+    endpoint = v2(add(start, mul(sub(end, start), high)))
+    if at_start:
+        track.SetStart(endpoint)
+    else:
+        track.SetEnd(endpoint)
 
 
 def _polygon_edges(polygon):
@@ -1117,6 +1299,8 @@ def run(board=None, apply=None, **overrides):
             else:
                 downstream_track.SetEnd(v2(plan["bridge"][1]))
         if "polygon" in plan:
+            if not PAD_ESCAPE and not SHIFT_PAD_FANIN:
+                _trim_pad_continuation(candidate)
             outline = pcbnew.SHAPE_LINE_CHAIN()
             for point in plan["polygon"]:
                 outline.Append(v2(point))
