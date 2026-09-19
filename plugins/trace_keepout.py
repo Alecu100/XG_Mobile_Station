@@ -1,5 +1,5 @@
 """
-Trace keep-out / rule area  --  runs INSIDE KiCad (pcbnew Python API, KiCad 9).
+Trace keep-out / rule area  --  runs INSIDE KiCad (pcbnew Python API, KiCad 9/10).
 
 Builds a keep-out (rule area) around the SELECTED track(s) that forbids copper zone fill, so any
 GND / other pour is pushed CLEARANCE away from the trace copper. The area is the union of every
@@ -121,7 +121,10 @@ def run(board=None, apply=None, **overrides):
         zone = pcbnew.ZONE(board)
         zone.SetLayer(layer)
         zone.SetIsRuleArea(True)
-        zone.SetDoNotAllowCopperPour(BLOCK_POUR)
+        if hasattr(zone, "SetDoNotAllowZoneFills"):
+            zone.SetDoNotAllowZoneFills(BLOCK_POUR)
+        else:
+            zone.SetDoNotAllowCopperPour(BLOCK_POUR)
         zone.SetDoNotAllowVias(BLOCK_VIAS)
         zone.SetDoNotAllowTracks(BLOCK_TRACKS)
         zone.SetDoNotAllowPads(BLOCK_PADS)
