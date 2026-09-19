@@ -5,11 +5,28 @@ The script replaces each SELECTED straight track or arc that ends in a same-net 
 with a continuous filled copper outline. For a differential pair, select both entries.
 The outline follows a tangent-matched curve and widens into the actual pad shape.
 Both members are rejected if their polygon edges reduce the original pair gap.
+Paired flares are shifted outward to preserve the original facing copper boundary
+at every transverse section, including the wider clearance next to the pads.
 CONSTANT_WIDTH is a separate, staged-track mode for redriver reference-loss routing.
 
 Usage in PCB Editor > Tools > Scripting Console:
     PARAMS = dict(APPLY=False)  # optional dry run
     exec(open(r'd:/Repos/XG_Mobile_Station/plugins/pad_entry_teardrops.py').read())
+
+Retimer HSO capacitor entries C38-C53 use LENGTH=0.45. Curved HSI entries require
+more room (LENGTH=0.55); any folded outline and its partner are left unchanged.
+These lengths are board-specific. Refill zones and run DRC after applying.
+
+Progression and pad-size scaling (normal polygon mode):
+    PARAMS = dict(APPLY=False, GROWTH_BIAS=1.5, AUTO_LENGTH=True,
+                  LENGTH_PER_PAD_WIDTH=0.8, MIN_LENGTH=0.10, MAX_LENGTH=0.80)
+GROWTH_BIAS=1 retains the original profile; larger values delay widening and
+lateral departure until closer to the pad. Unsafe profiles are rejected.
+AUTO_LENGTH uses the pad's central cross-section perpendicular to the entry.
+LENGTH_PER_PAD_WIDTH is the exposed taper length / pad-width ratio. For a 0.20 mm
+cross-section, 0.8 gives 0.16 mm; for 0.56 mm it gives about 0.45 mm.
+Set AUTO_LENGTH=False to use LENGTH in mm. Available routing can shorten either
+request. Total copper extends farther under the pad; pad positions never move.
 
 Quad-redriver RX entries (select pads 29/30, 32/33, 36/37, 39/40 entry items):
     PARAMS = dict(APPLY=True, LENGTH=0.55, TARGET_WIDTH=0.13,
@@ -41,7 +58,12 @@ except ImportError:
 # Parameters (mm unless noted)
 APPLY = True
 USE_SELECTION = True
-LENGTH = 0.55            # exposed-route length consumed by the pad transition
+LENGTH = 0.45            # exposed-route length consumed by the pad transition
+AUTO_LENGTH = False
+LENGTH_PER_PAD_WIDTH = 0.8
+MIN_LENGTH = 0.10
+MAX_LENGTH = 0.80
+GROWTH_BIAS = 1.0
 STEPS = 8                # legacy stages; continuous outlines use at least 64 samples
 TARGET_WIDTH = None      # pad-end width; None fits the pad (constant mode uses MAX_FACTOR)
 EXTEND_PATH = False      # consume unique upstream items to reach LENGTH
@@ -93,6 +115,39 @@ def _item_key(item):
 def smoothstep(value):
     value = max(0.0, min(1.0, value))
     return value * value * (3.0 - 2.0 * value)
+
+
+def _pad_cross_section(pad, tangent):
+    center = p2(pad.GetPosition())
+    normal = (-tangent[1], tangent[0])
+    spans = []
+    for sign in (-1.0, 1.0):
+        low, high = 0.0, norm(p2(pad.GetSize()))
+        for _ in range(BOUNDARY_STEPS):
+            middle = (low + high) / 2.0
+            if _pad_hit(pad, add(center, mul(normal, sign * middle))):
+                low = middle
+            else:
+                high = middle
+        spans.append(low)
+    return 2.0 * min(spans)
+
+
+def _requested_length(candidate):
+    if AUTO_LENGTH and not CONSTANT_WIDTH:
+        if not (0 < MIN_LENGTH <= MAX_LENGTH and LENGTH_PER_PAD_WIDTH > 0):
+            raise ValueError("Auto length requires 0 < MIN_LENGTH <= MAX_LENGTH and a positive ratio")
+        span = _pad_cross_section(candidate["pad"], candidate["direction"])
+        return max(MIN_LENGTH, min(MAX_LENGTH, LENGTH_PER_PAD_WIDTH * span))
+    if not math.isfinite(float(LENGTH)) or LENGTH <= 0:
+        raise ValueError("LENGTH must be positive and finite")
+    return float(LENGTH)
+
+
+def _growth_profile(fraction):
+    if not math.isfinite(float(GROWTH_BIAS)) or GROWTH_BIAS < 1.0:
+        raise ValueError("GROWTH_BIAS must be finite and at least 1")
+    return smoothstep(fraction) ** (2.0 * GROWTH_BIAS)
 
 
 def _circle_from_3(first, middle, last):
@@ -221,8 +276,10 @@ def _extend_candidate(board, candidate):
                                  norm(sub(p2(candidate["obj"].GetEnd()), candidate["pad_end"]))))
     components = [base]
     used = {_item_key(candidate["obj"])}
-    required = (LENGTH + MIN_SEGMENT if CONSTANT_WIDTH
-                else max(LENGTH / 0.80, LENGTH + MIN_SEGMENT))
+    requested_length = _requested_length(candidate)
+    candidate["requested_length"] = requested_length
+    required = (requested_length + MIN_SEGMENT if CONSTANT_WIDTH
+                else max(requested_length / 0.80, requested_length + MIN_SEGMENT))
     while (EXTEND_PATH or PAD_ESCAPE or not CONSTANT_WIDTH) and sum(component["length"] for component in components) + 1e-9 < required:
         join = components[0]["far"]
         choices = []
@@ -627,7 +684,8 @@ def plan_candidate(candidate):
 def plan_pad_escape(candidate):
     """Curve smoothly from the routed pair into a wider pad entry."""
     route_width = candidate["width"]
-    taper_length = min(float(LENGTH), candidate["length"] * 0.80)
+    taper_length = min(candidate.get("requested_length", _requested_length(candidate)), candidate["length"] * 0.80)
+    _growth_profile(0.5)
     stage_count = max(64, int(STEPS))
     path_start = candidate["path_end"] - taper_length
     side = candidate["side"] if candidate["side"] is not None else _single_side(candidate)
@@ -662,22 +720,41 @@ def plan_pad_escape(candidate):
     control1 = add(route_end, mul(route_tangent, handle))
     control2 = sub(pad_end, mul(pad_tangent, handle))
 
-    def curve_point(fraction):
+    def base_point(fraction):
         inverse = 1.0 - fraction
         return add(add(mul(route_end, inverse ** 3),
                        mul(control1, 3.0 * inverse * inverse * fraction)),
                    add(mul(control2, 3.0 * inverse * fraction * fraction),
                        mul(pad_end, fraction ** 3)))
 
-    def curve_tangent(fraction):
+    def base_derivative(fraction):
         inverse = 1.0 - fraction
         derivative = add(add(mul(sub(control1, route_end), 3.0 * inverse * inverse),
                              mul(sub(control2, control1), 6.0 * inverse * fraction)),
                          mul(sub(pad_end, control2), 3.0 * fraction * fraction))
-        return unit(derivative)
+        return derivative
+
+    def curve_point(fraction):
+        displacement = sub(base_point(fraction), route_end)
+        forward = mul(route_tangent, dot(displacement, route_tangent))
+        lateral = sub(displacement, forward)
+        blend = smoothstep(fraction) ** (GROWTH_BIAS - 1.0)
+        return add(route_end, add(forward, mul(lateral, blend)))
+
+    def curve_tangent(fraction):
+        if GROWTH_BIAS == 1.0 or fraction in (0.0, 1.0):
+            return unit(base_derivative(fraction))
+        displacement = sub(base_point(fraction), route_end)
+        lateral = sub(displacement, mul(route_tangent, dot(displacement, route_tangent)))
+        derivative = base_derivative(fraction)
+        forward = mul(route_tangent, dot(derivative, route_tangent))
+        blend = smoothstep(fraction) ** (GROWTH_BIAS - 1.0)
+        slope = ((GROWTH_BIAS - 1.0) * smoothstep(fraction) ** (GROWTH_BIAS - 2.0)
+                 * 6.0 * fraction * (1.0 - fraction))
+        return unit(add(add(forward, mul(sub(derivative, forward), blend)), mul(lateral, slope)))
 
     fractions = [index / stage_count for index in range(stage_count + 1)]
-    widths = [route_width + (pad_width - route_width) * smoothstep(fraction) ** 2
+    widths = [route_width + (pad_width - route_width) * _growth_profile(fraction)
               for fraction in fractions]
     nodes = [curve_point(fraction) for fraction in fractions]
 
@@ -689,6 +766,15 @@ def plan_pad_escape(candidate):
         left_edge.append(add(center, mul(normal, width / 2.0)))
         right_edge.append(add(center, mul(normal, -width / 2.0)))
     polygon = left_edge + list(reversed(right_edge))
+    if candidate["partner"] is not None:
+        weights = [16.0 * fraction ** 2 * (1.0 - fraction) ** 2 for fraction in fractions]
+        correction = _facing_edge_correction(candidate, polygon, weights + list(reversed(weights)))
+        if correction is None:
+            print("  REJECTED %s: cannot preserve the local facing edge" % candidate["name"])
+            return None
+        polygon = [add(point, mul(correction, weight))
+                   for point, weight in zip(polygon, weights + list(reversed(weights)))]
+        nodes = [add(point, mul(correction, weight)) for point, weight in zip(nodes, weights)]
     if not _simple_polygon(polygon):
         print("  REJECTED %s: taper outline folds over itself" % candidate["name"])
         return None
@@ -717,7 +803,7 @@ def plan_pad_escape(candidate):
                      if active_component["kind"] == "arc" else None)
     return dict(candidate=candidate, start=nodes[0], end=nodes[-1],
                 width0=route_width, width1=pad_width, pieces=pieces, bridge=bridge,
-                polygon=polygon,
+                polygon=polygon, nodes=nodes, widths=widths,
                 baseline=baseline, prefix_mid=prefix_middle,
                 active_component=active_component, path_start=path_start,
                 side=side, length=taper_length)
@@ -725,6 +811,63 @@ def plan_pad_escape(candidate):
 
 def _polygon_edges(polygon):
     return list(zip(polygon, polygon[1:] + polygon[:1]))
+
+
+def _facing_edge_correction(candidate, polygon, weights):
+    """Solve an outward-only offset against the original copper's section envelope."""
+    origin = p2(candidate["pad"].GetPosition())
+    toward = unit(sub(p2(candidate["partner"]["pad"].GetPosition()), origin))
+    along = (-toward[1], toward[0])
+    if norm(toward) < 0.5:
+        return None
+    original = pcbnew.SHAPE_POLY_SET()
+    items = [candidate["pad"]] + [component["obj"] for component in candidate["components"]]
+    if candidate.get("downstream") is not None:
+        items.append(candidate["downstream"][0])
+    for item in items:
+        shape = pcbnew.SHAPE_POLY_SET()
+        item.TransformShapeToPolygon(shape, candidate["layer"], 0, 1, pcbnew.ERROR_OUTSIDE)
+        original.BooleanAdd(shape)
+
+    def project(point):
+        relative = sub(point, origin)
+        return (dot(relative, toward), dot(relative, along))
+
+    outlines = [[project(p2(original.Outline(index).CPoint(vertex)))
+                 for vertex in range(original.Outline(index).PointCount())]
+                for index in range(original.OutlineCount())]
+    projected = [project(point) for point in polygon]
+    low = min(point[1] for point in projected)
+    high = max(point[1] for point in projected)
+    depths = sorted(set(point[1] for outline in outlines + [projected]
+                        for point in outline if low <= point[1] <= high))
+    depths += [(first + last) / 2.0 for first, last in zip(depths, depths[1:])]
+
+    def intersections(outline, depth):
+        for index, (start, end) in enumerate(_polygon_edges(outline)):
+            if min(start[1], end[1]) - 1e-12 <= depth <= max(start[1], end[1]) + 1e-12:
+                if abs(end[1] - start[1]) < 1e-12:
+                    yield start[0], index, 0.0
+                    yield end[0], index, 1.0
+                else:
+                    fraction = max(0.0, min(1.0, (depth - start[1]) / (end[1] - start[1])))
+                    yield start[0] + fraction * (end[0] - start[0]), index, fraction
+
+    amplitude = 0.0
+    for depth in depths:
+        original_hits = [hit[0] for outline in outlines for hit in intersections(outline, depth)]
+        if not original_hits:
+            return None
+        limit = max(original_hits)
+        for lateral, index, fraction in intersections(projected, depth):
+            excess = lateral - limit
+            if excess <= 0.000001:
+                continue
+            weight = weights[index] * (1.0 - fraction) + weights[(index + 1) % len(weights)] * fraction
+            if weight <= 1e-12:
+                return None
+            amplitude = max(amplitude, (excess + 0.000001) / weight)
+    return mul(toward, -amplitude)
 
 
 def _simple_polygon(polygon):
