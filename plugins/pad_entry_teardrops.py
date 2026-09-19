@@ -3,11 +3,27 @@ Pad-entry tapers for KiCad 9, with differential-pair gap preservation.
 
 The script replaces each SELECTED straight track or arc that ends in a same-net pad
 with a continuous filled copper outline. For a differential pair, select both entries.
-The outline follows a tangent-matched curve and widens into the actual pad shape.
+The outline follows a tangent-matched curve. By default, paired trace widths grow
+with their local reference copper-edge gap, not with pad size or taper progress.
 Both members are rejected if their polygon edges reduce the original pair gap.
 Paired flares are shifted outward to preserve the original facing copper boundary
 at every transverse section, including the wider clearance next to the pads.
 CONSTANT_WIDTH is a separate, staged-track mode for redriver reference-loss routing.
+
+Separation-driven paired entries (default):
+    PARAMS = dict(APPLY=False, GAP_WIDTH_MODE=True, LENGTH=0.45,
+                  GAP_START=None, GAP_FULL_WIDTH=0.40, GAP_MAX_MULTIPLIER=1.5)
+GAP_START=None measures each member's incoming gap; an explicit value sets the
+gap below which width stays unchanged. Width increases by smoothstep from 1x to
+GAP_MAX_MULTIPLIER at GAP_FULL_WIDTH (mm), then stays capped. Gap means copper-edge
+separation across matched sections of the proposed routes at ORIGINAL widths,
+before outward safety correction. This avoids width/spacing feedback. It is not
+pad center pitch. Pad room may further limit the width; the existing pad gap must
+not shrink. Select both members: unpaired entries are skipped in this mode.
+An already-wide start or an explicit GAP_START producing a join-width step is
+rejected. Extend the selected transition upstream or adjust the threshold instead.
+This is a geometric rule, not an impedance model or signal-integrity validation.
+Set GAP_WIDTH_MODE=False to use the former pad-sized flare and growth-bias recipe.
 
 Usage in PCB Editor > Tools > Scripting Console:
     PARAMS = dict(APPLY=False)  # optional dry run
@@ -17,8 +33,8 @@ Retimer HSO capacitor entries C38-C53 use LENGTH=0.45. Curved HSI entries requir
 more room (LENGTH=0.55); any folded outline and its partner are left unchanged.
 These lengths are board-specific. Refill zones and run DRC after applying.
 
-Progression and pad-size scaling (normal polygon mode):
-    PARAMS = dict(APPLY=False, GROWTH_BIAS=1.5, AUTO_LENGTH=True,
+Progression and pad-size scaling (legacy pad-sized polygon mode):
+    PARAMS = dict(APPLY=False, GAP_WIDTH_MODE=False, GROWTH_BIAS=1.5, AUTO_LENGTH=True,
                   LENGTH_PER_PAD_WIDTH=0.8, MIN_LENGTH=0.10, MAX_LENGTH=0.80)
 GROWTH_BIAS=1 retains the original profile; larger values delay widening and
 lateral departure until closer to the pad. Unsafe profiles are rejected.
@@ -36,7 +52,7 @@ Use the measured lateral-ground-loss length plus ENTRY_JOG for LENGTH. This boar
 16 RX pairs require 0.525-0.635 mm total, corresponding to 0.475-0.585 mm wide sections.
 
 Fine-pitch BGA escape (select both members of each differential pair):
-    PARAMS = dict(APPLY=True, LENGTH=0.80, PAD_ESCAPE=True,
+    PARAMS = dict(APPLY=True, LENGTH=0.80, PAD_ESCAPE=True, GAP_WIDTH_MODE=False,
                   PAD_ENTRY_WIDTH=0.20, STEPS=24)
 The existing routed width is used at the route end and increases monotonically
 toward the pad. The existing centerline path provides the pair fanout, without
@@ -64,6 +80,10 @@ LENGTH_PER_PAD_WIDTH = 0.8
 MIN_LENGTH = 0.10
 MAX_LENGTH = 0.80
 GROWTH_BIAS = 1.0
+GAP_WIDTH_MODE = True
+GAP_START = None
+GAP_FULL_WIDTH = 0.40
+GAP_MAX_MULTIPLIER = 1.5
 STEPS = 8                # legacy stages; continuous outlines use at least 64 samples
 TARGET_WIDTH = None      # pad-end width; None fits the pad (constant mode uses MAX_FACTOR)
 EXTEND_PATH = False      # consume unique upstream items to reach LENGTH
@@ -573,6 +593,9 @@ def _target_width(candidate):
 def plan_candidate(candidate):
     """Build connected, staged track geometry while holding the inboard edge fixed."""
     width0 = candidate["width"]
+    if GAP_WIDTH_MODE and not CONSTANT_WIDTH and candidate["partner"] is None:
+        print("  REJECTED %s: select the differential-pair partner" % candidate["name"])
+        return None
     if PAD_ESCAPE or not CONSTANT_WIDTH:
         return plan_pad_escape(candidate)
     width1 = _target_width(candidate)
@@ -681,7 +704,34 @@ def plan_candidate(candidate):
                 path_start=path_start, side=side, length=taper_length)
 
 
-def plan_pad_escape(candidate):
+def _gap_multiplier(gap, start_gap):
+    if not all(math.isfinite(float(value)) for value in (gap, start_gap, GAP_FULL_WIDTH, GAP_MAX_MULTIPLIER)):
+        raise ValueError("Gap width parameters must be finite")
+    if GAP_FULL_WIDTH <= start_gap or GAP_MAX_MULTIPLIER < 1.0 or start_gap < 0:
+        raise ValueError("Require 0 <= start gap < GAP_FULL_WIDTH and GAP_MAX_MULTIPLIER >= 1")
+    progress = smoothstep((gap - start_gap) / (GAP_FULL_WIDTH - start_gap))
+    return 1.0 + (GAP_MAX_MULTIPLIER - 1.0) * progress
+
+
+def _section_gap(point, tangent, partner_nodes, partner_width, route_width, toward):
+    along = (-toward[1], toward[0])
+    depth = dot(point, along)
+    gaps = []
+    for start, end in zip(partner_nodes, partner_nodes[1:]):
+        first, last = dot(start, along), dot(end, along)
+        if min(first, last) - 1e-9 <= depth <= max(first, last) + 1e-9 and abs(last - first) > 1e-12:
+            fraction = max(0.0, min(1.0, (depth - first) / (last - first)))
+            other = add(start, mul(sub(end, start), fraction))
+            first_projection = abs(dot(tangent, along))
+            other_projection = abs(dot(unit(sub(end, start)), along))
+            if min(first_projection, other_projection) < 1e-6:
+                return None
+            gaps.append(dot(sub(other, point), toward) - route_width / (2.0 * first_projection)
+                        - partner_width / (2.0 * other_projection))
+    return max(0.0, min(gaps)) if gaps else None
+
+
+def plan_pad_escape(candidate, spacing_probe=False):
     """Curve smoothly from the routed pair into a wider pad entry."""
     route_width = candidate["width"]
     taper_length = min(candidate.get("requested_length", _requested_length(candidate)), candidate["length"] * 0.80)
@@ -754,9 +804,35 @@ def plan_pad_escape(candidate):
         return unit(add(add(forward, mul(sub(derivative, forward), blend)), mul(lateral, slope)))
 
     fractions = [index / stage_count for index in range(stage_count + 1)]
+    nodes = [curve_point(fraction) for fraction in fractions]
+    if spacing_probe:
+        prefix = [candidate["point_at"](path_start * index / stage_count)
+                  for index in range(stage_count)]
+        return prefix + nodes
     widths = [route_width + (pad_width - route_width) * _growth_profile(fraction)
               for fraction in fractions]
-    nodes = [curve_point(fraction) for fraction in fractions]
+    gaps = None
+    if GAP_WIDTH_MODE and candidate["partner"] is not None:
+        partner = candidate["partner"]
+        partner_nodes = plan_pad_escape(partner, spacing_probe=True)
+        if partner_nodes is None:
+            return None
+        toward = unit(sub(p2(partner["pad"].GetPosition()), p2(pad.GetPosition())))
+        gaps = [_section_gap(point, curve_tangent(fraction), partner_nodes,
+                             partner["width"], route_width, toward)
+                for fraction, point in zip(fractions, nodes)]
+        if any(gap is None for gap in gaps):
+            print("  REJECTED %s: pair sections do not overlap" % candidate["name"])
+            return None
+        start_gap = gaps[0] if GAP_START is None else float(GAP_START)
+        if GAP_START is None and start_gap >= GAP_FULL_WIDTH:
+            print("  REJECTED %s: incoming gap already exceeds full-width threshold" % candidate["name"])
+            return None
+        widths = [min(pad_width, route_width * _gap_multiplier(gap, start_gap)) for gap in gaps]
+        if abs(widths[0] - route_width) > 0.000001:
+            print("  REJECTED %s: start gap would create a width step at the route join" % candidate["name"])
+            return None
+        pad_width = widths[-1]
 
     left_edge = []
     right_edge = []
@@ -803,7 +879,7 @@ def plan_pad_escape(candidate):
                      if active_component["kind"] == "arc" else None)
     return dict(candidate=candidate, start=nodes[0], end=nodes[-1],
                 width0=route_width, width1=pad_width, pieces=pieces, bridge=bridge,
-                polygon=polygon, nodes=nodes, widths=widths,
+                polygon=polygon, nodes=nodes, widths=widths, reference_gaps=gaps,
                 baseline=baseline, prefix_mid=prefix_middle,
                 active_component=active_component, path_start=path_start,
                 side=side, length=taper_length)
@@ -991,6 +1067,10 @@ def run(board=None, apply=None, **overrides):
         candidate = plan["candidate"]
         label = candidate["name"].rsplit("/", 1)[-1]
         kind = "paired/outboard" if candidate["partner"] is not None else "single"
+        if plan.get("reference_gaps") is not None:
+            print("  %-16s width %.4f..%.4f mm; reference gap %.4f..%.4f mm"
+                  % (label, min(plan["widths"]), max(plan["widths"]),
+                     min(plan["reference_gaps"]), max(plan["reference_gaps"])))
 
     if not apply or not plans:
         print("DRY RUN: set APPLY=True after reviewing the plan." if not apply else "Nothing changed.")
