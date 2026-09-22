@@ -1,6 +1,7 @@
 """Check generated syntax, KiCad connectivity, and critical daughterboard invariants."""
 
 from pathlib import Path
+import csv
 import json
 import subprocess
 import tempfile
@@ -44,6 +45,30 @@ def validate():
     assert not errors, errors
     assert len(netlist.findall('.//components/comp')) == len(expected)
     components = {component['ref']: component for component in expected}
+    sourced_ics = {
+        'U101': ('LM51772RHAR','C41383743'),
+        'U201': ('TPS40305DRCR','C140285'),
+        'U301': ('TPS56A37RPAR','C22392669'),
+        'U401': ('TPS62130RGTR','C43590'),
+        'U501': ('USB7206CT/KDX','C3210691'),
+        'U600': ('HD3SS3220IRNHR','C701817'),
+        'U700': ('HD3SS3220IRNHR','C701817'),
+        'U1200': ('TCPP03-M20','C3662955'),
+        'U1201': ('HD3SS3212IRKSR','C544517'),
+        'U1300': ('STM32G071KBT6N','C529349'),
+    }
+    for ref, identifiers in sourced_ics.items():
+        assert (components[ref]['mpn'],components[ref]['lcsc']) == identifiers, ref
+    with (ROOT/'BOM.csv').open(newline='',encoding='utf-8') as stream:
+        bom = csv.DictReader(stream)
+        assert 'Part_Number' in bom.fieldnames and 'MPN' not in bom.fieldnames
+        bom_rows = list(bom)
+    assert len(bom_rows) == len(expected)
+    for component in netlist.findall('.//components/comp'):
+        fields = {field.get('name'):field.text or '' for field in component.findall('./fields/field')}
+        assert 'MPN' not in fields
+        assert fields['Part_Number'] == components[component.get('ref')]['mpn']
+        assert fields.get('LCSC','') == components[component.get('ref')]['lcsc']
     for ref in ['J600','J700','J1200']:
         nets = components[ref]['nets']
         assert nets['A6'] == nets['B6']

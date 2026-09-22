@@ -308,7 +308,7 @@ def generate():
             assert center_y + spec['height']/2 < page_height-55, (page['name'],ref)
             component_id = uid(ref)
             properties = []
-            for key, value in [('Reference', ref), ('Value', component['value']), ('Footprint', component['footprint']), ('Datasheet', spec['datasheet']), ('MPN', component['mpn']), ('LCSC', component['lcsc'])]:
+            for key, value in [('Reference', ref), ('Value', component['value']), ('Footprint', component['footprint']), ('Datasheet', spec['datasheet']), ('Part_Number', component['mpn']), ('LCSC', component['lcsc'])]:
                 prop_y = ypos if key == 'Reference' else ypos+2.54
                 if len(rotation)>1 and rotation[1]:
                     prop_y = center_y-(5.08 if key=='Reference' else 2.54)
@@ -357,7 +357,7 @@ def generate():
     (ROOT / 'Schematic_Layout_Report.json').write_text(json.dumps(layout_report,indent=2)+'\n',encoding='utf-8')
     with (ROOT / 'BOM.csv').open('w', newline='', encoding='utf-8') as stream:
         writer = csv.writer(stream)
-        writer.writerow(['Reference', 'Value', 'MPN', 'LCSC', 'Footprint', 'DNP', 'Sheet'])
+        writer.writerow(['Reference', 'Value', 'Part_Number', 'LCSC', 'Footprint', 'DNP', 'Sheet'])
         for component in manifest:
             if not component['physical']:
                 continue
@@ -370,7 +370,7 @@ for device, footprint in [('R','Resistor_SMD:R_0603_1608Metric'), ('C','Capacito
 
 define('TPS56A37RPAR', [('1','EN','input'), ('2','FB','input'), ('3','AGND','power_in'), ('4','PG','open_collector'), ('5','SS','output'), ('6','SW','power_out'), ('7','BOOT','passive'), ('8','VIN','power_in'), ('9','PGND','power_in'), ('10','MODE','input')], datasheet='https://www.ti.com/lit/ds/symlink/tps56a37.pdf')
 power33 = sheet('Power_3V3', '3.3 V / 4 A - TPS56A37', 'WEBENCH Design104 values. EN intentionally floating per datasheet section 6.3.5.\nAGND/PGND join at regulator. Verify capacitance after DC-bias derating and inductor thermal limits.')
-part(power33, 'U301', 'TPS56A37RPAR', {'1':None,'2':'3V3_FB','3':'GND','4':'3V3_PG','5':'3V3_SS','6':'3V3_SW','7':'3V3_BOOT','8':'VIN12','9':'GND','10':'3V3_MODE'})
+part(power33, 'U301', 'TPS56A37RPAR', {'1':None,'2':'3V3_FB','3':'GND','4':'3V3_PG','5':'3V3_SS','6':'3V3_SW','7':'3V3_BOOT','8':'VIN12','9':'GND','10':'3V3_MODE'}, lcsc='C22392669')
 passive(power33,'L301','2.2uH','3V3_SW','V3V3','VLP8040T-2R2N')
 for ref in ['C301','C302']:
     passive(power33,ref,'10uF 25V','VIN12','GND','MSAST21GBB5106MTNA01')
@@ -415,7 +415,7 @@ standard('CSD17577Q3A', 'Transistor_FET')
 define('CSD17304Q3', LIBRARY['CSD17577Q3A']['pins'], LIBRARY['CSD17577Q3A']['footprint'], 'https://www.ti.com/lit/ds/symlink/csd17304q3.pdf')
 define('TPS40305DRCR', [('1','VDD','power_in'),('2','EN_SS','input'),('3','PGOOD','open_collector'),('4','COMP','output'),('5','FB','input'),('6','BOOT','passive'),('7','HDRV','output'),('8','SW','passive'),('9','LDRV_OC','output'),('10','BP','power_out'),('11','GND_EP','power_in')], 'Package_SON:VSON-10-1EP_3x3mm_P0.5mm_EP1.2x2mm', 'https://www.ti.com/lit/ds/symlink/tps40305.pdf')
 power5 = sheet('Power_5V', '5 V / 12 A - TPS40305', 'WEBENCH Design105 topology and values; 1.2 MHz. MOSFET drain pad numbering follows TI NexFET land pattern.\n5 V allocation: two Type-C ports at 3 A, USB-A SDP loads, plus VCONN/mux overhead. BC1.2 disabled.')
-part(power5,'U201','TPS40305DRCR',dict(zip(map(str,range(1,12)),['VIN12','5V_SS','5V_PG','5V_COMP','5V_FB','5V_BOOT','5V_HG','5V_SW','5V_LG','5V_BP','GND'])))
+part(power5,'U201','TPS40305DRCR',dict(zip(map(str,range(1,12)),['VIN12','5V_SS','5V_PG','5V_COMP','5V_FB','5V_BOOT','5V_HG','5V_SW','5V_LG','5V_BP','GND'])),lcsc='C140285')
 part(power5,'Q201','CSD17304Q3',{'1':'5V_SW','2':'5V_SW','3':'5V_SW','4':'5V_HG','5':'VIN12'})
 part(power5,'Q202','CSD17577Q3A',{'1':'GND','2':'GND','3':'GND','4':'5V_LG','5':'5V_SW'})
 passive(power5,'L201','800nH','5V_SW','V5','XAL7070-801MEB')
@@ -440,7 +440,7 @@ for ref,value,first,second,mpn in [
 
 standard('TPS62130', 'Regulator_Switching')
 core = sheet('Power_Core', '1.15 V / 3 A - USB7206C core', 'TPS62130, 12 V input. 0.8 V reference x (1 + 43.7k/100k) = 1.1496 V.\nHub VCORE allowed range 1.09-1.21 V. Hold HUB_RESET_N low until both hub rails are stable.')
-part(core,'U401','TPS62130',{'1':'CORE_SW','2':'CORE_SW','3':'CORE_SW','4':'CORE_PG','5':'CORE_FB','6':'GND','7':'GND','8':'GND','9':'CORE_SS','10':'VIN12','11':'VIN12','12':'VIN12','13':'V3V3','14':'VCORE','15':'GND','16':'GND','17':'GND'})
+part(core,'U401','TPS62130',{'1':'CORE_SW','2':'CORE_SW','3':'CORE_SW','4':'CORE_PG','5':'CORE_FB','6':'GND','7':'GND','8':'GND','9':'CORE_SS','10':'VIN12','11':'VIN12','12':'VIN12','13':'V3V3','14':'VCORE','15':'GND','16':'GND','17':'GND'},mpn='TPS62130RGTR',lcsc='C43590')
 passive(core,'L401','2.2uH','CORE_SW','VCORE','XAL5030-222MEC')
 passive(core,'R401','43.7k 0.1%','VCORE','CORE_FB')
 passive(core,'R402','100k 0.1%','CORE_FB','GND')
@@ -613,7 +613,7 @@ passive(upstream,'C1202','330pF 50V','UP_CC2','GND')
 passive(upstream,'C1203','2.2uF 50V','UP_VBUS','GND')
 passive(upstream,'C1204','100nF 10V','V5','GND')
 passive(upstream,'C1205','1uF 10V','V5','GND')
-part(upstream,'U1201','HD3SS3212IRKSR',dict(zip(map(str,range(1,22)),[None,'UP_MUX_OEN','UP_TXP_AC','UP_TXN_AC','GND','V3V3','UP_RXP','UP_RXN','UP_MUX_SEL',None,'GND','UP_RX2N','UP_RX2P','UP_TX2N','UP_TX2P','UP_RX1N','UP_RX1P','UP_TX1N','UP_TX1P','GND','GND'])))
+part(upstream,'U1201','HD3SS3212IRKSR',dict(zip(map(str,range(1,22)),[None,'UP_MUX_OEN','UP_TXP_AC','UP_TXN_AC','GND','V3V3','UP_RXP','UP_RXN','UP_MUX_SEL',None,'GND','UP_RX2N','UP_RX2P','UP_TX2N','UP_TX2P','UP_RX1N','UP_RX1P','UP_TX1N','UP_TX1P','GND','GND'])),lcsc='C544517')
 passive(upstream,'R1206','100k','V3V3','UP_MUX_OEN')
 passive(upstream,'R1207','100k','UP_MUX_SEL','GND')
 passive(upstream,'C1206','100nF','V3V3','GND')
@@ -627,7 +627,7 @@ for offset,nets in enumerate([['UP_TX1P','UP_TX1N','UP_RX1P','UP_RX1N'],['UP_TX2
 standard('STM32G071KBT6N','MCU_ST_STM32G0','STM32G071K_8-B_TxN')
 mcu = sheet('PD_MCU','STM32G071 - USB-PD policy and power control','STM32G071KBT6N LQFP32: PA8=UCPD1_CC1, PB15=UCPD1_CC2, PB6/PB7=I2C1, PA13/PA14=SWD.\nSource-only power path. UCPD dead-battery pins grounded; disable dead-battery function in firmware.\nBoot from flash using option bytes; preserve NRST function. Firmware required; no PD stack is generated here.')
 part(mcu,'U1300','STM32G071KBT6N',dict(zip(map(str,range(1,33)),[
-    '3V3_PG',None,None,'V3V3','GND','MCU_NRST','UP_ADC','PD_IANA','PD_RAW_ADC','GPU1_ADC','GPU2_ADC','EPS_ADC','HUB_RESET_N','HUB_VBUS_DET','PD_EN','PD_NRST','MCU_CC2','MCU_CC1','GND','TCPP_EN','GND','P1_ID_N','P2_ID_N','SWDIO','SWCLK','UP_FAULT_N','PD_NFLT','UP_MUX_SEL','UP_MUX_OEN','I2C_SCL','I2C_SDA','CORE_PG'])))
+    '3V3_PG',None,None,'V3V3','GND','MCU_NRST','UP_ADC','PD_IANA','PD_RAW_ADC','GPU1_ADC','GPU2_ADC','EPS_ADC','HUB_RESET_N','HUB_VBUS_DET','PD_EN','PD_NRST','MCU_CC2','MCU_CC1','GND','TCPP_EN','GND','P1_ID_N','P2_ID_N','SWDIO','SWCLK','UP_FAULT_N','PD_NFLT','UP_MUX_SEL','UP_MUX_OEN','I2C_SCL','I2C_SDA','CORE_PG'])),lcsc='C529349')
 define('SWD_5',[(str(index),name,'passive') for index,name in enumerate(['VTREF','SWDIO','SWCLK','NRST','GND'],1)])
 part(mcu,'J1300','SWD_5',{'1':'V3V3','2':'SWDIO','3':'SWCLK','4':'MCU_NRST','5':'GND'},mpn='SWD 1x5 2.54mm',footprint='Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical')
 define('Reset_Button',[('1','NRST','passive'),('2','GND','passive')],shape='R')

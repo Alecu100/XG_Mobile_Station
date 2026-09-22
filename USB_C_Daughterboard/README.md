@@ -38,6 +38,28 @@ Parallel capacitors share wired rails and junctions. Simple dividers and RC netw
 - `generate_schematic.py`: reproducible source. Running it overwrites the generated daughterboard sheets/library/BOM, so preserve manual schematic edits before regenerating.
 - `validate_schematic.py`: parses each sheet, exports a real KiCad XML netlist, and checks every connected physical pin plus selected independent design invariants.
 
+## Exact IC Sourcing
+
+The schematic manufacturer part-number property and BOM column are named `Part_Number`; the assembly catalogue code remains `LCSC`. The following mappings were checked against JLCPCB's exact manufacturer-number detail pages. A catalogue listing is not a stock reservation or a completed assembly qualification.
+
+| Reference | Part_Number | LCSC / JLCPCB Source |
+| --- | --- | --- |
+| U101 | LM51772RHAR | [C41383743](https://jlcpcb.com/partdetail/TexasInstruments-LM51772RHAR/C41383743) |
+| U201 | TPS40305DRCR | [C140285](https://jlcpcb.com/partdetail/TexasInstruments-TPS40305DRCR/C140285) |
+| U301 | TPS56A37RPAR | [C22392669](https://jlcpcb.com/partdetail/TexasInstruments-TPS56A37RPAR/C22392669) |
+| U401 | TPS62130RGTR | [C43590](https://jlcpcb.com/partdetail/TexasInstruments-TPS62130RGTR/C43590) |
+| U501 | USB7206CT/KDX | [C3210691](https://jlcpcb.com/partdetail/MicrochipTech-USB7206CT_KDX/C3210691) |
+| U600, U700 | HD3SS3220IRNHR | [C701817](https://jlcpcb.com/partdetail/TexasInstruments-HD3SS3220IRNHR/C701817) |
+| U1200 | TCPP03-M20 | [C3662955](https://jlcpcb.com/partdetail/STMicroelectronics-TCPP03M20/C3662955) |
+| U1201 | HD3SS3212IRKSR | [C544517](https://jlcpcb.com/partdetail/TexasInstruments-HD3SS3212IRKSR/C544517) |
+| U1300 | STM32G071KBT6N | [C529349](https://jlcpcb.com/partdetail/STMicroelectronics-STM32G071KBT6N/C529349) |
+
+U401's previously unsuffixed TPS62130 now specifies the orderable TPS62130RGTR, matching its existing 16-pin 3 x 3 mm RGT package. The symbol value remains TPS62130. The MCU retains the exact **N variant**; C529348 is the different STM32G071KBT6 and is not assigned here.
+
+At lookup, STM32G071KBT6N and TCPP03-M20 showed zero stock/preorder; LM51772RHAR also showed preorder with only one unit in stock. Recheck availability, minimum quantities and lead times before ordering. Some exact searches returned zero results even though the parts appeared in broader family searches and had valid detail pages.
+
+This pass covers the ICs above. The six TPS259470LRPW eFuses still have blank LCSC fields (no exact listing verified), as do other unsourced supporting parts. No substitutes were introduced and PCB placement was not regenerated. The full BOM is still incomplete.
+
 ## PCB Placement Draft
 
 Open `XG_Mobile_USB_Hub.kicad_pcb` from the project. The provisional outline is 120 x 80 mm. Downstream USB connector positions are reserved on the front edge; upstream USB-C and GPU/EPS power inputs are reserved on the rear. No mounting holes or enclosure constraints have been specified. The TPS62130 core buck is retained.
