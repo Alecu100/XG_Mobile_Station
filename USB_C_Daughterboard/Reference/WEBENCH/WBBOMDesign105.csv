@@ -1,0 +1,20 @@
+﻿Part,Manufacturer,Part Number,Quantity,Price ($),Footprint (mm²),Description
+M2,Texas Instruments,CSD17577Q3A,1,0.15,18.49,VdsMax: 30 V  IdsMax: 35 Amps  
+Rcomp,Vishay-Dale,CRCW04022K26FKED,1,0.01,3,Resistance: 2.26 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Rfbb,Vishay-Dale,CRCW04021K37FKED,1,0.01,3,Resistance: 1.37 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Rpgood,Vishay-Dale,CRCW0402100KFKED,1,0.01,3,Resistance: 100 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Ccomp3,MuRata,GRM1555C1H102JA01J,1,0.01,3,Cap: 1 nF  Total Derated Cap: 1 nF  VDC: 50 V  ESR: 0 Ω  Package: 0402  
+Cvcc,TDK,C1005X5R1E105K050BC,1,0.019,3,Cap: 1 µF  Total Derated Cap: 1 µF  VDC: 25 V  ESR: 11.4 mΩ  Package: 0402  
+M1,Texas Instruments,CSD17304Q3,1,0.25,18.49,VdsMax: 30 V  IdsMax: 56 Amps  
+Rcomp2,Vishay-Dale,CRCW0402274RFKED,1,0.01,3,Resistance: 274 Ω  Tolerance: 1.0%  Power: 63 mW  
+U1,Texas Instruments,TPS40305DRCR,1,0.86,16.81,
+Cbyp,MuRata,GRM21BR71A225KA01L,1,0.03,6.75,Cap: 2.2 µF  Total Derated Cap: 2.2 µF  VDC: 10 V  ESR: 4.22 mΩ  Package: 0805  
+Cbst,MuRata,GRM155R71C104KA88D,1,0.01,3,Cap: 100 nF  Total Derated Cap: 100 nF  VDC: 16 V  ESR: 1 mΩ  Package: 0402  
+Ccomp2,MuRata,GRM0335C1H121JA01D,1,0.01,2.08,Cap: 120 pF  Total Derated Cap: 120 pF  VDC: 5 V  ESR: 0 Ω  Package: 0201  
+Rfbt,Yageo,RC0201FR-0710KL,1,0.01,2.08,Resistance: 10 kΩ  Tolerance: 1.0%  Power: 50 mW  
+Cout,TDK,C3216X5R1A107M160AC,1,0.38941,10.92,Cap: 100 µF  Total Derated Cap: 29 µF  VDC: 10 V  ESR: 3.08 mΩ  Package: 1206  
+L1,Coilcraft,XAL7070-801MEB,1,1.19,87.4,L: 800 nH  DCR: 2.1 mΩ  IDC: 25.8 A  
+Rs,Vishay-Dale,CRCW04027K50FKED,1,0.01,3,Resistance: 7.5 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Cin,MuRata,GRM31CR71E106KA12L,3,0.06,10.92,Cap: 10 µF  Total Derated Cap: 9.8 µF  VDC: 25 V  ESR: 4 mΩ  Package: 1206  
+Ccomp,Kemet,C0603C432J5GAC7867,1,0.09,4.68,Cap: 4.3 nF  Total Derated Cap: 4.3 nF  VDC: 50 V  ESR: 0 Ω  Package: 0603  
+Css,MuRata,GRM033R71A332KA01D,1,0.01,2.08,Cap: 3.3 nF  Total Derated Cap: 3.3 nF  VDC: 10 V  ESR: 1 mΩ  Package: 0201  

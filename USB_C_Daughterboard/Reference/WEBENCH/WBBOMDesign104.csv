@@ -1,0 +1,13 @@
+﻿Part,Manufacturer,Part Number,Quantity,Price ($),Footprint (mm²),Description
+Cff,Kemet,C0603C151K3GACTU,1,0.02,4.68,Cap: 150 pF  Total Derated Cap: 150 pF  VDC: 25 V  ESR: 0 Ω  Package: 0603  
+Rfbb,Yageo,RC0201FR-0710KL,1,0.01,2.08,Resistance: 10 kΩ  Tolerance: 1.0%  Power: 50 mW  
+Rfbt,Vishay-Dale,CRCW080545K3FKEA,1,0.01,6.75,Resistance: 45.3 kΩ  Tolerance: 1.0%  Power: 125 mW  
+Rmode,Vishay-Dale,CRCW040252K3FKED,1,0.01,3,Resistance: 52.3 kΩ  Tolerance: 1.0%  Power: 63 mW  
+Css,MuRata,GRM155R71C223KA01D,1,0.01,3,Cap: 22 nF  Total Derated Cap: 22 nF  VDC: 16 V  ESR: 1 mΩ  Package: 0402  
+Cin,Taiyo Yuden,MSAST21GBB5106MTNA01,2,0.03995,6.75,Cap: 10 µF  Total Derated Cap: 4.1 µF  VDC: 25 V  ESR: 5.46 mΩ  Package: 0805  
+Cout,TDK,C3225X5R1C156M250AA,2,0.19,14.7,Cap: 15 µF  Total Derated Cap: 24 µF  VDC: 16 V  ESR: 2.95 mΩ  Package: 1210_280  
+L1,TDK,VLP8040T-2R2N,1,0.22,113.42,L: 2.2 µH  DCR: 15 mΩ  IDC: 6.7 A  
+Cboot,Taiyo Yuden,EMK107B7104KA-T,1,0.01,4.68,Cap: 100 nF  Total Derated Cap: 100 nF  VDC: 16 V  ESR: 1 mΩ  Package: 0603  
+Cinx,Kemet,C0603C104M3VACTU,1,0.01,4.68,Cap: 100 nF  Total Derated Cap: 48 nF  VDC: 25 V  ESR: 1 mΩ  Package: 0603  
+U1,Texas Instruments,TPS56A37RPAR,1,1.111,16,
+Rpg,Vishay-Dale,CRCW0402100KFKED,1,0.01,3,Resistance: 100 kΩ  Tolerance: 1.0%  Power: 63 mW  
