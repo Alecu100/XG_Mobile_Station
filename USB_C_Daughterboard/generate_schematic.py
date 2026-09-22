@@ -8,6 +8,7 @@ import sexpdata
 
 
 ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = ROOT.parent
 PROJECT = "XG_Mobile_USB_Hub"
 NAMESPACE = uuid.UUID("eb5758b8-41e4-43f1-b10f-1330e4bc0380")
 LIBRARY = {}
@@ -98,16 +99,188 @@ def text(content, xpos, ypos, size=1.27):
     return f"(text {quote(content)} (at {xpos} {ypos} 0) {effects(size, '(justify left top)')} (uuid {quote(uid(f'text/{xpos}/{ypos}/{content}'))}))"
 
 
+def wire(identity, start, end):
+    start = tuple(round(value,4) for value in start)
+    end = tuple(round(value,4) for value in end)
+    assert start != end
+    return f'(wire (pts (xy {start[0]} {start[1]}) (xy {end[0]} {end[1]})) (stroke (width 0) (type default)) (uuid {quote(uid(identity))}))'
+
+
+def net_label(identity, net, xpos, ypos, angle=0):
+    justify = '(justify left)' if angle==0 else '(justify right)'
+    return f'(global_label {quote(net)} (shape input) (at {round(xpos,4)} {round(ypos,4)} {angle}) {effects(0.9,justify)} (uuid {quote(uid(identity))}))'
+
+
+def passive_groups(section):
+    rails = {'GND','VIN12','V5','V3V3','VCORE','PD_RAW','PD_VCC1','PD_VCC2'}
+    candidates = [part for part in section['parts'] if part['kind'] in ['R','C','L','F']]
+    owners = {part['ref']:part['ref'] for part in candidates}
+
+    def owner(ref):
+        while owners[ref] != ref:
+            ref = owners[ref]
+        return ref
+
+    def boundary(net):
+        return net in rails or net.endswith(('_VBUS','_12V'))
+
+    for index,part in enumerate(candidates):
+        nets = set(part['nets'].values())
+        for other in candidates[:index]:
+            other_nets = set(other['nets'].values())
+            if nets == other_nets or any(not boundary(net) for net in nets & other_nets):
+                owners[owner(part['ref'])] = owner(other['ref'])
+    groups = {}
+    for part in candidates:
+        groups.setdefault(owner(part['ref']),[]).append(part)
+
+    def path_nodes(parts):
+        neighbors = {}
+        for part in parts:
+            first,second = part['nets'].values()
+            neighbors.setdefault(first,set()).add(second)
+            neighbors.setdefault(second,set()).add(first)
+        ends = [net for net,near in neighbors.items() if len(near)==1]
+        if len(ends)!=2 or len(neighbors)>5 or any(len(near)>2 for near in neighbors.values()):
+            return None
+        nodes = [next((net for net in ends if net!='GND'),ends[0])]
+        while len(nodes)<len(neighbors):
+            remaining = neighbors[nodes[-1]]-set(nodes)
+            if not remaining:
+                return None
+            nodes.append(next(iter(remaining)))
+        return nodes
+
+    result = []
+    for parts in groups.values():
+        nodes = path_nodes(parts)
+        if len(parts)>1 and nodes:
+            if len(nodes)==2:
+                result.extend((parts[index:index+4],nodes) for index in range(0,len(parts),4))
+            else:
+                result.append((parts,nodes))
+        else:
+            pairs = {}
+            for part in parts:
+                pairs.setdefault(tuple(sorted(part['nets'].values())),[]).append(part)
+            result.extend((bank,path_nodes(bank)) for bank in pairs.values() if len(bank)>1)
+    return result
+
+
+def section_layout(section, left, top):
+    networks = passive_groups(section)
+    membership = {part['ref']:index for index,(parts,nodes) in enumerate(networks) for part in parts}
+    attachments = {}
+    attached_refs = set()
+    rails = {'GND','VIN12','V5','V3V3','VCORE','PD_RAW','PD_VCC1','PD_VCC2'}
+    for device in section['parts']:
+        if not device['ref'].startswith('U'):
+            continue
+        taken = []
+        for part in section['parts']:
+            if part['kind'] not in ['R','C'] or part['ref'] in membership or part['ref'] in attached_refs:
+                continue
+            signals = [(number,net) for number,net in part['nets'].items()
+                       if net not in rails and not net.endswith(('_VBUS','_12V'))]
+            if len(signals)!=1:
+                continue
+            part_pin,net = signals[0]
+            for pin,offset_x,offset_y,pin_left in LIBRARY[device['kind']]['geometry']:
+                if device['nets'][pin]!=net or any(side==pin_left and abs(offset_y-height)<17.78 for side,height in taken):
+                    continue
+                attachments.setdefault(device['ref'],[]).append((part,part_pin,pin,offset_x,offset_y,pin_left))
+                attached_refs.add(part['ref'])
+                taken.append((pin_left,offset_y))
+                break
+    emitted = set()
+    placements, drawings, connected = {}, [], set()
+    cursor_x, cursor_y, row_height = 0,round((top+29)/2.54)*2.54,0
+    for component in section['parts']:
+        if component['ref'] in attached_refs:
+            continue
+        group_index = membership.get(component['ref'])
+        if group_index is not None and group_index in emitted:
+            continue
+        if group_index is None:
+            spec = LIBRARY[component['kind']]
+            width = 254 if component['ref'] in attachments else 139.7
+            height = max(spec['height']+17.78,30.48)
+        else:
+            emitted.add(group_index)
+            parts,nodes = networks[group_index]
+            lanes = {}
+            for part in parts:
+                edge = min(nodes.index(net) for net in part['nets'].values())
+                lanes.setdefault(edge,[]).append(part)
+            width = (len(nodes)-1)*50.8+40.64
+            height = max(len(bank) for bank in lanes.values())*25.4+15.24
+        if cursor_x+width>558.8:
+            cursor_x,cursor_y,row_height = 0,cursor_y+row_height+7.62,0
+        origin = round((left+cursor_x)/2.54)*2.54
+        if group_index is None:
+            device_x = origin+(127 if component['ref'] in attachments else 63.5)
+            placements[component['ref']] = (device_x,cursor_y)
+            device_y = cursor_y+spec['height']/2+7.62
+            for part,part_pin,pin,offset_x,offset_y,pin_left in attachments.get(component['ref'],[]):
+                direction = -1 if pin_left else 1
+                passive_x,passive_y = device_x+direction*60.96,device_y-offset_y
+                rotation = 0 if (part_pin=='2')==pin_left else 180
+                placements[part['ref']] = (passive_x,passive_y-LIBRARY[part['kind']]['height']/2-7.62,rotation,True)
+                near_x = passive_x-direction*10.16
+                drawings.append(wire(part['ref']+'/to-device',(device_x+offset_x,passive_y),(near_x,passive_y)))
+                drawings.append(net_label(part['ref']+'/signal',part['nets'][part_pin],device_x+offset_x+direction*7.62,passive_y,0 if pin_left else 180))
+                other_pin = '2' if part_pin=='1' else '1'
+                far_x = passive_x+direction*10.16
+                end_x = far_x+direction*5.08
+                drawings.append(wire(part['ref']+'/to-rail',(far_x,passive_y),(end_x,passive_y)))
+                drawings.append(net_label(part['ref']+'/rail',part['nets'][other_pin],end_x,passive_y,0 if pin_left else 180))
+                connected.update([(component['ref'],pin),(part['ref'],'1'),(part['ref'],'2')])
+        else:
+            rail_points = {net:[] for net in nodes}
+            for edge,bank in lanes.items():
+                for row,part in enumerate(bank):
+                    center_x = origin+20.32+edge*50.8+25.4
+                    center_y = cursor_y+17.78+row*25.4
+                    placements[part['ref']] = (center_x,center_y-LIBRARY[part['kind']]['height']/2-7.62)
+                    for number,offset_x,offset_y,pin_left in LIBRARY[part['kind']]['geometry']:
+                        net = part['nets'][number]
+                        rail_x = origin+20.32+nodes.index(net)*50.8
+                        pin_x = center_x+offset_x
+                        expected_left = rail_x<center_x
+                        if expected_left != pin_left:
+                            placements[part['ref']] = (center_x,placements[part['ref']][1],180)
+                            pin_x = center_x-offset_x
+                        drawings.append(wire(part['ref']+'/'+number+'/direct',(pin_x,center_y),(rail_x,center_y)))
+                        rail_points[net].append(center_y)
+                        connected.add((part['ref'],number))
+            for net,points in rail_points.items():
+                rail_x = origin+20.32+nodes.index(net)*50.8
+                rail_top = cursor_y+7.62
+                drawings.append(net_label(section['name']+'/'+str(group_index)+'/'+net,net,rail_x,rail_top))
+                previous = rail_top
+                for index,rail_y in enumerate(sorted(set(points))):
+                    drawings.append(wire(section['name']+'/'+str(group_index)+'/'+net+'/'+str(index),(rail_x,previous),(rail_x,rail_y)))
+                    if len(points)>1:
+                        drawings.append(f'(junction (at {round(rail_x,4)} {round(rail_y,4)}) (diameter 0) (color 0 0 0 0) (uuid {quote(uid(section["name"]+str(group_index)+net+str(index)+"junction"))}))')
+                    previous = rail_y
+        cursor_x += width
+        row_height = max(row_height,height)
+    return placements,drawings,connected,cursor_y+row_height+12
+
+
 def generate():
     root_id = uid('USB_C_Daughterboard')
     root = [header(root_id, PROJECT.replace('_', ' '), 'A3'), '(lib_symbols)']
     manifest = []
+    layout_report = []
     for page_number, page in enumerate(SHEETS, 2):
         page_id = uid(page['name'])
         sheet_id = uid('sheet/' + page['name'])
         names = sorted({component['kind'] for component in page['parts']})
         symbols = '\n'.join(symbol_definition(name) for name in names)
         placements = {}
+        direct_wires = []
+        direct_pins = set()
         section_text = []
         column_bottoms = [45,45]
         for section in page['sections']:
@@ -115,36 +288,38 @@ def generate():
             left, top = 12+panel*584.2, column_bottoms[panel]
             section_text.append(text(section['title'],left,top,2))
             section_text.append(text(section['notes'],left,top+7,1.1))
-            ypos, row_height = round((top+29)/2.54)*2.54, 0
-            for index, component in enumerate(section['parts']):
-                spec = LIBRARY[component['kind']]
-                if index and index%4 == 0:
-                    ypos += row_height
-                    row_height = 0
-                row_height = max(row_height, spec['height']+17.78,30.48)
-                placements[component['ref']] = (left+64.2+(index%4)*139.7,ypos)
-            column_bottoms[panel] = ypos+row_height+12
+            section_positions,section_wires,section_pins,bottom = section_layout(section,left,top)
+            placements.update(section_positions)
+            direct_wires.extend(section_wires)
+            direct_pins.update(section_pins)
+            column_bottoms[panel] = bottom
         page_height = max(297,max(column_bottoms)+55)
         output = [header(page_id, page['title'], f'User 1189 {page_height}'), '(lib_symbols ' + symbols + ')']
         output.append(text(page['title'], 12, 15, 2.54))
         output.append(text(page['notes'], 12, 23))
         output.extend(section_text)
+        output.extend(direct_wires)
         for component in page['parts']:
             ref, kind = component['ref'], component['kind']
             spec = LIBRARY[kind]
-            xpos,ypos = placements[ref]
+            xpos,ypos,*rotation = placements[ref]
+            symbol_angle = rotation[0] if rotation else 0
             center_y = ypos + spec['height'] / 2 + 7.62
             assert center_y + spec['height']/2 < page_height-55, (page['name'],ref)
             component_id = uid(ref)
             properties = []
             for key, value in [('Reference', ref), ('Value', component['value']), ('Footprint', component['footprint']), ('Datasheet', spec['datasheet']), ('MPN', component['mpn']), ('LCSC', component['lcsc'])]:
                 prop_y = ypos if key == 'Reference' else ypos+2.54
+                if len(rotation)>1 and rotation[1]:
+                    prop_y = center_y-(5.08 if key=='Reference' else 2.54)
                 properties.append(f"(property {quote(key)} {quote(value)} (at {xpos} {prop_y} 0) {effects(extra='' if key in ('Reference','Value') else 'hide')})")
-            output.append(f'''(symbol (lib_id {quote('Daughterboard:'+kind)}) (at {xpos} {center_y} 0) (unit 1)
+            output.append(f'''(symbol (lib_id {quote('Daughterboard:'+kind)}) (at {xpos} {center_y} {symbol_angle}) (unit 1)
               (in_bom {'yes' if component['physical'] else 'no'}) (on_board {'yes' if component['physical'] else 'no'}) (dnp {'yes' if component['dnp'] else 'no'}) (uuid {quote(component_id)})
               {' '.join(properties)}
               (instances (project {quote(PROJECT)} (path {quote('/'+root_id+'/'+sheet_id)} (reference {quote(ref)}) (unit 1)))))''')
             for number, offset_x, offset_y, left in spec['geometry']:
+                if (ref,number) in direct_pins:
+                    continue
                 pin_x, pin_y = round(xpos+offset_x, 4), round(center_y-offset_y, 4)
                 net = component['nets'][number]
                 if net is None:
@@ -157,25 +332,29 @@ def generate():
                   {effects(0.9, '(justify left)' if left else '(justify right)')} (uuid {quote(uid(ref+'/'+number+'/label'))}))''')
             manifest.append(dict(sheet=page['name'], **component))
         output.append(')')
-        (ROOT / (page['name']+'.kicad_sch')).write_text('\n'.join(output)+'\n', encoding='utf-8')
+        layout_report.append({'sheet':page['name'],
+                      'directly_wired_components':sorted({ref for ref,number in direct_pins}),
+                      'directly_wired_pins':len(direct_pins),
+                      'global_labels':sum(item.count('(global_label ') for item in output)})
+        (PROJECT_ROOT / (PROJECT+'_'+page['name']+'.kicad_sch')).write_text('\n'.join(output)+'\n', encoding='utf-8')
         index = page_number-2
         xpos, ypos_root = 20, 65+index*55
         root.append(f'''(sheet (at {xpos} {ypos_root}) (size 160 30) (stroke (width 0) (type default)) (fill (color 0 0 0 0))
           (uuid {quote(sheet_id)})
           (property "Sheetname" {quote(page['title'])} (at {xpos} {ypos_root-1.27} 0) {effects(1.27,'(justify left bottom)')})
-          (property "Sheetfile" {quote(page['name']+'.kicad_sch')} (at {xpos} {ypos_root+31.27} 0) {effects(1.27,'(justify left top)')})
+          (property "Sheetfile" {quote(PROJECT+'_'+page['name']+'.kicad_sch')} (at {xpos} {ypos_root+31.27} 0) {effects(1.27,'(justify left top)')})
           (instances (project {quote(PROJECT)} (path {quote('/'+root_id)} (page {quote(page_number)})))))''')
     root.append(text('USB-C DAUGHTERBOARD / ENGINEERING DRAFT', 20, 15, 3))
     root.append(text('Upstream: USB-C, USB 3.2 Gen 2 data UFP, USB-PD power source, 20 V / 5 A maximum.\nDownstream: 2 Type-C + 3 Type-A SuperSpeed, 1 Type-A USB 2.0.\nUse two GPU power inputs OR one EPS input. Not for simultaneous independent supplies.', 20, 24))
     root.append('(sheet_instances (path "/" (page "1")))')
     root.append(')')
-    (ROOT / (PROJECT+'.kicad_sch')).write_text('\n'.join(root)+'\n', encoding='utf-8')
+    (PROJECT_ROOT / (PROJECT+'.kicad_sch')).write_text('\n'.join(root)+'\n', encoding='utf-8')
     (ROOT / 'Daughterboard.kicad_sym').write_text('(kicad_symbol_lib (version 20231120) (generator "kicad_symbol_editor")\n'+'\n'.join(symbol_definition(name, False) for name in sorted(LIBRARY))+'\n)\n', encoding='utf-8')
-    (ROOT / 'sym-lib-table').write_text('(sym_lib_table (version 7) (lib (name "Daughterboard") (type "KiCad") (uri "${KIPRJMOD}/Daughterboard.kicad_sym") (options "") (descr "Project-local verified pin maps")))\n', encoding='utf-8')
-    project_path = ROOT / (PROJECT+'.kicad_pro')
+    project_path = PROJECT_ROOT / (PROJECT+'.kicad_pro')
     if not project_path.exists():
         project_path.write_text(json.dumps({'meta':{'filename':PROJECT+'.kicad_pro','version':1}},indent=2)+'\n',encoding='utf-8')
     (ROOT / 'connectivity.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
+    (ROOT / 'Schematic_Layout_Report.json').write_text(json.dumps(layout_report,indent=2)+'\n',encoding='utf-8')
     with (ROOT / 'BOM.csv').open('w', newline='', encoding='utf-8') as stream:
         writer = csv.writer(stream)
         writer.writerow(['Reference', 'Value', 'MPN', 'LCSC', 'Footprint', 'DNP', 'Sheet'])

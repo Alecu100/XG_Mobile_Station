@@ -362,7 +362,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/2d2c7e64-4a6b-5c84-a322-236b23d61ddd")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -501,7 +501,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/88c1f72d-962c-5cb6-ac7c-160e29ebac27")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -640,7 +640,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/0144e8c5-54e3-541d-b471-86d2faf50cbf")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 -0.36)
@@ -777,7 +777,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/414b59e0-e422-5456-8739-c95045d2c97a")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -836,7 +836,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/b14cc62d-1bee-5f8b-a8d2-b40a6f4417e7")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -975,7 +975,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/c9ade439-5973-5547-b93d-7cecaac9f5ab")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -1114,7 +1114,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/f69fe9fe-1ba2-5f94-9c69-d64ff5b3665b")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -1253,7 +1253,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/7fd4c40e-5b6d-517e-a5c7-738badf41dc1")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -1394,7 +1394,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/086d633e-c407-57fc-bb10-8d53de6a5a0c")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 -1.41)
@@ -1671,7 +1671,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/03adde4d-1723-54b2-93b2-4b1f49b45abd")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -1808,7 +1808,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/7b155125-3d02-53cb-98d9-3823b87e1927")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -1867,7 +1867,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/3d47a211-8206-556f-8f53-2efefea3229c")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -1.36)
@@ -2006,7 +2006,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/f99a3cfe-764d-5c77-a73e-2fa76d406e23")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -2145,7 +2145,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/f4aedc29-2dc8-58a0-a5c1-3ad432b3ae14")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -2282,7 +2282,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/93b76434-3d89-544c-82e2-2f941f84a5b9")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -2339,7 +2339,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/9c6e0bf6-5f2d-5f2d-afa7-31795272a69f")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -2400,7 +2400,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/a87719ab-dc85-5f15-a4aa-82feb713b1a2")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.75 1.5)
@@ -2740,7 +2740,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/88f82bcd-8bab-5d7a-b1df-7dd2a649e053")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -2879,7 +2879,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/86ad3235-f5a6-5ec6-9de8-19344a3d87ec")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.36 -2.36)
@@ -3619,7 +3619,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/b033630e-59ca-5724-aa74-3a081ecb6ed8")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -3756,7 +3756,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/05b868d7-5de2-57b6-8b2d-c82ada98b3d8")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -3813,7 +3813,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/d3bc082c-492a-5b17-bc2f-fc3e76bd2a38")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -3872,7 +3872,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/018c3f10-3889-50ba-93cb-02a5e6700057")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -0.91)
@@ -4011,7 +4011,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/13754bd2-54df-5b6f-afb2-6c120e0c7cc0")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -4150,7 +4150,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/7541980d-a184-5a1c-ac68-cbd321df7fd9")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -4287,7 +4287,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/4312ca0c-3149-5cb5-9f04-fd2fa48542c5")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -4346,7 +4346,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/d991e9df-c193-55b8-af53-7f88e20e9d4b")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -4485,7 +4485,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/69840696-e298-5ae8-9137-472e7c317ac7")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -4624,7 +4624,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/4789289d-1252-5a54-a463-19c8e9941e56")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.91 -1.56)
@@ -4998,7 +4998,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/24e5278d-de33-5f85-8344-842648085730")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -1.36)
@@ -5137,7 +5137,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/e87cb098-1703-554d-9873-eba6ba09e655")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -5276,7 +5276,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/87d6c64f-5a6a-51eb-9174-c0167fdd872d")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 -0.36)
@@ -5415,7 +5415,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/34c38db1-b35f-50a7-a775-e5c8dc217fb7")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -5554,7 +5554,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/26e5509a-b4b1-5020-876e-e6f9d286b35a")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -5693,7 +5693,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/7fdf503f-0f1b-5c86-92b2-01221a82966c")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -5834,7 +5834,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/8301051e-c72d-5837-a4bb-bc5e57b17b9e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 -1.41)
@@ -6111,7 +6111,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/4abc6143-6243-530a-85f7-0fa102c3e658")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -6252,7 +6252,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/fda467d3-9f8c-56a2-ac4d-b8fe3836e338")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 -1.41)
@@ -6531,7 +6531,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/d8e22bc8-ed6d-5531-8e02-c14b736ba036")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -6668,7 +6668,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/c59c5327-1a6f-5bac-b5aa-fe22a9b91b0b")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -6725,7 +6725,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/21707c63-6886-52d5-9e43-33a22c86b2e6")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -6786,7 +6786,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/3e224605-7836-59e0-9495-c0cc42f41b3b")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.75 1.5)
@@ -7124,7 +7124,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/09ca7f19-284f-52d7-b7c7-34974bd346b6")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -7181,7 +7181,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/59195a7b-3f56-59b3-a964-44660782e8fa")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -7240,7 +7240,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/42c2b52b-ffa8-5da0-bb37-b2810ce560e4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -7379,7 +7379,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/556a25b9-9c6f-5334-a55f-9233f0c383e4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -7518,7 +7518,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/085b84ff-c1dc-59f7-8962-be45a7ec34f3")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -7657,7 +7657,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/2561844a-5d47-5e4a-a0e2-dbf7e7005d17")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -7796,7 +7796,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/001f3449-a9fd-57dd-b796-62bb4ebc9242")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -0.91)
@@ -7935,7 +7935,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/d1be21d5-5c76-5349-b2be-75c40ce2be8e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -8074,7 +8074,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/71d1ff50-1a03-58fe-9b3d-b3af63c8e93e")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -8215,7 +8215,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/0eba5a96-9d2b-583b-9375-d64dcba74100")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 -1.41)
@@ -8490,7 +8490,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/6dac11bc-4b78-577e-9263-cae0e0ff67b4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -8549,7 +8549,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/a7cf6967-4ab7-53bf-be5b-c18d440ceb1c")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -8688,7 +8688,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/666c7295-1190-52b4-933c-1723a8a35db9")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -8827,7 +8827,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/94f20cca-745e-5928-90e2-2f16fe4cca76")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -8966,7 +8966,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/a54ea070-d638-55b1-a483-9398a1b6475e")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -9105,7 +9105,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/cc4e3766-ac9d-56b1-b270-b357ac87cc20")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_rect
 			(start -0.7 -0.35)
@@ -9238,7 +9238,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/c6f74e09-2071-5445-8f26-3bbf9b53399a")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -9375,7 +9375,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/d9f9878d-52d7-5563-9b64-5358b679fc9b")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -9434,7 +9434,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/258e4be4-6323-5010-9a67-8909c19e9edf")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -9573,7 +9573,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/292ad260-7b5a-547b-8a42-ed106539a343")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -9712,7 +9712,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/d2ddbce3-9d06-550c-834e-bc28f96bc07f")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -9851,7 +9851,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/224331e2-01a0-54e8-8059-569429b276ff")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -9988,7 +9988,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/e54018cf-48dc-5726-87e3-fbb8a65a2f9e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -10047,7 +10047,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/78adc282-b0cb-5b75-b877-bd759605aa53")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -10186,7 +10186,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/6a87c0a8-20b8-5607-8747-bfa623c3a7be")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -10325,7 +10325,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/3d12e803-fbc3-50f3-9bf7-a1e4d9b4ef08")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -10462,7 +10462,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/bf5c2a84-efce-5cdb-9620-281e59abdd6e")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -10521,7 +10521,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/0f83bac4-b608-5060-9a11-073621b93c6e")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -10658,7 +10658,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/27fd4c46-bbcb-58ae-854d-c62e8472ec2a")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -10715,7 +10715,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/17affb91-2acb-50eb-b3a4-30125aa5f3b8")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -10772,7 +10772,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/581f9d69-90cf-58cd-857a-4b440e42f709")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -10831,7 +10831,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/beda9104-16bd-51df-bc71-98111bb52eef")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -10970,7 +10970,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/f8602f21-72ff-5656-b139-26c3d4db57ce")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -11109,7 +11109,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/666857ec-db8d-5838-bb28-2c871c0eb161")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -11250,7 +11250,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/28e7620e-a9ec-50ed-b4bb-d62d79bcb70e")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.75 1.5)
@@ -11590,7 +11590,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/92a30d02-dd21-5a02-8e61-49d82b4539d6")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -11727,7 +11727,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/d62df406-beff-5002-bacf-e4d2b0cb0c51")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -11788,7 +11788,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/1b304b49-9d02-5bc3-96bd-8d9d140d3587")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.66 -2.15)
@@ -12055,7 +12055,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/4e4d59fd-4411-5b6c-b08c-ea31a5a2ad45")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -12194,7 +12194,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/6cf5681e-c492-53f8-bd8e-89dd95280dd9")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -12333,7 +12333,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/795ff5a5-2a7d-58fa-9ff1-4ee2a12a9585")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_rect
 			(start -0.7 -0.35)
@@ -12466,7 +12466,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/27b86044-9980-5fd2-8e07-b27fcc733610")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -12605,7 +12605,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/a4fe0290-c1d6-531e-8878-010eb8b3bee5")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -12742,7 +12742,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/3e2fcea1-4f88-550f-8f0c-13687f6fcfee")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -12799,7 +12799,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/67e2be37-1b27-57e6-8427-014a1c0c293c")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -12858,7 +12858,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/d91d99e7-72a3-59c6-9c61-6c2ceaccc1aa")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -12997,7 +12997,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/c0bdb560-1bfa-579c-b0e4-7e931cbbb401")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -13138,7 +13138,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/fd72a2db-5fa1-5273-925b-6da276c76baf")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 -1.41)
@@ -13417,7 +13417,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/4f023c5e-36e5-5790-b942-48a68af25081")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -13558,7 +13558,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/f6e17edb-70dc-5dd1-ac95-5e38cca0c44c")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.75 1.5)
@@ -13898,7 +13898,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/65ee29c7-b977-5c82-bdae-6f195ed03b90")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -14035,7 +14035,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/fc6191f3-6c0f-52ad-829d-432a68d282e3")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -14096,7 +14096,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/3357b991-5d42-52e9-a5df-e28cc346e8ee")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.66 -2.15)
@@ -14363,7 +14363,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/2db44d48-343d-58f2-acee-df518f7a0152")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -14500,7 +14500,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/29253279-d720-55c6-a493-c0774a7469bf")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -14557,7 +14557,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/19b84341-fe01-5901-bdf0-b3c9848a597e")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -14616,7 +14616,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/f831a381-0612-535b-90ff-324e433ff9ad")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -14755,7 +14755,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/6af75fca-506d-50b0-8519-b83de86b53ac")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -14894,7 +14894,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/7c6c5d34-4157-5ad9-8619-2e63f396f83e")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -0.91)
@@ -15033,7 +15033,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/8cc5b685-8b53-5aaf-b6e6-bd97d94c671d")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -15172,7 +15172,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/b5d9ba83-98e6-5d27-a2ab-ce27b8abe895")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -15311,7 +15311,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/99646406-3d0a-563f-8d38-1a130fb5ba15")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -15450,7 +15450,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/89b87277-cd3f-5ac8-a69d-c3b54f38ee5a")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 -0.36)
@@ -15589,7 +15589,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/9cf09da5-644a-52ca-b1ae-4d3208f20902")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -15728,7 +15728,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/91d3f1ac-28a5-5369-b452-795afc485759")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -0.91)
@@ -15867,7 +15867,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/8461644b-fac6-5c0c-93b0-9e1ddb5b2b65")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -16006,7 +16006,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/b5f3a076-ce30-54df-9b74-b9451303cfa3")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.91 -1.56)
@@ -16380,7 +16380,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/1d0eb124-41f1-55b9-bd5d-0f602a055736")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.61 -1.61)
@@ -16977,7 +16977,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/04a48fc0-c821-581e-aa98-09feaa0759b5")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -17036,7 +17036,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/98232621-f20c-556d-a4c6-10e7acb06933")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -17173,7 +17173,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/e8169dea-8e05-5de6-b33d-f1eb86a19dd1")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -17232,7 +17232,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/06c394ce-e0bc-525b-824b-15dbbd34e20c")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -17369,7 +17369,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/a5bbcd8d-e523-59f2-9a47-9e3cac873fc3")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -17428,7 +17428,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/8b2fda62-93aa-5f24-b3ef-904301df8908")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.36 -2.36)
@@ -18168,7 +18168,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/4bc55b95-0552-5ac9-8514-aaf8b4b8f752")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -18307,7 +18307,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/4d235acb-9f63-5ece-910b-f0396dc0a99b")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -18446,7 +18446,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/35f7c6ec-bb1f-5cff-a8e6-ecc5f1ab8977")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_rect
 			(start -0.7 -0.35)
@@ -18579,7 +18579,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/e310a5e6-bff5-5000-b330-0b2a84418b1e")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -18718,7 +18718,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/647f0f98-2211-5e2f-a409-980124c3cf7e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -18857,7 +18857,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/9d1e42fe-2ff1-5b6d-9ad0-1c4c2bbcfa63")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -18996,7 +18996,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/da586067-6cf4-5ac4-aabe-15596cda420b")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_rect
 			(start -0.7 -0.35)
@@ -19129,7 +19129,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/bd132345-5590-55fc-9169-fb77bbf13067")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -6.11 -6.11)
@@ -20423,7 +20423,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/2d9a883a-bcae-5b31-931c-863cdcd6a3f6")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -20482,7 +20482,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/992ee44d-4930-50bd-beea-5223f608a0af")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -20621,7 +20621,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/e8504335-e11e-53cb-9e05-44c3bd69c9a1")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -1.36)
@@ -20760,7 +20760,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/97c466fd-a82b-50bc-8faa-3a7f0c89a29a")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -20901,7 +20901,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/ff882414-5297-5419-8fbc-6c174d0deb12")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.66 -2.15)
@@ -21168,7 +21168,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/7a17c519-591f-5c8e-b751-8df18c80951b")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -21307,7 +21307,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/a6563d54-98be-59fd-9f76-2e6add32533a")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -21444,7 +21444,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/c926f3b3-06dc-52fa-9e16-f597e8ce0234")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -21505,7 +21505,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/096623bd-2122-594d-a5e5-b15780647ab1")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.66 -2.15)
@@ -21772,7 +21772,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/d914e023-acd7-575b-9d18-f981d3badb3d")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -21911,7 +21911,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/4c6cf587-fec6-5bde-80e6-c3466b8fa04f")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -22052,7 +22052,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/bba22219-bd0d-59c5-a6fe-9a742c18c57b")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.75 1.5)
@@ -22392,7 +22392,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/f69e906c-3479-5223-925f-b258fd154e5b")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.91 -1.56)
@@ -22767,7 +22767,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/8325812f-8433-514e-822e-697998e2ef9e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -22906,7 +22906,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/bee8de74-1cf0-53ce-b24f-49e2dd45086c")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -1.36)
@@ -23045,7 +23045,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/27dbd12d-944d-50ac-8d26-e47bfaa2e3c0")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -1.36)
@@ -23184,7 +23184,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/2001dba3-18a2-59f6-afcd-b529d1b467eb")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -23323,7 +23323,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/5de5d3ed-68f2-52bd-a0f5-618294a58f7e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -23462,7 +23462,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/99f7d82d-cfa4-5275-892e-e925fa53af85")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -23599,7 +23599,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/798a349c-70f5-585a-9c41-6c9b02e174a4")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -23660,7 +23660,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/4363edc4-3508-5635-b6d3-6837bb87e659")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.75 1.5)
@@ -24000,7 +24000,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/c9d7bb0b-f8be-52e8-b997-342c3b0ec585")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -24139,7 +24139,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/6852c482-a989-5716-9dee-09cbd9e44f80")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -24278,7 +24278,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/216c0f2b-a75f-5783-b9f6-d8743cd29757")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -24417,7 +24417,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/ef2aa721-b10e-5e0e-b280-07a1960b7be4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -24554,7 +24554,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/e45c607f-987a-5636-87cc-a13fd0147ac5")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -24613,7 +24613,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/65711a53-7bf1-5224-aa5a-a0dc0a0e7ba6")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.91 -1.56)
@@ -24988,7 +24988,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/9f0d6b91-3ec5-5081-a532-0619d394e0a8")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -25125,7 +25125,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/be2295ca-8b53-518c-8d9f-f941e9b23e4f")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -25183,7 +25183,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/f1e49c84-d79f-5f6b-9822-f0738709c4b5")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -2.06 -1.71)
@@ -25339,7 +25339,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/cd9b1427-2192-5759-9b4f-0f298f2b2cb1")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -25478,7 +25478,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/d79d22e3-b049-5ac4-8e77-cb42fc215d7f")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -25615,7 +25615,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/db4aba1e-0281-5c2c-b322-bd844eba2063")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -25674,7 +25674,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/17d272c6-f687-57db-a95c-17a389cce630")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -25813,7 +25813,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/9f5c3ac8-0bab-5ae2-bf6e-aa220d87f1fc")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -25952,7 +25952,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/275e60e0-ae0b-51bf-9efe-b8ec4722cd77")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -26091,7 +26091,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/7d998baf-a4e6-5796-8ff6-2784a4554fc8")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -26230,7 +26230,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/97df131f-b263-5877-a4e6-e8b565e964e1")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.61 -1.61)
@@ -26630,7 +26630,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/addf4188-2a6a-5b41-b7d2-bae572d9c588")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -26689,7 +26689,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/77184a1b-e17d-5807-bd9b-0e0993bbfded")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -26826,7 +26826,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/f326f2ff-0b39-51c3-a08c-0a56f562614a")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -26885,7 +26885,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/b0625b05-bd86-5de6-afc1-cf8a846dcddf")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -27024,7 +27024,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/3c092af7-1299-5829-8bf0-1af333fb8ed5")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -27163,7 +27163,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/e2ff32f9-eb67-515d-aad4-2bdd94b27a37")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -27302,7 +27302,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/4f990c28-ca11-5fe9-a977-ef1953c46d26")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 -0.36)
@@ -27441,7 +27441,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/9c5a7aad-c007-5ea8-924e-10b12e30cc92")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -27580,7 +27580,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/1f544153-7a6d-5485-96ba-1cfcf4671fba")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.227064 -0.735)
@@ -27717,7 +27717,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/c1abcfac-cddc-53f1-8b1a-80fb5fe8529e")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -27776,7 +27776,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/b410977c-9ece-5af4-9263-9daadf4e073a")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.711252 -0.91)
@@ -27915,7 +27915,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/cf3d3db9-bb12-5830-a807-20dce26005b7")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -28054,7 +28054,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/58472e90-61ac-507f-bc3b-2cfc664d19a1")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -28193,7 +28193,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/f30e399c-e8ee-5922-92de-f70fa10bb28e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -28334,7 +28334,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/5d2b89d3-b289-58b7-93f8-733877aa7021")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 -1.41)
@@ -28611,7 +28611,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/44c629db-b66e-588f-92f4-f8077d2f26ca")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -28750,7 +28750,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/8e8ce089-0381-5443-879b-f1a0db9bdb5e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -28889,7 +28889,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/023c0f7b-395f-531f-8f51-579622f88274")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -29028,7 +29028,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/2f98dce0-28cf-5137-b9c8-f58a9dcdc092")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -29167,7 +29167,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/a4521847-edb2-5cac-8265-d2b498ae1d6e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -29306,7 +29306,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/93ae6375-7f4b-52e6-b9e8-0a0d43651fc5")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -29445,7 +29445,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/2ca7bc49-9249-5507-80f7-8b980441076a")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -29584,7 +29584,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/3084b58f-fb1d-5c20-a37c-d91cd23914f9")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -29723,7 +29723,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/01810372-f805-52bf-b77f-c9cb2a597f0d")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -29862,7 +29862,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/eb4cb4a0-fe76-566c-890d-c3ad38df3c2b")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -30001,7 +30001,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/243e08dc-0dc2-511c-90a1-ba1f4aceed96")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 -0.36)
@@ -30140,7 +30140,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/190c759a-f7e7-59c5-86f3-46b846a29173")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -30279,7 +30279,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/e38f687e-6502-5229-8f48-24ec1bfd502c")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -30418,7 +30418,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/9f16f785-345c-5d91-b2b9-e9a573ef4472")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -30555,7 +30555,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/4fc7fa4d-daf1-5bfa-b032-d8fe14957b17")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(embedded_fonts no)
 	)
@@ -30616,7 +30616,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/8b349169-1564-5833-85f2-5f8ad3ef55b4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 -1.41)
@@ -30895,7 +30895,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/85e0e468-b154-5ae1-947f-0f4dbd906170")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -31034,7 +31034,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/1ccf7fd2-c6ca-56a3-9f37-13983ea7715b")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.261252 -0.735)
@@ -31173,7 +31173,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/532a9c9f-73ff-517e-a5cf-154d6035032c")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -31312,7 +31312,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/9271a410-39dc-5f8c-8dee-977cf7ac3c7f")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 -0.36)
@@ -31451,7 +31451,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/36072fef-6cb3-51a0-91e0-8bcb5a9e97df")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -31590,7 +31590,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/589cf183-44bc-592f-8d45-b6b319ef6351")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 -0.51)
@@ -31729,7 +31729,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/bbd2ff77-e73e-5f73-9214-c33aef588eae")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -31868,7 +31868,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/5bc2e792-7803-5905-bb09-5f882a629cf0")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -32011,7 +32011,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/1122b91a-455d-5ae4-ae67-bebf811eb2d4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -32155,7 +32155,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/7944dd15-1ee8-515e-8b7c-cea7a30a8e76")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -32299,7 +32299,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/af9b00e4-7e2c-5409-935d-6a2ee0d6ec44")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -32443,7 +32443,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/45ad3446-33a3-52ca-b999-4c6f91c04545")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -32589,7 +32589,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/9843ba5d-aa82-5ff8-89ca-2594a2c47cd1")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -32871,7 +32871,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/a6857ae5-27e0-5df7-9507-c1f929be4059")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 2.11 2.11)
@@ -33457,7 +33457,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/d0f599f6-0635-5e6e-8432-865d03ff4611")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -33601,7 +33601,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/6ecf9f79-dab4-5a17-9502-2ee4aeefe7a2")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -33745,7 +33745,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/db9b084a-7aa3-53a6-8344-5f08115ac4f8")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -33889,7 +33889,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/42c4813f-e9d9-5eb5-87c2-d946e660caca")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -34033,7 +34033,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/43e0affe-e830-5c1b-80b3-963367967781")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -34179,7 +34179,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/68f91cd9-b6b1-5b5a-b44f-b06018698215")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 1.75 1.74)
@@ -34524,7 +34524,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/c4ca984b-cea6-5b0a-a139-214f7365c35a")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -34668,7 +34668,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/e34b2209-c686-5a78-827b-98829a299435")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -34814,7 +34814,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/843042ec-b4fe-5822-81cf-afb5ec4239f4")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.66 2.15)
@@ -35086,7 +35086,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/270c9e06-5267-5be6-823c-2fec102dd558")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -35230,7 +35230,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/ec9ce500-038e-5276-8db6-5e8def15ba92")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -35374,7 +35374,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/571f6bbe-0519-5bb7-abd4-5787540aacbf")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -35518,7 +35518,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/beb0d88c-67a4-53b5-a248-a9f0a0cec459")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -35662,7 +35662,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/c4f70583-992f-5d37-9bf5-52278d90162d")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -35806,7 +35806,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/44d9b729-5ba6-515e-821b-dca0161e8bf3")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -35952,7 +35952,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/9d3b3571-5fcd-5e8e-be66-888b2a08637d")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -36236,7 +36236,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/8480f417-f89f-540b-bcb9-7368f0716287")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -36380,7 +36380,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/eb69ea2c-1f6e-5837-8e71-4337513fbb03")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 3.61 3.61)
@@ -37024,7 +37024,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/53cc32c9-90af-5762-b76b-cc1a8eea62af")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -37168,7 +37168,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/597935be-ad1f-5df6-b293-725787a61bf7")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -37312,7 +37312,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/80b7f3ef-faff-5e60-ae7a-54d98356a70f")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -37456,7 +37456,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/fc78eeca-9176-55a8-90d7-5ab785cd14c4")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 0.38)
@@ -37602,7 +37602,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/761dc00d-ec5c-5ca9-852a-6d9f138f0b70")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -37886,7 +37886,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/146d5273-c59a-54a8-9a40-feab26a0ed6e")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -38030,7 +38030,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/37220600-8085-5a68-a877-5bad75c2e036")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.76 1.56)
@@ -38394,7 +38394,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/c34ea2e3-20c4-512a-8ab9-b69a4c5f28a1")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -38538,7 +38538,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/bf8dc760-dbfe-53fc-8b73-7f0a1cfca46d")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -38682,7 +38682,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/daee8b1b-4a9c-5c71-939e-7d5d8bf2ec44")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -38826,7 +38826,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/589dfec6-c465-52cb-8625-932137fd3765")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -38970,7 +38970,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/7927e616-6e6d-59d5-9e6e-f12db23ffc64")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -39114,7 +39114,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/5b070fbc-eae3-57ce-87dd-fa1c3d6d2b4f")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -39258,7 +39258,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/c702e224-87d2-5203-884b-6c2f24ffd47f")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -39404,7 +39404,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/610bd4ea-e977-5a25-adc1-44275f428aeb")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.66 2.15)
@@ -39676,7 +39676,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/76ee51d4-259e-5f13-831a-28e67954748d")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -39820,7 +39820,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/cd1f07c9-5eab-5838-8df1-30010ebf7834")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -39964,7 +39964,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/fe9cf212-5a9c-570d-bd35-cd2fa67480dd")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -40108,7 +40108,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/a58a667b-d856-53d3-9067-81336ec02150")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -40252,7 +40252,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/34d79695-fe4a-5ba9-86b3-57d9380d29e0")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -40396,7 +40396,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/8c142273-c8d7-51e0-bf0f-6d07da2da786")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -40540,7 +40540,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/53b8a561-c037-579f-819c-61f9d0f31f72")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.727064 0.91)
@@ -40684,7 +40684,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/489b98e1-88d3-5a29-891d-1f213892c977")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -40828,7 +40828,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/87ab76c9-cb53-56ea-b798-efa240e48a3d")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -40972,7 +40972,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/9c56bd73-2285-5997-b821-39dadae829f4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -41116,7 +41116,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/22246447-a282-5668-9810-9f97e24974bf")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -41260,7 +41260,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/d8d77448-4016-53ae-ba1d-b177702909b9")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -41404,7 +41404,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/b78d9a20-1950-5fd8-9766-18c7b7e8e01e")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -41550,7 +41550,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/d1139f30-4945-518e-86a1-200e7855258c")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -41834,7 +41834,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/da1a1586-dae5-58b2-80a5-c4d73e7a6a49")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -42118,7 +42118,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/66ee471b-b37c-5ee6-9b81-ad25b2b091a7")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -42262,7 +42262,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/a3fa4a2c-2f1b-58c6-bd56-8db603675df5")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -42406,7 +42406,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/b02da5b8-f872-5183-b79a-5cee47d3d849")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -42552,7 +42552,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/ac84bb51-d9a3-599f-87d9-a7d7488dd98d")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.66 2.15)
@@ -42826,7 +42826,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/136cd9ee-5112-508b-a073-886a6efc43f6")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -43108,7 +43108,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/0fd70314-e4af-5aaa-955a-fbd960c6de8c")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -43252,7 +43252,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/1978b418-c8b5-56e4-8c65-801fcf791c16")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -43396,7 +43396,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/5119bc96-95b1-5e77-b959-314d8594950d")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -2.177064 1.71)
@@ -43540,7 +43540,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/6ac11bf8-3167-572e-b7ab-a3c1a5308591")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -43686,7 +43686,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/6d659cf3-98e4-55d4-9135-e8b8ee01dff4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -43970,7 +43970,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/62384d10-1d86-5cbc-b273-77df6f4034a4")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -44114,7 +44114,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/4339bd3a-be26-59b3-9fc4-9ba1696695fd")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -44260,7 +44260,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/ce6fe750-c810-5b2b-8734-cfbbe36d94fd")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -44544,7 +44544,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/b9a9a600-aeb4-52ce-8dab-c9e8d6d3db1c")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start -1.38 -11.54)
@@ -44796,7 +44796,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/b36e4175-9569-5b42-975a-098c9b94d994")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -44940,7 +44940,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/95636e44-eaf4-5705-8cfb-dcede110f7a3")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -45084,7 +45084,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/41b9d74b-a928-528a-b489-9b83b6747211")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -45228,7 +45228,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/646a83df-9409-588b-b55b-14b261225cf3")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -45372,7 +45372,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/0201164c-28cf-542e-a452-15a15b4afd37")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -45516,7 +45516,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/5419a0d9-9e5d-5160-b19f-d13a2676266d")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -45660,7 +45660,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/824bc403-a377-5df7-99d0-f4776670da3e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -45804,7 +45804,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/44e75077-cfbd-5ec7-83d0-ccb70ee561a3")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -45948,7 +45948,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/4bb47073-e712-5dea-b238-4b9f48fc09b5")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -46092,7 +46092,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/b0bda1bd-ee51-5d22-ac3d-f7887ba7272a")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -46236,7 +46236,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/7e821ecb-6815-54db-a0f5-1f3790e13ba1")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -46382,7 +46382,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/c8e163d7-9b1a-5a80-9798-9d44879f636d")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -3.66 2.15)
@@ -46654,7 +46654,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/de70f276-9319-52dc-9f4f-ffbf8df40032")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -46798,7 +46798,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/22e74b4e-e798-58ac-9f4d-4a97b026a998")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -46944,7 +46944,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/74e28ec7-e082-58d6-ba43-0df63a62bc25")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 1.75 1.74)
@@ -47291,7 +47291,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/a01e2990-168e-5727-8b03-5e29c12df8b1")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.5 1.41)
@@ -47575,7 +47575,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/47af37c8-2b49-55ab-85ac-de5a40a66ba0")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -47719,7 +47719,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/90ecd03f-b5aa-5219-aeaf-fdc65c2efc69")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.76 1.56)
@@ -48083,7 +48083,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/004f877f-5d23-57e6-8600-ea9636de07fc/974fe1d0-261d-56c3-b7d1-6117ddd99398")
 		(sheetname "Power")
-		(sheetfile "Power.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_Power.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)
@@ -48227,7 +48227,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/72dfc4e4-1865-515b-be60-3cddff8d69eb")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -48371,7 +48371,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/5811d3af-6164-5b7e-9878-686bb1cba11e")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.727064 0.91)
@@ -48515,7 +48515,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/1c1a71cd-f684-5429-8521-b02d63a109a3")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -48659,7 +48659,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/cf2875cf-b9e8-5429-a756-a5f7d0ac874a")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -48803,7 +48803,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/466ee727-2e2d-5284-91f2-957308dd7a44")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -48947,7 +48947,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/42968b46-9eb8-5237-a14c-d4c8df44b25d")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -49091,7 +49091,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/3b2010da-cdbb-5ee1-8498-a0889b37a002/4379e665-0959-5f10-98e8-b19a1828b33a")
 		(sheetname "USB_Hub")
-		(sheetfile "USB_Hub.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_USB_Hub.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -49235,7 +49235,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/c950f14c-1323-58f2-bede-e18cd5916719")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.14058 0.51)
@@ -49379,7 +49379,7 @@
 		)
 		(path "/af461753-d65f-5f37-931d-eaa9a181614a/6ac08377-0aa2-5322-8baf-67693c750523/2b73736d-764d-5bb3-a3f9-d10ff3393af6")
 		(sheetname "MCU")
-		(sheetfile "MCU.kicad_sch")
+		(sheetfile "XG_Mobile_USB_Hub_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.237258 0.5225)

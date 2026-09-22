@@ -1,14 +1,16 @@
 # USB-C Daughterboard: Engineering Draft A
 
-Open `XG_Mobile_USB_Hub.kicad_pro` in KiCad 9 or newer. The root schematic contains three child sheets. PDF and SVG exports provide previews; the editable schematics use named-net connections. Existing dock files are unchanged.
+Open [XG_Mobile_USB_Hub.kicad_pro](../XG_Mobile_USB_Hub.kicad_pro) at the repository root in KiCad 9 or newer, alongside the other boards. Its PCB, main schematic and three prefixed child sheets are also at the repository root. This folder contains supporting scripts, symbols, BOM, references and exports. Existing dock circuits are unchanged.
 
 ## Schematic Hierarchy
 
-- `Power.kicad_sch`: GPU/EPS inputs, 3.3 V, 5 V, 1.15 V core buck and LM51772 PD buck-boost.
-- `MCU.kicad_sch`: STM32 PD controller, upstream USB-C connector, protection, power-path FETs and orientation mux.
-- `USB_Hub.kicad_sch`: USB7206C, decoupling, two downstream Type-C ports and four Type-A ports.
+- [XG_Mobile_USB_Hub_Power.kicad_sch](../XG_Mobile_USB_Hub_Power.kicad_sch): GPU/EPS inputs, 3.3 V, 5 V, 1.15 V core buck and LM51772 PD buck-boost.
+- [XG_Mobile_USB_Hub_MCU.kicad_sch](../XG_Mobile_USB_Hub_MCU.kicad_sch): STM32 PD controller, upstream USB-C connector, protection, power-path FETs and orientation mux.
+- [XG_Mobile_USB_Hub_USB_Hub.kicad_sch](../XG_Mobile_USB_Hub_USB_Hub.kicad_sch): USB7206C, decoupling, two downstream Type-C ports and four Type-A ports.
 
 Each child uses a large custom page with labeled circuit blocks. The PDF contains the root plus these three pages; zoom in for component-level review. Original component references and nets are retained. PCB schematic paths follow the consolidated hierarchy without changing placement. The manifest retains each original circuit block in `block` for placement regeneration.
+
+Parallel capacitors share wired rails and junctions. Simple dividers and RC networks are drawn as connected groups, and selected pull-ups and timing/filter parts are directly wired to their IC pins. Labels remain for shared rails, block interfaces and connections not yet drawn point-to-point. `Schematic_Layout_Report.json` records the directly wired references and pin counts. These are drawing changes only, not electrical redesign.
 
 **Not released for fabrication, assembly, or connection to a laptop.** This is a pin-connected schematic draft, not a validated power supply or USB-certified product. Zero ERC errors does not establish electrical performance or protection adequacy. Connector selection, several footprints and passive MPNs remain unresolved and are explicitly marked in the BOM.
 
@@ -24,8 +26,8 @@ Each child uses a large custom page with labeled circuit blocks. The PDF contain
 
 ## Files
 
-- `XG_Mobile_USB_Hub.kicad_sch`: hierarchy root.
-- `Daughterboard.kicad_sym` and `sym-lib-table`: project-local symbols, embedded in the schematics as well.
+- [XG_Mobile_USB_Hub.kicad_sch](../XG_Mobile_USB_Hub.kicad_sch): hierarchy root.
+- `Daughterboard.kicad_sym`: local symbols, embedded in the schematics as well. The repository-root `sym-lib-table` registers this library under `Daughterboard` without replacing existing entries.
 - `BOM.csv`: individual component BOM, not a procurement-ready or JLC assembly upload BOM.
 - `connectivity.json`: generator's intended pin-to-net assignments.
 - `ERC.json`: KiCad electrical-rule report.
@@ -109,7 +111,7 @@ Dependencies: Python with `sexpdata`, installed KiCad 9 symbol libraries and `ki
 ```powershell
 python USB_C_Daughterboard/generate_schematic.py
 python USB_C_Daughterboard/validate_schematic.py
-& 'C:\Program Files\KiCad\9.0\bin\kicad-cli.exe' sch erc --format json --output USB_C_Daughterboard/ERC.json USB_C_Daughterboard/XG_Mobile_USB_Hub.kicad_sch
+& 'C:\Program Files\KiCad\9.0\bin\kicad-cli.exe' sch erc --format json --output USB_C_Daughterboard/ERC.json XG_Mobile_USB_Hub.kicad_sch
 ```
 
 Sources: TI LM51772 SNVSC22D, TPS4030x SLUS964D, TPS56A37 SLVSHC9, TPS25947 SLVSFC9C, HD3SS3220 SLLSES1E, HD3SS3212 SLASE74F; Microchip USB7206C DS00003850F; ST TCPP03 DS13618 Rev 2 and ST's `STM32_open_pin_data` STM32G071K(8-B)TxN pin database. Standard supporting symbol pin maps were resolved from the installed KiCad 9 libraries. Stock, orderability and package compatibility of the complete BOM have not been qualified.

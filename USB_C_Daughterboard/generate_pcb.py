@@ -12,6 +12,7 @@ import pcbnew
 
 
 ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = ROOT.parent
 PROJECT = 'XG_Mobile_USB_Hub'
 KICAD = Path(r'C:\Program Files\KiCad\9.0')
 NAMESPACE = uuid.UUID('eb5758b8-41e4-43f1-b10f-1330e4bc0380')
@@ -64,7 +65,7 @@ def generate():
         netlist_path = Path(directory)/'netlist.xml'
         subprocess.run([str(KICAD/'bin/kicad-cli.exe'), 'sch', 'export', 'netlist',
                         '--format', 'kicadxml', '--output', str(netlist_path),
-                        str(ROOT/(PROJECT+'.kicad_sch'))], check=True)
+                        str(PROJECT_ROOT/(PROJECT+'.kicad_sch'))], check=True)
         exported = ET.parse(netlist_path)
     assignments = {(node.get('ref'),node.get('pin')):net.get('name').lstrip('/')
                    for net in exported.findall('.//nets/net') for node in net.findall('node')}
@@ -131,7 +132,7 @@ def generate():
             path.push_back(pcbnew.KIID(str(uuid.uuid5(NAMESPACE,name))))
         footprint.SetPath(path)
         footprint.SetSheetname(component['sheet'])
-        footprint.SetSheetfile(component['sheet']+'.kicad_sch')
+        footprint.SetSheetfile(PROJECT+'_'+component['sheet']+'.kicad_sch')
         footprint.Reference().SetTextSize(point(0.8,0.8))
         footprint.Reference().SetTextThickness(pcbnew.FromMM(0.12))
         footprint.Reference().SetLayer(pcbnew.F_Fab)
@@ -179,9 +180,9 @@ def generate():
             cursor[0] += item_width
             cursor[2] = max(cursor[2],item_height)
     label(board,'STAGING / UNRESOLVED PACKAGES - NOT PART OF THE BOARD OUTLINE',240,46,1.2)
-    pcbnew.SaveBoard(str(ROOT/(PROJECT+'.kicad_pcb')),board)
+    pcbnew.SaveBoard(str(PROJECT_ROOT/(PROJECT+'.kicad_pcb')),board)
     (ROOT/'PCB_Placement_Report.json').write_text(json.dumps(report,indent=2)+'\n')
-    saved = pcbnew.LoadBoard(str(ROOT/(PROJECT+'.kicad_pcb')))
+    saved = pcbnew.LoadBoard(str(PROJECT_ROOT/(PROJECT+'.kicad_pcb')))
     assert len(list(saved.GetFootprints())) == len(components)
     assert len(list(saved.GetTracks())) == 0
     lookup = {component['ref']:component for component in components}
@@ -200,7 +201,7 @@ def generate():
 
 
 def relink_sheets():
-    board_path = ROOT/(PROJECT+'.kicad_pcb')
+    board_path = PROJECT_ROOT/(PROJECT+'.kicad_pcb')
     board = pcbnew.LoadBoard(str(board_path))
     components = {item['ref']:item for item in json.loads((ROOT/'connectivity.json').read_text()) if item['physical']}
 
@@ -221,14 +222,14 @@ def relink_sheets():
             path.push_back(pcbnew.KIID(str(uuid.uuid5(NAMESPACE,name))))
         footprint.SetPath(path)
         footprint.SetSheetname(component['sheet'])
-        footprint.SetSheetfile(component['sheet']+'.kicad_sch')
+        footprint.SetSheetfile(PROJECT+'_'+component['sheet']+'.kicad_sch')
     pcbnew.SaveBoard(str(board_path),board)
     saved = pcbnew.LoadBoard(str(board_path))
     assert geometry_snapshot(saved) == before
     assert len(list(saved.GetTracks())) == track_count
     for footprint in saved.GetFootprints():
         component = components[footprint.GetReference()]
-        assert footprint.GetSheetfile() == component['sheet']+'.kicad_sch'
+        assert footprint.GetSheetfile() == PROJECT+'_'+component['sheet']+'.kicad_sch'
         assert footprint.GetPath().AsString() == '/'.join(['']+[str(uuid.uuid5(NAMESPACE,name))
             for name in ['USB_C_Daughterboard','sheet/'+component['sheet'],component['ref']]])
     print(f'PASS: {len(before)} PCB links updated; footprint UUIDs, placement, pad nets and track count preserved')

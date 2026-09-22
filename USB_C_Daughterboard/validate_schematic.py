@@ -8,24 +8,33 @@ import xml.etree.ElementTree as ET
 import sexpdata
 
 ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = ROOT.parent
 CLI = Path(r"C:\Program Files\KiCad\9.0\bin\kicad-cli.exe")
 
 
 def validate():
-    root = sexpdata.loads((ROOT/'XG_Mobile_USB_Hub.kicad_sch').read_text(encoding='utf-8'))
+    root = sexpdata.loads((PROJECT_ROOT/'XG_Mobile_USB_Hub.kicad_sch').read_text(encoding='utf-8'))
     children = [item for item in root if isinstance(item,list) and str(item[0]) == 'sheet']
     child_files = [str(field[2]) for child in children for field in child
                    if isinstance(field,list) and str(field[0]) == 'property' and field[1] == 'Sheetfile']
-    assert sorted(child_files) == ['MCU.kicad_sch','Power.kicad_sch','USB_Hub.kicad_sch']
-    assert {path.name for path in ROOT.glob('*.kicad_sch')} == set(child_files+['XG_Mobile_USB_Hub.kicad_sch'])
-    for path in ROOT.glob('*.kicad_sch'):
+    assert sorted(child_files) == ['XG_Mobile_USB_Hub_MCU.kicad_sch','XG_Mobile_USB_Hub_Power.kicad_sch','XG_Mobile_USB_Hub_USB_Hub.kicad_sch']
+    assert {path.name for path in PROJECT_ROOT.glob('XG_Mobile_USB_Hub*.kicad_sch')} == set(child_files+['XG_Mobile_USB_Hub.kicad_sch'])
+    assert not list(ROOT.glob('*.kicad_sch')), 'Obsolete nested schematics remain'
+    direct_wires = 0
+    for path in PROJECT_ROOT.glob('XG_Mobile_USB_Hub*.kicad_sch'):
         parsed = sexpdata.loads(path.read_text(encoding='utf-8'))
         assert str(parsed[0]) == 'kicad_sch', path
+        for item in parsed:
+            if isinstance(item,list) and str(item[0])=='wire':
+                points = next(field for field in item if isinstance(field,list) and str(field[0])=='pts')[1:]
+                length = abs(float(points[0][1])-float(points[1][1]))+abs(float(points[0][2])-float(points[1][2]))
+                direct_wires += length>5.09
+    assert direct_wires>=100, 'Expected directly wired functional groups, not only label stubs'
     expected = [component for component in json.loads((ROOT/'connectivity.json').read_text()) if component['physical']]
     assert {component['sheet'] for component in expected} == {'Power','MCU','USB_Hub'}
     with tempfile.TemporaryDirectory() as directory:
         netlist_path = Path(directory)/'netlist.xml'
-        subprocess.run([str(CLI), 'sch', 'export', 'netlist', '--format', 'kicadxml', '--output', str(netlist_path), str(ROOT/'XG_Mobile_USB_Hub.kicad_sch')], check=True)
+        subprocess.run([str(CLI), 'sch', 'export', 'netlist', '--format', 'kicadxml', '--output', str(netlist_path), str(PROJECT_ROOT/'XG_Mobile_USB_Hub.kicad_sch')], check=True)
         netlist = ET.parse(netlist_path)
     actual = {(node.get('ref'), node.get('pin')): net.get('name').lstrip('/')
               for net in netlist.findall('.//nets/net') for node in net.findall('node')}

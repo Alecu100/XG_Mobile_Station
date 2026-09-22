@@ -1,5 +1,6 @@
 (sym_lib_table
   (version 7)
+  (lib (name "Daughterboard")(type "KiCad")(uri "${KIPRJMOD}/USB_C_Daughterboard/Daughterboard.kicad_sym")(options "")(descr "USB hub daughterboard symbols"))
   (lib (name "5-5530843-0")(type "KiCad")(uri "${KIPRJMOD}/Symbols/5-5530843-0.kicad_sym")(options "")(descr ""))
   (lib (name "MX25L8006EM1I-12G")(type "KiCad")(uri "${KIPRJMOD}/Symbols/MX25L8006EM1I-12G.kicad_sym")(options "")(descr ""))
   (lib (name "TPS62177DQCR")(type "KiCad")(uri "${KIPRJMOD}/Symbols/TPS62177DQCR.kicad_sym")(options "")(descr ""))
