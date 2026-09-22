@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import csv
+import copy
 import json
 import uuid
 import sexpdata
@@ -13,6 +14,52 @@ PROJECT = "XG_Mobile_USB_Hub"
 NAMESPACE = uuid.UUID("eb5758b8-41e4-43f1-b10f-1330e4bc0380")
 LIBRARY = {}
 SHEETS = []
+POWER_SYMBOLS = {}
+LABEL_CONTEXT = {}
+
+
+def power_net(net):
+    return net in {'GND','VIN12','V5','V3V3','VCORE','PD_RAW','PD_VCC1','PD_VCC2','5V_BP'} or net.endswith(('_VBUS','_12V'))
+
+
+def prepare_labels():
+    source = Path(r'C:\Program Files\KiCad\9.0\share\kicad\symbols\power.kicad_sym')
+    entries = {str(item[1]):item for item in sexpdata.loads(source.read_text(encoding='utf-8'))
+               if isinstance(item,list) and str(item[0])=='symbol'}
+    net_sheets = {}
+    for page in SHEETS:
+        for component in page['parts']:
+            for net in component['nets'].values():
+                if net:
+                    net_sheets.setdefault(net,set()).add(page['name'])
+    LABEL_CONTEXT['shared'] = {net for net,pages in net_sheets.items() if len(pages)>1}
+    LABEL_CONTEXT['counter'] = 0
+    POWER_SYMBOLS.clear()
+    for net in sorted(net_sheets):
+        if not power_net(net):
+            continue
+        original = 'GND' if net=='GND' else 'VCC'
+        symbol = copy.deepcopy(entries[original])
+        symbol[1] = 'Power_'+net
+        for field in symbol:
+            if not isinstance(field,list):
+                continue
+            if str(field[0])=='symbol':
+                field[1] = str(field[1]).replace(original,'Power_'+net,1)
+            elif str(field[0])=='property' and field[1]=='Value':
+                field[2] = net
+            elif str(field[0])=='property' and field[1]=='Description':
+                field[2] = 'Global power net '+net
+            elif str(field[0]) in ['in_bom','on_board']:
+                field[1] = sexpdata.Symbol('no')
+        POWER_SYMBOLS[net] = symbol
+
+
+def power_definition(net, embedded=True):
+    symbol = copy.deepcopy(POWER_SYMBOLS[net])
+    if embedded:
+        symbol[1] = 'Daughterboard:'+str(symbol[1])
+    return sexpdata.dumps(symbol)
 
 
 def uid(name):
@@ -55,7 +102,8 @@ def symbol_definition(name, embedded=True):
     spec = LIBRARY[name]
     pins = spec["pins"]
     count = (len(pins) + 1) // 2
-    half_height = max(5.08, (count + 1) * 1.27)
+    pin_half_pitch = 1.905 if spec['shape']=='ic' else 1.27
+    half_height = max(5.08, (count + 1) * pin_half_pitch)
     half_width = 20.32 if spec["shape"] == "ic" else 5.08
     lib_name = f"Daughterboard:{name}" if embedded else name
     drawing = []
@@ -70,7 +118,7 @@ def symbol_definition(name, embedded=True):
     for index, (number, label, electrical) in enumerate(pins):
         left = index < count
         row = index if left else index - count
-        position_y = (count - 1) * 1.27 - row * 2.54 if len(pins) > 2 else 0
+        position_y = (count - 1) * pin_half_pitch - row * 2 * pin_half_pitch if len(pins) > 2 else 0
         position_x = (-1 if left else 1) * (half_width + 5.08)
         angle = 0 if left else 180
         drawing.append(f"(pin {electrical} line (at {position_x} {position_y} {angle}) (length 5.08) (name {quote(label)} {effects()}) (number {quote(number)} {effects()}))")
@@ -106,9 +154,30 @@ def wire(identity, start, end):
     return f'(wire (pts (xy {start[0]} {start[1]}) (xy {end[0]} {end[1]})) (stroke (width 0) (type default)) (uuid {quote(uid(identity))}))'
 
 
-def net_label(identity, net, xpos, ypos, angle=0):
-    justify = '(justify left)' if angle==0 else '(justify right)'
-    return f'(global_label {quote(net)} (shape input) (at {round(xpos,4)} {round(ypos,4)} {angle}) {effects(0.9,justify)} (uuid {quote(uid(identity))}))'
+def net_label(identity, net, xpos, ypos, angle=0, vertical=False):
+    xpos,ypos = round(xpos,4),round(ypos,4)
+    if power_net(net):
+        LABEL_CONTEXT['counter'] += 1
+        reference = '#PWR'+str(LABEL_CONTEXT['counter']).zfill(4)
+        direction = -1 if angle==0 else 1
+        rotation = 0 if vertical else (270 if net=='GND' else 90) if direction==-1 else (90 if net=='GND' else 270)
+        value_x = xpos if vertical else round(xpos+direction*5.08,4)
+        value_y = round(ypos+(3.81 if net=='GND' else -3.81),4) if vertical else ypos
+        justify = '' if vertical else '(justify right)' if direction==-1 else '(justify left)'
+        if rotation==90:
+            justify = '(justify left)' if direction==-1 else '(justify right)'
+        path = '/'+uid('USB_C_Daughterboard')+'/'+uid('sheet/'+LABEL_CONTEXT['sheet'])
+        return f'''(symbol (lib_id {quote('Daughterboard:Power_'+net)}) (at {xpos} {ypos} {rotation}) (unit 1)
+          (in_bom no) (on_board no) (dnp no) (uuid {quote(uid(identity))})
+          (property "Reference" {quote(reference)} (at {xpos} {ypos} 0) {effects(1.27,'hide')})
+          (property "Value" {quote(net)} (at {value_x} {value_y} {0 if vertical else 90}) {effects(1.27,justify)})
+          (instances (project {quote(PROJECT)} (path {quote(path)} (reference {quote(reference)}) (unit 1)))))'''
+    if net in LABEL_CONTEXT['shared']:
+        label_angle = 180-angle
+        justify = '(justify left)' if label_angle==0 else '(justify right)'
+        return f'(global_label {quote(net)} (shape input) (at {xpos} {ypos} {label_angle}) {effects(1.27,justify)} (uuid {quote(uid(identity))}))'
+    justify = '(justify right bottom)' if angle==0 else '(justify left bottom)'
+    return f'(label {quote(net)} (at {xpos} {ypos} 0) {effects(1.27,justify)} (uuid {quote(uid(identity))}))'
 
 
 def passive_groups(section):
@@ -255,29 +324,38 @@ def section_layout(section, left, top):
                         connected.add((part['ref'],number))
             for net,points in rail_points.items():
                 rail_x = origin+20.32+nodes.index(net)*50.8
-                rail_top = cursor_y+7.62
-                drawings.append(net_label(section['name']+'/'+str(group_index)+'/'+net,net,rail_x,rail_top))
+                rail_top = min(points) if net=='GND' else cursor_y+7.62
+                identity = section['name']+'/'+str(group_index)+'/'+net
+                if net!='GND':
+                    drawings.append(net_label(identity,net,rail_x,rail_top,vertical=True))
                 previous = rail_top
                 for index,rail_y in enumerate(sorted(set(points))):
-                    drawings.append(wire(section['name']+'/'+str(group_index)+'/'+net+'/'+str(index),(rail_x,previous),(rail_x,rail_y)))
+                    if previous!=rail_y:
+                        drawings.append(wire(identity+'/'+str(index),(rail_x,previous),(rail_x,rail_y)))
                     if len(points)>1:
                         drawings.append(f'(junction (at {round(rail_x,4)} {round(rail_y,4)}) (diameter 0) (color 0 0 0 0) (uuid {quote(uid(section["name"]+str(group_index)+net+str(index)+"junction"))}))')
                     previous = rail_y
+                if net=='GND':
+                    drawings.append(wire(identity+'/ground',(rail_x,previous),(rail_x,previous+5.08)))
+                    drawings.append(net_label(identity,net,rail_x,previous+5.08,vertical=True))
         cursor_x += width
         row_height = max(row_height,height)
     return placements,drawings,connected,cursor_y+row_height+12
 
 
 def generate():
+    prepare_labels()
     root_id = uid('USB_C_Daughterboard')
     root = [header(root_id, PROJECT.replace('_', ' '), 'A3'), '(lib_symbols)']
     manifest = []
     layout_report = []
     for page_number, page in enumerate(SHEETS, 2):
+        LABEL_CONTEXT['sheet'] = page['name']
         page_id = uid(page['name'])
         sheet_id = uid('sheet/' + page['name'])
         names = sorted({component['kind'] for component in page['parts']})
         symbols = '\n'.join(symbol_definition(name) for name in names)
+        symbols += '\n'+'\n'.join(power_definition(net) for net in POWER_SYMBOLS)
         placements = {}
         direct_wires = []
         direct_pins = set()
@@ -328,14 +406,15 @@ def generate():
                 end_x = round(pin_x + (-5.08 if left else 5.08), 4)
                 output.append(f"(wire (pts (xy {pin_x} {pin_y}) (xy {end_x} {pin_y})) (stroke (width 0) (type default)) (uuid {quote(uid(ref+'/'+number+'/wire'))}))")
                 angle = 0 if left else 180
-                output.append(f'''(global_label {quote(net)} (shape input) (at {end_x} {pin_y} {angle})
-                  {effects(0.9, '(justify left)' if left else '(justify right)')} (uuid {quote(uid(ref+'/'+number+'/label'))}))''')
+                output.append(net_label(ref+'/'+number+'/label',net,end_x,pin_y,angle))
             manifest.append(dict(sheet=page['name'], **component))
         output.append(')')
         layout_report.append({'sheet':page['name'],
                       'directly_wired_components':sorted({ref for ref,number in direct_pins}),
                       'directly_wired_pins':len(direct_pins),
-                      'global_labels':sum(item.count('(global_label ') for item in output)})
+                      'global_labels':sum(item.count('(global_label ') for item in output),
+                      'local_labels':sum(item.count('(label ') for item in output),
+                      'power_symbols':sum(item.count('(lib_id "Daughterboard:Power_') for item in output)})
         (PROJECT_ROOT / (PROJECT+'_'+page['name']+'.kicad_sch')).write_text('\n'.join(output)+'\n', encoding='utf-8')
         index = page_number-2
         xpos, ypos_root = 20, 65+index*55
@@ -349,7 +428,7 @@ def generate():
     root.append('(sheet_instances (path "/" (page "1")))')
     root.append(')')
     (PROJECT_ROOT / (PROJECT+'.kicad_sch')).write_text('\n'.join(root)+'\n', encoding='utf-8')
-    (ROOT / 'Daughterboard.kicad_sym').write_text('(kicad_symbol_lib (version 20231120) (generator "kicad_symbol_editor")\n'+'\n'.join(symbol_definition(name, False) for name in sorted(LIBRARY))+'\n)\n', encoding='utf-8')
+    (ROOT / 'Daughterboard.kicad_sym').write_text('(kicad_symbol_lib (version 20231120) (generator "kicad_symbol_editor")\n'+'\n'.join(symbol_definition(name, False) for name in sorted(LIBRARY))+'\n'+'\n'.join(power_definition(net,False) for net in POWER_SYMBOLS)+'\n)\n', encoding='utf-8')
     project_path = PROJECT_ROOT / (PROJECT+'.kicad_pro')
     if not project_path.exists():
         project_path.write_text(json.dumps({'meta':{'filename':PROJECT+'.kicad_pro','version':1}},indent=2)+'\n',encoding='utf-8')
@@ -624,10 +703,23 @@ for offset,nets in enumerate([['UP_TX1P','UP_TX1N','UP_RX1P','UP_RX1N'],['UP_TX2
     esd(upstream,f'D{1200+offset}',nets)
 
 
-standard('STM32G071KBT6N','MCU_ST_STM32G0','STM32G071K_8-B_TxN')
-mcu = sheet('PD_MCU','STM32G071 - USB-PD policy and power control','STM32G071KBT6N LQFP32: PA8=UCPD1_CC1, PB15=UCPD1_CC2, PB6/PB7=I2C1, PA13/PA14=SWD.\nSource-only power path. UCPD dead-battery pins grounded; disable dead-battery function in firmware.\nBoot from flash using option bytes; preserve NRST function. Firmware required; no PD stack is generated here.')
-part(mcu,'U1300','STM32G071KBT6N',dict(zip(map(str,range(1,33)),[
-    '3V3_PG',None,None,'V3V3','GND','MCU_NRST','UP_ADC','PD_IANA','PD_RAW_ADC','GPU1_ADC','GPU2_ADC','EPS_ADC','HUB_RESET_N','HUB_VBUS_DET','PD_EN','PD_NRST','MCU_CC2','MCU_CC1','GND','TCPP_EN','GND','P1_ID_N','P2_ID_N','SWDIO','SWCLK','UP_FAULT_N','PD_NFLT','UP_MUX_SEL','UP_MUX_OEN','I2C_SCL','I2C_SDA','CORE_PG'])),lcsc='C529349')
+define('STM32G071CBT6', [(str(index),name,
+    'power_in' if name in ['VBAT','VREF+','VDD/VDDA','VSS/VSSA'] else
+    'input' if name=='PF2-NRST' else 'bidirectional')
+    for index,name in enumerate([
+        'PC13','PC14-OSC32_IN','PC15-OSC32_OUT','VBAT','VREF+','VDD/VDDA','VSS/VSSA',
+        'PF0-OSC_IN','PF1-OSC_OUT','PF2-NRST','PA0','PA1','PA2','PA3','PA4','PA5','PA6','PA7',
+        'PB0','PB1','PB2','PB10','PB11','PB12','PB13','PB14','PB15','PA8','PA9/UCPD1_DBCC1',
+        'PC6','PC7','PA10/UCPD1_DBCC2','PA11[PA9]','PA12[PA10]','PA13','PA14-BOOT0','PA15',
+        'PD0','PD1/UCPD2_DBCC1','PD2','PD3/UCPD2_DBCC2','PB3','PB4','PB5','PB6','PB7','PB8','PB9'],1)],
+    'Package_QFP:LQFP-48_7x7mm_P0.5mm','https://www.st.com/resource/en/datasheet/stm32g071cb.pdf')
+mcu = sheet('PD_MCU','STM32G071 - USB-PD policy and power control','STM32G071CBT6 LQFP48: PA8(28)=UCPD1_CC1, PB15(27)=UCPD1_CC2, PB6(45)/PB7(46)=I2C1.\nSource-only: UCPD1 dead-battery pins 29/32 grounded. Disable BOTH UCPD dead-battery functions before GPIO use.\nVBAT and VREF+ tied to 3.3 V; internal VREFBUF must stay disabled. Preserve NRST and SWD; firmware required.')
+part(mcu,'U1300','STM32G071CBT6',dict(zip(map(str,range(1,49)),[
+    None,None,None,'V3V3','V3V3','V3V3','GND',None,None,'MCU_NRST',
+    'UP_ADC','PD_IANA','PD_RAW_ADC','GPU1_ADC','GPU2_ADC','EPS_ADC','HUB_RESET_N','HUB_VBUS_DET',
+    'PD_EN','PD_NRST',None,None,None,None,None,None,'MCU_CC2','MCU_CC1','GND','TCPP_EN',None,'GND',
+    'P1_ID_N','P2_ID_N','SWDIO','SWCLK',None,'UP_FAULT_N','PD_NFLT','UP_MUX_SEL','UP_MUX_OEN',
+    None,None,None,'I2C_SCL','I2C_SDA','CORE_PG','3V3_PG'])),lcsc='C432212')
 define('SWD_5',[(str(index),name,'passive') for index,name in enumerate(['VTREF','SWDIO','SWCLK','NRST','GND'],1)])
 part(mcu,'J1300','SWD_5',{'1':'V3V3','2':'SWDIO','3':'SWCLK','4':'MCU_NRST','5':'GND'},mpn='SWD 1x5 2.54mm',footprint='Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical')
 define('Reset_Button',[('1','NRST','passive'),('2','GND','passive')],shape='R')
@@ -641,6 +733,9 @@ passive(mcu,'R1302','4.7k','V3V3','I2C_SDA')
 passive(mcu,'R1303','100k 0.1%','PD_RAW','PD_RAW_ADC')
 passive(mcu,'R1304','10k 0.1%','PD_RAW_ADC','GND')
 passive(mcu,'C1303','1nF','PD_RAW_ADC','GND')
+passive(mcu,'C1304','100nF','V3V3','GND')
+passive(mcu,'C1305','1uF 6.3V','V3V3','GND')
+passive(mcu,'C1306','100nF','V3V3','GND')
 
 define('GPU_8PIN',[(str(index),'12V' if index<=3 else ('SENSE' if index in [4,8] else 'GND'),'passive') for index in range(1,9)])
 define('EPS_8PIN',[(str(index),'GND' if index<=4 else '12V','passive') for index in range(1,9)])
@@ -660,7 +755,9 @@ for index,prefix in enumerate(['GPU1','GPU2','EPS']):
     passive(inputs,f'C{1402+index}','1nF',prefix+'_ADC','GND')
 
 define('Supply_Flag',[('1','SUPPLY','power_out')])
-for index,(page,net) in enumerate([(inputs,'VIN12'),(inputs,'GND'),(power5,'V5'),(power33,'V3V3'),(core,'VCORE')],1):
+for index,(page,net) in enumerate([(inputs,'VIN12'),(inputs,'GND'),(power5,'V5'),(power33,'V3V3'),(core,'VCORE'),
+                                  (inputs,'GPU1_12V'),(inputs,'GPU2_12V'),(inputs,'EPS_12V'),
+                                  (pd,'PD_RAW'),(upstream,'UP_VBUS')],1):
     part(page,f'#FLG{index:03}','Supply_Flag',{'1':net},value=net+' supply')
 
 

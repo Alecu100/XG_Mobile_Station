@@ -67,7 +67,7 @@ def generate():
                         '--format', 'kicadxml', '--output', str(netlist_path),
                         str(PROJECT_ROOT/(PROJECT+'.kicad_sch'))], check=True)
         exported = ET.parse(netlist_path)
-    assignments = {(node.get('ref'),node.get('pin')):net.get('name').lstrip('/')
+    assignments = {(node.get('ref'),node.get('pin')):net.get('name').rsplit('/',1)[-1]
                    for net in exported.findall('.//nets/net') for node in net.findall('node')}
     board = pcbnew.BOARD()
     board.SetCopperLayerCount(4)
@@ -235,11 +235,99 @@ def relink_sheets():
     print(f'PASS: {len(before)} PCB links updated; footprint UUIDs, placement, pad nets and track count preserved')
 
 
+def update_mcu():
+    board_path = PROJECT_ROOT/(PROJECT+'.kicad_pcb')
+    board = pcbnew.LoadBoard(str(board_path))
+    assert not list(board.GetTracks()), 'MCU package update requires an unrouted board'
+    components = {item['ref']:item for item in json.loads((ROOT/'connectivity.json').read_text()) if item['physical']}
+    targets = {'U1300','C1304','C1305','C1306'}
+    existing = {item.GetReference():item for item in board.GetFootprints()}
+    assert set(existing)-targets == set(components)-targets
+    assert components['U1300']['mpn'] == 'STM32G071CBT6'
+
+    def snapshot(source):
+        return {item.GetReference():(item.m_Uuid.AsString(),item.GetFPID().GetUniStringLibId(),
+                item.GetPosition().x,item.GetPosition().y,item.GetOrientationDegrees(),item.GetLayer(),
+                item.GetPath().AsString(),
+                sorted((pad.GetNumber(),pad.GetPosition().x,pad.GetPosition().y,pad.GetNetname())
+                       for pad in item.Pads()))
+                for item in source.GetFootprints() if item.GetReference() not in targets}
+
+    before = snapshot(board)
+    original_mcu = existing['U1300']
+    mcu_position = original_mcu.GetPosition()
+    mcu_orientation = original_mcu.GetOrientationDegrees()
+    mcu_layer = original_mcu.GetLayer()
+    cap_positions = {'C1304':(104,122),'C1305':(104,124),'C1306':(104,126)}
+    with tempfile.TemporaryDirectory() as directory:
+        netlist_path = Path(directory)/'netlist.xml'
+        subprocess.run([str(KICAD/'bin/kicad-cli.exe'),'sch','export','netlist','--format','kicadxml',
+                        '--output',str(netlist_path),str(PROJECT_ROOT/(PROJECT+'.kicad_sch'))],check=True)
+        exported = ET.parse(netlist_path)
+    assignments = {(node.get('ref'),node.get('pin')):net.get('name').rsplit('/',1)[-1]
+                   for net in exported.findall('.//nets/net') for node in net.findall('node')}
+    for ref in sorted(targets):
+        component = components[ref]
+        library,name = component['footprint'].split(':',1)
+        footprint = pcbnew.FootprintLoad(str(KICAD/'share/kicad/footprints'/(library+'.pretty')),name)
+        assert footprint is not None, ref
+        assert {pad.GetNumber() for pad in footprint.Pads()} == set(component['nets']), ref
+        footprint.SetFPID(pcbnew.LIB_ID(library,name))
+        footprint.SetReference(ref)
+        footprint.SetValue(component['value'])
+        if ref in existing:
+            board.Remove(existing[ref])
+        path = pcbnew.KIID_PATH()
+        for identity in ['USB_C_Daughterboard','sheet/'+component['sheet'],ref]:
+            path.push_back(pcbnew.KIID(str(uuid.uuid5(NAMESPACE,identity))))
+        footprint.SetPath(path)
+        footprint.SetSheetname(component['sheet'])
+        footprint.SetSheetfile(PROJECT+'_'+component['sheet']+'.kicad_sch')
+        footprint.Reference().SetTextSize(point(0.8,0.8))
+        footprint.Reference().SetTextThickness(pcbnew.FromMM(0.12))
+        footprint.Reference().SetLayer(pcbnew.F_Fab)
+        footprint.Value().SetVisible(False)
+        board.Add(footprint)
+        footprint.SetPosition(mcu_position if ref=='U1300' else point(*cap_positions[ref]))
+        if mcu_layer == pcbnew.B_Cu:
+            footprint.Flip(footprint.GetPosition(),False)
+        footprint.SetOrientationDegrees(mcu_orientation if ref=='U1300' else 0)
+        for pad in footprint.Pads():
+            net = component['nets'][pad.GetNumber()]
+            if net:
+                assert assignments[(ref,pad.GetNumber())] == net
+                pad.SetNet(board.FindNet(net))
+        bounds = footprint.GetBoundingBox(False,False)
+        assert 50 <= pcbnew.ToMM(bounds.GetLeft()) < pcbnew.ToMM(bounds.GetRight()) <= 170
+        assert 50 <= pcbnew.ToMM(bounds.GetTop()) < pcbnew.ToMM(bounds.GetBottom()) <= 130
+    assert snapshot(board) == before
+    pcbnew.SaveBoard(str(board_path),board)
+    saved = pcbnew.LoadBoard(str(board_path))
+    assert snapshot(saved) == before
+    assert len(list(saved.GetFootprints())) == len(components)
+    connected_pads = 0
+    for footprint in saved.GetFootprints():
+        for pad in footprint.Pads():
+            if pad.GetNumber():
+                expected = components[footprint.GetReference()]['nets'][pad.GetNumber()] or ''
+                assert pad.GetNetname() == expected
+                connected_pads += bool(expected)
+    report_path = ROOT/'PCB_Placement_Report.json'
+    report = json.loads(report_path.read_text())
+    report['loaded'] = sorted(set(report['loaded']) | targets)
+    report['connected_pad_count'] = connected_pads
+    report_path.write_text(json.dumps(report,indent=2)+'\n')
+    print(f'PASS: MCU and three capacitors updated; {len(before)} other placements unchanged; {connected_pads} connected pads verified')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--relink-sheets',action='store_true',help='Update hierarchy paths without regenerating placement')
+    parser.add_argument('--update-mcu',action='store_true',help='Update U1300 to STM32G071CBT6 and add supply capacitors without moving other parts')
     args = parser.parse_args()
-    if args.relink_sheets:
+    if args.update_mcu:
+        update_mcu()
+    elif args.relink_sheets:
         relink_sheets()
     else:
         generate()

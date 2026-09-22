@@ -338,6 +338,51 @@
   },
   {
     "sheet": "Power",
+    "ref": "#FLG006",
+    "kind": "Supply_Flag",
+    "nets": {
+      "1": "GPU1_12V"
+    },
+    "value": "GPU1_12V supply",
+    "mpn": "GPU1_12V supply",
+    "lcsc": "",
+    "dnp": false,
+    "physical": false,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "#FLG007",
+    "kind": "Supply_Flag",
+    "nets": {
+      "1": "GPU2_12V"
+    },
+    "value": "GPU2_12V supply",
+    "mpn": "GPU2_12V supply",
+    "lcsc": "",
+    "dnp": false,
+    "physical": false,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "#FLG008",
+    "kind": "Supply_Flag",
+    "nets": {
+      "1": "EPS_12V"
+    },
+    "value": "EPS_12V supply",
+    "mpn": "EPS_12V supply",
+    "lcsc": "",
+    "dnp": false,
+    "physical": false,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
     "ref": "D1400",
     "kind": "TVS_Bidirectional",
     "nets": {
@@ -865,6 +910,21 @@
     "dnp": false,
     "physical": true,
     "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "#FLG009",
+    "kind": "Supply_Flag",
+    "nets": {
+      "1": "PD_RAW"
+    },
+    "value": "PD_RAW supply",
+    "mpn": "PD_RAW supply",
+    "lcsc": "",
+    "dnp": false,
+    "physical": false,
+    "footprint": "",
     "block": "PD_BuckBoost"
   },
   {
@@ -1673,47 +1733,63 @@
   {
     "sheet": "MCU",
     "ref": "U1300",
-    "kind": "STM32G071KBT6N",
+    "kind": "STM32G071CBT6",
     "nets": {
-      "1": "3V3_PG",
+      "1": null,
       "2": null,
       "3": null,
       "4": "V3V3",
-      "5": "GND",
-      "6": "MCU_NRST",
-      "7": "UP_ADC",
-      "8": "PD_IANA",
-      "9": "PD_RAW_ADC",
-      "10": "GPU1_ADC",
-      "11": "GPU2_ADC",
-      "12": "EPS_ADC",
-      "13": "HUB_RESET_N",
-      "14": "HUB_VBUS_DET",
-      "15": "PD_EN",
-      "16": "PD_NRST",
-      "17": "MCU_CC2",
-      "18": "MCU_CC1",
-      "19": "GND",
-      "20": "TCPP_EN",
-      "21": "GND",
-      "22": "P1_ID_N",
-      "23": "P2_ID_N",
-      "24": "SWDIO",
-      "25": "SWCLK",
-      "26": "UP_FAULT_N",
-      "27": "PD_NFLT",
-      "28": "UP_MUX_SEL",
-      "29": "UP_MUX_OEN",
-      "30": "I2C_SCL",
-      "31": "I2C_SDA",
-      "32": "CORE_PG"
+      "5": "V3V3",
+      "6": "V3V3",
+      "7": "GND",
+      "8": null,
+      "9": null,
+      "10": "MCU_NRST",
+      "11": "UP_ADC",
+      "12": "PD_IANA",
+      "13": "PD_RAW_ADC",
+      "14": "GPU1_ADC",
+      "15": "GPU2_ADC",
+      "16": "EPS_ADC",
+      "17": "HUB_RESET_N",
+      "18": "HUB_VBUS_DET",
+      "19": "PD_EN",
+      "20": "PD_NRST",
+      "21": null,
+      "22": null,
+      "23": null,
+      "24": null,
+      "25": null,
+      "26": null,
+      "27": "MCU_CC2",
+      "28": "MCU_CC1",
+      "29": "GND",
+      "30": "TCPP_EN",
+      "31": null,
+      "32": "GND",
+      "33": "P1_ID_N",
+      "34": "P2_ID_N",
+      "35": "SWDIO",
+      "36": "SWCLK",
+      "37": null,
+      "38": "UP_FAULT_N",
+      "39": "PD_NFLT",
+      "40": "UP_MUX_SEL",
+      "41": "UP_MUX_OEN",
+      "42": null,
+      "43": null,
+      "44": null,
+      "45": "I2C_SCL",
+      "46": "I2C_SDA",
+      "47": "CORE_PG",
+      "48": "3V3_PG"
     },
-    "value": "STM32G071KBT6N",
-    "mpn": "STM32G071KBT6N",
-    "lcsc": "C529349",
+    "value": "STM32G071CBT6",
+    "mpn": "STM32G071CBT6",
+    "lcsc": "C432212",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_QFP:LQFP-32_7x7mm_P0.8mm",
+    "footprint": "Package_QFP:LQFP-48_7x7mm_P0.5mm",
     "block": "PD_MCU"
   },
   {
@@ -1888,6 +1964,54 @@
       "2": "GND"
     },
     "value": "1nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1304",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "GND"
+    },
+    "value": "100nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1305",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "GND"
+    },
+    "value": "1uF 6.3V",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1306",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "GND"
+    },
+    "value": "100nF",
     "mpn": "SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
@@ -2400,6 +2524,21 @@
     "dnp": false,
     "physical": true,
     "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "#FLG010",
+    "kind": "Supply_Flag",
+    "nets": {
+      "1": "UP_VBUS"
+    },
+    "value": "UP_VBUS supply",
+    "mpn": "UP_VBUS supply",
+    "lcsc": "",
+    "dnp": false,
+    "physical": false,
+    "footprint": "",
     "block": "USB_Upstream"
   },
   {

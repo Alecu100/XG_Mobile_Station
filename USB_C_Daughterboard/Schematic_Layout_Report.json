@@ -61,11 +61,14 @@
       "U401"
     ],
     "directly_wired_pins": 115,
-    "global_labels": 240
+    "global_labels": 13,
+    "local_labels": 90,
+    "power_symbols": 142
   },
   {
     "sheet": "MCU",
     "directly_wired_components": [
+      "C1200",
       "C1204",
       "C1205",
       "C1207",
@@ -73,6 +76,9 @@
       "C1301",
       "C1302",
       "C1303",
+      "C1304",
+      "C1305",
+      "C1306",
       "R1200",
       "R1201",
       "R1202",
@@ -90,8 +96,10 @@
       "U1201",
       "U1300"
     ],
-    "directly_wired_pins": 46,
-    "global_labels": 163
+    "directly_wired_pins": 55,
+    "global_labels": 27,
+    "local_labels": 73,
+    "power_symbols": 67
   },
   {
     "sheet": "USB_Hub",
@@ -145,9 +153,10 @@
       "R1103",
       "R502",
       "R505",
+      "R507",
       "R510",
-      "R515",
       "R517",
+      "R522",
       "R601",
       "R602",
       "R603",
@@ -180,7 +189,9 @@
       "U801",
       "U901"
     ],
-    "directly_wired_pins": 164,
-    "global_labels": 550
+    "directly_wired_pins": 167,
+    "global_labels": 18,
+    "local_labels": 291,
+    "power_symbols": 240
   }
 ]

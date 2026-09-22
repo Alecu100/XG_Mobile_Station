@@ -12,12 +12,16 @@ Each child uses a large custom page with labeled circuit blocks. The PDF contain
 
 Parallel capacitors share wired rails and junctions. Simple dividers and RC networks are drawn as connected groups, and selected pull-ups and timing/filter parts are directly wired to their IC pins. Labels remain for shared rails, block interfaces and connections not yet drawn point-to-point. `Schematic_Layout_Report.json` records the directly wired references and pin counts. These are drawing changes only, not electrical redesign.
 
+Ground, power and signal notation follows the retimer schematic: standard KiCad triangular GND symbols, arrow-style power symbols and 1.27 mm plain local signal labels. Signals used on multiple child sheets retain outward-facing global labels. Power names are unchanged (VIN12, V5, V3V3, VCORE, etc.), with native global power-symbol semantics. IC pin spacing is 3.81 mm to keep the larger text readable; capacitor-bank ground symbols sit below their rails. Power symbols are excluded from BOM and PCB placement.
+
+Local signal names gain KiCad sheet-path prefixes in XML exports. The validator compares complete connected-pin groups, not just abbreviated names, to detect splits or shorts. PCB helpers normalize these names to the existing flat PCB net names; no PCB placement or copper changes were made for this style update. Additional power flags identify the external GPU/EPS input supplies and the FET-driven PD_RAW/UP_VBUS rails; they are ERC source annotations, not new physical components or a claim of protection adequacy.
+
 **Not released for fabrication, assembly, or connection to a laptop.** This is a pin-connected schematic draft, not a validated power supply or USB-certified product. Zero ERC errors does not establish electrical performance or protection adequacy. Connector selection, several footprints and passive MPNs remain unresolved and are explicitly marked in the BOM.
 
 ## Agreed Topology
 
 - Upstream: additional USB-C receptacle, up to 10 Gbps, 100 W maximum PD source at 20 V / 5 A.
-- STM32G071KBT6N runs the PD policy engine using its UCPD peripheral and controls LM51772 over I2C. TCPP03-M20 is its protection/VCONN companion, not the PD policy engine.
+- STM32G071CBT6 runs the PD policy engine using its UCPD peripheral and controls LM51772 over I2C. TCPP03-M20 is its protection/VCONN companion, not the PD policy engine.
 - Downstream: two HD3SS3220 Type-C ports at 5 V / 3 A; three SuperSpeed Type-A ports; one USB 2.0-only Type-A port. USB-A BC1.2 charging is disabled.
 - Hub: USB7206CT/KDX. Core rail is 1.15 V, not 1.2 V nominal; allowable range is 1.09-1.21 V.
 - Inputs: two GPU PCIe 8-pin cables from the SAME PSU, OR one EPS 8-pin cable. A mutually exclusive, break-before-make power selector is shown. No 12 V pass-through to another board is included.
@@ -31,7 +35,7 @@ Parallel capacitors share wired rails and junctions. Simple dividers and RC netw
 - `BOM.csv`: individual component BOM, not a procurement-ready or JLC assembly upload BOM.
 - `connectivity.json`: generator's intended pin-to-net assignments.
 - `ERC.json`: KiCad electrical-rule report.
-- Two expected ERC warnings retain the GPIO-capable types of grounded MCU pins 19/21. Confirm the exact N-variant dead-battery termination and GPIO mapping before release; these warnings have not been suppressed.
+- Two expected ERC warnings retain the GPIO-capable types of grounded MCU pins 29/32 (UCPD1_DBCC1/2). These warnings have not been suppressed; firmware must not drive these pins.
 - `USB_C_Daughterboard.pdf` and `SVG/`: rendered schematics.
 - `Reference/WEBENCH/`: the three unmodified supplied SVGs and BOMs.
 - `Reference/`: downloaded manufacturer datasheets used in the design.
@@ -52,21 +56,37 @@ The schematic manufacturer part-number property and BOM column are named `Part_N
 | U600, U700 | HD3SS3220IRNHR | [C701817](https://jlcpcb.com/partdetail/TexasInstruments-HD3SS3220IRNHR/C701817) |
 | U1200 | TCPP03-M20 | [C3662955](https://jlcpcb.com/partdetail/STMicroelectronics-TCPP03M20/C3662955) |
 | U1201 | HD3SS3212IRKSR | [C544517](https://jlcpcb.com/partdetail/TexasInstruments-HD3SS3212IRKSR/C544517) |
-| U1300 | STM32G071KBT6N | [C529349](https://jlcpcb.com/partdetail/STMicroelectronics-STM32G071KBT6N/C529349) |
+| U1300 | STM32G071CBT6 | [C432212](https://jlcpcb.com/partdetail/STMicroelectronics-STM32G071CBT6/C432212) |
 
-U401's previously unsuffixed TPS62130 now specifies the orderable TPS62130RGTR, matching its existing 16-pin 3 x 3 mm RGT package. The symbol value remains TPS62130. The MCU retains the exact **N variant**; C529348 is the different STM32G071KBT6 and is not assigned here.
+U401's previously unsuffixed TPS62130 now specifies the orderable TPS62130RGTR, matching its existing 16-pin 3 x 3 mm RGT package. The symbol value remains TPS62130. U1300 is now the requested STM32G071CBT6 in LQFP-48, replacing the earlier LQFP-32 MCU with a full pin remap, not a drop-in substitution.
 
-At lookup, STM32G071KBT6N and TCPP03-M20 showed zero stock/preorder; LM51772RHAR also showed preorder with only one unit in stock. Recheck availability, minimum quantities and lead times before ordering. Some exact searches returned zero results even though the parts appeared in broader family searches and had valid detail pages.
+At the 2026-09-22 MCU lookup, STM32G071CBT6 showed 789 units in stock (757 available to order). TCPP03-M20 showed zero stock/preorder; LM51772RHAR also showed preorder with only one unit in stock. Recheck availability, minimum quantities and lead times before ordering. Some exact searches returned zero results even though the parts appeared in broader family searches and had valid detail pages.
 
-This pass covers the ICs above. The six TPS259470LRPW eFuses still have blank LCSC fields (no exact listing verified), as do other unsourced supporting parts. No substitutes were introduced and PCB placement was not regenerated. The full BOM is still incomplete.
+This pass covers the ICs above. The six TPS259470LRPW eFuses still have blank LCSC fields (no exact listing verified), as do other unsourced supporting parts. Only the requested MCU was substituted. The full BOM is still incomplete.
+
+## MCU Package Change
+
+The STM32G071CBT6 pin map follows [ST's STM32G071C(6-8-B)Tx pin database](https://github.com/STMicroelectronics/STM32_open_pin_data/blob/master/mcu/STM32G071C%286-8-B%29Tx.xml). Existing GPIO signal assignments are retained; unused extra GPIOs have explicit no-connect markers.
+
+| Function | LQFP-48 Pins |
+| --- | --- |
+| UCPD1 CC1 / CC2 | PA8 / PB15, pins 28 / 27 |
+| Grounded UCPD1 dead-battery inputs | PA9 / PA10, pins 29 / 32 |
+| I2C1 SCL / SDA | PB6 / PB7, pins 45 / 46 |
+| SWDIO / SWCLK / NRST | PA13 / PA14 / PF2, pins 35 / 36 / 10 |
+| VBAT / VREF+ / VDD-VDDA / VSS-VSSA | Pins 4 / 5 / 6 / 7 |
+
+VBAT and VREF+ connect to V3V3. C1304 (100 nF) and C1305 (1 uF) are the VREF+ bypass capacitors; C1306 (100 nF) bypasses VBAT. C1301/C1302 remain the main supply bypass. Place these at their respective pins during routing; current placement is only a floorplan. Keep internal VREFBUF disabled with VREF+ externally driven.
+
+U1300's PCB land pattern is now `Package_QFP:LQFP-48_7x7mm_P0.5mm`, at its original position and orientation. C1304-C1306 were added nearby, with all 296 other component placements preserved. The targeted update is reproducible with KiCad's bundled Python and `generate_pcb.py --update-mcu`; it refuses routed boards.
 
 ## PCB Placement Draft
 
 Open `XG_Mobile_USB_Hub.kicad_pcb` from the project. The provisional outline is 120 x 80 mm. Downstream USB connector positions are reserved on the front edge; upstream USB-C and GPU/EPS power inputs are reserved on the rear. No mounting holes or enclosure constraints have been specified. The TPS62130 core buck is retained.
 
-- 260 physical footprints are placed inside the outline with schematic UUID paths and assigned nets. Grouped placement is a floorplan, not routing-optimized placement; decoupling proximity, switching loops and high-speed escape still need layout work.
+- 263 physical footprints are placed inside the outline with schematic UUID paths and assigned nets. Grouped placement is a floorplan, not routing-optimized placement; decoupling proximity, switching loops and high-speed escape still need layout work.
 - 37 components without resolved packages are represented by padless markers outside the outline. These are NOT usable footprints and carry no copper. They include connectors, inductors, some power ICs, bulk capacitors, fuses and the power selector. Connector rectangles inside the outline are reservations, not selected land patterns.
-- Every loaded footprint's numbered pad set is checked against the schematic, and 825 connected pads are checked against a fresh KiCad XML netlist. This does not verify the 37 missing packages or complete physical connectivity for the design.
+- Every loaded footprint's numbered pad set is checked against the schematic, and 833 connected pads are verified against the validated schematic manifest. The changed MCU and capacitor connections are also checked against a fresh KiCad XML netlist. This does not verify the 37 missing packages or complete physical connectivity for the design.
 - Four copper layers and 1.6 mm thickness are provisional. No dielectric stack-up, controlled-impedance geometry, power planes, tracks, or routing are supplied. The inner layers are empty. No Gerbers or fabrication release is provided.
 - DRC: 499 unconnected items, 37 unresolved-footprint library findings, 12 within-package clearance findings against the default 0.2 mm rule, and four 0.2 mm thermal drills below the default 0.3 mm minimum. No shorts, overlapping courtyards or solder-mask bridges were reported after placement correction. These results are not a DRC pass; set fabrication rules only after selecting a process.
 - The hub footprint is KiCad's USB7206C-referenced VQFN-100 land pattern. HD3SS3220 footprints match TI RNH0030A. C403/C404 were corrected to 0805 to match their specified GRM21 parts. All other assigned packages still require final manufacturing review.
@@ -103,7 +123,7 @@ The 5 V operating allocation is 6 A for the two C ports, 2.7 A for three SuperSp
 ## Firmware Contract
 
 1. Keep hub reset asserted, VBUS_DET low, upstream mux disabled, LM51772 EN/NRST low and TCPP03 disabled during reset/startup. Configure GPIOs before releasing those controls.
-2. Initialize I2C1 on PB6/PB7, UCPD1 on PA8/PB15, ADCs and fault interrupts. Retain NRST on PF2; configure flash-boot option bytes and preserve SWD on PA13/PA14. Pins 19/21 are grounded for the unused UCPD dead-battery function; do not configure them as driven GPIO outputs.
+2. Disable both UCPD1 and UCPD2 dead-battery functions before GPIO use, including PD1/PD3 (PD_NFLT/UP_MUX_OEN). Initialize I2C1 on PB6/PB7, UCPD1 on PA8/PB15, ADCs and fault interrupts. Retain NRST on PF2; configure flash-boot option bytes and preserve SWD on PA13/PA14. Pins 29/32 are grounded for the unused UCPD1 dead-battery function; do not configure them as driven GPIO outputs. Keep VREFBUF disabled because VREF+ is tied to V3V3.
 3. Raise LM51772 NRST with EN still low. Read back configuration, set internal-feedback mode, a verified current/slope setting and a 5 V target before enabling switching. Verify PD_RAW by ADC. Apply the input-voltage limits established by bench qualification.
 4. Enable TCPP03 (7-bit address 0x34 with I2C_ADD grounded), enter normal mode, keep the unused consumer path disabled, and keep provider MOSFETs off until a valid source attachment and safe VBUS state are established.
 5. Advertise only qualified fixed PDOs. Intended starting set is 5 V / 3 A, 9 V / 3 A, 15 V / 3 A, and 20 V / up to 5 A. Offer more than 3 A only after successful cable discovery identifies a 5 A e-marked cable. Otherwise limit to 3 A. Do not advertise 20 V / 5.5 A.
@@ -126,7 +146,7 @@ The GPU ADC dividers measure rail voltage, NOT independent cable presence: the f
 
 ## Reproduction
 
-Latest automated checks: 297 physical components and 1,098 connected pins match the KiCad XML export; ERC has zero errors and the two documented MCU warnings. The PDF has four pages. There are 185 BOM rows with explicitly unresolved part selections and 37 rows without footprints. Counts include generic passives and connectors and must not be mistaken for a completed procurement BOM.
+Latest automated checks: 300 physical components and 1,106 connected pins match the KiCad XML export; ERC has zero errors and the two documented MCU warnings. The PDF has four pages. There are 188 BOM rows with explicitly unresolved part selections and 37 rows without footprints. Counts include generic passives and connectors and must not be mistaken for a completed procurement BOM.
 
 Dependencies: Python with `sexpdata`, installed KiCad 9 symbol libraries and `kicad-cli`. Generator and validator currently use this machine's KiCad 9 install path.
 
@@ -136,4 +156,4 @@ python USB_C_Daughterboard/validate_schematic.py
 & 'C:\Program Files\KiCad\9.0\bin\kicad-cli.exe' sch erc --format json --output USB_C_Daughterboard/ERC.json XG_Mobile_USB_Hub.kicad_sch
 ```
 
-Sources: TI LM51772 SNVSC22D, TPS4030x SLUS964D, TPS56A37 SLVSHC9, TPS25947 SLVSFC9C, HD3SS3220 SLLSES1E, HD3SS3212 SLASE74F; Microchip USB7206C DS00003850F; ST TCPP03 DS13618 Rev 2 and ST's `STM32_open_pin_data` STM32G071K(8-B)TxN pin database. Standard supporting symbol pin maps were resolved from the installed KiCad 9 libraries. Stock, orderability and package compatibility of the complete BOM have not been qualified.
+Sources: TI LM51772 SNVSC22D, TPS4030x SLUS964D, TPS56A37 SLVSHC9, TPS25947 SLVSFC9C, HD3SS3220 SLLSES1E, HD3SS3212 SLASE74F; Microchip USB7206C DS00003850F; ST TCPP03 DS13618 Rev 2 and ST's `STM32_open_pin_data` STM32G071C(6-8-B)Tx pin database. Standard supporting symbol pin maps were resolved from the installed KiCad 9 libraries. Stock, orderability and package compatibility of the complete BOM have not been qualified.
