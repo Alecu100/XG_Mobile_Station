@@ -18,7 +18,7 @@ def validate():
     expected = [component for component in json.loads((ROOT/'connectivity.json').read_text()) if component['physical']]
     with tempfile.TemporaryDirectory() as directory:
         netlist_path = Path(directory)/'netlist.xml'
-        subprocess.run([str(CLI), 'sch', 'export', 'netlist', '--format', 'kicadxml', '--output', str(netlist_path), str(ROOT/'USB_C_Daughterboard.kicad_sch')], check=True)
+        subprocess.run([str(CLI), 'sch', 'export', 'netlist', '--format', 'kicadxml', '--output', str(netlist_path), str(ROOT/'XG_Mobile_USB_Hub.kicad_sch')], check=True)
         netlist = ET.parse(netlist_path)
     actual = {(node.get('ref'), node.get('pin')): net.get('name').lstrip('/')
               for net in netlist.findall('.//nets/net') for node in net.findall('node')}

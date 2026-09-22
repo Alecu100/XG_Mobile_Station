@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-09-22T05:49:28-0700",
+    "date": "2026-09-22T06:09:45-0700",
     "included_severities": [
         "error",
         "warning"
@@ -91,7 +91,7 @@
                                 "x": 0.889,
                                 "y": 0.8636
                             },
-                            "uuid": "470cd04d-95cb-4b68-877a-acfb2c63591f"
+                            "uuid": "4a95af20-e8a9-4de2-9f70-8453d4f71291"
                         },
                         {
                             "description": "Symbol #FLG002 Pin 1 [SUPPLY, Power output, Line]",
@@ -99,7 +99,7 @@
                                 "x": 4.699,
                                 "y": 1.8288
                             },
-                            "uuid": "a3e197f0-42cd-421c-8fb8-959ec14412f6"
+                            "uuid": "4a13721d-ac3b-42e5-a229-d9512e8ec256"
                         }
                     ],
                     "severity": "warning",
@@ -114,7 +114,7 @@
                                 "x": 0.889,
                                 "y": 0.9144
                             },
-                            "uuid": "6aeca376-96c8-4410-8804-7fb406716410"
+                            "uuid": "e3ee6a88-014d-47a1-b555-a223c5f03558"
                         },
                         {
                             "description": "Symbol #FLG002 Pin 1 [SUPPLY, Power output, Line]",
@@ -122,7 +122,7 @@
                                 "x": 4.699,
                                 "y": 1.8288
                             },
-                            "uuid": "a3e197f0-42cd-421c-8fb8-959ec14412f6"
+                            "uuid": "4a13721d-ac3b-42e5-a229-d9512e8ec256"
                         }
                     ],
                     "severity": "warning",

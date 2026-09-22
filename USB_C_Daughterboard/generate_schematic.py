@@ -8,7 +8,7 @@ import sexpdata
 
 
 ROOT = Path(__file__).resolve().parent
-PROJECT = "USB_C_Daughterboard"
+PROJECT = "XG_Mobile_USB_Hub"
 NAMESPACE = uuid.UUID("eb5758b8-41e4-43f1-b10f-1330e4bc0380")
 LIBRARY = {}
 SHEETS = []
@@ -98,7 +98,7 @@ def text(content, xpos, ypos, size=1.27):
 
 
 def generate():
-    root_id = uid(PROJECT)
+    root_id = uid('USB_C_Daughterboard')
     root = [header(root_id, PROJECT.replace('_', ' ')), '(lib_symbols)']
     manifest = []
     for page_number, page in enumerate(SHEETS, 2):
@@ -502,6 +502,13 @@ for port_index,base in [(1,600),(2,700),(3,800),(4,900),(5,1000),(6,1100)]:
 
 def apply_bom_footprints():
     packages = {}
+    verified = {
+        'U501':'Package_DFN_QFN:VQFN-100-1EP_12x12mm_P0.4mm_EP8x8mm',
+        'U600':'Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm',
+        'U700':'Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm',
+        'C403':'Capacitor_SMD:C_0805_2012Metric',
+        'C404':'Capacitor_SMD:C_0805_2012Metric',
+    }
     for path in (ROOT/'Reference'/'WEBENCH').glob('*.csv'):
         with path.open(encoding='utf-8-sig') as stream:
             for item in csv.DictReader(stream):
@@ -527,6 +534,8 @@ def apply_bom_footprints():
                 component['footprint'] = 'Resistor_SMD:R_1206_3216Metric'
             elif component['ref'] in ['C111','C112','C113','C1400']:
                 component['footprint'] = ''
+            if component['ref'] in verified:
+                component['footprint'] = verified[component['ref']]
 
 
 if __name__ == '__main__':

@@ -708,7 +708,7 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0805_2012Metric"
   },
   {
     "sheet": "Power_Core",
@@ -723,7 +723,7 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0805_2012Metric"
   },
   {
     "sheet": "Power_Core",
@@ -866,7 +866,7 @@
     "lcsc": "C3210691",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "Package_DFN_QFN:VQFN-100-1EP_12x12mm_P0.4mm_EP8x8mm"
   },
   {
     "sheet": "Hub",
@@ -1835,7 +1835,7 @@
     "lcsc": "C701817",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm"
   },
   {
     "sheet": "USB_C1",
@@ -2361,7 +2361,7 @@
     "lcsc": "C701817",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm"
   },
   {
     "sheet": "USB_C2",

@@ -1,6 +1,6 @@
 # USB-C Daughterboard: Engineering Draft A
 
-Open `USB_C_Daughterboard.kicad_pro` in KiCad 9 or newer. The root schematic contains 15 circuit sheets. PDF and SVG exports provide previews; the editable schematics use named-net connections. Existing dock files are unchanged.
+Open `XG_Mobile_USB_Hub.kicad_pro` in KiCad 9 or newer. The root schematic contains 15 circuit sheets. PDF and SVG exports provide previews; the editable schematics use named-net connections. Existing dock files are unchanged.
 
 **Not released for fabrication, assembly, or connection to a laptop.** This is a pin-connected schematic draft, not a validated power supply or USB-certified product. Zero ERC errors does not establish electrical performance or protection adequacy. Connector selection, several footprints and passive MPNs remain unresolved and are explicitly marked in the BOM.
 
@@ -12,11 +12,11 @@ Open `USB_C_Daughterboard.kicad_pro` in KiCad 9 or newer. The root schematic con
 - Hub: USB7206CT/KDX. Core rail is 1.15 V, not 1.2 V nominal; allowable range is 1.09-1.21 V.
 - Inputs: two GPU PCIe 8-pin cables from the SAME PSU, OR one EPS 8-pin cable. A mutually exclusive, break-before-make power selector is shown. No 12 V pass-through to another board is included.
 - Intended supply: regulated nominal 12 V. The 5 V WEBENCH design was supplied for 11-13 V; do not assume the complete assembly has been qualified for 10-14 V.
-- Neither a PCB nor MCU firmware is included. The schematic does not establish USB-PD 3.2 compliance; that requires a suitable qualified policy stack and compliance testing. No EPR or PPS capability is claimed.
+- An unrouted PCB placement draft is included; no MCU firmware is included. The schematic does not establish USB-PD 3.2 compliance; that requires a suitable qualified policy stack and compliance testing. No EPR or PPS capability is claimed.
 
 ## Files
 
-- `USB_C_Daughterboard.kicad_sch`: hierarchy root.
+- `XG_Mobile_USB_Hub.kicad_sch`: hierarchy root.
 - `Daughterboard.kicad_sym` and `sym-lib-table`: project-local symbols, embedded in the schematics as well.
 - `BOM.csv`: individual component BOM, not a procurement-ready or JLC assembly upload BOM.
 - `connectivity.json`: generator's intended pin-to-net assignments.
@@ -27,6 +27,25 @@ Open `USB_C_Daughterboard.kicad_pro` in KiCad 9 or newer. The root schematic con
 - `Reference/`: downloaded manufacturer datasheets used in the design.
 - `generate_schematic.py`: reproducible source. Running it overwrites the generated daughterboard sheets/library/BOM, so preserve manual schematic edits before regenerating.
 - `validate_schematic.py`: parses each sheet, exports a real KiCad XML netlist, and checks every connected physical pin plus selected independent design invariants.
+
+## PCB Placement Draft
+
+Open `XG_Mobile_USB_Hub.kicad_pcb` from the project. The provisional outline is 120 x 80 mm. Downstream USB connector positions are reserved on the front edge; upstream USB-C and GPU/EPS power inputs are reserved on the rear. No mounting holes or enclosure constraints have been specified. The TPS62130 core buck is retained.
+
+- 260 physical footprints are placed inside the outline with schematic UUID paths and assigned nets. Grouped placement is a floorplan, not routing-optimized placement; decoupling proximity, switching loops and high-speed escape still need layout work.
+- 37 components without resolved packages are represented by padless markers outside the outline. These are NOT usable footprints and carry no copper. They include connectors, inductors, some power ICs, bulk capacitors, fuses and the power selector. Connector rectangles inside the outline are reservations, not selected land patterns.
+- Every loaded footprint's numbered pad set is checked against the schematic, and 825 connected pads are checked against a fresh KiCad XML netlist. This does not verify the 37 missing packages or complete physical connectivity for the design.
+- Four copper layers and 1.6 mm thickness are provisional. No dielectric stack-up, controlled-impedance geometry, power planes, tracks, or routing are supplied. The inner layers are empty. No Gerbers or fabrication release is provided.
+- DRC: 499 unconnected items, 37 unresolved-footprint library findings, 12 within-package clearance findings against the default 0.2 mm rule, and four 0.2 mm thermal drills below the default 0.3 mm minimum. No shorts, overlapping courtyards or solder-mask bridges were reported after placement correction. These results are not a DRC pass; set fabrication rules only after selecting a process.
+- The hub footprint is KiCad's USB7206C-referenced VQFN-100 land pattern. HD3SS3220 footprints match TI RNH0030A. C403/C404 were corrected to 0805 to match their specified GRM21 parts. All other assigned packages still require final manufacturing review.
+
+`PCB_Top.svg` and `PCB_Bottom.svg` show the placement and off-board staging. The bottom preview is viewed through the board, not mirrored. `PCB_Placement_Report.json` lists unresolved items and imported references; `PCB_DRC.json` contains the complete DRC findings.
+
+Regenerate only before making manual PCB edits: `generate_pcb.py` OVERWRITES the board and its placement report. It uses KiCad's bundled Python, not ordinary system Python:
+
+```powershell
+& 'C:\Program Files\KiCad\9.0\bin\python.exe' USB_C_Daughterboard/generate_pcb.py
+```
 
 ## Power-Design Changes
 
@@ -73,14 +92,14 @@ The GPU ADC dividers measure rail voltage, NOT independent cable presence: the f
 
 ## Reproduction
 
-Latest automated checks: 297 physical components and 1,098 connected pins match the KiCad XML export; ERC has zero errors and the two documented MCU warnings. The PDF has 16 pages. There are 185 BOM rows with explicitly unresolved part selections and 40 rows without footprints. Counts include generic passives and connectors and must not be mistaken for a completed procurement BOM.
+Latest automated checks: 297 physical components and 1,098 connected pins match the KiCad XML export; ERC has zero errors and the two documented MCU warnings. The PDF has 16 pages. There are 185 BOM rows with explicitly unresolved part selections and 37 rows without footprints. Counts include generic passives and connectors and must not be mistaken for a completed procurement BOM.
 
 Dependencies: Python with `sexpdata`, installed KiCad 9 symbol libraries and `kicad-cli`. Generator and validator currently use this machine's KiCad 9 install path.
 
 ```powershell
 python USB_C_Daughterboard/generate_schematic.py
 python USB_C_Daughterboard/validate_schematic.py
-& 'C:\Program Files\KiCad\9.0\bin\kicad-cli.exe' sch erc --format json --output USB_C_Daughterboard/ERC.json USB_C_Daughterboard/USB_C_Daughterboard.kicad_sch
+& 'C:\Program Files\KiCad\9.0\bin\kicad-cli.exe' sch erc --format json --output USB_C_Daughterboard/ERC.json USB_C_Daughterboard/XG_Mobile_USB_Hub.kicad_sch
 ```
 
 Sources: TI LM51772 SNVSC22D, TPS4030x SLUS964D, TPS56A37 SLVSHC9, TPS25947 SLVSFC9C, HD3SS3220 SLLSES1E, HD3SS3212 SLASE74F; Microchip USB7206C DS00003850F; ST TCPP03 DS13618 Rev 2 and ST's `STM32_open_pin_data` STM32G071K(8-B)TxN pin database. Standard supporting symbol pin maps were resolved from the installed KiCad 9 libraries. Stock, orderability and package compatibility of the complete BOM have not been qualified.

@@ -1233,6 +1233,10 @@ def run(board=None, apply=None, **overrides):
     _apply_overrides(overrides)
     if board is None:
         board = pcbnew.GetBoard()
+    if board is None:
+        print("No active PCB board. Open a board in PCB Editor and run this script "
+              "from that window's Python console. Nothing changed.")
+        return 0
     if apply is None:
         apply = APPLY
 
