@@ -12,10 +12,17 @@ CLI = Path(r"C:\Program Files\KiCad\9.0\bin\kicad-cli.exe")
 
 
 def validate():
+    root = sexpdata.loads((ROOT/'XG_Mobile_USB_Hub.kicad_sch').read_text(encoding='utf-8'))
+    children = [item for item in root if isinstance(item,list) and str(item[0]) == 'sheet']
+    child_files = [str(field[2]) for child in children for field in child
+                   if isinstance(field,list) and str(field[0]) == 'property' and field[1] == 'Sheetfile']
+    assert sorted(child_files) == ['MCU.kicad_sch','Power.kicad_sch','USB_Hub.kicad_sch']
+    assert {path.name for path in ROOT.glob('*.kicad_sch')} == set(child_files+['XG_Mobile_USB_Hub.kicad_sch'])
     for path in ROOT.glob('*.kicad_sch'):
         parsed = sexpdata.loads(path.read_text(encoding='utf-8'))
         assert str(parsed[0]) == 'kicad_sch', path
     expected = [component for component in json.loads((ROOT/'connectivity.json').read_text()) if component['physical']]
+    assert {component['sheet'] for component in expected} == {'Power','MCU','USB_Hub'}
     with tempfile.TemporaryDirectory() as directory:
         netlist_path = Path(directory)/'netlist.xml'
         subprocess.run([str(CLI), 'sch', 'export', 'netlist', '--format', 'kicadxml', '--output', str(netlist_path), str(ROOT/'XG_Mobile_USB_Hub.kicad_sch')], check=True)

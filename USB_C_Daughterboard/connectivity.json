@@ -1,238 +1,874 @@
 [
   {
-    "sheet": "Power_3V3",
-    "ref": "U301",
-    "kind": "TPS56A37RPAR",
+    "sheet": "Power",
+    "ref": "J1401",
+    "kind": "GPU_8PIN",
     "nets": {
-      "1": null,
-      "2": "3V3_FB",
+      "1": "GPU1_12V",
+      "2": "GPU1_12V",
+      "3": "GPU1_12V",
+      "4": "GND",
+      "5": "GND",
+      "6": "GND",
+      "7": "GND",
+      "8": "GND"
+    },
+    "value": "GPU_8PIN",
+    "mpn": "PCIe_GPU_8PIN_KEYED_HEADER_SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "F1401",
+    "kind": "F",
+    "nets": {
+      "1": "GPU1_12V",
+      "2": "GPU_PAIR"
+    },
+    "value": "12A >=32VDC",
+    "mpn": "FUSE_AND_HOLDER_SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "J1402",
+    "kind": "GPU_8PIN",
+    "nets": {
+      "1": "GPU2_12V",
+      "2": "GPU2_12V",
+      "3": "GPU2_12V",
+      "4": "GND",
+      "5": "GND",
+      "6": "GND",
+      "7": "GND",
+      "8": "GND"
+    },
+    "value": "GPU_8PIN",
+    "mpn": "PCIe_GPU_8PIN_KEYED_HEADER_SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "F1402",
+    "kind": "F",
+    "nets": {
+      "1": "GPU2_12V",
+      "2": "GPU_PAIR"
+    },
+    "value": "12A >=32VDC",
+    "mpn": "FUSE_AND_HOLDER_SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "J1403",
+    "kind": "EPS_8PIN",
+    "nets": {
+      "1": "GND",
+      "2": "GND",
       "3": "GND",
-      "4": "3V3_PG",
-      "5": "3V3_SS",
-      "6": "3V3_SW",
-      "7": "3V3_BOOT",
-      "8": "VIN12",
-      "9": "GND",
-      "10": "3V3_MODE"
+      "4": "GND",
+      "5": "EPS_12V",
+      "6": "EPS_12V",
+      "7": "EPS_12V",
+      "8": "EPS_12V"
     },
-    "value": "TPS56A37RPAR",
-    "mpn": "TPS56A37RPAR",
+    "value": "EPS_8PIN",
+    "mpn": "EPS_CPU_8PIN_KEYED_HEADER_SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "Power_Input"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "L301",
-    "kind": "L",
+    "sheet": "Power",
+    "ref": "F1403",
+    "kind": "F",
     "nets": {
-      "1": "3V3_SW",
-      "2": "V3V3"
+      "1": "EPS_12V",
+      "2": "EPS_FUSED"
     },
-    "value": "2.2uH",
-    "mpn": "VLP8040T-2R2N",
+    "value": "25A >=32VDC",
+    "mpn": "FUSE_AND_HOLDER_SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "Power_Input"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "C301",
+    "sheet": "Power",
+    "ref": "SW1400",
+    "kind": "Power_Selector",
+    "nets": {
+      "1": "GPU_PAIR",
+      "2": "VIN12",
+      "3": "EPS_FUSED"
+    },
+    "value": "SPDT 30A >=24VDC BBM",
+    "mpn": "DC_POWER_SELECTOR_SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C1400",
     "kind": "C",
     "nets": {
       "1": "VIN12",
       "2": "GND"
     },
-    "value": "10uF 25V",
-    "mpn": "MSAST21GBB5106MTNA01",
+    "value": "100uF 25V polymer",
+    "mpn": "INPUT_BULK_CAP_SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0805_2012Metric"
+    "footprint": "",
+    "block": "Power_Input"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "C302",
-    "kind": "C",
-    "nets": {
-      "1": "VIN12",
-      "2": "GND"
-    },
-    "value": "10uF 25V",
-    "mpn": "MSAST21GBB5106MTNA01",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0805_2012Metric"
-  },
-  {
-    "sheet": "Power_3V3",
-    "ref": "C303",
+    "sheet": "Power",
+    "ref": "C1401",
     "kind": "C",
     "nets": {
       "1": "VIN12",
       "2": "GND"
     },
     "value": "100nF 25V",
-    "mpn": "C0603C104M3VACTU",
+    "mpn": "SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_Input"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "C304",
+    "sheet": "Power",
+    "ref": "R1400",
+    "kind": "R",
+    "nets": {
+      "1": "GPU1_12V",
+      "2": "GPU1_ADC"
+    },
+    "value": "100k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R1401",
+    "kind": "R",
+    "nets": {
+      "1": "GPU1_ADC",
+      "2": "GND"
+    },
+    "value": "10k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C1402",
     "kind": "C",
     "nets": {
-      "1": "3V3_BOOT",
-      "2": "3V3_SW"
+      "1": "GPU1_ADC",
+      "2": "GND"
+    },
+    "value": "1nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R1402",
+    "kind": "R",
+    "nets": {
+      "1": "GPU2_12V",
+      "2": "GPU2_ADC"
+    },
+    "value": "100k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R1403",
+    "kind": "R",
+    "nets": {
+      "1": "GPU2_ADC",
+      "2": "GND"
+    },
+    "value": "10k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C1403",
+    "kind": "C",
+    "nets": {
+      "1": "GPU2_ADC",
+      "2": "GND"
+    },
+    "value": "1nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R1404",
+    "kind": "R",
+    "nets": {
+      "1": "EPS_12V",
+      "2": "EPS_ADC"
+    },
+    "value": "100k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R1405",
+    "kind": "R",
+    "nets": {
+      "1": "EPS_ADC",
+      "2": "GND"
+    },
+    "value": "10k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C1404",
+    "kind": "C",
+    "nets": {
+      "1": "EPS_ADC",
+      "2": "GND"
+    },
+    "value": "1nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "#FLG001",
+    "kind": "Supply_Flag",
+    "nets": {
+      "1": "VIN12"
+    },
+    "value": "VIN12 supply",
+    "mpn": "VIN12 supply",
+    "lcsc": "",
+    "dnp": false,
+    "physical": false,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "#FLG002",
+    "kind": "Supply_Flag",
+    "nets": {
+      "1": "GND"
+    },
+    "value": "GND supply",
+    "mpn": "GND supply",
+    "lcsc": "",
+    "dnp": false,
+    "physical": false,
+    "footprint": "",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "D1400",
+    "kind": "TVS_Bidirectional",
+    "nets": {
+      "1": "VIN12",
+      "2": "GND"
+    },
+    "value": "SMBJ13CA",
+    "mpn": "SMBJ13CA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Diode_SMD:D_SMB",
+    "block": "Power_Input"
+  },
+  {
+    "sheet": "Power",
+    "ref": "U101",
+    "kind": "LM51772RHAR",
+    "nets": {
+      "1": "PD_VCC1",
+      "2": "PD_SS",
+      "3": "GND",
+      "4": "GND",
+      "5": "I2C_SDA",
+      "6": "I2C_SCL",
+      "7": "PD_VCC2",
+      "8": "GND",
+      "9": "GND",
+      "10": "GND",
+      "11": "PD_NFLT",
+      "12": "PD_RT",
+      "13": "PD_COMP",
+      "14": "PD_VCC2",
+      "15": "GND",
+      "16": "PD_VCC2",
+      "17": "GND",
+      "18": "PD_RAW",
+      "19": "GND",
+      "20": "GND",
+      "21": "PD_CSB",
+      "22": "PD_CSA",
+      "23": "PD_SW1",
+      "24": "PD_HO1",
+      "25": "PD_HB1",
+      "26": null,
+      "27": "PD_LO1",
+      "28": "GND",
+      "29": "PD_VCC2",
+      "30": "PD_LO2",
+      "31": "PD_HB2",
+      "32": "PD_HO2",
+      "33": "PD_SW2",
+      "34": null,
+      "35": null,
+      "36": "VIN12",
+      "37": "PD_EN",
+      "38": "PD_NRST",
+      "39": null,
+      "40": "VIN12",
+      "41": "GND"
+    },
+    "value": "LM51772RHAR",
+    "mpn": "LM51772RHAR",
+    "lcsc": "C41383743",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "Q101",
+    "kind": "CSD17577Q3A",
+    "nets": {
+      "1": "PD_SW1",
+      "2": "PD_SW1",
+      "3": "PD_SW1",
+      "4": "PD_HO1",
+      "5": "VIN12"
+    },
+    "value": "CSD17577Q3A",
+    "mpn": "CSD17577Q3A",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "Q102",
+    "kind": "CSD17577Q3A",
+    "nets": {
+      "1": "GND",
+      "2": "GND",
+      "3": "GND",
+      "4": "PD_LO1",
+      "5": "PD_SW1"
+    },
+    "value": "CSD17577Q3A",
+    "mpn": "CSD17577Q3A",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "Q103",
+    "kind": "CSD17577Q3A",
+    "nets": {
+      "1": "PD_SW2",
+      "2": "PD_SW2",
+      "3": "PD_SW2",
+      "4": "PD_HO2",
+      "5": "PD_RAW"
+    },
+    "value": "CSD17577Q3A",
+    "mpn": "CSD17577Q3A",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "Q104",
+    "kind": "CSD17577Q3A",
+    "nets": {
+      "1": "GND",
+      "2": "GND",
+      "3": "GND",
+      "4": "PD_LO2",
+      "5": "PD_SW2"
+    },
+    "value": "CSD17577Q3A",
+    "mpn": "CSD17577Q3A",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R101",
+    "kind": "R",
+    "nets": {
+      "1": "PD_SW1",
+      "2": "PD_L_IN"
+    },
+    "value": "2m 2W - REVIEW OCP",
+    "mpn": "WSR22L000FEA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "L101",
+    "kind": "L",
+    "nets": {
+      "1": "PD_L_IN",
+      "2": "PD_SW2"
+    },
+    "value": "2.2uH 12.12A / Isat 18.18A",
+    "mpn": "APS1040M2R2A",
+    "lcsc": "C47327242",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R102",
+    "kind": "R",
+    "nets": {
+      "1": "PD_SW1",
+      "2": "PD_CSA"
+    },
+    "value": "10",
+    "mpn": "CRCW060310R0FKEA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R103",
+    "kind": "R",
+    "nets": {
+      "1": "PD_L_IN",
+      "2": "PD_CSB"
+    },
+    "value": "10",
+    "mpn": "CRCW060310R0FKEA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C101",
+    "kind": "C",
+    "nets": {
+      "1": "PD_CSA",
+      "2": "PD_CSB"
+    },
+    "value": "180pF",
+    "mpn": "C0805C181K5GACTU",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R104",
+    "kind": "R",
+    "nets": {
+      "1": "PD_RT",
+      "2": "GND"
+    },
+    "value": "51k",
+    "mpn": "RC0603FR-0751KL",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R105",
+    "kind": "R",
+    "nets": {
+      "1": "PD_COMP_MID",
+      "2": "GND"
+    },
+    "value": "4.75k - REVIEW LOOP",
+    "mpn": "CRCW04024K75FKED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C102",
+    "kind": "C",
+    "nets": {
+      "1": "PD_COMP",
+      "2": "PD_COMP_MID"
+    },
+    "value": "120nF - REVIEW LOOP",
+    "mpn": "GRM188R71C124KA01D",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C103",
+    "kind": "C",
+    "nets": {
+      "1": "PD_COMP",
+      "2": "GND"
+    },
+    "value": "220pF - REVIEW LOOP",
+    "mpn": "CC0402JRNPO8BN221",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C104",
+    "kind": "C",
+    "nets": {
+      "1": "PD_SS",
+      "2": "GND"
+    },
+    "value": "33nF",
+    "mpn": "GRM155R61C333KA01D",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C105",
+    "kind": "C",
+    "nets": {
+      "1": "PD_VCC1",
+      "2": "GND"
+    },
+    "value": "22uF 6.3V",
+    "mpn": "GRM188R60J226MEA0D",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C106",
+    "kind": "C",
+    "nets": {
+      "1": "PD_VCC2",
+      "2": "GND"
+    },
+    "value": "22uF 6.3V",
+    "mpn": "GRM188R60J226MEA0D",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C107",
+    "kind": "C",
+    "nets": {
+      "1": "PD_HB1",
+      "2": "PD_SW1"
     },
     "value": "100nF 16V",
     "mpn": "EMK107B7104KA-T",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_BuckBoost"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "C305",
+    "sheet": "Power",
+    "ref": "C108",
     "kind": "C",
     "nets": {
-      "1": "V3V3",
-      "2": "GND"
+      "1": "PD_HB2",
+      "2": "PD_SW2"
     },
-    "value": "15uF 16V",
-    "mpn": "C3225X5R1C156M250AA",
+    "value": "100nF 16V",
+    "mpn": "EMK107B7104KA-T",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_1210_3225Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_BuckBoost"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "C306",
+    "sheet": "Power",
+    "ref": "C109",
     "kind": "C",
     "nets": {
-      "1": "V3V3",
+      "1": "VIN12",
       "2": "GND"
     },
-    "value": "15uF 16V",
-    "mpn": "C3225X5R1C156M250AA",
+    "value": "100nF 25V",
+    "mpn": "SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_1210_3225Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_BuckBoost"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "R301",
+    "sheet": "Power",
+    "ref": "C110",
+    "kind": "C",
+    "nets": {
+      "1": "VIN12",
+      "2": "GND"
+    },
+    "value": "10uF 25V",
+    "mpn": "MSAST32NSB5106KTNA01",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_1210_3225Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C111",
+    "kind": "C",
+    "nets": {
+      "1": "VIN12",
+      "2": "GND"
+    },
+    "value": "27uF 25V",
+    "mpn": "25SVPF27MX",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C112",
+    "kind": "C",
+    "nets": {
+      "1": "PD_RAW",
+      "2": "GND"
+    },
+    "value": "120uF 35V",
+    "mpn": "35SVPF120M",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C113",
+    "kind": "C",
+    "nets": {
+      "1": "PD_RAW",
+      "2": "GND"
+    },
+    "value": "120uF 35V",
+    "mpn": "35SVPF120M",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C114",
+    "kind": "C",
+    "nets": {
+      "1": "PD_RAW",
+      "2": "GND"
+    },
+    "value": "10uF 50V",
+    "mpn": "C3225X7R1H106M250AC",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_1210_3225Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C115",
+    "kind": "C",
+    "nets": {
+      "1": "PD_RAW",
+      "2": "GND"
+    },
+    "value": "10uF 50V",
+    "mpn": "C3225X7R1H106M250AC",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_1210_3225Metric",
+    "block": "PD_BuckBoost"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R106",
     "kind": "R",
     "nets": {
       "1": "V3V3",
-      "2": "3V3_FB"
-    },
-    "value": "45.3k",
-    "mpn": "CRCW080545K3FKEA",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0805_2012Metric"
-  },
-  {
-    "sheet": "Power_3V3",
-    "ref": "R302",
-    "kind": "R",
-    "nets": {
-      "1": "3V3_FB",
-      "2": "GND"
+      "2": "PD_NFLT"
     },
     "value": "10k",
-    "mpn": "RC0201FR-0710KL",
+    "mpn": "SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0201_0603Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_BuckBoost"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "C307",
-    "kind": "C",
-    "nets": {
-      "1": "V3V3",
-      "2": "3V3_FB"
-    },
-    "value": "150pF",
-    "mpn": "C0603C151K3GACTU",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_3V3",
-    "ref": "R303",
+    "sheet": "Power",
+    "ref": "R107",
     "kind": "R",
     "nets": {
-      "1": "3V3_MODE",
+      "1": "PD_EN",
       "2": "GND"
-    },
-    "value": "52.3k",
-    "mpn": "CRCW040252K3FKED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0402_1005Metric"
-  },
-  {
-    "sheet": "Power_3V3",
-    "ref": "C308",
-    "kind": "C",
-    "nets": {
-      "1": "3V3_SS",
-      "2": "GND"
-    },
-    "value": "22nF",
-    "mpn": "GRM155R71C223KA01D",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0402_1005Metric"
-  },
-  {
-    "sheet": "Power_3V3",
-    "ref": "R304",
-    "kind": "R",
-    "nets": {
-      "1": "V3V3",
-      "2": "3V3_PG"
     },
     "value": "100k",
-    "mpn": "CRCW0402100KFKED",
+    "mpn": "SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0402_1005Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_BuckBoost"
   },
   {
-    "sheet": "Power_3V3",
-    "ref": "#FLG004",
-    "kind": "Supply_Flag",
+    "sheet": "Power",
+    "ref": "R108",
+    "kind": "R",
     "nets": {
-      "1": "V3V3"
+      "1": "PD_NRST",
+      "2": "GND"
     },
-    "value": "V3V3 supply",
-    "mpn": "V3V3 supply",
+    "value": "100k",
+    "mpn": "SELECTION_REQUIRED",
     "lcsc": "",
     "dnp": false,
-    "physical": false,
-    "footprint": ""
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_BuckBoost"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "U201",
     "kind": "TPS40305DRCR",
     "nets": {
@@ -253,10 +889,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:VSON-10-1EP_3x3mm_P0.5mm_EP1.2x2mm"
+    "footprint": "Package_SON:VSON-10-1EP_3x3mm_P0.5mm_EP1.2x2mm",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "Q201",
     "kind": "CSD17304Q3",
     "nets": {
@@ -271,10 +908,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
+    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "Q202",
     "kind": "CSD17577Q3A",
     "nets": {
@@ -289,10 +927,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
+    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "L201",
     "kind": "L",
     "nets": {
@@ -304,10 +943,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C201",
     "kind": "C",
     "nets": {
@@ -319,10 +959,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_1206_3216Metric"
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C202",
     "kind": "C",
     "nets": {
@@ -334,10 +975,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_1206_3216Metric"
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C203",
     "kind": "C",
     "nets": {
@@ -349,10 +991,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_1206_3216Metric"
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C204",
     "kind": "C",
     "nets": {
@@ -364,10 +1007,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0402_1005Metric"
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C205",
     "kind": "C",
     "nets": {
@@ -379,10 +1023,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0805_2012Metric"
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C206",
     "kind": "C",
     "nets": {
@@ -394,10 +1039,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0402_1005Metric"
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C207",
     "kind": "C",
     "nets": {
@@ -409,10 +1055,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_1206_3216Metric"
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C208",
     "kind": "C",
     "nets": {
@@ -424,10 +1071,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0201_0603Metric"
+    "footprint": "Capacitor_SMD:C_0201_0603Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "R201",
     "kind": "R",
     "nets": {
@@ -439,10 +1087,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0402_1005Metric"
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "R202",
     "kind": "R",
     "nets": {
@@ -454,10 +1103,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0402_1005Metric"
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "R203",
     "kind": "R",
     "nets": {
@@ -469,10 +1119,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0201_0603Metric"
+    "footprint": "Resistor_SMD:R_0201_0603Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "R204",
     "kind": "R",
     "nets": {
@@ -484,10 +1135,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0402_1005Metric"
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C209",
     "kind": "C",
     "nets": {
@@ -499,10 +1151,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0201_0603Metric"
+    "footprint": "Capacitor_SMD:C_0201_0603Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C210",
     "kind": "C",
     "nets": {
@@ -514,10 +1167,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "R205",
     "kind": "R",
     "nets": {
@@ -529,10 +1183,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0402_1005Metric"
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "R206",
     "kind": "R",
     "nets": {
@@ -544,10 +1199,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0402_1005Metric"
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "C211",
     "kind": "C",
     "nets": {
@@ -559,10 +1215,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0402_1005Metric"
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_5V",
+    "sheet": "Power",
     "ref": "#FLG003",
     "kind": "Supply_Flag",
     "nets": {
@@ -573,10 +1230,258 @@
     "lcsc": "",
     "dnp": false,
     "physical": false,
-    "footprint": ""
+    "footprint": "",
+    "block": "Power_5V"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
+    "ref": "U301",
+    "kind": "TPS56A37RPAR",
+    "nets": {
+      "1": null,
+      "2": "3V3_FB",
+      "3": "GND",
+      "4": "3V3_PG",
+      "5": "3V3_SS",
+      "6": "3V3_SW",
+      "7": "3V3_BOOT",
+      "8": "VIN12",
+      "9": "GND",
+      "10": "3V3_MODE"
+    },
+    "value": "TPS56A37RPAR",
+    "mpn": "TPS56A37RPAR",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "L301",
+    "kind": "L",
+    "nets": {
+      "1": "3V3_SW",
+      "2": "V3V3"
+    },
+    "value": "2.2uH",
+    "mpn": "VLP8040T-2R2N",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C301",
+    "kind": "C",
+    "nets": {
+      "1": "VIN12",
+      "2": "GND"
+    },
+    "value": "10uF 25V",
+    "mpn": "MSAST21GBB5106MTNA01",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C302",
+    "kind": "C",
+    "nets": {
+      "1": "VIN12",
+      "2": "GND"
+    },
+    "value": "10uF 25V",
+    "mpn": "MSAST21GBB5106MTNA01",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C303",
+    "kind": "C",
+    "nets": {
+      "1": "VIN12",
+      "2": "GND"
+    },
+    "value": "100nF 25V",
+    "mpn": "C0603C104M3VACTU",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C304",
+    "kind": "C",
+    "nets": {
+      "1": "3V3_BOOT",
+      "2": "3V3_SW"
+    },
+    "value": "100nF 16V",
+    "mpn": "EMK107B7104KA-T",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C305",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "GND"
+    },
+    "value": "15uF 16V",
+    "mpn": "C3225X5R1C156M250AA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_1210_3225Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C306",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "GND"
+    },
+    "value": "15uF 16V",
+    "mpn": "C3225X5R1C156M250AA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_1210_3225Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R301",
+    "kind": "R",
+    "nets": {
+      "1": "V3V3",
+      "2": "3V3_FB"
+    },
+    "value": "45.3k",
+    "mpn": "CRCW080545K3FKEA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0805_2012Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R302",
+    "kind": "R",
+    "nets": {
+      "1": "3V3_FB",
+      "2": "GND"
+    },
+    "value": "10k",
+    "mpn": "RC0201FR-0710KL",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0201_0603Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C307",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "3V3_FB"
+    },
+    "value": "150pF",
+    "mpn": "C0603C151K3GACTU",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R303",
+    "kind": "R",
+    "nets": {
+      "1": "3V3_MODE",
+      "2": "GND"
+    },
+    "value": "52.3k",
+    "mpn": "CRCW040252K3FKED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "C308",
+    "kind": "C",
+    "nets": {
+      "1": "3V3_SS",
+      "2": "GND"
+    },
+    "value": "22nF",
+    "mpn": "GRM155R71C223KA01D",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "R304",
+    "kind": "R",
+    "nets": {
+      "1": "V3V3",
+      "2": "3V3_PG"
+    },
+    "value": "100k",
+    "mpn": "CRCW0402100KFKED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
+    "ref": "#FLG004",
+    "kind": "Supply_Flag",
+    "nets": {
+      "1": "V3V3"
+    },
+    "value": "V3V3 supply",
+    "mpn": "V3V3 supply",
+    "lcsc": "",
+    "dnp": false,
+    "physical": false,
+    "footprint": "",
+    "block": "Power_3V3"
+  },
+  {
+    "sheet": "Power",
     "ref": "U401",
     "kind": "TPS62130",
     "nets": {
@@ -603,10 +1508,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm_ThermalVias"
+    "footprint": "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm_ThermalVias",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "L401",
     "kind": "L",
     "nets": {
@@ -618,10 +1524,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "R401",
     "kind": "R",
     "nets": {
@@ -633,10 +1540,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "R402",
     "kind": "R",
     "nets": {
@@ -648,10 +1556,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "R403",
     "kind": "R",
     "nets": {
@@ -663,10 +1572,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "C401",
     "kind": "C",
     "nets": {
@@ -678,10 +1588,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_1206_3216Metric"
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "C402",
     "kind": "C",
     "nets": {
@@ -693,10 +1604,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "C403",
     "kind": "C",
     "nets": {
@@ -708,10 +1620,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0805_2012Metric"
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "C404",
     "kind": "C",
     "nets": {
@@ -723,10 +1636,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0805_2012Metric"
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "C405",
     "kind": "C",
     "nets": {
@@ -738,10 +1652,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Power_Core",
+    "sheet": "Power",
     "ref": "#FLG005",
     "kind": "Supply_Flag",
     "nets": {
@@ -752,10 +1667,759 @@
     "lcsc": "",
     "dnp": false,
     "physical": false,
-    "footprint": ""
+    "footprint": "",
+    "block": "Power_Core"
   },
   {
-    "sheet": "Hub",
+    "sheet": "MCU",
+    "ref": "U1300",
+    "kind": "STM32G071KBT6N",
+    "nets": {
+      "1": "3V3_PG",
+      "2": null,
+      "3": null,
+      "4": "V3V3",
+      "5": "GND",
+      "6": "MCU_NRST",
+      "7": "UP_ADC",
+      "8": "PD_IANA",
+      "9": "PD_RAW_ADC",
+      "10": "GPU1_ADC",
+      "11": "GPU2_ADC",
+      "12": "EPS_ADC",
+      "13": "HUB_RESET_N",
+      "14": "HUB_VBUS_DET",
+      "15": "PD_EN",
+      "16": "PD_NRST",
+      "17": "MCU_CC2",
+      "18": "MCU_CC1",
+      "19": "GND",
+      "20": "TCPP_EN",
+      "21": "GND",
+      "22": "P1_ID_N",
+      "23": "P2_ID_N",
+      "24": "SWDIO",
+      "25": "SWCLK",
+      "26": "UP_FAULT_N",
+      "27": "PD_NFLT",
+      "28": "UP_MUX_SEL",
+      "29": "UP_MUX_OEN",
+      "30": "I2C_SCL",
+      "31": "I2C_SDA",
+      "32": "CORE_PG"
+    },
+    "value": "STM32G071KBT6N",
+    "mpn": "STM32G071KBT6N",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_QFP:LQFP-32_7x7mm_P0.8mm",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "J1300",
+    "kind": "SWD_5",
+    "nets": {
+      "1": "V3V3",
+      "2": "SWDIO",
+      "3": "SWCLK",
+      "4": "MCU_NRST",
+      "5": "GND"
+    },
+    "value": "SWD_5",
+    "mpn": "SWD 1x5 2.54mm",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "SW1300",
+    "kind": "Reset_Button",
+    "nets": {
+      "1": "MCU_NRST",
+      "2": "GND"
+    },
+    "value": "Reset_Button",
+    "mpn": "RESET_SWITCH_SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1300",
+    "kind": "R",
+    "nets": {
+      "1": "V3V3",
+      "2": "MCU_NRST"
+    },
+    "value": "10k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1300",
+    "kind": "C",
+    "nets": {
+      "1": "MCU_NRST",
+      "2": "GND"
+    },
+    "value": "100nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1301",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "GND"
+    },
+    "value": "100nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1302",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "GND"
+    },
+    "value": "4.7uF 6.3V",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1301",
+    "kind": "R",
+    "nets": {
+      "1": "V3V3",
+      "2": "I2C_SCL"
+    },
+    "value": "4.7k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1302",
+    "kind": "R",
+    "nets": {
+      "1": "V3V3",
+      "2": "I2C_SDA"
+    },
+    "value": "4.7k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1303",
+    "kind": "R",
+    "nets": {
+      "1": "PD_RAW",
+      "2": "PD_RAW_ADC"
+    },
+    "value": "100k 0.1%",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1304",
+    "kind": "R",
+    "nets": {
+      "1": "PD_RAW_ADC",
+      "2": "GND"
+    },
+    "value": "10k 0.1%",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1303",
+    "kind": "C",
+    "nets": {
+      "1": "PD_RAW_ADC",
+      "2": "GND"
+    },
+    "value": "1nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "PD_MCU"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "J1200",
+    "kind": "USB_C_Receptacle",
+    "nets": {
+      "S1": "GND",
+      "A1": "GND",
+      "A12": "GND",
+      "B1": "GND",
+      "B12": "GND",
+      "A4": "UP_VBUS",
+      "A9": "UP_VBUS",
+      "B4": "UP_VBUS",
+      "B9": "UP_VBUS",
+      "A5": "UP_CC1",
+      "B5": "UP_CC2",
+      "A7": "UP_DM",
+      "B7": "UP_DM",
+      "A6": "UP_DP",
+      "B6": "UP_DP",
+      "B10": "UP_RX1N",
+      "B11": "UP_RX1P",
+      "A3": "UP_TX1N",
+      "A2": "UP_TX1P",
+      "A10": "UP_RX2N",
+      "A11": "UP_RX2P",
+      "B3": "UP_TX2N",
+      "B2": "UP_TX2P",
+      "A8": null,
+      "B8": null
+    },
+    "value": "USB-C 24-pin 5A / 10Gbps",
+    "mpn": "CONNECTOR_SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "U1200",
+    "kind": "TCPP03-M20",
+    "nets": {
+      "1": "MCU_CC1",
+      "2": "V5",
+      "3": "MCU_CC2",
+      "4": "PD_IANA",
+      "5": "UP_GATE",
+      "6": "UP_FET_SOURCE",
+      "7": null,
+      "8": "GND",
+      "9": "UP_VBUS",
+      "10": "UP_ISENSE",
+      "11": "UP_OVP",
+      "12": "GND",
+      "13": "UP_CC2",
+      "14": "UP_CBIAS",
+      "15": "UP_CC1",
+      "16": "GND",
+      "17": "I2C_SDA",
+      "18": "I2C_SCL",
+      "19": "UP_FAULT_N",
+      "20": "TCPP_EN",
+      "21": "GND"
+    },
+    "value": "TCPP03-M20",
+    "mpn": "TCPP03-M20",
+    "lcsc": "C3662955",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_DFN_QFN:TQFN-20-1EP_4x4mm_P0.5mm_EP2.1x2.1mm",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "Q1200",
+    "kind": "CSD17577Q3A",
+    "nets": {
+      "1": "UP_FET_SOURCE",
+      "2": "UP_FET_SOURCE",
+      "3": "UP_FET_SOURCE",
+      "4": "UP_GATE",
+      "5": "PD_RAW"
+    },
+    "value": "CSD17577Q3A",
+    "mpn": "CSD17577Q3A",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "Q1201",
+    "kind": "CSD17577Q3A",
+    "nets": {
+      "1": "UP_FET_SOURCE",
+      "2": "UP_FET_SOURCE",
+      "3": "UP_FET_SOURCE",
+      "4": "UP_GATE",
+      "5": "UP_ISENSE"
+    },
+    "value": "CSD17577Q3A",
+    "mpn": "CSD17577Q3A",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1200",
+    "kind": "R",
+    "nets": {
+      "1": "UP_ISENSE",
+      "2": "UP_VBUS"
+    },
+    "value": "7m 1W 1%",
+    "mpn": "WSL25127L000FEA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_2512_6332Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1201",
+    "kind": "R",
+    "nets": {
+      "1": "UP_VBUS",
+      "2": "UP_OVP"
+    },
+    "value": "10k 1%",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1202",
+    "kind": "R",
+    "nets": {
+      "1": "UP_OVP",
+      "2": "GND"
+    },
+    "value": "560 1%",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1203",
+    "kind": "R",
+    "nets": {
+      "1": "V3V3",
+      "2": "UP_FAULT_N"
+    },
+    "value": "10k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1204",
+    "kind": "R",
+    "nets": {
+      "1": "TCPP_EN",
+      "2": "GND"
+    },
+    "value": "100k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1205",
+    "kind": "R",
+    "nets": {
+      "1": "UP_GATE",
+      "2": "UP_FET_SOURCE"
+    },
+    "value": "100k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1200",
+    "kind": "C",
+    "nets": {
+      "1": "UP_CBIAS",
+      "2": "GND"
+    },
+    "value": "100nF 50V",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1201",
+    "kind": "C",
+    "nets": {
+      "1": "UP_CC1",
+      "2": "GND"
+    },
+    "value": "330pF 50V",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1202",
+    "kind": "C",
+    "nets": {
+      "1": "UP_CC2",
+      "2": "GND"
+    },
+    "value": "330pF 50V",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1203",
+    "kind": "C",
+    "nets": {
+      "1": "UP_VBUS",
+      "2": "GND"
+    },
+    "value": "2.2uF 50V",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1204",
+    "kind": "C",
+    "nets": {
+      "1": "V5",
+      "2": "GND"
+    },
+    "value": "100nF 10V",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1205",
+    "kind": "C",
+    "nets": {
+      "1": "V5",
+      "2": "GND"
+    },
+    "value": "1uF 10V",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "U1201",
+    "kind": "HD3SS3212IRKSR",
+    "nets": {
+      "1": null,
+      "2": "UP_MUX_OEN",
+      "3": "UP_TXP_AC",
+      "4": "UP_TXN_AC",
+      "5": "GND",
+      "6": "V3V3",
+      "7": "UP_RXP",
+      "8": "UP_RXN",
+      "9": "UP_MUX_SEL",
+      "10": null,
+      "11": "GND",
+      "12": "UP_RX2N",
+      "13": "UP_RX2P",
+      "14": "UP_TX2N",
+      "15": "UP_TX2P",
+      "16": "UP_RX1N",
+      "17": "UP_RX1P",
+      "18": "UP_TX1N",
+      "19": "UP_TX1P",
+      "20": "GND",
+      "21": "GND"
+    },
+    "value": "HD3SS3212IRKSR",
+    "mpn": "HD3SS3212IRKSR",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1206",
+    "kind": "R",
+    "nets": {
+      "1": "V3V3",
+      "2": "UP_MUX_OEN"
+    },
+    "value": "100k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1207",
+    "kind": "R",
+    "nets": {
+      "1": "UP_MUX_SEL",
+      "2": "GND"
+    },
+    "value": "100k",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1206",
+    "kind": "C",
+    "nets": {
+      "1": "V3V3",
+      "2": "GND"
+    },
+    "value": "100nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1208",
+    "kind": "R",
+    "nets": {
+      "1": "UP_VBUS",
+      "2": "UP_ADC"
+    },
+    "value": "100k 0.1%",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "R1209",
+    "kind": "R",
+    "nets": {
+      "1": "UP_ADC",
+      "2": "GND"
+    },
+    "value": "10k 0.1%",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "C1207",
+    "kind": "C",
+    "nets": {
+      "1": "UP_ADC",
+      "2": "GND"
+    },
+    "value": "1nF",
+    "mpn": "SELECTION_REQUIRED",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "D1200",
+    "kind": "TPD4E05U06DQA",
+    "nets": {
+      "1": "UP_TX1P",
+      "2": "UP_TX1N",
+      "3": "GND",
+      "4": "UP_RX1P",
+      "5": "UP_RX1N",
+      "6": null,
+      "7": null,
+      "8": "GND",
+      "9": null,
+      "10": null
+    },
+    "value": "TPD4E05U06DQA",
+    "mpn": "TPD4E05U06DQAR",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "D1201",
+    "kind": "TPD4E05U06DQA",
+    "nets": {
+      "1": "UP_TX2P",
+      "2": "UP_TX2N",
+      "3": "GND",
+      "4": "UP_RX2P",
+      "5": "UP_RX2N",
+      "6": null,
+      "7": null,
+      "8": "GND",
+      "9": null,
+      "10": null
+    },
+    "value": "TPD4E05U06DQA",
+    "mpn": "TPD4E05U06DQAR",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "D1202",
+    "kind": "TPD4E05U06DQA",
+    "nets": {
+      "1": "UP_DP",
+      "2": "UP_DM",
+      "3": "GND",
+      "4": null,
+      "5": null,
+      "6": null,
+      "7": null,
+      "8": "GND",
+      "9": null,
+      "10": null
+    },
+    "value": "TPD4E05U06DQA",
+    "mpn": "TPD4E05U06DQAR",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "MCU",
+    "ref": "D1203",
+    "kind": "TVS_Bidirectional",
+    "nets": {
+      "1": "UP_VBUS",
+      "2": "GND"
+    },
+    "value": "SMBJ22CA",
+    "mpn": "SMBJ22CA",
+    "lcsc": "",
+    "dnp": false,
+    "physical": true,
+    "footprint": "Diode_SMD:D_SMB",
+    "block": "USB_Upstream"
+  },
+  {
+    "sheet": "USB_Hub",
     "ref": "U501",
     "kind": "USB7206CT_KDX",
     "nets": {
@@ -866,10 +2530,11 @@
     "lcsc": "C3210691",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_DFN_QFN:VQFN-100-1EP_12x12mm_P0.4mm_EP8x8mm"
+    "footprint": "Package_DFN_QFN:VQFN-100-1EP_12x12mm_P0.4mm_EP8x8mm",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "Y501",
     "kind": "Crystal",
     "nets": {
@@ -883,10 +2548,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm"
+    "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "C501",
     "kind": "C",
     "nets": {
@@ -898,10 +2564,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "C502",
     "kind": "C",
     "nets": {
@@ -913,10 +2580,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R501",
     "kind": "R",
     "nets": {
@@ -928,10 +2596,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R502",
     "kind": "R",
     "nets": {
@@ -943,10 +2612,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R503",
     "kind": "R",
     "nets": {
@@ -958,10 +2628,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R504",
     "kind": "R",
     "nets": {
@@ -973,10 +2644,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R505",
     "kind": "R",
     "nets": {
@@ -988,10 +2660,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R506",
     "kind": "R",
     "nets": {
@@ -1003,10 +2676,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R507",
     "kind": "R",
     "nets": {
@@ -1018,10 +2692,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R508",
     "kind": "R",
     "nets": {
@@ -1033,10 +2708,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R509",
     "kind": "R",
     "nets": {
@@ -1048,10 +2724,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R510",
     "kind": "R",
     "nets": {
@@ -1063,10 +2740,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R511",
     "kind": "R",
     "nets": {
@@ -1078,10 +2756,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R512",
     "kind": "R",
     "nets": {
@@ -1093,10 +2772,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R513",
     "kind": "R",
     "nets": {
@@ -1108,10 +2788,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R514",
     "kind": "R",
     "nets": {
@@ -1123,10 +2804,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R515",
     "kind": "R",
     "nets": {
@@ -1138,10 +2820,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R516",
     "kind": "R",
     "nets": {
@@ -1153,10 +2836,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R517",
     "kind": "R",
     "nets": {
@@ -1168,10 +2852,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R518",
     "kind": "R",
     "nets": {
@@ -1183,10 +2868,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R519",
     "kind": "R",
     "nets": {
@@ -1198,10 +2884,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R520",
     "kind": "R",
     "nets": {
@@ -1213,10 +2900,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R521",
     "kind": "R",
     "nets": {
@@ -1228,10 +2916,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R522",
     "kind": "R",
     "nets": {
@@ -1243,10 +2932,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R523",
     "kind": "R",
     "nets": {
@@ -1258,10 +2948,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub",
+    "sheet": "USB_Hub",
     "ref": "R524",
     "kind": "R",
     "nets": {
@@ -1273,10 +2964,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "Hub"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C503",
     "kind": "C",
     "nets": {
@@ -1288,10 +2980,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C504",
     "kind": "C",
     "nets": {
@@ -1303,10 +2996,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C505",
     "kind": "C",
     "nets": {
@@ -1318,10 +3012,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C506",
     "kind": "C",
     "nets": {
@@ -1333,10 +3028,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C507",
     "kind": "C",
     "nets": {
@@ -1348,10 +3044,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C508",
     "kind": "C",
     "nets": {
@@ -1363,10 +3060,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C509",
     "kind": "C",
     "nets": {
@@ -1378,10 +3076,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C510",
     "kind": "C",
     "nets": {
@@ -1393,10 +3092,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C511",
     "kind": "C",
     "nets": {
@@ -1408,10 +3108,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C512",
     "kind": "C",
     "nets": {
@@ -1423,10 +3124,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C513",
     "kind": "C",
     "nets": {
@@ -1438,10 +3140,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C514",
     "kind": "C",
     "nets": {
@@ -1453,10 +3156,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C515",
     "kind": "C",
     "nets": {
@@ -1468,10 +3172,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C516",
     "kind": "C",
     "nets": {
@@ -1483,10 +3188,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C517",
     "kind": "C",
     "nets": {
@@ -1498,10 +3204,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C518",
     "kind": "C",
     "nets": {
@@ -1513,10 +3220,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C519",
     "kind": "C",
     "nets": {
@@ -1528,10 +3236,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C520",
     "kind": "C",
     "nets": {
@@ -1543,10 +3252,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C521",
     "kind": "C",
     "nets": {
@@ -1558,10 +3268,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C522",
     "kind": "C",
     "nets": {
@@ -1573,10 +3284,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C523",
     "kind": "C",
     "nets": {
@@ -1588,10 +3300,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C524",
     "kind": "C",
     "nets": {
@@ -1603,10 +3316,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C525",
     "kind": "C",
     "nets": {
@@ -1618,10 +3332,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C526",
     "kind": "C",
     "nets": {
@@ -1633,10 +3348,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C527",
     "kind": "C",
     "nets": {
@@ -1648,10 +3364,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C528",
     "kind": "C",
     "nets": {
@@ -1663,10 +3380,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C529",
     "kind": "C",
     "nets": {
@@ -1678,10 +3396,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C530",
     "kind": "C",
     "nets": {
@@ -1693,10 +3412,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C531",
     "kind": "C",
     "nets": {
@@ -1708,10 +3428,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C532",
     "kind": "C",
     "nets": {
@@ -1723,10 +3444,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C533",
     "kind": "C",
     "nets": {
@@ -1738,10 +3460,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "Hub_Decoupling",
+    "sheet": "USB_Hub",
     "ref": "C534",
     "kind": "C",
     "nets": {
@@ -1753,10 +3476,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "Hub_Decoupling"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "J600",
     "kind": "USB_C_Receptacle",
     "nets": {
@@ -1791,10 +3515,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "U600",
     "kind": "HD3SS3220IRNHR",
     "nets": {
@@ -1835,10 +3560,11 @@
     "lcsc": "C701817",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm"
+    "footprint": "Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "U602",
     "kind": "74LVC1G04",
     "nets": {
@@ -1853,10 +3579,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_TO_SOT_SMD:SOT-23-5"
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "U603",
     "kind": "74LVC1G08",
     "nets": {
@@ -1871,10 +3598,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_TO_SOT_SMD:SOT-23-5"
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "U601",
     "kind": "TPS259470LRPW",
     "nets": {
@@ -1894,10 +3622,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R601",
     "kind": "R",
     "nets": {
@@ -1909,10 +3638,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R602",
     "kind": "R",
     "nets": {
@@ -1924,10 +3654,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R603",
     "kind": "R",
     "nets": {
@@ -1939,10 +3670,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "C601",
     "kind": "C",
     "nets": {
@@ -1954,10 +3686,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "C602",
     "kind": "C",
     "nets": {
@@ -1969,10 +3702,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "C603",
     "kind": "C",
     "nets": {
@@ -1984,10 +3718,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R604",
     "kind": "R",
     "nets": {
@@ -1999,10 +3734,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R605",
     "kind": "R",
     "nets": {
@@ -2014,10 +3750,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R606",
     "kind": "R",
     "nets": {
@@ -2029,10 +3766,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R607",
     "kind": "R",
     "nets": {
@@ -2044,10 +3782,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R608",
     "kind": "R",
     "nets": {
@@ -2059,10 +3798,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R609",
     "kind": "R",
     "nets": {
@@ -2074,10 +3814,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R610",
     "kind": "R",
     "nets": {
@@ -2089,10 +3830,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "R611",
     "kind": "R",
     "nets": {
@@ -2104,10 +3846,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_1206_3216Metric"
+    "footprint": "Resistor_SMD:R_1206_3216Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "Q600",
     "kind": "2N7002",
     "nets": {
@@ -2120,10 +3863,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_TO_SOT_SMD:SOT-23"
+    "footprint": "Package_TO_SOT_SMD:SOT-23",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "C604",
     "kind": "C",
     "nets": {
@@ -2135,10 +3879,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "C605",
     "kind": "C",
     "nets": {
@@ -2150,10 +3895,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "C606",
     "kind": "C",
     "nets": {
@@ -2165,10 +3911,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "C607",
     "kind": "C",
     "nets": {
@@ -2180,10 +3927,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "C608",
     "kind": "C",
     "nets": {
@@ -2195,10 +3943,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "D600",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -2218,10 +3967,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "D601",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -2241,10 +3991,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "D602",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -2264,10 +4015,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C1",
+    "sheet": "USB_Hub",
     "ref": "D609",
     "kind": "TVS_Bidirectional",
     "nets": {
@@ -2279,10 +4031,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Diode_SMD:D_SMB"
+    "footprint": "Diode_SMD:D_SMB",
+    "block": "USB_C1"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "J700",
     "kind": "USB_C_Receptacle",
     "nets": {
@@ -2317,10 +4070,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "U700",
     "kind": "HD3SS3220IRNHR",
     "nets": {
@@ -2361,10 +4115,11 @@
     "lcsc": "C701817",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm"
+    "footprint": "Package_DFN_QFN:Texas_RNH0030A_WQFN-30-1EP_2.5x4.5mm_P0.4mm_EP1.2x3.2mm",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "U702",
     "kind": "74LVC1G04",
     "nets": {
@@ -2379,10 +4134,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_TO_SOT_SMD:SOT-23-5"
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "U703",
     "kind": "74LVC1G08",
     "nets": {
@@ -2397,10 +4153,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_TO_SOT_SMD:SOT-23-5"
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "U701",
     "kind": "TPS259470LRPW",
     "nets": {
@@ -2420,10 +4177,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R701",
     "kind": "R",
     "nets": {
@@ -2435,10 +4193,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R702",
     "kind": "R",
     "nets": {
@@ -2450,10 +4209,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R703",
     "kind": "R",
     "nets": {
@@ -2465,10 +4225,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "C701",
     "kind": "C",
     "nets": {
@@ -2480,10 +4241,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "C702",
     "kind": "C",
     "nets": {
@@ -2495,10 +4257,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "C703",
     "kind": "C",
     "nets": {
@@ -2510,10 +4273,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R704",
     "kind": "R",
     "nets": {
@@ -2525,10 +4289,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R705",
     "kind": "R",
     "nets": {
@@ -2540,10 +4305,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R706",
     "kind": "R",
     "nets": {
@@ -2555,10 +4321,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R707",
     "kind": "R",
     "nets": {
@@ -2570,10 +4337,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R708",
     "kind": "R",
     "nets": {
@@ -2585,10 +4353,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R709",
     "kind": "R",
     "nets": {
@@ -2600,10 +4369,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R710",
     "kind": "R",
     "nets": {
@@ -2615,10 +4385,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "R711",
     "kind": "R",
     "nets": {
@@ -2630,10 +4401,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_1206_3216Metric"
+    "footprint": "Resistor_SMD:R_1206_3216Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "Q700",
     "kind": "2N7002",
     "nets": {
@@ -2646,10 +4418,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_TO_SOT_SMD:SOT-23"
+    "footprint": "Package_TO_SOT_SMD:SOT-23",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "C704",
     "kind": "C",
     "nets": {
@@ -2661,10 +4434,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "C705",
     "kind": "C",
     "nets": {
@@ -2676,10 +4450,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "C706",
     "kind": "C",
     "nets": {
@@ -2691,10 +4466,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "C707",
     "kind": "C",
     "nets": {
@@ -2706,10 +4482,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "C708",
     "kind": "C",
     "nets": {
@@ -2721,10 +4498,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "D700",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -2744,10 +4522,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "D701",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -2767,10 +4546,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "D702",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -2790,10 +4570,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_C2",
+    "sheet": "USB_Hub",
     "ref": "D709",
     "kind": "TVS_Bidirectional",
     "nets": {
@@ -2805,10 +4586,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Diode_SMD:D_SMB"
+    "footprint": "Diode_SMD:D_SMB",
+    "block": "USB_C2"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "J800",
     "kind": "USB3_A",
     "nets": {
@@ -2828,10 +4610,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "U801",
     "kind": "TPS259470LRPW",
     "nets": {
@@ -2851,10 +4634,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "R801",
     "kind": "R",
     "nets": {
@@ -2866,10 +4650,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "R802",
     "kind": "R",
     "nets": {
@@ -2881,10 +4666,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "R803",
     "kind": "R",
     "nets": {
@@ -2896,10 +4682,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "C801",
     "kind": "C",
     "nets": {
@@ -2911,10 +4698,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "C802",
     "kind": "C",
     "nets": {
@@ -2926,10 +4714,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "C803",
     "kind": "C",
     "nets": {
@@ -2941,10 +4730,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "C804",
     "kind": "C",
     "nets": {
@@ -2956,10 +4746,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "D800",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -2979,10 +4770,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "D801",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -3002,10 +4794,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A1",
+    "sheet": "USB_Hub",
     "ref": "D809",
     "kind": "TVS_Bidirectional",
     "nets": {
@@ -3017,10 +4810,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Diode_SMD:D_SMB"
+    "footprint": "Diode_SMD:D_SMB",
+    "block": "USB_A1"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "J900",
     "kind": "USB3_A",
     "nets": {
@@ -3040,10 +4834,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "U901",
     "kind": "TPS259470LRPW",
     "nets": {
@@ -3063,10 +4858,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "R901",
     "kind": "R",
     "nets": {
@@ -3078,10 +4874,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "R902",
     "kind": "R",
     "nets": {
@@ -3093,10 +4890,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "R903",
     "kind": "R",
     "nets": {
@@ -3108,10 +4906,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "C901",
     "kind": "C",
     "nets": {
@@ -3123,10 +4922,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "C902",
     "kind": "C",
     "nets": {
@@ -3138,10 +4938,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "C903",
     "kind": "C",
     "nets": {
@@ -3153,10 +4954,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "C904",
     "kind": "C",
     "nets": {
@@ -3168,10 +4970,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "D900",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -3191,10 +4994,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "D901",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -3214,10 +5018,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A2",
+    "sheet": "USB_Hub",
     "ref": "D909",
     "kind": "TVS_Bidirectional",
     "nets": {
@@ -3229,10 +5034,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Diode_SMD:D_SMB"
+    "footprint": "Diode_SMD:D_SMB",
+    "block": "USB_A2"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "J1000",
     "kind": "USB3_A",
     "nets": {
@@ -3252,10 +5058,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "U1001",
     "kind": "TPS259470LRPW",
     "nets": {
@@ -3275,10 +5082,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "R1001",
     "kind": "R",
     "nets": {
@@ -3290,10 +5098,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "R1002",
     "kind": "R",
     "nets": {
@@ -3305,10 +5114,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "R1003",
     "kind": "R",
     "nets": {
@@ -3320,10 +5130,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "C1001",
     "kind": "C",
     "nets": {
@@ -3335,10 +5146,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "C1002",
     "kind": "C",
     "nets": {
@@ -3350,10 +5162,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "C1003",
     "kind": "C",
     "nets": {
@@ -3365,10 +5178,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "C1004",
     "kind": "C",
     "nets": {
@@ -3380,10 +5194,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "D1000",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -3403,10 +5218,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "D1001",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -3426,10 +5242,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A3",
+    "sheet": "USB_Hub",
     "ref": "D1009",
     "kind": "TVS_Bidirectional",
     "nets": {
@@ -3441,10 +5258,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Diode_SMD:D_SMB"
+    "footprint": "Diode_SMD:D_SMB",
+    "block": "USB_A3"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "J1100",
     "kind": "USB_A",
     "nets": {
@@ -3459,10 +5277,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "U1101",
     "kind": "TPS259470LRPW",
     "nets": {
@@ -3482,10 +5301,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "R1101",
     "kind": "R",
     "nets": {
@@ -3497,10 +5317,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "R1102",
     "kind": "R",
     "nets": {
@@ -3512,10 +5333,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "R1103",
     "kind": "R",
     "nets": {
@@ -3527,10 +5349,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "C1101",
     "kind": "C",
     "nets": {
@@ -3542,10 +5365,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "C1102",
     "kind": "C",
     "nets": {
@@ -3557,10 +5381,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "C1103",
     "kind": "C",
     "nets": {
@@ -3572,10 +5397,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "C1104",
     "kind": "C",
     "nets": {
@@ -3587,10 +5413,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": ""
+    "footprint": "",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "D1100",
     "kind": "TPD4E05U06DQA",
     "nets": {
@@ -3610,10 +5437,11 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
+    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+    "block": "USB_A4"
   },
   {
-    "sheet": "USB_A4",
+    "sheet": "USB_Hub",
     "ref": "D1109",
     "kind": "TVS_Bidirectional",
     "nets": {
@@ -3625,1533 +5453,7 @@
     "lcsc": "",
     "dnp": false,
     "physical": true,
-    "footprint": "Diode_SMD:D_SMB"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "U101",
-    "kind": "LM51772RHAR",
-    "nets": {
-      "1": "PD_VCC1",
-      "2": "PD_SS",
-      "3": "GND",
-      "4": "GND",
-      "5": "I2C_SDA",
-      "6": "I2C_SCL",
-      "7": "PD_VCC2",
-      "8": "GND",
-      "9": "GND",
-      "10": "GND",
-      "11": "PD_NFLT",
-      "12": "PD_RT",
-      "13": "PD_COMP",
-      "14": "PD_VCC2",
-      "15": "GND",
-      "16": "PD_VCC2",
-      "17": "GND",
-      "18": "PD_RAW",
-      "19": "GND",
-      "20": "GND",
-      "21": "PD_CSB",
-      "22": "PD_CSA",
-      "23": "PD_SW1",
-      "24": "PD_HO1",
-      "25": "PD_HB1",
-      "26": null,
-      "27": "PD_LO1",
-      "28": "GND",
-      "29": "PD_VCC2",
-      "30": "PD_LO2",
-      "31": "PD_HB2",
-      "32": "PD_HO2",
-      "33": "PD_SW2",
-      "34": null,
-      "35": null,
-      "36": "VIN12",
-      "37": "PD_EN",
-      "38": "PD_NRST",
-      "39": null,
-      "40": "VIN12",
-      "41": "GND"
-    },
-    "value": "LM51772RHAR",
-    "mpn": "LM51772RHAR",
-    "lcsc": "C41383743",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "Q101",
-    "kind": "CSD17577Q3A",
-    "nets": {
-      "1": "PD_SW1",
-      "2": "PD_SW1",
-      "3": "PD_SW1",
-      "4": "PD_HO1",
-      "5": "VIN12"
-    },
-    "value": "CSD17577Q3A",
-    "mpn": "CSD17577Q3A",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "Q102",
-    "kind": "CSD17577Q3A",
-    "nets": {
-      "1": "GND",
-      "2": "GND",
-      "3": "GND",
-      "4": "PD_LO1",
-      "5": "PD_SW1"
-    },
-    "value": "CSD17577Q3A",
-    "mpn": "CSD17577Q3A",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "Q103",
-    "kind": "CSD17577Q3A",
-    "nets": {
-      "1": "PD_SW2",
-      "2": "PD_SW2",
-      "3": "PD_SW2",
-      "4": "PD_HO2",
-      "5": "PD_RAW"
-    },
-    "value": "CSD17577Q3A",
-    "mpn": "CSD17577Q3A",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "Q104",
-    "kind": "CSD17577Q3A",
-    "nets": {
-      "1": "GND",
-      "2": "GND",
-      "3": "GND",
-      "4": "PD_LO2",
-      "5": "PD_SW2"
-    },
-    "value": "CSD17577Q3A",
-    "mpn": "CSD17577Q3A",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "R101",
-    "kind": "R",
-    "nets": {
-      "1": "PD_SW1",
-      "2": "PD_L_IN"
-    },
-    "value": "2m 2W - REVIEW OCP",
-    "mpn": "WSR22L000FEA",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "L101",
-    "kind": "L",
-    "nets": {
-      "1": "PD_L_IN",
-      "2": "PD_SW2"
-    },
-    "value": "2.2uH 12.12A / Isat 18.18A",
-    "mpn": "APS1040M2R2A",
-    "lcsc": "C47327242",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "R102",
-    "kind": "R",
-    "nets": {
-      "1": "PD_SW1",
-      "2": "PD_CSA"
-    },
-    "value": "10",
-    "mpn": "CRCW060310R0FKEA",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "R103",
-    "kind": "R",
-    "nets": {
-      "1": "PD_L_IN",
-      "2": "PD_CSB"
-    },
-    "value": "10",
-    "mpn": "CRCW060310R0FKEA",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C101",
-    "kind": "C",
-    "nets": {
-      "1": "PD_CSA",
-      "2": "PD_CSB"
-    },
-    "value": "180pF",
-    "mpn": "C0805C181K5GACTU",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0805_2012Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "R104",
-    "kind": "R",
-    "nets": {
-      "1": "PD_RT",
-      "2": "GND"
-    },
-    "value": "51k",
-    "mpn": "RC0603FR-0751KL",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "R105",
-    "kind": "R",
-    "nets": {
-      "1": "PD_COMP_MID",
-      "2": "GND"
-    },
-    "value": "4.75k - REVIEW LOOP",
-    "mpn": "CRCW04024K75FKED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0402_1005Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C102",
-    "kind": "C",
-    "nets": {
-      "1": "PD_COMP",
-      "2": "PD_COMP_MID"
-    },
-    "value": "120nF - REVIEW LOOP",
-    "mpn": "GRM188R71C124KA01D",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C103",
-    "kind": "C",
-    "nets": {
-      "1": "PD_COMP",
-      "2": "GND"
-    },
-    "value": "220pF - REVIEW LOOP",
-    "mpn": "CC0402JRNPO8BN221",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0402_1005Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C104",
-    "kind": "C",
-    "nets": {
-      "1": "PD_SS",
-      "2": "GND"
-    },
-    "value": "33nF",
-    "mpn": "GRM155R61C333KA01D",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0402_1005Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C105",
-    "kind": "C",
-    "nets": {
-      "1": "PD_VCC1",
-      "2": "GND"
-    },
-    "value": "22uF 6.3V",
-    "mpn": "GRM188R60J226MEA0D",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C106",
-    "kind": "C",
-    "nets": {
-      "1": "PD_VCC2",
-      "2": "GND"
-    },
-    "value": "22uF 6.3V",
-    "mpn": "GRM188R60J226MEA0D",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C107",
-    "kind": "C",
-    "nets": {
-      "1": "PD_HB1",
-      "2": "PD_SW1"
-    },
-    "value": "100nF 16V",
-    "mpn": "EMK107B7104KA-T",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C108",
-    "kind": "C",
-    "nets": {
-      "1": "PD_HB2",
-      "2": "PD_SW2"
-    },
-    "value": "100nF 16V",
-    "mpn": "EMK107B7104KA-T",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C109",
-    "kind": "C",
-    "nets": {
-      "1": "VIN12",
-      "2": "GND"
-    },
-    "value": "100nF 25V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C110",
-    "kind": "C",
-    "nets": {
-      "1": "VIN12",
-      "2": "GND"
-    },
-    "value": "10uF 25V",
-    "mpn": "MSAST32NSB5106KTNA01",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_1210_3225Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C111",
-    "kind": "C",
-    "nets": {
-      "1": "VIN12",
-      "2": "GND"
-    },
-    "value": "27uF 25V",
-    "mpn": "25SVPF27MX",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C112",
-    "kind": "C",
-    "nets": {
-      "1": "PD_RAW",
-      "2": "GND"
-    },
-    "value": "120uF 35V",
-    "mpn": "35SVPF120M",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C113",
-    "kind": "C",
-    "nets": {
-      "1": "PD_RAW",
-      "2": "GND"
-    },
-    "value": "120uF 35V",
-    "mpn": "35SVPF120M",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C114",
-    "kind": "C",
-    "nets": {
-      "1": "PD_RAW",
-      "2": "GND"
-    },
-    "value": "10uF 50V",
-    "mpn": "C3225X7R1H106M250AC",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_1210_3225Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "C115",
-    "kind": "C",
-    "nets": {
-      "1": "PD_RAW",
-      "2": "GND"
-    },
-    "value": "10uF 50V",
-    "mpn": "C3225X7R1H106M250AC",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_1210_3225Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "R106",
-    "kind": "R",
-    "nets": {
-      "1": "V3V3",
-      "2": "PD_NFLT"
-    },
-    "value": "10k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "R107",
-    "kind": "R",
-    "nets": {
-      "1": "PD_EN",
-      "2": "GND"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_BuckBoost",
-    "ref": "R108",
-    "kind": "R",
-    "nets": {
-      "1": "PD_NRST",
-      "2": "GND"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "J1200",
-    "kind": "USB_C_Receptacle",
-    "nets": {
-      "S1": "GND",
-      "A1": "GND",
-      "A12": "GND",
-      "B1": "GND",
-      "B12": "GND",
-      "A4": "UP_VBUS",
-      "A9": "UP_VBUS",
-      "B4": "UP_VBUS",
-      "B9": "UP_VBUS",
-      "A5": "UP_CC1",
-      "B5": "UP_CC2",
-      "A7": "UP_DM",
-      "B7": "UP_DM",
-      "A6": "UP_DP",
-      "B6": "UP_DP",
-      "B10": "UP_RX1N",
-      "B11": "UP_RX1P",
-      "A3": "UP_TX1N",
-      "A2": "UP_TX1P",
-      "A10": "UP_RX2N",
-      "A11": "UP_RX2P",
-      "B3": "UP_TX2N",
-      "B2": "UP_TX2P",
-      "A8": null,
-      "B8": null
-    },
-    "value": "USB-C 24-pin 5A / 10Gbps",
-    "mpn": "CONNECTOR_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "U1200",
-    "kind": "TCPP03-M20",
-    "nets": {
-      "1": "MCU_CC1",
-      "2": "V5",
-      "3": "MCU_CC2",
-      "4": "PD_IANA",
-      "5": "UP_GATE",
-      "6": "UP_FET_SOURCE",
-      "7": null,
-      "8": "GND",
-      "9": "UP_VBUS",
-      "10": "UP_ISENSE",
-      "11": "UP_OVP",
-      "12": "GND",
-      "13": "UP_CC2",
-      "14": "UP_CBIAS",
-      "15": "UP_CC1",
-      "16": "GND",
-      "17": "I2C_SDA",
-      "18": "I2C_SCL",
-      "19": "UP_FAULT_N",
-      "20": "TCPP_EN",
-      "21": "GND"
-    },
-    "value": "TCPP03-M20",
-    "mpn": "TCPP03-M20",
-    "lcsc": "C3662955",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_DFN_QFN:TQFN-20-1EP_4x4mm_P0.5mm_EP2.1x2.1mm"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "Q1200",
-    "kind": "CSD17577Q3A",
-    "nets": {
-      "1": "UP_FET_SOURCE",
-      "2": "UP_FET_SOURCE",
-      "3": "UP_FET_SOURCE",
-      "4": "UP_GATE",
-      "5": "PD_RAW"
-    },
-    "value": "CSD17577Q3A",
-    "mpn": "CSD17577Q3A",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "Q1201",
-    "kind": "CSD17577Q3A",
-    "nets": {
-      "1": "UP_FET_SOURCE",
-      "2": "UP_FET_SOURCE",
-      "3": "UP_FET_SOURCE",
-      "4": "UP_GATE",
-      "5": "UP_ISENSE"
-    },
-    "value": "CSD17577Q3A",
-    "mpn": "CSD17577Q3A",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:VSON-8_3.3x3.3mm_P0.65mm_NexFET"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1200",
-    "kind": "R",
-    "nets": {
-      "1": "UP_ISENSE",
-      "2": "UP_VBUS"
-    },
-    "value": "7m 1W 1%",
-    "mpn": "WSL25127L000FEA",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_2512_6332Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1201",
-    "kind": "R",
-    "nets": {
-      "1": "UP_VBUS",
-      "2": "UP_OVP"
-    },
-    "value": "10k 1%",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1202",
-    "kind": "R",
-    "nets": {
-      "1": "UP_OVP",
-      "2": "GND"
-    },
-    "value": "560 1%",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1203",
-    "kind": "R",
-    "nets": {
-      "1": "V3V3",
-      "2": "UP_FAULT_N"
-    },
-    "value": "10k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1204",
-    "kind": "R",
-    "nets": {
-      "1": "TCPP_EN",
-      "2": "GND"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1205",
-    "kind": "R",
-    "nets": {
-      "1": "UP_GATE",
-      "2": "UP_FET_SOURCE"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "C1200",
-    "kind": "C",
-    "nets": {
-      "1": "UP_CBIAS",
-      "2": "GND"
-    },
-    "value": "100nF 50V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "C1201",
-    "kind": "C",
-    "nets": {
-      "1": "UP_CC1",
-      "2": "GND"
-    },
-    "value": "330pF 50V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "C1202",
-    "kind": "C",
-    "nets": {
-      "1": "UP_CC2",
-      "2": "GND"
-    },
-    "value": "330pF 50V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "C1203",
-    "kind": "C",
-    "nets": {
-      "1": "UP_VBUS",
-      "2": "GND"
-    },
-    "value": "2.2uF 50V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "C1204",
-    "kind": "C",
-    "nets": {
-      "1": "V5",
-      "2": "GND"
-    },
-    "value": "100nF 10V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "C1205",
-    "kind": "C",
-    "nets": {
-      "1": "V5",
-      "2": "GND"
-    },
-    "value": "1uF 10V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "U1201",
-    "kind": "HD3SS3212IRKSR",
-    "nets": {
-      "1": null,
-      "2": "UP_MUX_OEN",
-      "3": "UP_TXP_AC",
-      "4": "UP_TXN_AC",
-      "5": "GND",
-      "6": "V3V3",
-      "7": "UP_RXP",
-      "8": "UP_RXN",
-      "9": "UP_MUX_SEL",
-      "10": null,
-      "11": "GND",
-      "12": "UP_RX2N",
-      "13": "UP_RX2P",
-      "14": "UP_TX2N",
-      "15": "UP_TX2P",
-      "16": "UP_RX1N",
-      "17": "UP_RX1P",
-      "18": "UP_TX1N",
-      "19": "UP_TX1P",
-      "20": "GND",
-      "21": "GND"
-    },
-    "value": "HD3SS3212IRKSR",
-    "mpn": "HD3SS3212IRKSR",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1206",
-    "kind": "R",
-    "nets": {
-      "1": "V3V3",
-      "2": "UP_MUX_OEN"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1207",
-    "kind": "R",
-    "nets": {
-      "1": "UP_MUX_SEL",
-      "2": "GND"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "C1206",
-    "kind": "C",
-    "nets": {
-      "1": "V3V3",
-      "2": "GND"
-    },
-    "value": "100nF",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1208",
-    "kind": "R",
-    "nets": {
-      "1": "UP_VBUS",
-      "2": "UP_ADC"
-    },
-    "value": "100k 0.1%",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "R1209",
-    "kind": "R",
-    "nets": {
-      "1": "UP_ADC",
-      "2": "GND"
-    },
-    "value": "10k 0.1%",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "C1207",
-    "kind": "C",
-    "nets": {
-      "1": "UP_ADC",
-      "2": "GND"
-    },
-    "value": "1nF",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "D1200",
-    "kind": "TPD4E05U06DQA",
-    "nets": {
-      "1": "UP_TX1P",
-      "2": "UP_TX1N",
-      "3": "GND",
-      "4": "UP_RX1P",
-      "5": "UP_RX1N",
-      "6": null,
-      "7": null,
-      "8": "GND",
-      "9": null,
-      "10": null
-    },
-    "value": "TPD4E05U06DQA",
-    "mpn": "TPD4E05U06DQAR",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "D1201",
-    "kind": "TPD4E05U06DQA",
-    "nets": {
-      "1": "UP_TX2P",
-      "2": "UP_TX2N",
-      "3": "GND",
-      "4": "UP_RX2P",
-      "5": "UP_RX2N",
-      "6": null,
-      "7": null,
-      "8": "GND",
-      "9": null,
-      "10": null
-    },
-    "value": "TPD4E05U06DQA",
-    "mpn": "TPD4E05U06DQAR",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "D1202",
-    "kind": "TPD4E05U06DQA",
-    "nets": {
-      "1": "UP_DP",
-      "2": "UP_DM",
-      "3": "GND",
-      "4": null,
-      "5": null,
-      "6": null,
-      "7": null,
-      "8": "GND",
-      "9": null,
-      "10": null
-    },
-    "value": "TPD4E05U06DQA",
-    "mpn": "TPD4E05U06DQAR",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
-  },
-  {
-    "sheet": "USB_Upstream",
-    "ref": "D1203",
-    "kind": "TVS_Bidirectional",
-    "nets": {
-      "1": "UP_VBUS",
-      "2": "GND"
-    },
-    "value": "SMBJ22CA",
-    "mpn": "SMBJ22CA",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Diode_SMD:D_SMB"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "U1300",
-    "kind": "STM32G071KBT6N",
-    "nets": {
-      "1": "3V3_PG",
-      "2": null,
-      "3": null,
-      "4": "V3V3",
-      "5": "GND",
-      "6": "MCU_NRST",
-      "7": "UP_ADC",
-      "8": "PD_IANA",
-      "9": "PD_RAW_ADC",
-      "10": "GPU1_ADC",
-      "11": "GPU2_ADC",
-      "12": "EPS_ADC",
-      "13": "HUB_RESET_N",
-      "14": "HUB_VBUS_DET",
-      "15": "PD_EN",
-      "16": "PD_NRST",
-      "17": "MCU_CC2",
-      "18": "MCU_CC1",
-      "19": "GND",
-      "20": "TCPP_EN",
-      "21": "GND",
-      "22": "P1_ID_N",
-      "23": "P2_ID_N",
-      "24": "SWDIO",
-      "25": "SWCLK",
-      "26": "UP_FAULT_N",
-      "27": "PD_NFLT",
-      "28": "UP_MUX_SEL",
-      "29": "UP_MUX_OEN",
-      "30": "I2C_SCL",
-      "31": "I2C_SDA",
-      "32": "CORE_PG"
-    },
-    "value": "STM32G071KBT6N",
-    "mpn": "STM32G071KBT6N",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Package_QFP:LQFP-32_7x7mm_P0.8mm"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "J1300",
-    "kind": "SWD_5",
-    "nets": {
-      "1": "V3V3",
-      "2": "SWDIO",
-      "3": "SWCLK",
-      "4": "MCU_NRST",
-      "5": "GND"
-    },
-    "value": "SWD_5",
-    "mpn": "SWD 1x5 2.54mm",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "SW1300",
-    "kind": "Reset_Button",
-    "nets": {
-      "1": "MCU_NRST",
-      "2": "GND"
-    },
-    "value": "Reset_Button",
-    "mpn": "RESET_SWITCH_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "R1300",
-    "kind": "R",
-    "nets": {
-      "1": "V3V3",
-      "2": "MCU_NRST"
-    },
-    "value": "10k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "C1300",
-    "kind": "C",
-    "nets": {
-      "1": "MCU_NRST",
-      "2": "GND"
-    },
-    "value": "100nF",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "C1301",
-    "kind": "C",
-    "nets": {
-      "1": "V3V3",
-      "2": "GND"
-    },
-    "value": "100nF",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "C1302",
-    "kind": "C",
-    "nets": {
-      "1": "V3V3",
-      "2": "GND"
-    },
-    "value": "4.7uF 6.3V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "R1301",
-    "kind": "R",
-    "nets": {
-      "1": "V3V3",
-      "2": "I2C_SCL"
-    },
-    "value": "4.7k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "R1302",
-    "kind": "R",
-    "nets": {
-      "1": "V3V3",
-      "2": "I2C_SDA"
-    },
-    "value": "4.7k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "R1303",
-    "kind": "R",
-    "nets": {
-      "1": "PD_RAW",
-      "2": "PD_RAW_ADC"
-    },
-    "value": "100k 0.1%",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "R1304",
-    "kind": "R",
-    "nets": {
-      "1": "PD_RAW_ADC",
-      "2": "GND"
-    },
-    "value": "10k 0.1%",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "PD_MCU",
-    "ref": "C1303",
-    "kind": "C",
-    "nets": {
-      "1": "PD_RAW_ADC",
-      "2": "GND"
-    },
-    "value": "1nF",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "J1401",
-    "kind": "GPU_8PIN",
-    "nets": {
-      "1": "GPU1_12V",
-      "2": "GPU1_12V",
-      "3": "GPU1_12V",
-      "4": "GND",
-      "5": "GND",
-      "6": "GND",
-      "7": "GND",
-      "8": "GND"
-    },
-    "value": "GPU_8PIN",
-    "mpn": "PCIe_GPU_8PIN_KEYED_HEADER_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "F1401",
-    "kind": "F",
-    "nets": {
-      "1": "GPU1_12V",
-      "2": "GPU_PAIR"
-    },
-    "value": "12A >=32VDC",
-    "mpn": "FUSE_AND_HOLDER_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "J1402",
-    "kind": "GPU_8PIN",
-    "nets": {
-      "1": "GPU2_12V",
-      "2": "GPU2_12V",
-      "3": "GPU2_12V",
-      "4": "GND",
-      "5": "GND",
-      "6": "GND",
-      "7": "GND",
-      "8": "GND"
-    },
-    "value": "GPU_8PIN",
-    "mpn": "PCIe_GPU_8PIN_KEYED_HEADER_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "F1402",
-    "kind": "F",
-    "nets": {
-      "1": "GPU2_12V",
-      "2": "GPU_PAIR"
-    },
-    "value": "12A >=32VDC",
-    "mpn": "FUSE_AND_HOLDER_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "J1403",
-    "kind": "EPS_8PIN",
-    "nets": {
-      "1": "GND",
-      "2": "GND",
-      "3": "GND",
-      "4": "GND",
-      "5": "EPS_12V",
-      "6": "EPS_12V",
-      "7": "EPS_12V",
-      "8": "EPS_12V"
-    },
-    "value": "EPS_8PIN",
-    "mpn": "EPS_CPU_8PIN_KEYED_HEADER_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "F1403",
-    "kind": "F",
-    "nets": {
-      "1": "EPS_12V",
-      "2": "EPS_FUSED"
-    },
-    "value": "25A >=32VDC",
-    "mpn": "FUSE_AND_HOLDER_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "SW1400",
-    "kind": "Power_Selector",
-    "nets": {
-      "1": "GPU_PAIR",
-      "2": "VIN12",
-      "3": "EPS_FUSED"
-    },
-    "value": "SPDT 30A >=24VDC BBM",
-    "mpn": "DC_POWER_SELECTOR_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "C1400",
-    "kind": "C",
-    "nets": {
-      "1": "VIN12",
-      "2": "GND"
-    },
-    "value": "100uF 25V polymer",
-    "mpn": "INPUT_BULK_CAP_SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "C1401",
-    "kind": "C",
-    "nets": {
-      "1": "VIN12",
-      "2": "GND"
-    },
-    "value": "100nF 25V",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "R1400",
-    "kind": "R",
-    "nets": {
-      "1": "GPU1_12V",
-      "2": "GPU1_ADC"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "R1401",
-    "kind": "R",
-    "nets": {
-      "1": "GPU1_ADC",
-      "2": "GND"
-    },
-    "value": "10k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "C1402",
-    "kind": "C",
-    "nets": {
-      "1": "GPU1_ADC",
-      "2": "GND"
-    },
-    "value": "1nF",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "R1402",
-    "kind": "R",
-    "nets": {
-      "1": "GPU2_12V",
-      "2": "GPU2_ADC"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "R1403",
-    "kind": "R",
-    "nets": {
-      "1": "GPU2_ADC",
-      "2": "GND"
-    },
-    "value": "10k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "C1403",
-    "kind": "C",
-    "nets": {
-      "1": "GPU2_ADC",
-      "2": "GND"
-    },
-    "value": "1nF",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "R1404",
-    "kind": "R",
-    "nets": {
-      "1": "EPS_12V",
-      "2": "EPS_ADC"
-    },
-    "value": "100k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "R1405",
-    "kind": "R",
-    "nets": {
-      "1": "EPS_ADC",
-      "2": "GND"
-    },
-    "value": "10k",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Resistor_SMD:R_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "C1404",
-    "kind": "C",
-    "nets": {
-      "1": "EPS_ADC",
-      "2": "GND"
-    },
-    "value": "1nF",
-    "mpn": "SELECTION_REQUIRED",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Capacitor_SMD:C_0603_1608Metric"
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "#FLG001",
-    "kind": "Supply_Flag",
-    "nets": {
-      "1": "VIN12"
-    },
-    "value": "VIN12 supply",
-    "mpn": "VIN12 supply",
-    "lcsc": "",
-    "dnp": false,
-    "physical": false,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "#FLG002",
-    "kind": "Supply_Flag",
-    "nets": {
-      "1": "GND"
-    },
-    "value": "GND supply",
-    "mpn": "GND supply",
-    "lcsc": "",
-    "dnp": false,
-    "physical": false,
-    "footprint": ""
-  },
-  {
-    "sheet": "Power_Input",
-    "ref": "D1400",
-    "kind": "TVS_Bidirectional",
-    "nets": {
-      "1": "VIN12",
-      "2": "GND"
-    },
-    "value": "SMBJ13CA",
-    "mpn": "SMBJ13CA",
-    "lcsc": "",
-    "dnp": false,
-    "physical": true,
-    "footprint": "Diode_SMD:D_SMB"
+    "footprint": "Diode_SMD:D_SMB",
+    "block": "USB_A4"
   }
 ]

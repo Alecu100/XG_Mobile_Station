@@ -86,8 +86,9 @@ def symbol_definition(name, embedded=True):
 
 
 def header(identity, title, paper='A2'):
+    paper_spec = '"User" ' + paper[5:] if paper.startswith('User ') else quote(paper)
     return f'''(kicad_sch (version 20231120) (generator "eeschema")
-    (uuid {quote(identity)}) (paper {quote(paper)})
+    (uuid {quote(identity)}) (paper {paper_spec})
       (title_block (title {quote(title)}) (rev "DRAFT A")
         (comment 1 "Engineering draft - not released for manufacture")
         (comment 2 "12 V input / 100 W upstream USB-PD / 2 USB-C + 4 USB-A downstream"))'''
@@ -99,32 +100,41 @@ def text(content, xpos, ypos, size=1.27):
 
 def generate():
     root_id = uid('USB_C_Daughterboard')
-    root = [header(root_id, PROJECT.replace('_', ' ')), '(lib_symbols)']
+    root = [header(root_id, PROJECT.replace('_', ' '), 'A3'), '(lib_symbols)']
     manifest = []
     for page_number, page in enumerate(SHEETS, 2):
         page_id = uid(page['name'])
         sheet_id = uid('sheet/' + page['name'])
         names = sorted({component['kind'] for component in page['parts']})
         symbols = '\n'.join(symbol_definition(name) for name in names)
-        compact = len(page['parts']) <= 16 and max(LIBRARY[name]['height'] for name in names) < 70
-        columns = 3 if compact else 4
-        output = [header(page_id, page['title'], 'A3' if compact else 'A2'), '(lib_symbols ' + symbols + ')']
+        placements = {}
+        section_text = []
+        column_bottoms = [45,45]
+        for section in page['sections']:
+            panel = min(range(2), key=lambda index:column_bottoms[index])
+            left, top = 12+panel*584.2, column_bottoms[panel]
+            section_text.append(text(section['title'],left,top,2))
+            section_text.append(text(section['notes'],left,top+7,1.1))
+            ypos, row_height = round((top+29)/2.54)*2.54, 0
+            for index, component in enumerate(section['parts']):
+                spec = LIBRARY[component['kind']]
+                if index and index%4 == 0:
+                    ypos += row_height
+                    row_height = 0
+                row_height = max(row_height, spec['height']+17.78,30.48)
+                placements[component['ref']] = (left+64.2+(index%4)*139.7,ypos)
+            column_bottoms[panel] = ypos+row_height+12
+        page_height = max(297,max(column_bottoms)+55)
+        output = [header(page_id, page['title'], f'User 1189 {page_height}'), '(lib_symbols ' + symbols + ')']
         output.append(text(page['title'], 12, 15, 2.54))
         output.append(text(page['notes'], 12, 23))
-        ypos, column, row_height = 48.26, 0, 0
+        output.extend(section_text)
         for component in page['parts']:
             ref, kind = component['ref'], component['kind']
             spec = LIBRARY[kind]
-            height = max(30.48, spec['height'] + 17.78)
-            if column == columns:
-                ypos += row_height
-                column, row_height = 0, 0
-            row_height = max(row_height, height)
-            xpos = (63.5 + column * 127) if compact else (76.2 + column * 139.7)
+            xpos,ypos = placements[ref]
             center_y = ypos + spec['height'] / 2 + 7.62
-            assert center_y + spec['height']/2 < (265 if compact else 387), (page['name'], ref, center_y)
-            if column == columns - 1:
-                assert center_y + spec['height']/2 < (248 if compact else 371), (page['name'], ref, 'title block')
+            assert center_y + spec['height']/2 < page_height-55, (page['name'],ref)
             component_id = uid(ref)
             properties = []
             for key, value in [('Reference', ref), ('Value', component['value']), ('Footprint', component['footprint']), ('Datasheet', spec['datasheet']), ('MPN', component['mpn']), ('LCSC', component['lcsc'])]:
@@ -146,11 +156,10 @@ def generate():
                 output.append(f'''(global_label {quote(net)} (shape input) (at {end_x} {pin_y} {angle})
                   {effects(0.9, '(justify left)' if left else '(justify right)')} (uuid {quote(uid(ref+'/'+number+'/label'))}))''')
             manifest.append(dict(sheet=page['name'], **component))
-            column += 1
         output.append(')')
         (ROOT / (page['name']+'.kicad_sch')).write_text('\n'.join(output)+'\n', encoding='utf-8')
         index = page_number-2
-        xpos, ypos_root = 20+(index%3)*180, 55+(index//3)*48
+        xpos, ypos_root = 20, 65+index*55
         root.append(f'''(sheet (at {xpos} {ypos_root}) (size 160 30) (stroke (width 0) (type default)) (fill (color 0 0 0 0))
           (uuid {quote(sheet_id)})
           (property "Sheetname" {quote(page['title'])} (at {xpos} {ypos_root-1.27} 0) {effects(1.27,'(justify left bottom)')})
@@ -538,6 +547,24 @@ def apply_bom_footprints():
                 component['footprint'] = verified[component['ref']]
 
 
+def consolidate_sheets():
+    original = {page['name']:page for page in SHEETS}
+    groups = [
+        ('Power','Power Supplies and Inputs', ['Power_Input','PD_BuckBoost','Power_5V','Power_3V3','Power_Core']),
+        ('MCU','MCU and Upstream PD Control', ['PD_MCU','USB_Upstream']),
+        ('USB_Hub','USB Hub and Downstream Ports', ['Hub','Hub_Decoupling','USB_C1','USB_C2','USB_A1','USB_A2','USB_A3','USB_A4']),
+    ]
+    SHEETS.clear()
+    for name,title,blocks in groups:
+        page = sheet(name,title,'Named nets connect the circuit blocks on this sheet and across the hierarchy.')
+        page['sections'] = [original[block] for block in blocks]
+        for block in blocks:
+            for component in original[block]['parts']:
+                component['block'] = block
+                page['parts'].append(component)
+
+
 if __name__ == '__main__':
     apply_bom_footprints()
+    consolidate_sheets()
     generate()

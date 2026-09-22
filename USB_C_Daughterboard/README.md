@@ -1,6 +1,14 @@
 # USB-C Daughterboard: Engineering Draft A
 
-Open `XG_Mobile_USB_Hub.kicad_pro` in KiCad 9 or newer. The root schematic contains 15 circuit sheets. PDF and SVG exports provide previews; the editable schematics use named-net connections. Existing dock files are unchanged.
+Open `XG_Mobile_USB_Hub.kicad_pro` in KiCad 9 or newer. The root schematic contains three child sheets. PDF and SVG exports provide previews; the editable schematics use named-net connections. Existing dock files are unchanged.
+
+## Schematic Hierarchy
+
+- `Power.kicad_sch`: GPU/EPS inputs, 3.3 V, 5 V, 1.15 V core buck and LM51772 PD buck-boost.
+- `MCU.kicad_sch`: STM32 PD controller, upstream USB-C connector, protection, power-path FETs and orientation mux.
+- `USB_Hub.kicad_sch`: USB7206C, decoupling, two downstream Type-C ports and four Type-A ports.
+
+Each child uses a large custom page with labeled circuit blocks. The PDF contains the root plus these three pages; zoom in for component-level review. Original component references and nets are retained. PCB schematic paths follow the consolidated hierarchy without changing placement. The manifest retains each original circuit block in `block` for placement regeneration.
 
 **Not released for fabrication, assembly, or connection to a laptop.** This is a pin-connected schematic draft, not a validated power supply or USB-certified product. Zero ERC errors does not establish electrical performance or protection adequacy. Connector selection, several footprints and passive MPNs remain unresolved and are explicitly marked in the BOM.
 
@@ -47,6 +55,8 @@ Regenerate only before making manual PCB edits: `generate_pcb.py` OVERWRITES the
 & 'C:\Program Files\KiCad\9.0\bin\python.exe' USB_C_Daughterboard/generate_pcb.py
 ```
 
+After a hierarchy-only change, use `generate_pcb.py --relink-sheets` to update PCB sheet paths without regenerating placement.
+
 ## Power-Design Changes
 
 | Block | Implementation / Deviation |
@@ -92,7 +102,7 @@ The GPU ADC dividers measure rail voltage, NOT independent cable presence: the f
 
 ## Reproduction
 
-Latest automated checks: 297 physical components and 1,098 connected pins match the KiCad XML export; ERC has zero errors and the two documented MCU warnings. The PDF has 16 pages. There are 185 BOM rows with explicitly unresolved part selections and 37 rows without footprints. Counts include generic passives and connectors and must not be mistaken for a completed procurement BOM.
+Latest automated checks: 297 physical components and 1,098 connected pins match the KiCad XML export; ERC has zero errors and the two documented MCU warnings. The PDF has four pages. There are 185 BOM rows with explicitly unresolved part selections and 37 rows without footprints. Counts include generic passives and connectors and must not be mistaken for a completed procurement BOM.
 
 Dependencies: Python with `sexpdata`, installed KiCad 9 symbol libraries and `kicad-cli`. Generator and validator currently use this machine's KiCad 9 install path.
 

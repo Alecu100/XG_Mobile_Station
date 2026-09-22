@@ -1,6 +1,7 @@
 """Generate an unrouted placement draft using KiCad 9's bundled Python."""
 
 from pathlib import Path
+import argparse
 import json
 import subprocess
 import tempfile
@@ -139,9 +140,10 @@ def generate():
         if ref == 'J1300':
             footprint.SetOrientationDegrees(90)
         missing = not list(footprint.Pads())
-        region = REGIONS[component['sheet']]
+        block = component.get('block',component['sheet'])
+        region = REGIONS[block]
         xpos,ypos,width,height = region
-        cursor = cursors.setdefault(component['sheet'],[0,0,0])
+        cursor = cursors.setdefault(block,[0,0,0])
         box = footprint.GetBoundingBox(False,False)
         item_width = max(2.5,pcbnew.ToMM(box.GetWidth()))+1
         item_height = max(2,pcbnew.ToMM(box.GetHeight()))+1.4
@@ -169,7 +171,7 @@ def generate():
             center = box.GetCenter()
             footprint.SetPosition(point(xpos+cursor[0]+item_width/2-pcbnew.ToMM(center.x),
                                         ypos+cursor[1]+item_height/2-pcbnew.ToMM(center.y)))
-            if bottom_overflow or component['sheet'] in ['Hub_Decoupling','Power_Input','USB_Upstream','PD_MCU']:
+            if bottom_overflow or block in ['Hub_Decoupling','Power_Input','USB_Upstream','PD_MCU']:
                 footprint.Flip(footprint.GetPosition(),False)
             actual_center = footprint.GetBoundingBox(False,False).GetCenter()
             target_center = point(xpos+cursor[0]+item_width/2,ypos+cursor[1]+item_height/2)
@@ -197,5 +199,46 @@ def generate():
           f"{len(report['missing'])} unresolved; {report['connected_pad_count']} connected pads; no tracks.")
 
 
+def relink_sheets():
+    board_path = ROOT/(PROJECT+'.kicad_pcb')
+    board = pcbnew.LoadBoard(str(board_path))
+    components = {item['ref']:item for item in json.loads((ROOT/'connectivity.json').read_text()) if item['physical']}
+
+    def geometry_snapshot(source):
+        return {footprint.GetReference():(footprint.m_Uuid.AsString(),
+                footprint.GetPosition().x,footprint.GetPosition().y,
+                footprint.GetOrientationDegrees(),footprint.GetLayer(),
+                sorted((pad.GetNumber(),pad.GetPosition().x,pad.GetPosition().y,pad.GetNetname())
+                       for pad in footprint.Pads())) for footprint in source.GetFootprints()}
+
+    before = geometry_snapshot(board)
+    assert set(before) == set(components)
+    track_count = len(list(board.GetTracks()))
+    for footprint in board.GetFootprints():
+        component = components[footprint.GetReference()]
+        path = pcbnew.KIID_PATH()
+        for name in ['USB_C_Daughterboard','sheet/'+component['sheet'],component['ref']]:
+            path.push_back(pcbnew.KIID(str(uuid.uuid5(NAMESPACE,name))))
+        footprint.SetPath(path)
+        footprint.SetSheetname(component['sheet'])
+        footprint.SetSheetfile(component['sheet']+'.kicad_sch')
+    pcbnew.SaveBoard(str(board_path),board)
+    saved = pcbnew.LoadBoard(str(board_path))
+    assert geometry_snapshot(saved) == before
+    assert len(list(saved.GetTracks())) == track_count
+    for footprint in saved.GetFootprints():
+        component = components[footprint.GetReference()]
+        assert footprint.GetSheetfile() == component['sheet']+'.kicad_sch'
+        assert footprint.GetPath().AsString() == '/'.join(['']+[str(uuid.uuid5(NAMESPACE,name))
+            for name in ['USB_C_Daughterboard','sheet/'+component['sheet'],component['ref']]])
+    print(f'PASS: {len(before)} PCB links updated; footprint UUIDs, placement, pad nets and track count preserved')
+
+
 if __name__ == '__main__':
-    generate()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--relink-sheets',action='store_true',help='Update hierarchy paths without regenerating placement')
+    args = parser.parse_args()
+    if args.relink_sheets:
+        relink_sheets()
+    else:
+        generate()
