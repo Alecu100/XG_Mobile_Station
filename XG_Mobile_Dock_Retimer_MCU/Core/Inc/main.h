@@ -64,10 +64,10 @@ void Error_Handler(void);
 #define LED_WHITE_GPIO_Port GPIOC
 #define LED_RED_Pin GPIO_PIN_2
 #define LED_RED_GPIO_Port GPIOD
-#define LOCK_DET_Pin GPIO_PIN_0
-#define LOCK_DET_GPIO_Port GPIOF
-#define RSV0_Pin GPIO_PIN_1
-#define RSV0_GPIO_Port GPIOF
+#define LOCK_DET_Pin GPIO_PIN_6
+#define LOCK_DET_GPIO_Port GPIOC
+#define RSV0_Pin GPIO_PIN_7
+#define RSV0_GPIO_Port GPIOC
 #define CON_DET_Pin GPIO_PIN_0
 #define CON_DET_GPIO_Port GPIOA
 #define CON_DET_EXTI_IRQn EXTI0_IRQn
