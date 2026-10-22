@@ -242,7 +242,6 @@ static const retimer_register_t retimer_public_x8_sequence[] = {
 };
 
 static uint8_t retimer_address = RETIMER_ADDRESS_INVALID;
-static uint8_t retimer_8bit_mode;
 
 static HAL_StatusTypeDef retimer_read(uint8_t reg, uint8_t *value)
 {
@@ -275,20 +274,10 @@ static HAL_StatusTypeDef retimer_write_verified(uint8_t reg, uint8_t value)
     return readback == value ? HAL_OK : HAL_ERROR;
 }
 
-static HAL_StatusTypeDef retimer_enter_8bit_mode(void)
+static HAL_StatusTypeDef retimer_read_identity(int report_mismatch)
 {
-    static uint8_t mode_switch[] = { 0x68U, 0x01U, 0x00U }; /* [OPENBIC] */
     uint8_t vendor[2] = { 0 };
     uint8_t device = 0;
-
-    if (!retimer_8bit_mode) {
-        if (HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(retimer_address << 1),
-                                    mode_switch, sizeof(mode_switch),
-                                    RETIMER_I2C_TIMEOUT_MS) != HAL_OK) {
-            return HAL_ERROR;
-        }
-        retimer_8bit_mode = 1;
-    }
 
     if (HAL_I2C_Mem_Read(&hi2c2, (uint16_t)(retimer_address << 1),
                          RETIMER_REG_VENDOR_ID, I2C_MEMADD_SIZE_8BIT,
@@ -299,12 +288,38 @@ static HAL_StatusTypeDef retimer_enter_8bit_mode(void)
 
     if (((uint16_t)vendor[0] | ((uint16_t)vendor[1] << 8)) != RETIMER_VENDOR_ID ||
         device != RETIMER_DEVICE_ID) {
-        printf("DS160PT801 identity mismatch: vendor=%02X%02X device=%02X\n",
-               vendor[1], vendor[0], device);
+        if (report_mismatch) {
+            printf("DS160PT801 identity mismatch: vendor=%02X%02X device=%02X\n",
+                   vendor[1], vendor[0], device);
+        }
         return HAL_ERROR;
     }
 
-    printf("DS160PT801 switched to 8-bit mode; vendor=0x%04X device=0x%02X\n",
+    return HAL_OK;
+}
+
+static HAL_StatusTypeDef retimer_enter_8bit_mode(void)
+{
+    static uint8_t mode_switch[] = { 0x68U, 0x01U, 0x00U }; /* [OPENBIC] */
+
+    /* The retimer returns to 16-bit mode whenever its core loses power, which
+     * the MCU does with BUCK_ON, so the mode cannot be cached. Read the
+     * identity first; in 16-bit mode it reads back as zeros. Only send the
+     * switch when the device is not already in 8-bit mode, since 68 01 00 would
+     * be a register write there. */
+    if (retimer_read_identity(0) != HAL_OK) {
+        if (HAL_I2C_Master_Transmit(&hi2c2, (uint16_t)(retimer_address << 1),
+                                    mode_switch, sizeof(mode_switch),
+                                    RETIMER_I2C_TIMEOUT_MS) != HAL_OK) {
+            return HAL_ERROR;
+        }
+        HAL_Delay(2);
+        if (retimer_read_identity(1) != HAL_OK) {
+            return HAL_ERROR;
+        }
+    }
+
+    printf("DS160PT801 in 8-bit mode; vendor=0x%04X device=0x%02X\n",
            RETIMER_VENDOR_ID, RETIMER_DEVICE_ID);
     return HAL_OK;
 }
@@ -312,7 +327,6 @@ static HAL_StatusTypeDef retimer_enter_8bit_mode(void)
 void retimer_reset_state(void)
 {
     retimer_address = RETIMER_ADDRESS_INVALID;
-    retimer_8bit_mode = 0;
 }
 
 static HAL_StatusTypeDef retimer_verify_public_x8_sequence(void)
