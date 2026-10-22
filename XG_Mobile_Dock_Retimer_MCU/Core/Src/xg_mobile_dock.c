@@ -363,6 +363,26 @@ void transition_state(state_t *state, fsm_state_t next) {
     state->fsm = next;
 }
 
+/* The retimer's register file may not be served while its PERST# is held, so a
+ * zero identity read is retried once with the retimer's PERST# released. If that
+ * works, PERST# is pulsed again so the retimer trains with the new link width. */
+static HAL_StatusTypeDef configure_retimer(void) {
+    if (retimer_configure_x8() == HAL_OK) {
+        return HAL_OK;
+    }
+
+    printf("Retimer unresponsive in reset; retrying with its PERST# released\n");
+    set_retimer_perst(0);
+    HAL_Delay(20);
+    HAL_StatusTypeDef status = retimer_configure_x8();
+    set_retimer_perst(1);
+    if (status == HAL_OK) {
+        printf("Retimer configured with PERST# released; re-applying reset to retrain\n");
+        HAL_Delay(10);
+    }
+    return status;
+}
+
 void main_fsm_iteration(void) {
     fsm_state_t prev = gState.fsm;
     static uint32_t last_retimer_attempt;
@@ -374,7 +394,7 @@ void main_fsm_iteration(void) {
         HAL_GPIO_ReadPin(PGOOD_BUCK_GPIO_Port, PGOOD_BUCK_Pin) == GPIO_PIN_SET &&
         (uint32_t)(now - last_retimer_attempt) >= 1000U) {
         last_retimer_attempt = now;
-        if (retimer_configure_x8() == HAL_OK) {
+        if (configure_retimer() == HAL_OK) {
             gState.retimer_config_pending = 0;
             set_retimer_perst(0);
             set_perst(HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin));
