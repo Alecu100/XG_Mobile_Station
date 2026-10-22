@@ -59,7 +59,10 @@ static state_t gState;
 
 extern void fans_start(void);
 extern void fans_stop(void);
-extern void redriver_configure(void);
+extern void redriver_ramp_start(void);
+extern int  redriver_ramp_pump(void);
+extern void redriver_ramp_cancel(void);
+extern int  redriver_ramp_is_active(void);
 extern void power_up_down_redrivers(GPIO_PinState reset);
 extern void print_redrivers_status(void);
 
@@ -353,11 +356,25 @@ void transition_state(state_t *state, fsm_state_t next) {
 void main_fsm_iteration(void) {
     fsm_state_t prev = gState.fsm;
     print_redrivers_status();
-    // Deferred redriver init requested from the RST EXTI ISR. Runs here in thread
-    // context so the blocking I2C sequence never stalls interrupt handling.
+    // Deferred redriver boot (re)init requested from the RST EXTI ISR. Runs here in
+    // thread context so the blocking I2C sequence never stalls interrupt handling.
     if (gState.redriver_boot_pending) {
         gState.redriver_boot_pending = 0;
-        redriver_configure();
+        redriver_ramp_cancel();          // abort any ramp still in flight from a prior cycle
+        // redriver_ramp_start() applies each channel's boot config, then holds it for
+        // REDRIVER_BOOT_HOLD_MS (the training window) before walking to running.
+        redriver_ramp_start();
+    }
+    // Drive the boot->running ramp. Pump only while a ramp is in progress;
+    // redriver_ramp_pump() returns 1 on the step that finishes (snapping the exact
+    // running config). Only while out of reset, so we never push I2C at powered-down
+    // redrivers; a reset cancels any ramp in flight.
+    if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
+        if (redriver_ramp_is_active()) {
+            redriver_ramp_pump();
+        }
+    } else {
+        redriver_ramp_cancel();
     }
 
     //printf("Enter main FSM with state = %s\n", gFSMStateStrings[gState.fsm]);
@@ -367,10 +384,10 @@ void main_fsm_iteration(void) {
             transition_state(&gState, DEVICE_IDLE);
             // Only set the redrivers up if PCIe is out of reset. If RST is asserted the
             // redrivers are powered down (init_gpio_state -> power_up_down_redrivers) and
-            // configuring them would only fail against standby devices. When RST later
+            // redriver_ramp_start() would only fail against standby devices. When RST later
             // deasserts, the EXTI ISR sets redriver_boot_pending and setup runs then.
             if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
-                redriver_configure();
+                redriver_ramp_start();
             }
             HAL_I2C_EnableListen_IT(&hi2c1);
             break;
