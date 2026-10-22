@@ -52,9 +52,15 @@ typedef struct {
     int i2cSize;
     volatile unsigned char i2cRegData1;
     volatile int retimer_config_pending;
+    /* Retimer was programmed while the host was still in reset, so host reset
+     * release can be passed straight through to PERST#. Registers persist
+     * across PERST# pulses; this is cleared when PCIe power is turned off. */
+    volatile int retimer_ready;
 } state_t;
 
 static state_t gState;
+
+static HAL_StatusTypeDef configure_retimer(void);
 
 extern void fans_start(void);
 extern void fans_stop(void);
@@ -189,11 +195,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
     if (GPIO_Pin == RST_Pin) {
         GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
         if (reset == GPIO_PIN_SET) {
-            /* Keep the complete downstream path in reset until the main loop has
-             * programmed and verified the retimer width. */
-            set_perst(GPIO_PIN_RESET);
-            set_retimer_perst(1);
-            gState.retimer_config_pending = 1;
+            if (gState.retimer_ready) {
+                /* Fast path: the host expects the device to answer right after it
+                 * releases reset, so release the retimer and GPU immediately. */
+                set_retimer_perst(0);
+                set_perst(GPIO_PIN_SET);
+                gState.retimer_config_pending = 0;
+            } else {
+                /* Keep the complete downstream path in reset until the main loop
+                 * has programmed and verified the retimer width. */
+                set_perst(GPIO_PIN_RESET);
+                set_retimer_perst(1);
+                gState.retimer_config_pending = 1;
+            }
         } else {
             set_perst(GPIO_PIN_RESET);
             set_retimer_perst(1);
@@ -276,14 +290,36 @@ void update_case_led(int on) {
     }
 }
 
+/* Program the retimer while the host is still holding reset (before PWROK), so
+ * no I2C work is needed after the host releases reset. */
+static void preconfigure_retimer(void) {
+    gState.retimer_ready = 0;
+    for (int attempt = 0; attempt < 5; attempt++) {
+        if (HAL_GPIO_ReadPin(PGOOD_BUCK_GPIO_Port, PGOOD_BUCK_Pin) == GPIO_PIN_SET &&
+            configure_retimer() == HAL_OK) {
+            gState.retimer_ready = 1;
+            printf("Retimer configured before host reset release\n");
+            return;
+        }
+        HAL_Delay(100);
+    }
+    printf("Retimer not configured before host reset release; will retry afterwards\n");
+}
+
 void turn_power_on() {
     printf("Turning on PCIe power\n");
     HAL_GPIO_WritePin(PCI_12V_EN_GPIO_Port, PCI_12V_EN_Pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(BUCK_ON_GPIO_Port, BUCK_ON_Pin, GPIO_PIN_SET);
     HAL_Delay(1000);
+    preconfigure_retimer();
     HAL_GPIO_WritePin(PWROK_GPIO_Port, PWROK_Pin, GPIO_PIN_SET);
     if (HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin) == GPIO_PIN_SET) {
-        gState.retimer_config_pending = 1;
+        if (gState.retimer_ready) {
+            set_retimer_perst(0);
+            set_perst(GPIO_PIN_SET);
+        } else {
+            gState.retimer_config_pending = 1;
+        }
     }
 }
 
@@ -292,6 +328,7 @@ void turn_power_off() {
     set_perst(GPIO_PIN_RESET);
     set_retimer_perst(1);
     gState.retimer_config_pending = 0;
+    gState.retimer_ready = 0;
     retimer_reset_state();
     HAL_GPIO_WritePin(PWROK_GPIO_Port, PWROK_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(BUCK_ON_GPIO_Port, BUCK_ON_Pin, GPIO_PIN_RESET);
@@ -391,10 +428,6 @@ void main_fsm_iteration(void) {
         if (configure_retimer() == HAL_OK) {
             gState.retimer_config_pending = 0;
             set_retimer_perst(0);
-            /* The GPU's REFCLK comes from the retimer's REFCLK_OUT, which only
-             * runs once the retimer is out of reset. PCIe CEM wants the clock
-             * stable ~100 ms before the endpoint's PERST# is released. */
-            HAL_Delay(100);
             set_perst(HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin));
             printf("Retimer out of reset; downstream PERST# released\n");
         } else {
