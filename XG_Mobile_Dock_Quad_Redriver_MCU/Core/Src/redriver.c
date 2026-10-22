@@ -48,6 +48,12 @@ extern I2C_HandleTypeDef hi2c2;
 #define CTLE_MODE_HI_GAIN       0x20U
 #define DRIVER_VOD_MASK         0xC0U
 #define DRIVER_VOD_SHIFT        6
+/* reg 0x06 [5] drv_eq_en_override makes bits [4] drv_en_pre, [3] drv_en and [2] drv_en_cm_loop
+ * (and reg 0x04 [6] eq_term_en, [3] eq_en) take effect. All of them off with the override on
+ * powers the channel's driver and equalizer down; the override off returns control to the part. */
+#define DRIVER_ENABLE_MASK      0x3CU
+#define DRIVER_OVERRIDE_ALL_OFF 0x20U
+#define CTLE_ENABLE_MASK        0x48U
 #define RX_DETECT_MASK          0x60U
 #define RX_DETECT_FORCE_VALID   0x40U /* mr_rx_det_man: always report a valid receiver */
 #define RX_DETECT_USE_COUNTER   0x20U /* en_rx_det_count */
@@ -158,7 +164,7 @@ typedef struct {
 // ms per ramp step (one field value applied per tick).
 #define RAMP_STEP_MS 25
 
-// ramp_channels[].enabled values. A disabled channel is left at its power-up defaults.
+// ramp_channels[].enabled values. A disabled channel has its driver and equalizer powered down.
 #define CHANNEL_ENABLED  1
 #define CHANNEL_DISABLED 0
 
@@ -332,9 +338,11 @@ static HAL_StatusTypeDef redriver_write_setting(uint8_t addr, uint8_t chan, cons
                                 RX_DETECT_FORCE_VALID | RX_DETECT_USE_COUNTER) != HAL_OK) {
         goto done;
     }
-#else
-    (void)init;
 #endif
+    // A channel that was powered down earlier gets its enables back under the part's control.
+    if (init && redriver_update(addr, CH_REG_DRIVER, DRIVER_ENABLE_MASK, 0) != HAL_OK) {
+        goto done;
+    }
     if (redriver_update(addr, CH_REG_CTLE_MODE, CTLE_MODE_MASK, mode_register_value(s)) != HAL_OK ||
         redriver_update(addr, CH_REG_CTLE, CTLE_STAGES_MASK, ctle_register_value(s)) != HAL_OK ||
         redriver_update(addr, CH_REG_DRIVER, DRIVER_VOD_MASK, driver_register_value(s)) != HAL_OK) {
@@ -480,9 +488,34 @@ static int redriver_setting_dist(const redriver_setting_t *a, const redriver_set
     return d;
 }
 
+/* Power a channel's driver and equalizer down (CHANNEL_DISABLED) and read it back. */
+static int redriver_power_down_channel(const ramp_channel_t *c) {
+    uint8_t addr = (uint8_t)c->addr, chan = (uint8_t)c->chan;
+    int ok = 0;
+
+    for (int attempt = 0; attempt < REDRIVER_WRITE_RETRIES && !ok; attempt++) {
+        uint8_t driver = 0, mode = 0;
+
+        if (attempt > 0) {
+            HAL_Delay(20);
+        }
+        if (redriver_select_channel(addr, chan) == HAL_OK &&
+            redriver_update(addr, CH_REG_DRIVER, DRIVER_ENABLE_MASK, DRIVER_OVERRIDE_ALL_OFF) == HAL_OK &&
+            redriver_update(addr, CH_REG_CTLE_MODE, CTLE_ENABLE_MASK, 0) == HAL_OK &&
+            redriver_read(addr, CH_REG_DRIVER, &driver) == HAL_OK &&
+            redriver_read(addr, CH_REG_CTLE_MODE, &mode) == HAL_OK &&
+            (driver & DRIVER_ENABLE_MASK) == DRIVER_OVERRIDE_ALL_OFF && (mode & CTLE_ENABLE_MASK) == 0) {
+            ok = 1;
+        }
+        redriver_write(addr, SHARE_REG_PAGE_SEL, PAGE_SHARE);
+    }
+    return ok;
+}
+
 // Check the table, probe every redriver, then load each enabled channel's BOOT (training)
 // registers: RX detect + the boot operating point. This is the starting point the ramp
-// walks from (ramp step 0). A channel that cannot be set up is skipped by the ramp.
+// walks from (ramp step 0). Disabled channels are powered down. A channel that cannot be
+// set up is skipped by the ramp.
 static void redriver_apply_boot(int usable[NUM_RAMP_CHANNELS]) {
     int bank_ok[NUM_REDRIVER_BANKS];
 
@@ -514,18 +547,27 @@ static void redriver_apply_boot(int usable[NUM_RAMP_CHANNELS]) {
         int ok = 0;
 
         usable[i] = 0;
+        for (unsigned int b = 0; b < NUM_REDRIVER_BANKS; b++) {
+            if (redriver_banks[b].addr == c->addr) {
+                ok = bank_ok[b];
+            }
+        }
         if (!c->enabled) {
+            if (ok) {
+                if (redriver_power_down_channel(c)) {
+                    printf("  %s lane %d (0x%02X ch%d): disabled (driver and equalizer powered down)\n",
+                           redriver_row_direction(c), redriver_row_lane(c), c->addr, (int)c->chan);
+                } else {
+                    printf("Redriver %s lane %d: power-down write failed\n", redriver_row_direction(c),
+                           redriver_row_lane(c));
+                }
+            }
             continue;
         }
         if (!redriver_setting_valid(&c->boot) || !redriver_setting_valid(&c->run)) {
             printf("Redriver %s lane %d: invalid setting in ramp_channels[]\n", redriver_row_direction(c),
                    redriver_row_lane(c));
             continue;
-        }
-        for (unsigned int b = 0; b < NUM_REDRIVER_BANKS; b++) {
-            if (redriver_banks[b].addr == c->addr) {
-                ok = bank_ok[b];
-            }
         }
         if (!ok) {
             continue;
