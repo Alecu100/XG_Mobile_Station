@@ -185,11 +185,6 @@ static void set_retimer_perst(int asserted) {
                       asserted ? GPIO_PIN_SET : GPIO_PIN_RESET);
 }
 
-static void mirror_clkreq(void) {
-    HAL_GPIO_WritePin(RETIMER_CLKREQ_GPIO_Port, RETIMER_CLKREQ_Pin,
-                      HAL_GPIO_ReadPin(CLKREQ_GPIO_Port, CLKREQ_Pin));
-}
-
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
     if (GPIO_Pin == RST_Pin) {
         GPIO_PinState reset = HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin);
@@ -389,7 +384,6 @@ void main_fsm_iteration(void) {
     static uint32_t last_retimer_status;
     uint32_t now = HAL_GetTick();
 
-    mirror_clkreq();
     if (gState.retimer_config_pending &&
         HAL_GPIO_ReadPin(PGOOD_BUCK_GPIO_Port, PGOOD_BUCK_Pin) == GPIO_PIN_SET &&
         (uint32_t)(now - last_retimer_attempt) >= 1000U) {
@@ -397,7 +391,12 @@ void main_fsm_iteration(void) {
         if (configure_retimer() == HAL_OK) {
             gState.retimer_config_pending = 0;
             set_retimer_perst(0);
+            /* The GPU's REFCLK comes from the retimer's REFCLK_OUT, which only
+             * runs once the retimer is out of reset. PCIe CEM wants the clock
+             * stable ~100 ms before the endpoint's PERST# is released. */
+            HAL_Delay(100);
             set_perst(HAL_GPIO_ReadPin(RST_GPIO_Port, RST_Pin));
+            printf("Retimer out of reset; downstream PERST# released\n");
         } else {
             printf("Retimer configuration failed; retrying with PCIe held in reset\n");
         }

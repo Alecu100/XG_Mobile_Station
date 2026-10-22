@@ -545,6 +545,8 @@ static void MX_GPIO_Init(void)
   /* Hold the retimer in reset and keep its core buck disabled at boot. */
   HAL_GPIO_WritePin(GPIOC, RETIMER_PERST_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(GPIOC, RETIMER_CLKREQ_Pin|BUCK_ON_Pin, GPIO_PIN_RESET);
+  /* Slot CLKREQ# is held asserted (low) so the slot always requests the clock. */
+  HAL_GPIO_WritePin(CLKREQ_GPIO_Port, CLKREQ_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level : PSON low = PSU off at boot */
   HAL_GPIO_WritePin(PSON_GPIO_Port, PSON_Pin, GPIO_PIN_RESET);
@@ -625,10 +627,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /* Host CLKREQ# is sampled and mirrored to the retimer's dedicated pin. */
+  /* Both CLKREQ# lines are held asserted (low) from boot so the retimer's
+   * REFCLK_OUT is always running; the slot line is open-drain so a GPU driving
+   * it cannot cause contention. */
   GPIO_InitStruct.Pin = CLKREQ_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(CLKREQ_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PERST_Pin (push-pull, drives inverting PERST# transistor) */
