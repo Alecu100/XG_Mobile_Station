@@ -35,12 +35,14 @@ extern I2C_HandleTypeDef hi2c2;
 
 
 #define BIAS_REGISTER_OFFSET 0x06
+#define BIAS_CURRENT_3 0b00000000
 #define BIAS_CURRENT_2 0b00100000
 #define BIAS_CURRENT_1 0b00010000
 #define BIAS_CURRENT_0 0b00001000
 #define BIAS_WRITE_MASK 0b11000111
 // Bias-current field value for reg 0x06[5:3] (the ramp shifts it << 3). 1 = 001b
 // (datasheet "best performance") .. 7 = 111b (max drive).
+#define BIAS_LEVEL_0 0
 #define BIAS_LEVEL_1 1
 #define BIAS_LEVEL_2 2
 #define BIAS_LEVEL_3 3
@@ -189,36 +191,36 @@ typedef struct {
 // (rank * RAMP_STAGGER_MS): start order 0,1,2,3,4,5,7,6 so channel 6 ramps LAST.
 static ramp_channel_t ramp_channels[] = {
     { GPU_CPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
-      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ10_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ19_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
     { GPU_CPU_0_3_ADDR_I2C, CHANNEL_1_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
-      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ10_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ19_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
     { GPU_CPU_0_3_ADDR_I2C, CHANNEL_2_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
-      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ10_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ19_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
     { GPU_CPU_0_3_ADDR_I2C, CHANNEL_3_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
-      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ10_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ19_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_4_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
-      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ10_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ19_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_5_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
-      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ10_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ19_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_6_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ0_STAGE1, .eq_stage2 = EQ0_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
-      { .eq_stage1 = EQ0_STAGE1, .eq_stage2 = EQ0_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ12_STAGE1, .eq_stage2 = EQ12_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_0 },
+      { .eq_stage1 = EQ0_STAGE1, .eq_stage2 = EQ0_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_0 },
       RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_7_REGISTER, CHANNEL_ENABLED,
-      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
-      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ8_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
+      { .eq_stage1 = EQ19_STAGE1, .eq_stage2 = EQ19_STAGE2, .eq_profile = EQ19_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
+      { .eq_stage1 = EQ0_STAGE1,  .eq_stage2 = EQ0_STAGE2,  .eq_profile = EQ19_PROFILE,  .flat_gain = FLAT_GAIN_LEVEL_0, .bias = BIAS_LEVEL_7 },
       RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
     { CPU_GPU_0_3_ADDR_I2C, CHANNEL_0_REGISTER, CHANNEL_ENABLED,
       { .eq_stage1 = EQ7_STAGE1, .eq_stage2 = EQ7_STAGE2, .eq_profile = EQ7_PROFILE, .flat_gain = FLAT_GAIN_LEVEL_5, .bias = BIAS_LEVEL_1 },
