@@ -100,9 +100,9 @@ static const redriver_bank_t redriver_banks[] = {
     /* CPU -> GPU: 0 dB gain, middle CTLE */
     { CPU_GPU_0_3_ADDR_I2C, "CPU->GPU 0-3", 8, 0, VOD_0_DB },
     { CPU_GPU_4_7_ADDR_I2C, "CPU->GPU 4-7", 8, 0, VOD_0_DB },
-    /* GPU -> CPU: CTLE index 1, output level reduced to -1.6 dB (nearest step to -2 dB) */
-    { GPU_CPU_0_3_ADDR_I2C, "GPU->CPU 0-3", 1, 0, VOD_MINUS_1_6_DB },
-    { GPU_CPU_4_7_ADDR_I2C, "GPU->CPU 4-7", 1, 0, VOD_MINUS_1_6_DB },
+    /* GPU -> CPU: lowest CTLE, output level reduced to -6 dB */
+    { GPU_CPU_0_3_ADDR_I2C, "GPU->CPU 0-3", 0, 0, VOD_MINUS_6_DB },
+    { GPU_CPU_4_7_ADDR_I2C, "GPU->CPU 4-7", 0, 0, VOD_MINUS_6_DB },
 };
 #define NUM_REDRIVER_BANKS (sizeof(redriver_banks) / sizeof(redriver_banks[0]))
 
