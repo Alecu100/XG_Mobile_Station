@@ -28,7 +28,30 @@ If you strap them differently, change the four `*_ADDR_I2C` defines at the top o
 
 The DS160PR410 has no "flat gain" setting like the 8-channel redrivers. Its DC level comes from the
 CTLE DC gain (0 or +3.5 dB) and the TX VOD (0, -1.6, -3.5 or -6 dB), so the GPU to CPU "-5 dB" is
-set with the nearest VOD step, -6 dB. Edit the `redriver_banks[]` table to change any of this.
+set with the nearest VOD step, -6 dB.
+
+## Changing the settings per lane
+
+The `redriver_channels[]` table in `redriver.c` has one row per lane (16 rows), in the same layout as
+the original redriver board: a **boot** setting written when the host releases reset (while PCIe
+trains) and a **run** setting written afterwards. Each setting has:
+
+- `eq`: `EQ_LEVEL_0` to `EQ_LEVEL_15`. The 4 GHz / 8 GHz boost of each level is listed next to the
+  `EQ_LEVEL_<n>` defines.
+- `dc_gain`: `DC_GAIN_0_DB` or `DC_GAIN_3_5_DB`.
+- `vod`: `VOD_MINUS_6_DB`, `VOD_MINUS_3_5_DB`, `VOD_MINUS_1_6_DB` or `VOD_0_DB`.
+
+Every lane gets its boot setting at the same time. After `REDRIVER_BOOT_HOLD_MS` (5 s, in
+`xg_mobile_dock.c`) every lane gets its run setting at the same time, with no ramp or per-lane delay.
+Boot equals run on every row at the moment. The log prints every lane's boot and running values, for
+example
+`run  GPU->CPU lane 2 (0x1C ch2): EQ level 0 (-0.3 / -0.8 dB @ 4/8 GHz), DC gain 0 dB, VOD -6 dB`.
+
+Set a row's `enabled` column to `CHANNEL_DISABLED` to turn that lane off. The driver then uses the
+programming guide's enable override (reg `0x06[5]` with the driver and CTLE enables cleared) to power
+the channel's driver and equalizer down, and prints `disabled (driver and equalizer powered down)`.
+`CHANNEL_ENABLED` hands the enables back to the part. The effect on the lane's receive termination
+is not described in the guide, so check it on the board before relying on it.
 
 RX detect is forced to always report a valid receiver, as on the other redriver boards; set
 `REDRIVER_FORCE_RX_DETECT` to 0 to use the redrivers' own detection.
@@ -43,15 +66,16 @@ RX detect is forced to always report a valid receiver, as on the other redriver 
 ## How it works
 
 The DS160PR410 selects channels through the share registers instead of per-channel address
-offsets: `0xFF = 0x03` selects the channel page with broadcast writes, and `0xFC` picks the channel
-used for read-back (programming guide SNLU255). The driver:
+offsets: `0xFF = 0x01` selects the channel page and `0xFC` picks the channel(s) that reads and writes
+go to (programming guide SNLU255). For every table row the driver:
 
-1. checks the device answers and reads device ID `0x26`;
-2. writes the CTLE, DC gain and VOD settings to all four channels at once;
-3. reads each channel back and reports any mismatch.
+1. checks the redriver answers and reads device ID `0x26`;
+2. selects the channel and writes the CTLE, DC gain and VOD of the boot setting, then reads it back;
+3. after the boot hold, writes the run setting to every lane and reads it back.
 
-The log shows `Redrivers configured: N of 4` after each host reset release, and the redrivers'
-latched RX detect flags every 10 seconds while PCIe is out of reset.
+The log shows `Redriver boot settings:` and `Redriver running settings:` with one line per lane after
+each host reset release, and the redrivers' latched RX detect flags every 10 seconds while PCIe is out
+of reset.
 
 ## Sources
 

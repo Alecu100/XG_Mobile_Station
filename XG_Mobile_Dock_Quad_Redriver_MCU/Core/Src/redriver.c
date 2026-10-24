@@ -6,8 +6,10 @@
  * selected through the share registers 0xFC / 0xFF and then written through the
  * same channel register offsets.
  *
- * The configuration is a per-channel boot -> running ramp, laid out like the dual
- * redriver board: see ramp_channels[] below.
+ * The configuration is a per-channel boot and running setting, as on the original
+ * redriver board (XG_Mobile_Dock_Redriver_MCU): every lane gets its boot setting when the
+ * host releases reset, and every lane switches to its running setting together after the
+ * boot hold. See redriver_channels[] below.
  */
 #include "main.h"
 #include <stdio.h>
@@ -63,7 +65,7 @@ extern I2C_HandleTypeDef hi2c2;
  * them driving even when the far-end detect is marginal. */
 #define REDRIVER_FORCE_RX_DETECT 1
 
-// Channel numbers used in ramp_channels[]. A redriver has four channels (0-3); the
+// Channel numbers used in redriver_channels[]. A redriver has four channels (0-3); the
 // 0-3 redrivers carry lanes 0-3 and the 4-7 redrivers carry lanes 4-7.
 #define CHANNEL_0 0
 #define CHANNEL_1 1
@@ -98,8 +100,7 @@ extern I2C_HandleTypeDef hi2c2;
 #define DC_GAIN_0_DB      0
 #define DC_GAIN_3_5_DB    1
 
-// TX output swing (VOD), reg 0x06[7:6] (higher = bigger swing). The ramp walks one level
-// per step.
+// TX output swing (VOD), reg 0x06[7:6] (higher = bigger swing).
 #define VOD_MINUS_6_DB    0
 #define VOD_MINUS_3_5_DB  1
 #define VOD_MINUS_1_6_DB  2
@@ -140,107 +141,74 @@ typedef struct {
     uint8_t vod;       // VOD_MINUS_6_DB .. VOD_0_DB
 } redriver_setting_t;
 
-// ---- Per-channel ramp configuration (data). The ramp engine that consumes this
-// ---- table (state, helpers, redriver_ramp_start / _pump) lives further down. ----
+// ---- Per-channel configuration (data): one row per lane and direction. ----
 typedef struct {
     uint16_t addr;
     uint16_t chan;
     uint8_t  enabled;          // CHANNEL_ENABLED / CHANNEL_DISABLED
-    redriver_setting_t boot;   // held through the training window (ramp start point)
-    redriver_setting_t run;    // ramped to, field by field, after the boot hold
-    uint16_t rampup_step_ms;   // ms between steps (one field value per step)
-    uint16_t rampup_delay_ms;  // extra per-lane hold before ramping (stagger lanes)
-} ramp_channel_t;
+    redriver_setting_t boot;   // written when the host releases reset (PCIe training)
+    redriver_setting_t run;    // written after the boot hold, all lanes together
+} redriver_channel_t;
 
-// Every channel holds its boot (training) config this long before the ramp to the
-// running state begins. This is the PCIe link-training window.
-#define REDRIVER_BOOT_HOLD_MS 5000
-
-// Per-lane ramp stagger: channels begin their boot->running ramp one after another
-// (not all at once) after the boot hold. Start order is 0,1,2,3,4,5,7,6 - lane 6
-// goes LAST - set by each row's delay = rank * RAMP_STAGGER_MS in the table below.
-#define RAMP_STAGGER_MS 500
-
-// ms per ramp step (one field value applied per tick).
-#define RAMP_STEP_MS 25
-
-// ramp_channels[].enabled values. A disabled channel has its driver and equalizer powered down.
+// redriver_channels[].enabled values. A disabled channel has its driver and equalizer powered down.
 #define CHANNEL_ENABLED  1
 #define CHANNEL_DISABLED 0
 
-// Per-channel setup + ramp endpoints (the single source of truth for redriver config).
-// Each channel = a boot set + a run set of redriver_setting_t fields; the ramp walks
-// every field independently boot -> run. enabled = CHANNEL_ENABLED / CHANNEL_DISABLED.
-// step = RAMP_STEP_MS per walked value; delay = per-lane stagger on top of REDRIVER_BOOT_HOLD_MS
-// (rank * RAMP_STAGGER_MS): start order 0,1,2,3,4,5,7,6 so lane 6 ramps LAST.
-// Boot = run on every row right now, so the ramp does not change anything.
-static ramp_channel_t ramp_channels[] = {
+// Per-channel boot and running settings (the single source of truth for redriver config).
+// The boot setting is written to every lane when the host releases reset; after the boot
+// hold (REDRIVER_BOOT_HOLD_MS in xg_mobile_dock.c) every lane gets its running setting at
+// once. enabled = CHANNEL_ENABLED / CHANNEL_DISABLED. Boot = run on every row right now.
+static redriver_channel_t redriver_channels[] = {
     { GPU_CPU_0_3_ADDR_I2C, CHANNEL_0, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB } },
     { GPU_CPU_0_3_ADDR_I2C, CHANNEL_1, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB } },
     { GPU_CPU_0_3_ADDR_I2C, CHANNEL_2, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB } },
     { GPU_CPU_0_3_ADDR_I2C, CHANNEL_3, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB } },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_4, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB } },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_5, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB } },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_6, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB } },
     { GPU_CPU_4_7_ADDR_I2C, CHANNEL_7, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB },
-      RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_0, .dc_gain = DC_GAIN_0_DB, .vod = VOD_MINUS_6_DB } },
     { CPU_GPU_0_3_ADDR_I2C, CHANNEL_0, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      RAMP_STEP_MS, 0 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB } },
     { CPU_GPU_0_3_ADDR_I2C, CHANNEL_1, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      RAMP_STEP_MS, 1 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB } },
     { CPU_GPU_0_3_ADDR_I2C, CHANNEL_2, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      RAMP_STEP_MS, 2 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB } },
     { CPU_GPU_0_3_ADDR_I2C, CHANNEL_3, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      RAMP_STEP_MS, 3 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB } },
     { CPU_GPU_4_7_ADDR_I2C, CHANNEL_4, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      RAMP_STEP_MS, 4 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB } },
     { CPU_GPU_4_7_ADDR_I2C, CHANNEL_5, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      RAMP_STEP_MS, 5 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB } },
     { CPU_GPU_4_7_ADDR_I2C, CHANNEL_6, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      RAMP_STEP_MS, 7 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB } },
     { CPU_GPU_4_7_ADDR_I2C, CHANNEL_7, CHANNEL_ENABLED,
       { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB },
-      RAMP_STEP_MS, 6 * RAMP_STAGGER_MS },
+      { .eq = EQ_LEVEL_8, .dc_gain = DC_GAIN_0_DB, .vod = VOD_0_DB } },
 };
-#define NUM_RAMP_CHANNELS (sizeof(ramp_channels) / sizeof(ramp_channels[0]))
+#define NUM_REDRIVER_CHANNELS (sizeof(redriver_channels) / sizeof(redriver_channels[0]))
 
 typedef struct {
     uint8_t addr;
@@ -304,12 +272,12 @@ static int redriver_setting_valid(const redriver_setting_t *s) {
 }
 
 // Lane number and direction of a table row, for the log.
-static int redriver_row_lane(const ramp_channel_t *c) {
+static int redriver_row_lane(const redriver_channel_t *c) {
     int upper = (c->addr == CPU_GPU_4_7_ADDR_I2C || c->addr == GPU_CPU_4_7_ADDR_I2C);
     return (upper ? 4 : 0) + c->chan;
 }
 
-static const char *redriver_row_direction(const ramp_channel_t *c) {
+static const char *redriver_row_direction(const redriver_channel_t *c) {
     return (c->addr == CPU_GPU_0_3_ADDR_I2C || c->addr == CPU_GPU_4_7_ADDR_I2C) ? "CPU->GPU" : "GPU->CPU";
 }
 
@@ -318,7 +286,7 @@ static const char *redriver_vod_text(uint8_t vod) {
     return text[vod & 3];
 }
 
-static void redriver_print_setting(const char *label, const ramp_channel_t *c, const redriver_setting_t *s) {
+static void redriver_print_setting(const char *label, const redriver_channel_t *c, const redriver_setting_t *s) {
     printf("  %s %s lane %d (0x%02X ch%d): EQ level %u (%s dB @ 4/8 GHz), DC gain %s dB, VOD %s dB\n",
            label, redriver_row_direction(c), redriver_row_lane(c), c->addr, (int)c->chan, s->eq,
            ctle_settings[s->eq].db, s->dc_gain == DC_GAIN_3_5_DB ? "+3.5" : "0", redriver_vod_text(s->vod));
@@ -378,7 +346,7 @@ static int redriver_verify_setting(uint8_t addr, uint8_t chan, const redriver_se
 
 // Write and read back one operating point, retrying while a redriver that has just left
 // standby settles.
-static int redriver_apply_setting(const ramp_channel_t *c, const redriver_setting_t *s, int init) {
+static int redriver_apply_setting(const redriver_channel_t *c, const redriver_setting_t *s, int init) {
     for (int attempt = 0; attempt < REDRIVER_WRITE_RETRIES; attempt++) {
         if (attempt > 0) {
             HAL_Delay(20);
@@ -448,48 +416,20 @@ void print_redrivers_status(void) {
 
 
 // ============================================================================
-// Boot -> running RAMP  (per-channel, per-field)
+// Boot and running configuration
 //
-// Each channel has a boot operating point and a run operating point (redriver_
-// setting_t). Every walked field - EQ level, DC gain and VOD - moves independently,
-// one value per tick, from its boot value toward its run value. A channel is done once
-// its furthest-apart field has arrived; then redriver_apply_running() re-asserts the
-// exact run point so it matches exactly.
+// initialize_redrivers_boot() probes the redrivers and writes every enabled lane's boot
+// setting (and powers disabled lanes down) when the host releases reset.
+// initialize_redrivers_running() writes every lane's running setting, all lanes together,
+// once the boot hold has passed (see xg_mobile_dock.c).
 // ============================================================================
 
-// Per-channel ramp progress. step[i]: -1 = idle/done; 1.. = active (number of
-// steps taken; a channel finishes when every property has reached its running
-// value). next[i] = tick at which channel i applies its next step. Thread only.
-static int      redriver_ramp_step[NUM_RAMP_CHANNELS];
-static uint32_t redriver_ramp_next[NUM_RAMP_CHANNELS];
-static int      redriver_ramp_active = 0;
-
-// Move from 'from' toward 'to' by 'step' units, clamped so it never overshoots.
-static int redriver_ramp_walk(int from, int to, int step) {
-    if (to >= from) {
-        int v = from + step;
-        return (v > to) ? to : v;
-    }
-    int v = from - step;
-    return (v < to) ? to : v;
-}
-
-// |a - b| for small ints.
-static int redriver_ramp_dist(int a, int b) {
-    int d = a - b;
-    return (d < 0) ? -d : d;
-}
-
-// Largest per-field distance between two operating points = number of ramp steps.
-static int redriver_setting_dist(const redriver_setting_t *a, const redriver_setting_t *b) {
-    int d = redriver_ramp_dist(a->eq, b->eq);
-    int e = redriver_ramp_dist(a->dc_gain, b->dc_gain); if (e > d) d = e;
-    e = redriver_ramp_dist(a->vod, b->vod);             if (e > d) d = e;
-    return d;
-}
+// 1 for a lane whose boot setting was written and read back; the running setting is only
+// written to those lanes. Thread context only.
+static int redriver_channel_ready[NUM_REDRIVER_CHANNELS];
 
 /* Power a channel's driver and equalizer down (CHANNEL_DISABLED) and read it back. */
-static int redriver_power_down_channel(const ramp_channel_t *c) {
+static int redriver_power_down_channel(const redriver_channel_t *c) {
     uint8_t addr = (uint8_t)c->addr, chan = (uint8_t)c->chan;
     int ok = 0;
 
@@ -512,11 +452,9 @@ static int redriver_power_down_channel(const ramp_channel_t *c) {
     return ok;
 }
 
-// Check the table, probe every redriver, then load each enabled channel's BOOT (training)
-// registers: RX detect + the boot operating point. This is the starting point the ramp
-// walks from (ramp step 0). Disabled channels are powered down. A channel that cannot be
-// set up is skipped by the ramp.
-static void redriver_apply_boot(int usable[NUM_RAMP_CHANNELS]) {
+// Probe every redriver, then write each enabled channel's boot setting (RX detect + the
+// boot operating point) and read it back. Disabled channels are powered down.
+void initialize_redrivers_boot(void) {
     int bank_ok[NUM_REDRIVER_BANKS];
 
     for (unsigned int b = 0; b < NUM_REDRIVER_BANKS; b++) {
@@ -542,11 +480,11 @@ static void redriver_apply_boot(int usable[NUM_RAMP_CHANNELS]) {
     }
 
     printf("Redriver boot settings:\n");
-    for (unsigned int i = 0; i < NUM_RAMP_CHANNELS; i++) {
-        ramp_channel_t *c = &ramp_channels[i];
+    for (unsigned int i = 0; i < NUM_REDRIVER_CHANNELS; i++) {
+        redriver_channel_t *c = &redriver_channels[i];
         int ok = 0;
 
-        usable[i] = 0;
+        redriver_channel_ready[i] = 0;
         for (unsigned int b = 0; b < NUM_REDRIVER_BANKS; b++) {
             if (redriver_banks[b].addr == c->addr) {
                 ok = bank_ok[b];
@@ -565,7 +503,7 @@ static void redriver_apply_boot(int usable[NUM_RAMP_CHANNELS]) {
             continue;
         }
         if (!redriver_setting_valid(&c->boot) || !redriver_setting_valid(&c->run)) {
-            printf("Redriver %s lane %d: invalid setting in ramp_channels[]\n", redriver_row_direction(c),
+            printf("Redriver %s lane %d: invalid setting in redriver_channels[]\n", redriver_row_direction(c),
                    redriver_row_lane(c));
             continue;
         }
@@ -573,7 +511,7 @@ static void redriver_apply_boot(int usable[NUM_RAMP_CHANNELS]) {
             continue;
         }
         if (redriver_apply_setting(c, &c->boot, 1)) {
-            usable[i] = 1;
+            redriver_channel_ready[i] = 1;
             redriver_print_setting("boot", c, &c->boot);
         } else {
             printf("Redriver %s lane %d: boot setting write failed\n", redriver_row_direction(c),
@@ -582,13 +520,13 @@ static void redriver_apply_boot(int usable[NUM_RAMP_CHANNELS]) {
     }
 }
 
-// Re-assert every enabled channel's exact RUNNING operating point (the ramp endpoint).
-static void redriver_apply_running(void) {
+// Write every ready channel's running setting and read it back, all lanes together.
+void initialize_redrivers_running(void) {
     printf("Redriver running settings:\n");
-    for (unsigned int i = 0; i < NUM_RAMP_CHANNELS; i++) {
-        ramp_channel_t *c = &ramp_channels[i];
+    for (unsigned int i = 0; i < NUM_REDRIVER_CHANNELS; i++) {
+        redriver_channel_t *c = &redriver_channels[i];
 
-        if (!c->enabled || !redriver_setting_valid(&c->run) || redriver_ramp_step[i] == -2) {
+        if (!c->enabled || !redriver_channel_ready[i]) {
             continue;
         }
         if (redriver_apply_setting(c, &c->run, 0)) {
@@ -598,94 +536,4 @@ static void redriver_apply_running(void) {
                    redriver_row_lane(c));
         }
     }
-}
-
-// Set the redrivers up and arm the boot->running ramp: applies every channel's boot
-// config (training EQ = ramp step 0), then schedules each usable channel to hold boot for
-// REDRIVER_BOOT_HOLD_MS (+ its lane stagger) before walking to running. Disabled channels
-// and channels on a missing redriver are skipped (step -2: not touched by the ramp).
-void redriver_ramp_start(void) {
-    int usable[NUM_RAMP_CHANNELS];
-
-    redriver_apply_boot(usable);
-
-    uint32_t now = HAL_GetTick();
-    for (unsigned int i = 0; i < NUM_RAMP_CHANNELS; i++) {
-        if (!usable[i]) {
-            redriver_ramp_step[i] = -2;
-            continue;
-        }
-        redriver_ramp_step[i] = 1;        // step 0 = boot (just applied); start moving
-        redriver_ramp_next[i] = now + REDRIVER_BOOT_HOLD_MS
-                                    + ramp_channels[i].rampup_delay_ms
-                                    + ramp_channels[i].rampup_step_ms;
-    }
-    redriver_ramp_active = 1;
-    printf("Redriver boot config applied; boot->running ramp armed\n");
-}
-
-void redriver_ramp_cancel(void) {
-    redriver_ramp_active = 0;
-    for (unsigned int i = 0; i < NUM_RAMP_CHANNELS; i++) {
-        redriver_ramp_step[i] = -1;
-    }
-}
-
-// 1 while a boot->running ramp is in progress (keep calling redriver_ramp_pump),
-// 0 once it is idle or has finished.
-int redriver_ramp_is_active(void) {
-    return redriver_ramp_active;
-}
-
-// Advance every channel that's due for a step. Returns 1 when the ramp is not in
-// progress (already finished this call, or was idle), 0 while it is still ramping.
-int redriver_ramp_pump(void) {
-    if (!redriver_ramp_active) {
-        return 1;                       // nothing in progress
-    }
-
-    uint32_t now = HAL_GetTick();
-    int any_active = 0;
-
-    for (unsigned int i = 0; i < NUM_RAMP_CHANNELS; i++) {
-        int step = redriver_ramp_step[i];
-        if (step < 0) {
-            continue;                       // channel finished or not part of the ramp
-        }
-        any_active = 1;
-        if ((int32_t)(now - redriver_ramp_next[i]) < 0) {
-            continue;                       // not time for this channel's next step
-        }
-
-        ramp_channel_t *c = &ramp_channels[i];
-        const redriver_setting_t *b = &c->boot, *r = &c->run;
-
-        // Each field walks boot -> run independently; the channel is done once the
-        // furthest-apart field has arrived.
-        int max_dist = redriver_setting_dist(b, r);
-        redriver_setting_t cur = {
-            .eq      = (uint8_t)redriver_ramp_walk(b->eq, r->eq, step),
-            .dc_gain = (uint8_t)redriver_ramp_walk(b->dc_gain, r->dc_gain, step),
-            .vod     = (uint8_t)redriver_ramp_walk(b->vod, r->vod, step),
-        };
-        redriver_write_setting((uint8_t)c->addr, (uint8_t)c->chan, &cur, 0);
-
-        if (step >= max_dist) {
-            redriver_ramp_step[i] = -1;     // every property has reached running
-        } else {
-            redriver_ramp_step[i] = step + 1;
-            redriver_ramp_next[i] = redriver_ramp_next[i] + c->rampup_step_ms;
-        }
-    }
-
-    if (!any_active) {
-        // Every channel has landed on its running endpoint; re-assert the exact
-        // running config once and stop.
-        redriver_apply_running();
-        redriver_ramp_active = 0;
-        printf("Redriver ramp complete\n");
-        return 1;                       // ramp just finished
-    }
-
-    return 0;                           // still ramping
 }
