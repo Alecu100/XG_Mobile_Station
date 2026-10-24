@@ -77,6 +77,17 @@ The log shows `Redriver boot settings:` and `Redriver running settings:` with on
 each host reset release, and the redrivers' latched RX detect flags every 10 seconds while PCIe is out
 of reset.
 
+For debugging, every host reset release also prints:
+
+- `Redriver probe on I2C2:` with one line per redriver: `found, device ID 0x26`, `NOT FOUND` (with the
+  HAL status and I2C error code), `ACKs its address but register access failed`, or an unexpected
+  device ID; then `Redriver probe: N of 4 redrivers found`.
+- If any redriver is missing, a scan of I2C2 that lists every address that answers, which shows a
+  wrong address strap or a bus not connected to the MCU (`PWDN`, `SCL`/`SDA` or `EN_SMB` switches).
+- For a lane that cannot be written, the step that failed (which register, read or write, HAL status
+  and I2C error code, or the read-back values against the expected ones) after all retries.
+- `Redriver boot: M of K enabled lanes written and verified` and the same for running.
+
 ## Sources
 
 DS160PR410 data sheet (SNLS645) and DS160PR410 Programming Guide (SNLU255), both public.

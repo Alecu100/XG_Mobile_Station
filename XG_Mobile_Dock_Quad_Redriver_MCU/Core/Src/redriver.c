@@ -225,14 +225,41 @@ static const redriver_bank_t redriver_banks[] = {
 
 static uint32_t status_last_print_ms;
 
+// Last I2C failure, kept for the debug log (set by redriver_read / redriver_write and by
+// a read-back mismatch). Printed once when a setting still fails after all retries.
+static char redriver_last_error[112];
+
+static const char *redriver_hal_text(HAL_StatusTypeDef status) {
+    switch (status) {
+        case HAL_OK:      return "OK";
+        case HAL_ERROR:   return "ERROR";
+        case HAL_BUSY:    return "BUSY";
+        case HAL_TIMEOUT: return "TIMEOUT";
+        default:          return "?";
+    }
+}
+
+static void redriver_note_error(const char *op, uint8_t addr, uint8_t reg, HAL_StatusTypeDef status) {
+    snprintf(redriver_last_error, sizeof(redriver_last_error), "%s 0x%02X reg 0x%02X failed: HAL %s, I2C error 0x%02lX",
+             op, addr, reg, redriver_hal_text(status), (unsigned long)HAL_I2C_GetError(&hi2c2));
+}
+
 static HAL_StatusTypeDef redriver_read(uint8_t addr, uint8_t reg, uint8_t *value) {
-    return HAL_I2C_Mem_Read(&hi2c2, (uint16_t)(addr << 1), reg, I2C_MEMADD_SIZE_8BIT,
-                            value, 1, REDRIVER_I2C_TIMEOUT_MS);
+    HAL_StatusTypeDef status = HAL_I2C_Mem_Read(&hi2c2, (uint16_t)(addr << 1), reg, I2C_MEMADD_SIZE_8BIT,
+                                                value, 1, REDRIVER_I2C_TIMEOUT_MS);
+    if (status != HAL_OK) {
+        redriver_note_error("read", addr, reg, status);
+    }
+    return status;
 }
 
 static HAL_StatusTypeDef redriver_write(uint8_t addr, uint8_t reg, uint8_t value) {
-    return HAL_I2C_Mem_Write(&hi2c2, (uint16_t)(addr << 1), reg, I2C_MEMADD_SIZE_8BIT,
-                             &value, 1, REDRIVER_I2C_TIMEOUT_MS);
+    HAL_StatusTypeDef status = HAL_I2C_Mem_Write(&hi2c2, (uint16_t)(addr << 1), reg, I2C_MEMADD_SIZE_8BIT,
+                                                 &value, 1, REDRIVER_I2C_TIMEOUT_MS);
+    if (status != HAL_OK) {
+        redriver_note_error("write", addr, reg, status);
+    }
+    return status;
 }
 
 // Read-modify-write of the bits in mask on the channel currently selected in 0xFC.
@@ -337,7 +364,10 @@ static int redriver_verify_setting(uint8_t addr, uint8_t chan, const redriver_se
     } else if ((ctle & CTLE_STAGES_MASK) != ctle_register_value(s) ||
                (mode & CTLE_MODE_MASK) != mode_register_value(s) ||
                (driver & DRIVER_VOD_MASK) != driver_register_value(s)) {
-        printf("Redriver 0x%02X ch%d mismatch: 0x03=%02X 0x04=%02X 0x06=%02X\n", addr, (int)chan, ctle, mode, driver);
+        snprintf(redriver_last_error, sizeof(redriver_last_error),
+                 "read-back mismatch: 0x03=%02X (want %02X) 0x04=%02X (want %02X) 0x06=%02X (want %02X)",
+                 ctle & CTLE_STAGES_MASK, ctle_register_value(s), mode & CTLE_MODE_MASK, mode_register_value(s),
+                 driver & DRIVER_VOD_MASK, driver_register_value(s));
         result = 1;
     }
     redriver_write(addr, SHARE_REG_PAGE_SEL, PAGE_SHARE);
@@ -345,14 +375,19 @@ static int redriver_verify_setting(uint8_t addr, uint8_t chan, const redriver_se
 }
 
 // Write and read back one operating point, retrying while a redriver that has just left
-// standby settles.
+// standby settles. On failure redriver_last_error holds the reason from the last attempt.
 static int redriver_apply_setting(const redriver_channel_t *c, const redriver_setting_t *s, int init) {
+    redriver_last_error[0] = '\0';
     for (int attempt = 0; attempt < REDRIVER_WRITE_RETRIES; attempt++) {
         if (attempt > 0) {
             HAL_Delay(20);
         }
         if (redriver_write_setting((uint8_t)c->addr, (uint8_t)c->chan, s, init) == HAL_OK &&
             redriver_verify_setting((uint8_t)c->addr, (uint8_t)c->chan, s) == 0) {
+            if (attempt > 0) {
+                printf("  (0x%02X ch%d needed %d attempts; earlier: %s)\n", c->addr, (int)c->chan, attempt + 1,
+                       redriver_last_error);
+            }
             return 1;
         }
     }
@@ -376,7 +411,7 @@ static void print_redriver_bank_status(const redriver_bank_t *bank) {
 
     if (redriver_write(bank->addr, SHARE_REG_PAGE_SEL, PAGE_SHARE) != HAL_OK ||
         redriver_read(bank->addr, SHARE_REG_DEVICE_ID, &device_id) != HAL_OK) {
-        printf("Redriver %s (0x%02X): no response\n", bank->name, bank->addr);
+        printf("Redriver %s (0x%02X): no response (%s)\n", bank->name, bank->addr, redriver_last_error);
         return;
     }
     printf("Redriver %s (0x%02X) id=%02X RX detect (P/N latched) per channel:", bank->name, bank->addr,
@@ -452,31 +487,59 @@ static int redriver_power_down_channel(const redriver_channel_t *c) {
     return ok;
 }
 
+// Scan I2C2 and list every address that acknowledges, to find redrivers strapped to an
+// unexpected address or a bus that is not connected to the MCU (SCL/SDA switches).
+static void redriver_scan_bus(void) {
+    int found = 0;
+
+    printf("Redriver debug: scanning I2C2 (0x08-0x77):");
+    for (uint8_t addr = 0x08; addr <= 0x77; addr++) {
+        if (HAL_I2C_IsDeviceReady(&hi2c2, (uint16_t)(addr << 1), 2, 5) == HAL_OK) {
+            printf(" 0x%02X", addr);
+            found++;
+        }
+    }
+    printf(found ? "\n" : " nothing answered (check power-down/PWDN, SCL/SDA and EN_SMB switches)\n");
+}
+
 // Probe every redriver, then write each enabled channel's boot setting (RX detect + the
 // boot operating point) and read it back. Disabled channels are powered down.
 void initialize_redrivers_boot(void) {
     int bank_ok[NUM_REDRIVER_BANKS];
+    unsigned int banks_found = 0, lanes_enabled = 0, lanes_written = 0;
 
+    printf("Redriver probe on I2C2:\n");
     for (unsigned int b = 0; b < NUM_REDRIVER_BANKS; b++) {
         const redriver_bank_t *bank = &redriver_banks[b];
         uint8_t device_id = 0;
 
         bank_ok[b] = 0;
-        if (HAL_I2C_IsDeviceReady(&hi2c2, (uint16_t)(bank->addr << 1), REDRIVER_READY_TRIALS,
-                                  REDRIVER_I2C_TIMEOUT_MS) != HAL_OK) {
-            printf("Redriver %s (0x%02X) not found on I2C2\n", bank->name, bank->addr);
+        HAL_StatusTypeDef ready = HAL_I2C_IsDeviceReady(&hi2c2, (uint16_t)(bank->addr << 1), REDRIVER_READY_TRIALS,
+                                                        REDRIVER_I2C_TIMEOUT_MS);
+        if (ready != HAL_OK) {
+            printf("  %s (0x%02X): NOT FOUND (no ACK after %u tries: HAL %s, I2C error 0x%02lX)\n", bank->name,
+                   bank->addr, (unsigned)REDRIVER_READY_TRIALS, redriver_hal_text(ready),
+                   (unsigned long)HAL_I2C_GetError(&hi2c2));
             continue;
         }
         if (redriver_write(bank->addr, SHARE_REG_PAGE_SEL, PAGE_SHARE) != HAL_OK ||
             redriver_read(bank->addr, SHARE_REG_DEVICE_ID, &device_id) != HAL_OK) {
-            printf("Redriver %s (0x%02X) did not answer a register read\n", bank->name, bank->addr);
+            printf("  %s (0x%02X): ACKs its address but register access failed (%s)\n", bank->name, bank->addr,
+                   redriver_last_error);
             continue;
         }
         if (device_id != SHARE_DEVICE_ID) {
-            printf("Redriver %s (0x%02X): unexpected device ID 0x%02X (expected 0x%02X)\n",
+            printf("  %s (0x%02X): found, but device ID 0x%02X (expected 0x%02X) - wrong part or address?\n",
                    bank->name, bank->addr, device_id, SHARE_DEVICE_ID);
+        } else {
+            printf("  %s (0x%02X): found, device ID 0x%02X\n", bank->name, bank->addr, device_id);
         }
         bank_ok[b] = 1;
+        banks_found++;
+    }
+    printf("Redriver probe: %u of %u redrivers found\n", banks_found, (unsigned)NUM_REDRIVER_BANKS);
+    if (banks_found < NUM_REDRIVER_BANKS) {
+        redriver_scan_bus();
     }
 
     printf("Redriver boot settings:\n");
@@ -496,32 +559,40 @@ void initialize_redrivers_boot(void) {
                     printf("  %s lane %d (0x%02X ch%d): disabled (driver and equalizer powered down)\n",
                            redriver_row_direction(c), redriver_row_lane(c), c->addr, (int)c->chan);
                 } else {
-                    printf("Redriver %s lane %d: power-down write failed\n", redriver_row_direction(c),
-                           redriver_row_lane(c));
+                    printf("  %s lane %d (0x%02X ch%d): power-down write FAILED: %s\n", redriver_row_direction(c),
+                           redriver_row_lane(c), c->addr, (int)c->chan, redriver_last_error);
                 }
             }
             continue;
         }
+        lanes_enabled++;
         if (!redriver_setting_valid(&c->boot) || !redriver_setting_valid(&c->run)) {
-            printf("Redriver %s lane %d: invalid setting in redriver_channels[]\n", redriver_row_direction(c),
+            printf("  %s lane %d: invalid setting in redriver_channels[]\n", redriver_row_direction(c),
                    redriver_row_lane(c));
             continue;
         }
         if (!ok) {
+            printf("  %s lane %d (0x%02X ch%d): skipped, redriver not found\n", redriver_row_direction(c),
+                   redriver_row_lane(c), c->addr, (int)c->chan);
             continue;
         }
         if (redriver_apply_setting(c, &c->boot, 1)) {
             redriver_channel_ready[i] = 1;
+            lanes_written++;
             redriver_print_setting("boot", c, &c->boot);
         } else {
-            printf("Redriver %s lane %d: boot setting write failed\n", redriver_row_direction(c),
-                   redriver_row_lane(c));
+            printf("  %s lane %d (0x%02X ch%d): boot setting write FAILED after %d tries: %s\n",
+                   redriver_row_direction(c), redriver_row_lane(c), c->addr, (int)c->chan, REDRIVER_WRITE_RETRIES,
+                   redriver_last_error);
         }
     }
+    printf("Redriver boot: %u of %u enabled lanes written and verified\n", lanes_written, lanes_enabled);
 }
 
 // Write every ready channel's running setting and read it back, all lanes together.
 void initialize_redrivers_running(void) {
+    unsigned int lanes_ready = 0, lanes_written = 0;
+
     printf("Redriver running settings:\n");
     for (unsigned int i = 0; i < NUM_REDRIVER_CHANNELS; i++) {
         redriver_channel_t *c = &redriver_channels[i];
@@ -529,11 +600,15 @@ void initialize_redrivers_running(void) {
         if (!c->enabled || !redriver_channel_ready[i]) {
             continue;
         }
+        lanes_ready++;
         if (redriver_apply_setting(c, &c->run, 0)) {
+            lanes_written++;
             redriver_print_setting("run ", c, &c->run);
         } else {
-            printf("Redriver %s lane %d: running setting write failed\n", redriver_row_direction(c),
-                   redriver_row_lane(c));
+            printf("  %s lane %d (0x%02X ch%d): running setting write FAILED after %d tries: %s\n",
+                   redriver_row_direction(c), redriver_row_lane(c), c->addr, (int)c->chan, REDRIVER_WRITE_RETRIES,
+                   redriver_last_error);
         }
     }
+    printf("Redriver running: %u of %u lanes written and verified\n", lanes_written, lanes_ready);
 }
