@@ -157044,6 +157044,24 @@
 		(uuid "53134998-598d-48f7-9f32-aec4ac7ee5e3")
 	)
 	(via
+		(at 111.06 65.84)
+		(size 0.3)
+		(drill 0.2)
+		(layers "F.Cu" "B.Cu")
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "GND")
+		(uuid "53324164-72a6-4518-b82b-2fe9a048fa24")
+	)
+	(via
 		(at 136.533 140.48)
 		(size 0.3)
 		(drill 0.2)
@@ -174286,6 +174304,24 @@
 		(uuid "8330dd1c-1f43-43e4-a207-9982cae8ae21")
 	)
 	(via
+		(at 112.55 70.16)
+		(size 0.3)
+		(drill 0.2)
+		(layers "F.Cu" "B.Cu")
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "GND")
+		(uuid "8336b9fc-1255-4ae9-9a97-6bc5f13e82bc")
+	)
+	(via
 		(at 235.775 136.475)
 		(size 0.4)
 		(drill 0.3)
@@ -187258,6 +187294,24 @@
 		(uuid "a623b050-55bd-4fd5-91f1-a8ef0dfdd794")
 	)
 	(via
+		(at 111.01 67.14)
+		(size 0.3)
+		(drill 0.2)
+		(layers "F.Cu" "B.Cu")
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "GND")
+		(uuid "a6309871-f653-4e53-ada9-629822f698df")
+	)
+	(via
 		(at 105.53 97.435)
 		(size 0.3)
 		(drill 0.2)
@@ -193851,6 +193905,24 @@
 		(uuid "b8687d9c-0e93-4215-8124-1d109918c577")
 	)
 	(via
+		(at 111.54 68.57)
+		(size 0.3)
+		(drill 0.2)
+		(layers "F.Cu" "B.Cu")
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "GND")
+		(uuid "b86a6492-a579-4dbe-ba14-8ab942e1a0f7")
+	)
+	(via
 		(at 111.665 127.78)
 		(size 0.3)
 		(drill 0.2)
@@ -193940,6 +194012,24 @@
 		(filling no)
 		(net "GND")
 		(uuid "b888b399-60d1-4ff6-a2b3-b5e3e3e7b0d1")
+	)
+	(via
+		(at 164.85 87.23)
+		(size 0.3)
+		(drill 0.2)
+		(layers "F.Cu" "B.Cu")
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "GND")
+		(uuid "b892fb54-63c8-49f2-993b-117735a56709")
 	)
 	(via
 		(at 132.06 78.89)
@@ -197949,6 +198039,24 @@
 		(filling no)
 		(net "GND")
 		(uuid "c2d53333-bbea-4f8a-a5f4-e4f5a9c90bda")
+	)
+	(via
+		(at 111.08 64.88)
+		(size 0.3)
+		(drill 0.2)
+		(layers "F.Cu" "B.Cu")
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "GND")
+		(uuid "c2d80e12-3362-4710-998e-1fdac647ab5b")
 	)
 	(via
 		(at 149.45 93.07)
@@ -218815,6 +218923,24 @@
 		(filling no)
 		(net "GND")
 		(uuid "fa81c4ef-7db8-4bdb-a673-a8fc0b0ddf87")
+	)
+	(via
+		(at 111.17 67.96)
+		(size 0.3)
+		(drill 0.2)
+		(layers "F.Cu" "B.Cu")
+		(capping no)
+		(covering
+			(front no)
+			(back no)
+		)
+		(plugging
+			(front no)
+			(back no)
+		)
+		(filling no)
+		(net "GND")
+		(uuid "fa81eb56-3d63-409a-80ee-987cb714111b")
 	)
 	(via
 		(at 160.9 99.57)
